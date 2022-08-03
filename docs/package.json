@@ -1,0 +1,14 @@
+{
+  "name": "docs",
+  "scripts": {
+    "dev": "vitepress dev --port 8080",
+    "build": "vitepress build",
+    "serve": "vitepress serve"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@apathia/apathia.twind": "workspace:^0.0.1",
+    "@apathia/vitepress-theme": "workspace:^0.0.1",
+    "vitepress": "^0.22.3"
+  }
+}

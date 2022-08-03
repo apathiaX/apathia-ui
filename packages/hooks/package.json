@@ -1,0 +1,38 @@
+{
+  "name": "@apathia/apathia.hooks",
+  "version": "0.0.1",
+  "description": "hooks",
+  "author": "",
+  "homepage": "",
+  "main": "dist/apathia.hooks.umd.js",
+  "module": "dist/apathia.hooks.es.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "export": {
+    "import": "dist/apathia.hooks.es.js",
+    "require": "dist/apathia.hooks.umd.js"
+  },
+  "sideEffects": false,
+  "directories": {
+    "lib": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com/"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "devDependencies": {
+    "vue": "^3.2.37"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.37"
+  },
+  "dependencies": {
+    "@apathia/apathia.shared": "workspace:^0.0.1"
+  }
+}

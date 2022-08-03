@@ -1,0 +1,46 @@
+{
+  "name": "@apathia1/apathia.table",
+  "version": "0.0.1",
+  "description": "table",
+  "author": "",
+  "homepage": "",
+  "main": "dist/apathia.table.umd.js",
+  "module": "dist/apathia.table.es.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "export": {
+    "import": "dist/apathia.table.es.js",
+    "require": "dist/apathia.table.umd.js"
+  },
+  "sideEffects": false,
+  "directories": {
+    "lib": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com/"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.182",
+    "vue": "^3.2.37"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.37"
+  },
+  "dependencies": {
+    "@apathia/apathia.button": "workspace:^0.0.1",
+    "@apathia/apathia.checkbox": "workspace:^0.0.1",
+    "@apathia/apathia.custom-render": "workspace:^0.0.1",
+    "@apathia/apathia.hooks": "workspace:^0.0.1",
+    "@apathia/apathia.icon": "workspace:^0.0.1",
+    "@apathia/apathia.loading": "workspace:^0.0.1",
+    "@apathia/apathia.twind": "workspace:^0.0.1",
+    "lodash": "^4.17.21"
+  }
+}

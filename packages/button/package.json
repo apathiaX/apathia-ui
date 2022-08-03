@@ -1,0 +1,40 @@
+{
+  "name": "@apathia/apathia.button",
+  "version": "0.0.1",
+  "description": "button",
+  "author": "",
+  "homepage": "",
+  "main": "dist/apathia.button.umd.js",
+  "module": "dist/apathia.button.es.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "export": {
+    "import": "dist/apathia.button.es.js",
+    "require": "dist/apathia.button.umd.js"
+  },
+  "sideEffects": false,
+  "directories": {
+    "lib": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com/"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "devDependencies": {
+    "vue": "^3.2.37"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.37"
+  },
+  "dependencies": {
+    "@apathia/apathia.hooks": "workspace:^0.0.1",
+    "@apathia/apathia.shared": "workspace:^0.0.1",
+    "@apathia/apathia.twind": "workspace:^0.0.1"
+  }
+}

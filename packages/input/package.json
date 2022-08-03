@@ -1,0 +1,41 @@
+{
+  "name": "@apathia/apathia.input",
+  "version": "0.0.1",
+  "description": "input",
+  "author": "",
+  "homepage": "",
+  "main": "dist/apathia.input.umd.js",
+  "module": "dist/apathia.input.es.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "export": {
+    "import": "dist/apathia.input.es.js",
+    "require": "dist/apathia.input.umd.js"
+  },
+  "sideEffects": false,
+  "directories": {
+    "lib": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com/"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "devDependencies": {
+    "vue": "^3.2.37"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.37"
+  },
+  "dependencies": {
+    "@apathia/apathia.hooks": "workspace:^0.0.1",
+    "@apathia/apathia.icon": "workspace:^0.0.1",
+    "@apathia/apathia.twind": "workspace:^0.0.1",
+    "string-width": "^5.1.2"
+  }
+}
