@@ -2,7 +2,7 @@
   "name": "@apathia/apathia.alert",
   "version": "0.0.1",
   "description": "alert",
-  "author": "",
+  "author": "xzc01",
   "homepage": "",
   "main": "dist/apathia.alert.umd.js",
   "module": "dist/apathia.alert.es.js",
@@ -21,7 +21,7 @@
     "dist"
   ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.com/"
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"

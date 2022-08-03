@@ -33,7 +33,7 @@ const generatePackageJson = name => ({
   },
   files: ['dist'],
   publishConfig: {
-    registry: 'https://registry.npmjs.com/',
+    registry: 'https://registry.npmjs.org/',
   },
   scripts: {
     test: 'echo "Error: run tests from root" && exit 1',

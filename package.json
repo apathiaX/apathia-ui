@@ -2,6 +2,10 @@
   "name": "apathia",
   "version": "1.0.0",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:apathia1220/apathia-vue.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "pnpm build:core",
