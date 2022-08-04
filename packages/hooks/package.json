@@ -4,13 +4,13 @@
   "description": "hooks",
   "author": "",
   "homepage": "",
-  "main": "dist/apathia.hooks.umd.js",
-  "module": "dist/apathia.hooks.es.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/apathia.hooks.umd.js",
+  "module": "./dist/apathia.hooks.es.js",
+  "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "dist/apathia.hooks.es.js",
-    "require": "dist/apathia.hooks.umd.js"
+    "import": "./dist/apathia.hooks.es.js",
+    "require": "./dist/apathia.hooks.umd.js"
   },
   "sideEffects": false,
   "directories": {

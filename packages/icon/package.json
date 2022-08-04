@@ -4,13 +4,13 @@
   "description": "icon",
   "author": "",
   "homepage": "",
-  "main": "dist/apathia.icon.umd.js",
-  "module": "dist/apathia.icon.es.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/apathia.icon.umd.js",
+  "module": "./dist/apathia.icon.es.js",
+  "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "dist/apathia.icon.es.js",
-    "require": "dist/apathia.icon.umd.js"
+    "import": "./dist/apathia.icon.es.js",
+    "require": "./dist/apathia.icon.umd.js"
   },
   "sideEffects": false,
   "directories": {

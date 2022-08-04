@@ -4,13 +4,13 @@
   "description": "confirm",
   "author": "",
   "homepage": "",
-  "main": "dist/apathia.confirm.umd.js",
-  "module": "dist/apathia.confirm.es.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/apathia.confirm.umd.js",
+  "module": "./dist/apathia.confirm.es.js",
+  "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "dist/apathia.confirm.es.js",
-    "require": "dist/apathia.confirm.umd.js"
+    "import": "./dist/apathia.confirm.es.js",
+    "require": "./dist/apathia.confirm.umd.js"
   },
   "sideEffects": false,
   "directories": {

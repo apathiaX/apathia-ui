@@ -4,13 +4,13 @@
   "description": "checkbox",
   "author": "",
   "homepage": "",
-  "main": "dist/apathia.checkbox.umd.js",
-  "module": "dist/apathia.checkbox.es.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/apathia.checkbox.umd.js",
+  "module": "./dist/apathia.checkbox.es.js",
+  "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "dist/apathia.checkbox.es.js",
-    "require": "dist/apathia.checkbox.umd.js"
+    "import": "./dist/apathia.checkbox.es.js",
+    "require": "./dist/apathia.checkbox.umd.js"
   },
   "sideEffects": false,
   "directories": {

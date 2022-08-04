@@ -4,13 +4,13 @@
   "description": "form",
   "author": "",
   "homepage": "",
-  "main": "dist/apathia.form.umd.js",
-  "module": "dist/apathia.form.es.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/apathia.form.umd.js",
+  "module": "./dist/apathia.form.es.js",
+  "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "dist/apathia.form.es.js",
-    "require": "dist/apathia.form.umd.js"
+    "import": "./dist/apathia.form.es.js",
+    "require": "./dist/apathia.form.umd.js"
   },
   "sideEffects": false,
   "directories": {

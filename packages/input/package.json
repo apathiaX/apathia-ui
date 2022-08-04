@@ -4,13 +4,13 @@
   "description": "input",
   "author": "",
   "homepage": "",
-  "main": "dist/apathia.input.umd.js",
-  "module": "dist/apathia.input.es.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/apathia.input.umd.js",
+  "module": "./dist/apathia.input.es.js",
+  "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "dist/apathia.input.es.js",
-    "require": "dist/apathia.input.umd.js"
+    "import": "./dist/apathia.input.es.js",
+    "require": "./dist/apathia.input.umd.js"
   },
   "sideEffects": false,
   "directories": {

@@ -1,16 +1,16 @@
 {
-  "name": "@apathia1/apathia.table",
+  "name": "@apathia/apathia.table",
   "version": "0.0.1",
   "description": "table",
   "author": "",
   "homepage": "",
-  "main": "dist/apathia.table.umd.js",
-  "module": "dist/apathia.table.es.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/apathia.table.umd.js",
+  "module": "./dist/apathia.table.es.js",
+  "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "dist/apathia.table.es.js",
-    "require": "dist/apathia.table.umd.js"
+    "import": "./dist/apathia.table.es.js",
+    "require": "./dist/apathia.table.umd.js"
   },
   "sideEffects": false,
   "directories": {

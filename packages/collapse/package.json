@@ -4,13 +4,13 @@
   "description": "collapse",
   "author": "",
   "homepage": "",
-  "main": "dist/apathia.collapse.umd.js",
-  "module": "dist/apathia.collapse.es.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/apathia.collapse.umd.js",
+  "module": "./dist/apathia.collapse.es.js",
+  "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "dist/apathia.collapse.es.js",
-    "require": "dist/apathia.collapse.umd.js"
+    "import": "./dist/apathia.collapse.es.js",
+    "require": "./dist/apathia.collapse.umd.js"
   },
   "sideEffects": false,
   "directories": {

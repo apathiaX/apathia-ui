@@ -4,13 +4,13 @@
   "description": "loading",
   "author": "",
   "homepage": "",
-  "main": "dist/apathia.loading.umd.js",
-  "module": "dist/apathia.loading.es.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/apathia.loading.umd.js",
+  "module": "./dist/apathia.loading.es.js",
+  "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "dist/apathia.loading.es.js",
-    "require": "dist/apathia.loading.umd.js"
+    "import": "./dist/apathia.loading.es.js",
+    "require": "./dist/apathia.loading.umd.js"
   },
   "sideEffects": false,
   "directories": {

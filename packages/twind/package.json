@@ -4,13 +4,13 @@
   "description": "twind",
   "author": "",
   "homepage": "",
-  "main": "dist/apathia.twind.umd.js",
-  "module": "dist/apathia.twind.es.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/apathia.twind.umd.js",
+  "module": "./dist/apathia.twind.es.js",
+  "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "dist/apathia.twind.es.js",
-    "require": "dist/apathia.twind.umd.js"
+    "import": "./dist/apathia.twind.es.js",
+    "require": "./dist/apathia.twind.umd.js"
   },
   "sideEffects": false,
   "directories": {

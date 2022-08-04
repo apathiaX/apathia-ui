@@ -4,13 +4,13 @@
   "description": "upload",
   "author": "",
   "homepage": "",
-  "main": "dist/apathia.upload.umd.js",
-  "module": "dist/apathia.upload.es.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/apathia.upload.umd.js",
+  "module": "./dist/apathia.upload.es.js",
+  "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "dist/apathia.upload.es.js",
-    "require": "dist/apathia.upload.umd.js"
+    "import": "./dist/apathia.upload.es.js",
+    "require": "./dist/apathia.upload.umd.js"
   },
   "sideEffects": false,
   "directories": {

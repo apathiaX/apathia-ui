@@ -4,13 +4,13 @@
   "description": "custom-render",
   "author": "",
   "homepage": "",
-  "main": "dist/apathia.custom-render.umd.js",
-  "module": "dist/apathia.custom-render.es.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/apathia.custom-render.umd.js",
+  "module": "./dist/apathia.custom-render.es.js",
+  "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "dist/apathia.custom-render.es.js",
-    "require": "dist/apathia.custom-render.umd.js"
+    "import": "./dist/apathia.custom-render.es.js",
+    "require": "./dist/apathia.custom-render.umd.js"
   },
   "sideEffects": false,
   "directories": {

@@ -4,13 +4,13 @@
   "description": "select",
   "author": "",
   "homepage": "",
-  "main": "dist/apathia.select.umd.js",
-  "module": "dist/apathia.select.es.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/apathia.select.umd.js",
+  "module": "./dist/apathia.select.es.js",
+  "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "dist/apathia.select.es.js",
-    "require": "dist/apathia.select.umd.js"
+    "import": "./dist/apathia.select.es.js",
+    "require": "./dist/apathia.select.umd.js"
   },
   "sideEffects": false,
   "directories": {
