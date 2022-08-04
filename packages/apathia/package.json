@@ -5,12 +5,12 @@
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.umd.js",
-  "module": "./dist/apathia.es.js",
+  "module": "./dist/apathia.mjs",
   "style": "./dist/style.css",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.es.js",
+    "import": "./dist/apathia.mjs",
     "require": "./dist/apathia.umd.js"
   },
   "sideEffects": [

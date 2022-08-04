@@ -5,11 +5,11 @@
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.checkbox.umd.js",
-  "module": "./dist/apathia.checkbox.es.js",
+  "module": "./dist/apathia.checkbox.mjs",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.checkbox.es.js",
+    "import": "./dist/apathia.checkbox.mjs",
     "require": "./dist/apathia.checkbox.umd.js"
   },
   "sideEffects": false,

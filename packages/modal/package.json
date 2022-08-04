@@ -5,11 +5,11 @@
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.modal.umd.js",
-  "module": "./dist/apathia.modal.es.js",
+  "module": "./dist/apathia.modal.mjs",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.modal.es.js",
+    "import": "./dist/apathia.modal.mjs",
     "require": "./dist/apathia.modal.umd.js"
   },
   "sideEffects": false,

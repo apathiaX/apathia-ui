@@ -5,11 +5,11 @@
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.form.umd.js",
-  "module": "./dist/apathia.form.es.js",
+  "module": "./dist/apathia.form.mjs",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.form.es.js",
+    "import": "./dist/apathia.form.mjs",
     "require": "./dist/apathia.form.umd.js"
   },
   "sideEffects": false,

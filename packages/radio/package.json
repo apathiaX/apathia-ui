@@ -5,11 +5,11 @@
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.radio.umd.js",
-  "module": "./dist/apathia.radio.es.js",
+  "module": "./dist/apathia.radio.mjs",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.radio.es.js",
+    "import": "./dist/apathia.radio.mjs",
     "require": "./dist/apathia.radio.umd.js"
   },
   "sideEffects": false,

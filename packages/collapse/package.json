@@ -5,11 +5,11 @@
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.collapse.umd.js",
-  "module": "./dist/apathia.collapse.es.js",
+  "module": "./dist/apathia.collapse.mjs",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.collapse.es.js",
+    "import": "./dist/apathia.collapse.mjs",
     "require": "./dist/apathia.collapse.umd.js"
   },
   "sideEffects": false,

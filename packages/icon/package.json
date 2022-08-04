@@ -5,11 +5,11 @@
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.icon.umd.js",
-  "module": "./dist/apathia.icon.es.js",
+  "module": "./dist/apathia.icon.mjs",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.icon.es.js",
+    "import": "./dist/apathia.icon.mjs",
     "require": "./dist/apathia.icon.umd.js"
   },
   "sideEffects": false,

@@ -5,11 +5,11 @@
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.upload.umd.js",
-  "module": "./dist/apathia.upload.es.js",
+  "module": "./dist/apathia.upload.mjs",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.upload.es.js",
+    "import": "./dist/apathia.upload.mjs",
     "require": "./dist/apathia.upload.umd.js"
   },
   "sideEffects": false,

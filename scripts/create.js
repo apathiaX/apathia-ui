@@ -19,11 +19,11 @@ const generatePackageJson = name => ({
   author: '',
   homepage: '',
   main: `dist/apathia.${name}.umd.js`,
-  module: `dist/apathia.${name}.es.js`,
+  module: `dist/apathia.${name}.mjs`,
   types: 'dist/index.d.ts',
   source: 'src/index.ts',
   export: {
-    import: `dist/apathia.${name}.es.js`,
+    import: `dist/apathia.${name}.mjs`,
     require: `dist/apathia.${name}.umd.js`,
   },
   sideEffects: false,

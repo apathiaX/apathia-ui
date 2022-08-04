@@ -5,11 +5,11 @@
   "author": "xzc01",
   "homepage": "",
   "main": "./dist/apathia.alert.umd.js",
-  "module": "./dist/apathia.alert.es.js",
+  "module": "./dist/apathia.alert.mjs",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.alert.es.js",
+    "import": "./dist/apathia.alert.mjs",
     "require": "./dist/apathia.alert.umd.js"
   },
   "sideEffects": false,

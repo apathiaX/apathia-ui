@@ -5,11 +5,11 @@
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.custom-render.umd.js",
-  "module": "./dist/apathia.custom-render.es.js",
+  "module": "./dist/apathia.custom-render.mjs",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.custom-render.es.js",
+    "import": "./dist/apathia.custom-render.mjs",
     "require": "./dist/apathia.custom-render.umd.js"
   },
   "sideEffects": false,

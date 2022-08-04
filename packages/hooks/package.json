@@ -5,11 +5,11 @@
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.hooks.umd.js",
-  "module": "./dist/apathia.hooks.es.js",
+  "module": "./dist/apathia.hooks.mjs",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.hooks.es.js",
+    "import": "./dist/apathia.hooks.mjs",
     "require": "./dist/apathia.hooks.umd.js"
   },
   "sideEffects": false,
