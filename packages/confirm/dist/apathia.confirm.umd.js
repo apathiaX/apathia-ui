@@ -2,6 +2,13 @@
   typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.twind"), require("@apathia/apathia.button"), require("@apathia/apathia.custom-render"), require("@apathia/apathia.modal")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.twind", "@apathia/apathia.button", "@apathia/apathia.custom-render", "@apathia/apathia.modal"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.confirm = {}, global.Vue, global.twind, global.button, global["custom-render"], global.modal));
 })(this, function(exports2, vue, apathia_twind, apathia_button, apathia_customRender, apathia_modal) {
   "use strict";
+  var _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
   const _sfc_main = vue.defineComponent({
     name: "Confirm",
     components: {
@@ -51,13 +58,6 @@
     };
     return apathia_twind.tw`${baseLayout} ${position[pos] || position.left}`;
   }
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_CustomRender = vue.resolveComponent("CustomRender");
     const _component_BaseButton = vue.resolveComponent("BaseButton");
@@ -93,7 +93,7 @@
       ], 2))
     ]);
   }
-  const Confirm = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+  var Confirm = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
   function __rest(s, e) {
     var t = {};
     for (var p in s)

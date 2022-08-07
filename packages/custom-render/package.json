@@ -1,15 +1,15 @@
 {
   "name": "@apathia/apathia.custom-render",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "custom-render",
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.custom-render.umd.js",
-  "module": "./dist/apathia.custom-render.mjs",
+  "module": "./dist/apathia.custom-render.es.js",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.custom-render.mjs",
+    "import": "./dist/apathia.custom-render.es.js",
     "require": "./dist/apathia.custom-render.umd.js"
   },
   "sideEffects": false,

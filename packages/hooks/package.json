@@ -1,15 +1,15 @@
 {
   "name": "@apathia/apathia.hooks",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "hooks",
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.hooks.umd.js",
-  "module": "./dist/apathia.hooks.mjs",
+  "module": "./dist/apathia.hooks.es.js",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.hooks.mjs",
+    "import": "./dist/apathia.hooks.es.js",
     "require": "./dist/apathia.hooks.umd.js"
   },
   "sideEffects": false,
@@ -33,6 +33,6 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.shared": "workspace:^0.0.1"
+    "@apathia/apathia.shared": "workspace:^0.0.6"
   }
 }

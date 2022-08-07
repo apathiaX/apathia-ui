@@ -1,0 +1,841 @@
+import { ref, shallowReactive, reactive, computed, nextTick, watch, unref, onBeforeUnmount, defineComponent, toRefs, provide, resolveDirective, openBlock, createElementBlock, mergeProps, createElementVNode, normalizeClass, withModifiers, createCommentVNode, createBlock, Teleport, withDirectives, normalizeStyle, renderSlot, onMounted, inject, getCurrentInstance, resolveComponent } from "vue";
+import { style } from "@apathia/apathia.twind";
+import { useResizeObserver, onClickOutside, useInjectProp } from "@apathia/apathia.hooks";
+import { autoPos, noop } from "@apathia/apathia.shared";
+import { debounce } from "lodash";
+import { Icon } from "@apathia/apathia.icon";
+var Direction;
+(function(Direction2) {
+  Direction2["UP"] = "up";
+  Direction2["DOWN"] = "down";
+})(Direction || (Direction = {}));
+function useSelect(userProps, ctx) {
+  const { disabled, modelValue, valueKey, filterable, emptyText, placeholder } = userProps;
+  const rootEl = ref(null);
+  const inputEl = ref(null);
+  const dropdownEl = ref(null);
+  const active = ref(false);
+  const filterStr = ref("");
+  const tempArr = shallowReactive([]);
+  const tempMap = shallowReactive({});
+  const inputFocused = ref(false);
+  const selectState = reactive({
+    label: "",
+    remote: filterable.value,
+    value: modelValue.value,
+    valueKey: valueKey.value,
+    filterStr: "",
+    optionIds: [],
+    optionMap: {},
+    focusId: 0,
+    pendingFocusId: 0,
+    innerChange: false,
+    indeed: true
+  });
+  const measureAFId = ref(0);
+  const mutateAFId = ref(0);
+  const pendingCacheUpdate = shallowReactive({
+    register: false,
+    unregister: false
+  });
+  const minWidth = ref(0);
+  useResizeObserver(rootEl, (entries) => {
+    var _a, _b;
+    minWidth.value = ((_b = (_a = entries === null || entries === void 0 ? void 0 : entries[0]) === null || _a === void 0 ? void 0 : _a.contentRect) === null || _b === void 0 ? void 0 : _b.width) || 200;
+  });
+  const isEmpty = computed(() => selectState.optionIds.length === 0);
+  const label = computed(() => {
+    if (isEmpty.value && emptyText.value) {
+      return emptyText.value;
+    }
+    return selectState.label;
+  });
+  const isNoResult = computed(() => {
+    const { optionMap } = selectState;
+    const result = [];
+    Object.keys(optionMap).forEach((uid) => {
+      const item = optionMap[uid];
+      if (!item.disabled) {
+        result.push(item);
+      }
+    });
+    return result.length === 0;
+  });
+  const isRemote = ref(false);
+  const finalPlaceholder = computed(() => label.value || placeholder.value);
+  const disableSelect = computed(() => !!disabled.value);
+  const checkValue = () => {
+    const hasValue = hasSelectValue(selectState.value);
+    if (!hasValue && !isEmpty.value) {
+      changeHandler(selectState.value, "");
+      if (selectState.optionIds.length === 1) {
+        console.warn("[Select]\b\u6CA1\u6709\u7B26\u5408model\u503C\u7684\u9009\u9879");
+      }
+    }
+  };
+  const isSameValue = (newVal, oldVal) => {
+    if (newVal == null || oldVal == null) {
+      return newVal === oldVal;
+    }
+    if (typeof newVal === "object" && typeof oldVal === "object") {
+      const key = valueKey.value;
+      return newVal[key] === oldVal[key];
+    }
+    return newVal === oldVal;
+  };
+  const toggleActive = () => {
+    active.value = !active.value;
+  };
+  const hasSelectValue = (value) => {
+    const optionMap = selectState.optionMap;
+    if (value === void 0) {
+      return false;
+    }
+    const optionKeys = Object.keys(optionMap);
+    return optionKeys.some((key) => isSameValue(optionMap[key].value, value));
+  };
+  const outsideClick = () => {
+    active.value = false;
+    resetFilterStr();
+  };
+  const resetFilterStr = () => {
+    filterStr.value = label.value;
+    selectState.filterStr = "";
+  };
+  const clear = () => {
+    changeHandler("", "");
+  };
+  const changeHandler = (value, labelStr, isInnerChange = false) => {
+    if (value === modelValue.value && isRemote.value)
+      return;
+    const state = selectState;
+    state.label = labelStr;
+    state.innerChange = isInnerChange === true;
+    resetFilterStr();
+    if (value !== modelValue.value) {
+      ctx.emit("update:modelValue", value);
+      ctx.emit("input", value, label);
+      ctx.emit("change", value, label);
+      if (isInnerChange) {
+        ctx.emit("native-change", value, label);
+      }
+    }
+  };
+  const updateRegister = (disabledVal, uid, value, labelStr) => {
+    const state = selectState;
+    if (state.optionMap[uid]) {
+      state.optionMap[uid] = {
+        value,
+        label: labelStr,
+        disabled: disabledVal
+      };
+    }
+  };
+  const updateCache = (type) => {
+    pendingCacheUpdate[type] = false;
+    selectState.optionIds = tempArr.slice();
+    selectState.optionMap = Object.assign({}, tempMap);
+    if (type === "register") {
+      checkValue();
+    } else {
+      isRemote.value = true;
+    }
+  };
+  const getNextId = (curId, direction) => {
+    const optionIds = selectState.optionIds;
+    let newIndex = optionIds.indexOf(curId);
+    if (direction === Direction.UP) {
+      if (newIndex <= 0) {
+        newIndex = optionIds.length - 1;
+      } else {
+        newIndex -= 1;
+      }
+    } else if (newIndex === optionIds.length - 1) {
+      newIndex = 0;
+    } else {
+      newIndex += 1;
+    }
+    return optionIds[newIndex];
+  };
+  const keyFocus = (direction) => {
+    if (!active.value) {
+      active.value = true;
+      return;
+    }
+    if (!selectState.optionIds.length)
+      return;
+    let newId = getNextId(selectState.focusId, direction);
+    while (selectState.optionMap[newId].disabled) {
+      newId = getNextId(newId, direction);
+    }
+    focus(newId);
+  };
+  const focus = (uid, focusedEl) => {
+    if (!active.value)
+      return;
+    if (uid && !focusedEl) {
+      if (selectState.focusId === uid)
+        return;
+      selectState.focusId = uid;
+      return;
+    }
+    if (!focusedEl)
+      return;
+    measureAFId.value = requestAnimationFrame(() => {
+      const dropdown = unref(dropdownEl);
+      if (!dropdown)
+        return;
+      const ulElement = dropdown.querySelector("ul");
+      if (!ulElement)
+        return;
+      const { offsetHeight: listOffsetHeight, scrollHeight: listScrollHeight } = ulElement;
+      const { top: listTop, bottom: listBottom } = ulElement.getBoundingClientRect();
+      const { offsetTop: focusOffsetTop, offsetHeight: focusOffsetHeight, clientHeight: focusClientHeight } = focusedEl;
+      const { top: focusTop, bottom: focusBottom } = focusedEl.getBoundingClientRect();
+      const overScroll = focusOffsetHeight / 3;
+      mutateAFId.value = requestAnimationFrame(() => {
+        if (!ulElement)
+          return;
+        if (focusBottom + overScroll > listBottom) {
+          ulElement.scrollTop = Math.min(focusOffsetTop + focusClientHeight - listOffsetHeight + overScroll, listScrollHeight);
+        } else if (focusTop - overScroll < listTop) {
+          ulElement.scrollTop = Math.max(focusOffsetTop - overScroll, 0);
+        }
+      });
+    });
+  };
+  const selectFocused = () => {
+    const state = selectState;
+    const target = state.optionMap[state.focusId];
+    state.value = target && target.value || "";
+  };
+  const keyHandler = (event) => {
+    if (disableSelect.value)
+      return;
+    if (event.key === "Tab")
+      return;
+    switch (event.key) {
+      case " ":
+        if (filterable.value) {
+          break;
+        }
+        event.preventDefault();
+        event.stopPropagation();
+        if (active.value) {
+          selectFocused();
+        }
+        toggleActive();
+        break;
+      case "Enter":
+        if (active.value) {
+          event.preventDefault();
+          event.stopPropagation();
+          selectFocused();
+          active.value = false;
+        } else {
+          toggleActive();
+        }
+        break;
+      case "Escape":
+        event.stopPropagation();
+        if (active.value) {
+          active.value = false;
+        }
+        break;
+      case "ArrowDown":
+        event.preventDefault();
+        event.stopPropagation();
+        keyFocus(Direction.DOWN);
+        break;
+      case "ArrowUp":
+        event.preventDefault();
+        event.stopPropagation();
+        keyFocus(Direction.UP);
+        break;
+    }
+  };
+  const register = (disabledOption, uid, value, labelStr) => {
+    const state = selectState;
+    if (isSameValue(value, modelValue.value)) {
+      state.value = value;
+      state.label = labelStr;
+      state.pendingFocusId = uid;
+    }
+    tempArr.push(uid);
+    tempMap[uid] = {
+      value,
+      label: labelStr,
+      disabled: disabledOption
+    };
+    if (pendingCacheUpdate.register) {
+      return;
+    }
+    pendingCacheUpdate.register = true;
+    nextTick(() => {
+      updateCache("register");
+    });
+  };
+  const unregister = (uid) => {
+    const optionIndex = tempArr.indexOf(uid);
+    tempArr.splice(optionIndex, 1);
+    delete tempMap[uid];
+    if (pendingCacheUpdate.unregister)
+      return;
+    pendingCacheUpdate.unregister = true;
+    nextTick(() => {
+      updateCache("unregister");
+    });
+  };
+  const filterHandler = debounce(() => {
+    if (inputFocused.value && filterable.value) {
+      active.value = true;
+      nextTick(() => {
+        selectState.filterStr = filterStr.value;
+        ctx.emit("query-change", filterStr.value);
+      });
+    }
+  }, 200);
+  const toggleDropdown = () => {
+    if (disableSelect.value)
+      return;
+    toggleActive();
+  };
+  watch(modelValue, (newVal) => {
+    selectState.value = newVal;
+    nextTick(() => {
+      if (selectState.innerChange) {
+        selectState.innerChange = false;
+        return;
+      }
+      if (!pendingCacheUpdate.register && !pendingCacheUpdate.unregister) {
+        checkValue();
+      }
+    });
+  }, { immediate: true });
+  watch(label, (newVal) => {
+    filterStr.value = newVal;
+  });
+  watch(active, (newVal) => {
+    if (newVal) {
+      if (selectState.pendingFocusId) {
+        selectState.focusId = selectState.pendingFocusId;
+        selectState.pendingFocusId = 0;
+      }
+      const input = unref(inputEl);
+      if (input) {
+        input.focus();
+      }
+      filterStr.value = "";
+      if (isRemote.value) {
+        ctx.emit("query-change", filterStr.value);
+      }
+    } else {
+      resetFilterStr();
+      const input = unref(inputEl);
+      if (input) {
+        input.blur();
+      }
+    }
+  });
+  onClickOutside(rootEl, outsideClick);
+  onBeforeUnmount(() => {
+    if (mutateAFId.value || measureAFId.value) {
+      cancelAnimationFrame(mutateAFId.value);
+      cancelAnimationFrame(measureAFId.value);
+    }
+  });
+  const getRootProps = () => ({
+    disabled: !!disabled.value || isEmpty.value,
+    ref: (el) => {
+      rootEl.value = el;
+    },
+    onClick: toggleDropdown,
+    onKeydown: keyHandler
+  });
+  const getInputProps = () => ({
+    type: "text",
+    tabindex: "0",
+    value: filterStr.value.trim(),
+    placeholder: finalPlaceholder.value,
+    disabled: !!disabled.value,
+    readonly: !filterable.value || !inputFocused.value,
+    ref: (el) => {
+      inputEl.value = el;
+    },
+    onInput: (event) => {
+      filterStr.value = event.target.value;
+      filterHandler();
+    },
+    onFocus: () => {
+      inputFocused.value = true;
+    },
+    onBlur: () => {
+      inputFocused.value = false;
+    }
+  });
+  const getDropdownProps = () => ({
+    style: {
+      width: `${minWidth.value}px`
+    },
+    ref: (el) => {
+      dropdownEl.value = el;
+    }
+  });
+  return {
+    getRootProps,
+    getInputProps,
+    getDropdownProps,
+    toggleDropdown,
+    register,
+    unregister,
+    updateRegister,
+    focus,
+    clear,
+    isSameValue,
+    keyHandler,
+    changeHandler,
+    filterHandler,
+    filterStr,
+    selectState,
+    active,
+    isEmpty,
+    isRemote,
+    inputFocused,
+    finalPlaceholder,
+    isNoResult,
+    rootEl,
+    inputEl
+  };
+}
+const RegisterKey = Symbol("register");
+const UpdateRegisterKey = Symbol("updateRegister");
+const UnregisterKey = Symbol("unregister");
+const SelectStateKey = Symbol("selectState");
+const ChangeHandlerKey = Symbol("changeHandler");
+const FocusKey = Symbol("focus");
+const SameValueCompareKey = Symbol("sameValueCompare");
+var _export_sfc = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target[key] = val;
+  }
+  return target;
+};
+const _sfc_main$1 = defineComponent({
+  name: "Select",
+  directives: {
+    autoPos
+  },
+  props: {
+    modelValue: {
+      type: [String, Number, Boolean, Object],
+      required: true
+    },
+    valueKey: {
+      type: String,
+      default: "value"
+    },
+    placeholder: {
+      type: String,
+      default: "\u8BF7\u9009\u62E9\u2026"
+    },
+    filterable: {
+      type: Boolean,
+      default: false
+    },
+    clearable: {
+      type: Boolean,
+      default: false
+    },
+    emptyText: {
+      type: String,
+      default: ""
+    },
+    disabled: {
+      type: Boolean,
+      default: void 0
+    },
+    maxHeight: {
+      type: [Number, String],
+      default: 235
+    },
+    isLoading: {
+      type: Boolean,
+      default: false
+    },
+    placement: {
+      type: String,
+      default: ""
+    }
+  },
+  emits: [
+    "update:modelValue",
+    "change",
+    "input",
+    "native-change",
+    "query-change"
+  ],
+  setup(props, ctx) {
+    const {
+      disabled,
+      modelValue,
+      valueKey,
+      filterable,
+      emptyText,
+      maxHeight,
+      placeholder
+    } = toRefs(props);
+    const disableSelect = useInjectProp("FormDisabled", false, disabled);
+    const userProps = {
+      disabled: disableSelect,
+      modelValue,
+      valueKey,
+      filterable,
+      emptyText,
+      maxHeight,
+      placeholder
+    };
+    const {
+      filterStr,
+      updateRegister,
+      selectState,
+      changeHandler,
+      register,
+      unregister,
+      focus,
+      clear,
+      isSameValue,
+      active,
+      isEmpty,
+      inputFocused,
+      isNoResult,
+      isRemote,
+      getRootProps,
+      getInputProps,
+      getDropdownProps,
+      rootEl
+    } = useSelect(userProps, ctx);
+    provide(UpdateRegisterKey, updateRegister);
+    provide(RegisterKey, register);
+    provide(UnregisterKey, unregister);
+    provide(SelectStateKey, selectState);
+    provide(ChangeHandlerKey, changeHandler);
+    provide(FocusKey, focus);
+    provide(SameValueCompareKey, isSameValue);
+    const styles = {
+      selectWrapper: style`relative`,
+      disabled: style(
+        "cursor-not-allowed pointer-events-none bg-gray-100 border-gray-100 placeholder-gray-300"
+      ),
+      active: style(""),
+      inputSelected: style`w-full block border border-gray-300 shadow-sm rounded-md text-sm py-2 px-3 outline-none focus:(bg-white border-brand-500)
+        cursor-pointer`,
+      focused: style("select-none"),
+      arrow: style(
+        "ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none h-9 w-7 text-brand-700"
+      ),
+      clearableIcon: style(
+        "hidden absolute w-4 h-4 rounded-full top-2.5 right-8 items-center bg-brand-300 text-white cursor-pointer hover:bg-brand-500"
+      ),
+      clearable: style("block"),
+      dropdownContainer: style`z-dropdown block h-0 absolute mt-1 border border(solid gray-300) rounded-md bg-white shadow-lg opacity-0 transition duration-200 overflow-y-hidden`,
+      dropdownContainerShow: style`h-auto opacity-100`,
+      optionList: style`max-h-56 text-base overflow-auto focus:outline-none sm:text-sm`,
+      tips: style("ml-3 py-2 text-gray-500 text-left mr-2")
+    };
+    return {
+      filterStr,
+      updateRegister,
+      selectState,
+      changeHandler,
+      register,
+      unregister,
+      focus,
+      clear,
+      isSameValue,
+      active,
+      isEmpty,
+      inputFocused,
+      isNoResult,
+      isRemote,
+      disableSelect,
+      getRootProps,
+      getInputProps,
+      getDropdownProps,
+      styles,
+      rootEl
+    };
+  }
+});
+const _hoisted_1 = /* @__PURE__ */ createElementVNode("path", {
+  "fill-rule": "evenodd",
+  d: "M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z",
+  "clip-rule": "evenodd"
+}, null, -1);
+const _hoisted_2 = [
+  _hoisted_1
+];
+const _hoisted_3 = /* @__PURE__ */ createElementVNode("path", { d: "M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z" }, null, -1);
+const _hoisted_4 = [
+  _hoisted_3
+];
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  const _directive_auto_pos = resolveDirective("auto-pos");
+  return openBlock(), createElementBlock("div", mergeProps({ ..._ctx.getRootProps() }, {
+    class: {
+      [_ctx.styles.selectWrapper]: true,
+      [_ctx.styles.disabled]: _ctx.disableSelect,
+      [_ctx.styles.active]: _ctx.active
+    }
+  }), [
+    createElementVNode("input", mergeProps({ ..._ctx.getInputProps() }, {
+      class: { [_ctx.styles.inputSelected]: true, [_ctx.styles.focused]: _ctx.inputFocused }
+    }), null, 16),
+    (openBlock(), createElementBlock("svg", {
+      class: normalizeClass({ [_ctx.styles.arrow]: true }),
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 20 20",
+      fill: "currentColor",
+      "aria-hidden": "true"
+    }, _hoisted_2, 2)),
+    _ctx.clearable ? (openBlock(), createElementBlock("svg", {
+      key: 0,
+      class: normalizeClass({
+        [_ctx.styles.clearableIcon]: true,
+        [_ctx.styles.clearable]: _ctx.clearable && _ctx.filterStr
+      }),
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "-3 -3 24 24",
+      fill: "currentColor",
+      onClick: _cache[0] || (_cache[0] = withModifiers((...args) => _ctx.clear && _ctx.clear(...args), ["stop"]))
+    }, _hoisted_4, 2)) : createCommentVNode("", true),
+    (openBlock(), createBlock(Teleport, { to: "body" }, [
+      withDirectives((openBlock(), createElementBlock("div", mergeProps({ ..._ctx.getDropdownProps() }, {
+        class: {
+          [_ctx.styles.dropdownContainer]: true,
+          [_ctx.styles.dropdownContainerShow]: _ctx.active
+        }
+      }), [
+        !_ctx.isRemote || !_ctx.isLoading ? (openBlock(), createElementBlock("ul", {
+          key: 0,
+          class: normalizeClass({ [_ctx.styles.optionList]: true }),
+          role: "listbox",
+          style: normalizeStyle({ maxHeight: _ctx.maxHeight + "px" })
+        }, [
+          renderSlot(_ctx.$slots, "default"),
+          _ctx.isLoading ? renderSlot(_ctx.$slots, "loading", { key: 0 }, () => [
+            createElementVNode("p", {
+              class: normalizeClass({ [_ctx.styles.tips]: true })
+            }, "\u52A0\u8F7D\u4E2D...", 2)
+          ]) : createCommentVNode("", true),
+          !_ctx.isLoading && _ctx.isEmpty ? renderSlot(_ctx.$slots, "empty", { key: 1 }, () => [
+            createElementVNode("p", {
+              class: normalizeClass({ [_ctx.styles.tips]: true })
+            }, "\u6CA1\u6709\u9009\u9879\u6570\u636E", 2)
+          ]) : createCommentVNode("", true),
+          !_ctx.isLoading && !_ctx.isEmpty && _ctx.isNoResult ? renderSlot(_ctx.$slots, "no-result", { key: 2 }, () => [
+            createElementVNode("p", {
+              class: normalizeClass({ [_ctx.styles.tips]: true })
+            }, "\u6CA1\u6709\u641C\u7D22\u7ED3\u679C", 2)
+          ]) : createCommentVNode("", true)
+        ], 6)) : createCommentVNode("", true)
+      ], 16)), [
+        [
+          _directive_auto_pos,
+          _ctx.rootEl,
+          void 0,
+          { root: true }
+        ]
+      ])
+    ]))
+  ], 16);
+}
+var Select = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+function useOption(userProps) {
+  const isHidden = ref(false);
+  const isSelected = ref(false);
+  const mouseMoveFocus = ref(false);
+  const currentOptionChange = ref(false);
+  const label = ref("");
+  const { value, disabled, register, unregister, updateRegister, selectState, changeHandler, isSameValue, focus, compoId } = userProps;
+  const rootEl = ref(null);
+  const isFocused = computed(() => compoId === selectState.focusId);
+  watch(isFocused, (val) => {
+    if (val && mouseMoveFocus.value === false) {
+      const el = unref(rootEl);
+      if (el) {
+        focus(0, el);
+      }
+    }
+    mouseMoveFocus.value = false;
+  });
+  const queryChange = (val) => {
+    nextTick(() => {
+      const shouldHide = label.value.toLowerCase().indexOf(val.toLowerCase()) === -1;
+      if (isHidden.value !== shouldHide) {
+        isHidden.value = shouldHide;
+        if (!disabled.value) {
+          updateRegister(isHidden.value, compoId, value.value, label.value);
+        }
+      }
+    });
+  };
+  const handleChange = (event) => {
+    if (disabled.value) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+    const clickSelf = isSameValue(value.value, selectState.value);
+    if (clickSelf) {
+      return;
+    }
+    isSelected.value = true;
+    currentOptionChange.value = true;
+    changeHandler(value.value, label.value, true);
+  };
+  const handleChecked = (newVal) => {
+    if (currentOptionChange.value === true) {
+      currentOptionChange.value = false;
+      return;
+    }
+    if (selectState.innerChange) {
+      isSelected.value = false;
+      return;
+    }
+    const optionValue = value.value;
+    const newSelected = isSameValue(newVal, optionValue);
+    if (newSelected) {
+      changeHandler(optionValue, label.value);
+    }
+    isSelected.value = newSelected;
+  };
+  const mouseoverHandler = () => {
+    if (disabled.value)
+      return;
+    focus(compoId);
+    mouseMoveFocus.value = true;
+  };
+  watch(() => selectState.filterStr, queryChange);
+  watch(() => selectState.value, handleChecked, {
+    immediate: true
+  });
+  onMounted(() => {
+    var _a;
+    const elElement = unref(rootEl);
+    const labelElement = elElement === null || elElement === void 0 ? void 0 : elElement.querySelector("[label]");
+    label.value = (labelElement === null || labelElement === void 0 ? void 0 : labelElement.getAttribute("label")) || ((_a = elElement === null || elElement === void 0 ? void 0 : elElement.textContent) === null || _a === void 0 ? void 0 : _a.trim()) || "";
+    nextTick(() => {
+      register(disabled.value, compoId, value.value, label.value);
+    });
+  });
+  onBeforeUnmount(() => {
+    unregister(compoId);
+  });
+  const getRootProps = () => ({
+    tabindex: "0",
+    style: isHidden.value ? "display: none;" : null,
+    ref: (el) => {
+      rootEl.value = el;
+    },
+    onMouseover: mouseoverHandler,
+    onClick: handleChange
+  });
+  return {
+    getRootProps,
+    isSelected,
+    isHidden,
+    isFocused
+  };
+}
+const _sfc_main = defineComponent({
+  name: "Option",
+  components: {
+    Icon
+  },
+  props: {
+    value: {
+      type: [String, Number, Boolean],
+      required: true
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  },
+  setup(props) {
+    const { value, disabled } = toRefs(props);
+    const updateRegister = inject(UpdateRegisterKey, noop);
+    const selectState = inject(SelectStateKey, { indeed: false });
+    const changeHandler = inject(ChangeHandlerKey, noop);
+    const register = inject(RegisterKey, noop);
+    const unregister = inject(UnregisterKey, noop);
+    const focus = inject(FocusKey, noop);
+    const isSameValue = inject(SameValueCompareKey, () => false);
+    const compoData = getCurrentInstance();
+    const compoId = compoData ? compoData.uid : 0;
+    const userProps = {
+      value,
+      disabled,
+      register,
+      unregister,
+      updateRegister,
+      selectState,
+      changeHandler,
+      isSameValue,
+      focus,
+      compoId
+    };
+    const { getRootProps, isSelected, isFocused, isHidden } = useOption(userProps);
+    const styles = {
+      wrapper: style`block text-gray-900 cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
+      selected: style`font-bold`,
+      focused: style`text-white bg-brand-500`,
+      text: style`overflow-hidden overflow-ellipsis whitespace-nowrap`,
+      checkMark: style`absolute right-4 text-brand-500`,
+      focusMark: style`text-white`,
+      disabled: style`text-gray-300 bg-gray-100 cursor-not-allowed`
+    };
+    return {
+      updateRegister,
+      selectState,
+      isSameValue,
+      focus,
+      getRootProps,
+      isSelected,
+      isHidden,
+      isFocused,
+      styles
+    };
+  },
+  created() {
+    if (!this.selectState.indeed) {
+      console.warn("<Option> \u5E94\u8BE5\u5728 <Select> \u5185\u4F7F\u7528");
+    }
+  }
+});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_Icon = resolveComponent("Icon");
+  return openBlock(), createElementBlock("li", mergeProps({ ..._ctx.getRootProps() }, {
+    role: "option",
+    class: {
+      [_ctx.styles.wrapper]: true,
+      [_ctx.styles.disabled]: _ctx.disabled,
+      [_ctx.styles.selected]: _ctx.isSelected,
+      [_ctx.styles.focused]: _ctx.isFocused
+    }
+  }), [
+    createElementVNode("span", {
+      class: normalizeClass(_ctx.styles.text)
+    }, [
+      renderSlot(_ctx.$slots, "default")
+    ], 2),
+    _ctx.isSelected ? (openBlock(), createBlock(_component_Icon, {
+      key: 0,
+      name: ["fa", "check"],
+      class: normalizeClass([_ctx.styles.checkMark, _ctx.isFocused ? _ctx.styles.focusMark : ""])
+    }, null, 8, ["class"])) : createCommentVNode("", true)
+  ], 16);
+}
+var Option = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+export { Option, Select };

@@ -1,15 +1,15 @@
 {
   "name": "@apathia/apathia.loading",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "loading",
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.loading.umd.js",
-  "module": "./dist/apathia.loading.mjs",
+  "module": "./dist/apathia.loading.es.js",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.loading.mjs",
+    "import": "./dist/apathia.loading.es.js",
     "require": "./dist/apathia.loading.umd.js"
   },
   "sideEffects": false,
@@ -33,6 +33,6 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.twind": "workspace:^0.0.1"
+    "@apathia/apathia.twind": "workspace:^0.0.6"
   }
 }

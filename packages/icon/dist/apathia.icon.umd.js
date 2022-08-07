@@ -3,7 +3,7 @@
 })(this, function(exports2, vue, vueFontawesome, fontawesomeSvgCore, freeSolidSvgIcons, freeRegularSvgIcons) {
   "use strict";
   fontawesomeSvgCore.library.add(freeSolidSvgIcons.faUserSecret, freeSolidSvgIcons.faInfoCircle, freeSolidSvgIcons.faExclamationTriangle, freeSolidSvgIcons.faExclamation, freeRegularSvgIcons.faQuestionCircle, freeSolidSvgIcons.faCheck, freeSolidSvgIcons.faTimes, freeSolidSvgIcons.faChevronCircleDown, freeSolidSvgIcons.faChevronCircleLeft, freeSolidSvgIcons.faChevronCircleRight, freeSolidSvgIcons.faChevronCircleUp, freeSolidSvgIcons.faSearch, freeSolidSvgIcons.faSpinner, freeSolidSvgIcons.faPlus, freeSolidSvgIcons.faMinus, freeSolidSvgIcons.faSortAmountDown, freeSolidSvgIcons.faSortAmountUp, freeSolidSvgIcons.faChevronDown, freeSolidSvgIcons.faChevronUp, freeSolidSvgIcons.faAngleDoubleLeft, freeSolidSvgIcons.faAngleDoubleRight, freeSolidSvgIcons.faAngleLeft, freeSolidSvgIcons.faAngleRight, freeSolidSvgIcons.faArrowDown, freeSolidSvgIcons.faCaretRight, freeSolidSvgIcons.faEye, freeSolidSvgIcons.faRedoAlt, freeSolidSvgIcons.faUndoAlt, freeSolidSvgIcons.faCopy);
-  const Icon = vue.defineComponent({
+  var Icon = vue.defineComponent({
     name: "Icon",
     components: {
       FontAwesomeIcon: vueFontawesome.FontAwesomeIcon

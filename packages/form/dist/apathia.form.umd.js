@@ -9,6 +9,13 @@
   const FORM_ITEM_INLINE_KEY = "FormItemInline";
   const POSITION = ["left", "right", "top"];
   const ALIGN = ["top", "center", "bottom"];
+  var _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
   const _sfc_main$1 = vue.defineComponent({
     name: "Form",
     props: {
@@ -36,11 +43,26 @@
       }
     },
     setup(props) {
-      vue.provide(FORM_ITEM_INLINE_KEY, vue.computed(() => props.inline));
-      vue.provide(FORM_DISABLE_KEY, vue.computed(() => !!props.disabled));
-      vue.provide(FORM_LABEL_WIDTH_KEY, vue.computed(() => props.labelWidth));
-      vue.provide(FORM_LABEL_POSITION_KEY, vue.computed(() => props.labelPosition));
-      vue.provide(FORM_LABEL_ALIGN_KEY, vue.computed(() => props.labelAlign));
+      vue.provide(
+        FORM_ITEM_INLINE_KEY,
+        vue.computed(() => props.inline)
+      );
+      vue.provide(
+        FORM_DISABLE_KEY,
+        vue.computed(() => !!props.disabled)
+      );
+      vue.provide(
+        FORM_LABEL_WIDTH_KEY,
+        vue.computed(() => props.labelWidth)
+      );
+      vue.provide(
+        FORM_LABEL_POSITION_KEY,
+        vue.computed(() => props.labelPosition)
+      );
+      vue.provide(
+        FORM_LABEL_ALIGN_KEY,
+        vue.computed(() => props.labelAlign)
+      );
       const styles = getStyles$1();
       return {
         styles
@@ -50,13 +72,6 @@
   const getStyles$1 = () => ({
     form: apathia_twind.style`mb-2`
   });
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
   function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("div", {
       class: vue.normalizeClass(_ctx.styles.form)
@@ -64,7 +79,7 @@
       vue.renderSlot(_ctx.$slots, "default")
     ], 2);
   }
-  const Form = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+  var Form = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
   const _sfc_main = vue.defineComponent({
     name: "FormItem",
     props: {
@@ -101,10 +116,26 @@
     },
     setup(props) {
       const styles = getStyles();
-      const realLabelPosition = apathia_hooks.useInjectProp(FORM_LABEL_POSITION_KEY, "left", vue.toRef(props, "labelPosition"));
-      const realLabelAlign = apathia_hooks.useInjectProp(FORM_LABEL_ALIGN_KEY, "top", vue.toRef(props, "labelAlign"));
-      const realLabelWidth = apathia_hooks.useInjectProp(FORM_LABEL_WIDTH_KEY, 80, vue.toRef(props, "labelWidth"));
-      const realFormItemInline = apathia_hooks.useInjectProp(FORM_ITEM_INLINE_KEY, false, vue.toRef(props, "inline"));
+      const realLabelPosition = apathia_hooks.useInjectProp(
+        FORM_LABEL_POSITION_KEY,
+        "left",
+        vue.toRef(props, "labelPosition")
+      );
+      const realLabelAlign = apathia_hooks.useInjectProp(
+        FORM_LABEL_ALIGN_KEY,
+        "top",
+        vue.toRef(props, "labelAlign")
+      );
+      const realLabelWidth = apathia_hooks.useInjectProp(
+        FORM_LABEL_WIDTH_KEY,
+        80,
+        vue.toRef(props, "labelWidth")
+      );
+      const realFormItemInline = apathia_hooks.useInjectProp(
+        FORM_ITEM_INLINE_KEY,
+        false,
+        vue.toRef(props, "inline")
+      );
       const containerClasses = vue.computed(() => ({
         [styles.container]: true,
         [styles.inlineFlex]: realLabelPosition.value !== "top" && !!realFormItemInline.value,
@@ -185,7 +216,7 @@
       ], 2)
     ], 2);
   }
-  const FormItem = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+  var FormItem = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
   exports2.Form = Form;
   exports2.FormItem = FormItem;
   Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });

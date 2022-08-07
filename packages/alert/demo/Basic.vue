@@ -13,19 +13,19 @@ export default defineComponent({
   setup() {
     const { proxy } = getCurrentInstance()
     const success = () => {
-      toast.success('title', 'subtitle')
+      proxy.$toast.success('title', 'subtitle')
     }
     const info = () => {
-      toast.info('title', 'subtitle')
+      proxy.$toast.info('title', 'subtitle')
     }
     const warning = () => {
-      toast.warning('title', 'subtitle')
+      proxy.$toast.warning('title', 'subtitle')
     }
     const danger = () => {
-      toast.danger('title', 'subtitle')
+      proxy.$toast.danger('title', 'subtitle')
     }
     const default1 = () => {
-      toast.default('title', 'subtitle')
+      proxy.$toast.default('title', 'subtitle')
     }
     return {
       success,

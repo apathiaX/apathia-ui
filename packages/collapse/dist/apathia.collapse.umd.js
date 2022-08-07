@@ -39,7 +39,7 @@
     el.style.transition = "";
     el.style.overflow = "";
   }
-  const CollapseTransition = vue.defineComponent({
+  var CollapseTransition = vue.defineComponent({
     name: "CollapseTransition",
     props: {
       duration: {
@@ -52,6 +52,13 @@
       return () => vue.h(vue.Transition, getTransitionProps(), slots);
     }
   });
+  var _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
   const _sfc_main = vue.defineComponent({
     name: "Collapse",
     components: {
@@ -83,7 +90,10 @@
     setup(props) {
       const [show, toggleShow, setShow] = apathia_hooks.useToggle(props.expand);
       const styles = initStyle();
-      vue.watch(() => props.expand, (val) => setShow(val));
+      vue.watch(
+        () => props.expand,
+        (val) => setShow(val)
+      );
       const handleClick = () => {
         if (!props.disabled) {
           toggleShow();
@@ -109,13 +119,6 @@
       icon
     };
   }
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
   const _hoisted_1 = { key: 0 };
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_Icon = vue.resolveComponent("Icon");
@@ -153,7 +156,7 @@
       }, 8, ["duration"])
     ], 64);
   }
-  const Collapse = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+  var Collapse = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
   exports2.Collapse = Collapse;
   exports2.CollapseTransition = CollapseTransition;
   Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });

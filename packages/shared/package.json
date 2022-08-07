@@ -1,15 +1,15 @@
 {
   "name": "@apathia/apathia.shared",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "shared",
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.shared.umd.js",
-  "module": "./dist/apathia.shared.mjs",
+  "module": "./dist/apathia.shared.es.js",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.shared.mjs",
+    "import": "./dist/apathia.shared.es.js",
     "require": "./dist/apathia.shared.umd.js"
   },
   "sideEffects": false,
@@ -35,7 +35,7 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.twind": "workspace:^0.0.1",
+    "@apathia/apathia.twind": "workspace:^0.0.6",
     "lodash": "^4.17.21"
   }
 }

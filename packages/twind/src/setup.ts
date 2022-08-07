@@ -4,7 +4,7 @@ import * as css from 'twind/css'
 import * as twind from 'twind'
 import type { Configuration } from 'twind'
 import type { Twind, TwindColor, TwindCss, TwindSheets } from './types'
-import { merge } from 'lodash-es'
+import { merge } from 'lodash'
 import { defaultTheme } from './defaultTheme'
 
 export interface Tailwind {

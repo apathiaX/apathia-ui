@@ -4,6 +4,9 @@ import './resetcss/normalize.css'
 import Theme from 'vitepress/dist/client/theme-default'
 import { registerComponents } from './register-components'
 import { setupApathiaTwindTheme } from '../../../packages/twind/src/index'
+import  * as apathia from '../../../packages/apathia'
+
+const { toastInstall, modalInstall } = apathia
 
 export default {
   ...Theme,
@@ -11,6 +14,9 @@ export default {
     registerComponents(app)
     setupApathiaTwindTheme(() => ({
       preflight: false,
-    })) 
+    }))
+
+    app.use(toastInstall)
+    app.use(modalInstall)    
   }
 }

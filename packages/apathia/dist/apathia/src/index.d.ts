@@ -10,7 +10,6 @@ export * from '@apathia/apathia.confirm';
 export * from '@apathia/apathia.upload';
 export * from '@apathia/apathia.select';
 export * from '@apathia/apathia.radio';
-export * from '@apathia/apathia.table';
 export * from '@apathia/apathia.checkbox';
 export * from '@apathia/apathia.loading';
 export * from '@apathia/apathia.hooks';

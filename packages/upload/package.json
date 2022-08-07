@@ -1,15 +1,15 @@
 {
   "name": "@apathia/apathia.upload",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "upload",
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.upload.umd.js",
-  "module": "./dist/apathia.upload.mjs",
+  "module": "./dist/apathia.upload.es.js",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.upload.mjs",
+    "import": "./dist/apathia.upload.es.js",
     "require": "./dist/apathia.upload.umd.js"
   },
   "sideEffects": false,
@@ -33,13 +33,13 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.alert": "workspace:^0.0.1",
-    "@apathia/apathia.button": "workspace:^0.0.1",
-    "@apathia/apathia.hooks": "workspace:^0.0.1",
-    "@apathia/apathia.icon": "workspace:^0.0.1",
-    "@apathia/apathia.input": "workspace:^0.0.1",
-    "@apathia/apathia.shared": "workspace:^0.0.1",
-    "@apathia/apathia.twind": "workspace:^0.0.1",
+    "@apathia/apathia.alert": "workspace:^0.0.6",
+    "@apathia/apathia.button": "workspace:^0.0.6",
+    "@apathia/apathia.hooks": "workspace:^0.0.6",
+    "@apathia/apathia.icon": "workspace:^0.0.6",
+    "@apathia/apathia.input": "workspace:^0.0.6",
+    "@apathia/apathia.shared": "workspace:^0.0.6",
+    "@apathia/apathia.twind": "workspace:^0.0.6",
     "lodash": "^4.17.21"
   }
 }

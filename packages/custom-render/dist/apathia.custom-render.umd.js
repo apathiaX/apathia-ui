@@ -2,7 +2,7 @@
   typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue")) : typeof define === "function" && define.amd ? define(["exports", "vue"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global["custom-render"] = {}, global.Vue));
 })(this, function(exports2, vue) {
   "use strict";
-  const CustomRender = vue.defineComponent({
+  var CustomRender = vue.defineComponent({
     name: "Render",
     inheritAttrs: false,
     props: {

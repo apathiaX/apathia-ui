@@ -412,6 +412,13 @@
   const ChangeHandlerKey = Symbol("changeHandler");
   const FocusKey = Symbol("focus");
   const SameValueCompareKey = Symbol("sameValueCompare");
+  var _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
   const _sfc_main$1 = vue.defineComponent({
     name: "Select",
     directives: {
@@ -467,7 +474,15 @@
       "query-change"
     ],
     setup(props, ctx) {
-      const { disabled, modelValue, valueKey, filterable, emptyText, maxHeight, placeholder } = vue.toRefs(props);
+      const {
+        disabled,
+        modelValue,
+        valueKey,
+        filterable,
+        emptyText,
+        maxHeight,
+        placeholder
+      } = vue.toRefs(props);
       const disableSelect = apathia_hooks.useInjectProp("FormDisabled", false, disabled);
       const userProps = {
         disabled: disableSelect,
@@ -478,7 +493,26 @@
         maxHeight,
         placeholder
       };
-      const { filterStr, updateRegister, selectState, changeHandler, register, unregister, focus, clear, isSameValue, active, isEmpty, inputFocused, isNoResult, isRemote, getRootProps, getInputProps, getDropdownProps, rootEl } = useSelect(userProps, ctx);
+      const {
+        filterStr,
+        updateRegister,
+        selectState,
+        changeHandler,
+        register,
+        unregister,
+        focus,
+        clear,
+        isSameValue,
+        active,
+        isEmpty,
+        inputFocused,
+        isNoResult,
+        isRemote,
+        getRootProps,
+        getInputProps,
+        getDropdownProps,
+        rootEl
+      } = useSelect(userProps, ctx);
       vue.provide(UpdateRegisterKey, updateRegister);
       vue.provide(RegisterKey, register);
       vue.provide(UnregisterKey, unregister);
@@ -488,13 +522,19 @@
       vue.provide(SameValueCompareKey, isSameValue);
       const styles = {
         selectWrapper: apathia_twind.style`relative`,
-        disabled: apathia_twind.style("cursor-not-allowed pointer-events-none bg-gray-100 border-gray-100 placeholder-gray-300"),
+        disabled: apathia_twind.style(
+          "cursor-not-allowed pointer-events-none bg-gray-100 border-gray-100 placeholder-gray-300"
+        ),
         active: apathia_twind.style(""),
         inputSelected: apathia_twind.style`w-full block border border-gray-300 shadow-sm rounded-md text-sm py-2 px-3 outline-none focus:(bg-white border-brand-500)
         cursor-pointer`,
         focused: apathia_twind.style("select-none"),
-        arrow: apathia_twind.style("ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none h-9 w-7 text-brand-700"),
-        clearableIcon: apathia_twind.style("hidden absolute w-4 h-4 rounded-full top-2.5 right-8 items-center bg-brand-300 text-white cursor-pointer hover:bg-brand-500"),
+        arrow: apathia_twind.style(
+          "ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none h-9 w-7 text-brand-700"
+        ),
+        clearableIcon: apathia_twind.style(
+          "hidden absolute w-4 h-4 rounded-full top-2.5 right-8 items-center bg-brand-300 text-white cursor-pointer hover:bg-brand-500"
+        ),
         clearable: apathia_twind.style("block"),
         dropdownContainer: apathia_twind.style`z-dropdown block h-0 absolute mt-1 border border(solid gray-300) rounded-md bg-white shadow-lg opacity-0 transition duration-200 overflow-y-hidden`,
         dropdownContainerShow: apathia_twind.style`h-auto opacity-100`,
@@ -525,13 +565,6 @@
       };
     }
   });
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
   const _hoisted_1 = /* @__PURE__ */ vue.createElementVNode("path", {
     "fill-rule": "evenodd",
     d: "M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z",
@@ -615,7 +648,7 @@
       ]))
     ], 16);
   }
-  const Select = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+  var Select = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
   function useOption(userProps) {
     const isHidden = vue.ref(false);
     const isSelected = vue.ref(false);
@@ -802,7 +835,7 @@
       }, null, 8, ["class"])) : vue.createCommentVNode("", true)
     ], 16);
   }
-  const Option = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+  var Option = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
   exports2.Option = Option;
   exports2.Select = Select;
   Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });

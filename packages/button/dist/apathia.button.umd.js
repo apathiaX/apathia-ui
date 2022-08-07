@@ -16,6 +16,13 @@
       getButtonProps
     };
   }
+  var _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
   const _sfc_main = vue.defineComponent({
     name: "BaseButton",
     props: {
@@ -37,7 +44,11 @@
     },
     setup(props, ctx) {
       const { tag, href, disabled } = vue.toRefs(props);
-      const disableButton = apathia_hooks.useInjectProp("FormDisabled", false, disabled);
+      const disableButton = apathia_hooks.useInjectProp(
+        "FormDisabled",
+        false,
+        disabled
+      );
       const tagType = vue.computed(() => {
         if (href && href.value) {
           return "a";
@@ -71,13 +82,6 @@
       };
     }
   });
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(_ctx.tagType), vue.mergeProps({ ..._ctx.getButtonProps() }, {
       class: {
@@ -104,7 +108,7 @@
       _: 3
     }, 16, ["class", "href", "to"]);
   }
-  const Button = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+  var Button = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
   exports2.BaseButton = Button;
   exports2.useButton = useButton;
   Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });

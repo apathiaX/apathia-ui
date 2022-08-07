@@ -1,15 +1,15 @@
 {
   "name": "@apathia/apathia.button",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "button",
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.button.umd.js",
-  "module": "./dist/apathia.button.mjs",
+  "module": "./dist/apathia.button.es.js",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.button.mjs",
+    "import": "./dist/apathia.button.es.js",
     "require": "./dist/apathia.button.umd.js"
   },
   "sideEffects": false,
@@ -33,8 +33,8 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.hooks": "workspace:^0.0.1",
-    "@apathia/apathia.shared": "workspace:^0.0.1",
-    "@apathia/apathia.twind": "workspace:^0.0.1"
+    "@apathia/apathia.hooks": "workspace:^0.0.6",
+    "@apathia/apathia.shared": "workspace:^0.0.6",
+    "@apathia/apathia.twind": "workspace:^0.0.6"
   }
 }

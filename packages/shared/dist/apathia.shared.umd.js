@@ -146,7 +146,7 @@
     Align2["Right"] = "right";
     Align2["Middle"] = "middle";
   })(Align || (Align = {}));
-  const autoPos = {
+  var autoPos = {
     beforeMount(el) {
       el.style.position = "absolute";
     },

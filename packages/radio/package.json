@@ -1,15 +1,15 @@
 {
   "name": "@apathia/apathia.radio",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "radio",
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.radio.umd.js",
-  "module": "./dist/apathia.radio.mjs",
+  "module": "./dist/apathia.radio.es.js",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.radio.mjs",
+    "import": "./dist/apathia.radio.es.js",
     "require": "./dist/apathia.radio.umd.js"
   },
   "sideEffects": false,
@@ -34,8 +34,8 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.hooks": "workspace:^0.0.1",
-    "@apathia/apathia.twind": "workspace:^0.0.1",
+    "@apathia/apathia.hooks": "workspace:^0.0.6",
+    "@apathia/apathia.twind": "workspace:^0.0.6",
     "lodash": "^4.17.21"
   }
 }

@@ -1,15 +1,15 @@
 {
   "name": "@apathia/apathia.checkbox",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "checkbox",
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.checkbox.umd.js",
-  "module": "./dist/apathia.checkbox.mjs",
+  "module": "./dist/apathia.checkbox.es.js",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.checkbox.mjs",
+    "import": "./dist/apathia.checkbox.es.js",
     "require": "./dist/apathia.checkbox.umd.js"
   },
   "sideEffects": false,
@@ -33,7 +33,7 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.hooks": "workspace:^0.0.1",
-    "@apathia/apathia.twind": "workspace:^0.0.1"
+    "@apathia/apathia.hooks": "workspace:^0.0.6",
+    "@apathia/apathia.twind": "workspace:^0.0.6"
   }
 }

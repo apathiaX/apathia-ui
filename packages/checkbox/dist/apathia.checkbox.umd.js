@@ -46,6 +46,13 @@
       handleChange
     };
   }
+  var _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
   const _sfc_main = vue.defineComponent({
     name: "Checkbox",
     props: {
@@ -78,7 +85,11 @@
     setup(props, ctx) {
       const inputEl = vue.ref(null);
       const { modelValue, trueValue, falseValue, value, disabled } = vue.toRefs(props);
-      const disableInput = apathia_hooks.useInjectProp("FormDisabled", false, disabled);
+      const disableInput = apathia_hooks.useInjectProp(
+        "FormDisabled",
+        false,
+        disabled
+      );
       const userProps = {
         modelValue,
         trueValue,
@@ -87,7 +98,10 @@
         disabled: disableInput,
         inputEl
       };
-      const { isChecked, handleChange } = useCheckbox(userProps, ctx);
+      const { isChecked, handleChange } = useCheckbox(
+        userProps,
+        ctx
+      );
       const styles = {
         wrapper: apathia_twind.style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm ${apathia_twind.css`
         line-height: 38px;
@@ -95,7 +109,9 @@
       `}`,
         disabledWrapper: apathia_twind.style`text-gray-500 cursor-not-allowed`,
         checkbox: apathia_twind.style`relative inline-block p-0 whitespace-nowrap outline-none align-middle`,
-        inner: apathia_twind.tw(apathia_twind.style`relative block w-4 h-4 top-0 left-0 bg-white border border-gray-500 rounded outline-none`, apathia_twind.css`
+        inner: apathia_twind.tw(
+          apathia_twind.style`relative block w-4 h-4 top-0 left-0 bg-white border border-gray-500 rounded outline-none`,
+          apathia_twind.css`
           transition: all 0.3s;
           &::after {
             content: '';
@@ -111,7 +127,8 @@
             transform: rotate(45deg) scale(0);
             transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6);
           }
-        `),
+        `
+        ),
         checkedBlueBorder: apathia_twind.style`bg-brand-500 border-brand-500`,
         checkedAfter: apathia_twind.tw(apathia_twind.css`
         &::after {
@@ -125,11 +142,14 @@
           border-bottom: 0;
         }
       `),
-        disabledInner: apathia_twind.tw(apathia_twind.style`bg-gray-100 border-gray-500 cursor-not-allowed outline-none`, apathia_twind.css`
+        disabledInner: apathia_twind.tw(
+          apathia_twind.style`bg-gray-100 border-gray-500 cursor-not-allowed outline-none`,
+          apathia_twind.css`
           &::after {
             ${apathia_twind.apply`border-gray-500`}
           }
-        `),
+        `
+        ),
         ring: apathia_twind.style`focus:ring-2 focus:ring-brand-500`,
         input: apathia_twind.style`hidden`,
         contentWrap: apathia_twind.style`mx-1`
@@ -143,13 +163,6 @@
       };
     }
   });
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
   const _hoisted_1 = ["checked", "disabled", "value"];
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("label", {
@@ -191,7 +204,7 @@
       ], 2)) : vue.createCommentVNode("", true)
     ], 2);
   }
-  const Checkbox = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+  var Checkbox = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
   exports2.Checkbox = Checkbox;
   Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
 });

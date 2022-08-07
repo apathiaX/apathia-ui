@@ -1,15 +1,15 @@
 {
   "name": "@apathia/apathia.confirm",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "confirm",
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.confirm.umd.js",
-  "module": "./dist/apathia.confirm.mjs",
+  "module": "./dist/apathia.confirm.es.js",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.confirm.mjs",
+    "import": "./dist/apathia.confirm.es.js",
     "require": "./dist/apathia.confirm.umd.js"
   },
   "sideEffects": false,
@@ -33,9 +33,9 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.button": "workspace:^0.0.1",
-    "@apathia/apathia.custom-render": "workspace:^0.0.1",
-    "@apathia/apathia.modal": "workspace:^0.0.1",
-    "@apathia/apathia.twind": "workspace:^0.0.1"
+    "@apathia/apathia.button": "workspace:^0.0.6",
+    "@apathia/apathia.custom-render": "workspace:^0.0.6",
+    "@apathia/apathia.modal": "workspace:^0.0.6",
+    "@apathia/apathia.twind": "workspace:^0.0.6"
   }
 }

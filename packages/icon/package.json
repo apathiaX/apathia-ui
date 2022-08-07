@@ -1,15 +1,15 @@
 {
   "name": "@apathia/apathia.icon",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "icon",
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.icon.umd.js",
-  "module": "./dist/apathia.icon.mjs",
+  "module": "./dist/apathia.icon.es.js",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.icon.mjs",
+    "import": "./dist/apathia.icon.es.js",
     "require": "./dist/apathia.icon.umd.js"
   },
   "sideEffects": false,

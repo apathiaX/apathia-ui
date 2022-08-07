@@ -1,16 +1,16 @@
 {
   "name": "@apathia/apathia",
-  "version": "0.0.1",
+  "version": "0.0.9",
   "description": "apathia",
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.umd.js",
-  "module": "./dist/apathia.mjs",
+  "module": "./dist/apathia.es.js",
   "style": "./dist/style.css",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.mjs",
+    "import": "./dist/apathia.es.js",
     "require": "./dist/apathia.umd.js"
   },
   "sideEffects": [
@@ -36,22 +36,21 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.alert": "workspace:^0.0.1",
-    "@apathia/apathia.button": "workspace:^0.0.1",
-    "@apathia/apathia.checkbox": "workspace:^0.0.1",
-    "@apathia/apathia.collapse": "workspace:^0.0.1",
-    "@apathia/apathia.confirm": "workspace:^0.0.1",
-    "@apathia/apathia.custom-render": "workspace:^0.0.1",
-    "@apathia/apathia.form": "workspace:^0.0.1",
-    "@apathia/apathia.hooks": "workspace:^0.0.1",
-    "@apathia/apathia.icon": "workspace:^0.0.1",
-    "@apathia/apathia.input": "workspace:^0.0.1",
-    "@apathia/apathia.loading": "workspace:^0.0.1",
-    "@apathia/apathia.modal": "workspace:^0.0.1",
-    "@apathia/apathia.radio": "workspace:^0.0.1",
-    "@apathia/apathia.select": "workspace:^0.0.1",
-    "@apathia/apathia.table": "workspace:^0.0.1",
-    "@apathia/apathia.twind": "workspace:^0.0.1",
-    "@apathia/apathia.upload": "workspace:^0.0.1"
+    "@apathia/apathia.alert": "workspace:^0.0.6",
+    "@apathia/apathia.button": "workspace:^0.0.6",
+    "@apathia/apathia.checkbox": "workspace:^0.0.6",
+    "@apathia/apathia.collapse": "workspace:^0.0.6",
+    "@apathia/apathia.confirm": "workspace:^0.0.6",
+    "@apathia/apathia.custom-render": "workspace:^0.0.6",
+    "@apathia/apathia.form": "workspace:^0.0.6",
+    "@apathia/apathia.hooks": "workspace:^0.0.6",
+    "@apathia/apathia.icon": "workspace:^0.0.6",
+    "@apathia/apathia.input": "workspace:^0.0.6",
+    "@apathia/apathia.loading": "workspace:^0.0.6",
+    "@apathia/apathia.modal": "workspace:^0.0.6",
+    "@apathia/apathia.radio": "workspace:^0.0.6",
+    "@apathia/apathia.select": "workspace:^0.0.6",
+    "@apathia/apathia.twind": "workspace:^0.0.6",
+    "@apathia/apathia.upload": "workspace:^0.0.6"
   }
 }

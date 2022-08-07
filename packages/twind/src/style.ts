@@ -5,18 +5,16 @@ type MaybeRef<T> = ComputedRef<T> | Ref<T> | T
 
 // 封装tw
 export const style = (...args: any[]) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (
-      args.length > 0 &&
-      !Array.isArray(args[0]) &&
-      typeof args[0] === 'string' &&
-      args[0].includes('=>')
-    ) {
-      console.warn(
-        // eslint-disable-next-line no-template-curly-in-string
-        '请使用模版字符串调用 style`a b ${css`a`}`, 不要用 style(`a b ${css`a`}`)。',
-      )
-    }
+  if (
+    args.length > 0 &&
+    !Array.isArray(args[0]) &&
+    typeof args[0] === 'string' &&
+    args[0].includes('=>')
+  ) {
+    console.warn(
+      // eslint-disable-next-line no-template-curly-in-string
+      '请使用模版字符串调用 style`a b ${css`a`}`, 不要用 style(`a b ${css`a`}`)。',
+    )
   }
   return tw(apply(...args))
 }

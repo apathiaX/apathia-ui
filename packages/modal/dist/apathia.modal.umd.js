@@ -105,6 +105,13 @@
     margin-top: ${top}${typeof top === "number" ? "px" : ""};
   `;
   }
+  var _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
   const _sfc_main = vue.defineComponent({
     name: "Modal",
     components: {
@@ -154,15 +161,19 @@
     },
     emits: ["close", "update:modelValue"],
     setup(props, ctx) {
-      const { shadeRef, modalRef, widthStyle, close, isTemplate } = createModal(props, ctx);
-      return Object.assign(Object.assign({}, initStyle()), {
+      const { shadeRef, modalRef, widthStyle, close, isTemplate } = createModal(
+        props,
+        ctx
+      );
+      return {
+        ...initStyle(),
         shadeRef,
         modalRef,
         widthStyle,
         close,
         showScrollbar,
         isTemplate
-      });
+      };
     }
   });
   function initStyle() {
@@ -216,13 +227,6 @@
       durationClass
     };
   }
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_CustomRender = vue.resolveComponent("CustomRender");
     return _ctx.isTemplate ? (vue.openBlock(), vue.createBlock(vue.Teleport, {
@@ -311,7 +315,7 @@
       [vue.vShow, _ctx.modelValue]
     ]);
   }
-  const Modal = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+  var Modal = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
   const modalDefaultProps = {
     modelValue: false,
     title: "Title",

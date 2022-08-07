@@ -2,8 +2,17 @@
   typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("string-width"), require("vue"), require("@apathia/apathia.twind"), require("@apathia/apathia.hooks"), require("@apathia/apathia.icon")) : typeof define === "function" && define.amd ? define(["exports", "string-width", "vue", "@apathia/apathia.twind", "@apathia/apathia.hooks", "@apathia/apathia.icon"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.input = {}, global["string-width"], global.Vue, global.twind, global.hooks, global.icon));
 })(this, function(exports2, stringwidth, vue, apathia_twind, apathia_hooks, apathia_icon) {
   "use strict";
-  const _interopDefaultLegacy = (e) => e && typeof e === "object" && "default" in e ? e : { default: e };
-  const stringwidth__default = /* @__PURE__ */ _interopDefaultLegacy(stringwidth);
+  function _interopDefaultLegacy(e) {
+    return e && typeof e === "object" && "default" in e ? e : { "default": e };
+  }
+  var stringwidth__default = /* @__PURE__ */ _interopDefaultLegacy(stringwidth);
+  var _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
   const getStyles = () => {
     const prependAndAppend = apathia_twind.apply`text(gray-500 sm) px-3 inline-flex items-center border border-gray-300 bg-gray-100`;
     const commonIcon = apathia_twind.apply`absolute self-center px-1 text-gray-300`;
@@ -65,13 +74,19 @@
       const inputRef = vue.ref(null);
       const withPrepend = vue.computed(() => ctx.slots.prepend !== void 0);
       const withAppend = vue.computed(() => ctx.slots.append !== void 0);
-      const disableInput = apathia_hooks.useInjectProp("FormDisabled", false, vue.toRef(props, "disabled"));
-      const showClearIcon = vue.computed(() => props.clearable && props.modelValue && !disableInput.value);
+      const disableInput = apathia_hooks.useInjectProp(
+        "FormDisabled",
+        false,
+        vue.toRef(props, "disabled")
+      );
+      const showClearIcon = vue.computed(
+        () => props.clearable && props.modelValue && !disableInput.value
+      );
       const attrs = apathia_hooks.useAttrs();
       const inputVal = vue.computed({
         get: () => props.modelValue,
         set: (val) => {
-          const strWidth = stringwidth__default.default(val);
+          const strWidth = stringwidth__default["default"](val);
           if (props.maxwords !== void 0 && strWidth > 2 * props.maxwords) {
             if (inputRef.value) {
               inputRef.value.value = getStringByWords(val, props.maxwords * 2);
@@ -88,7 +103,7 @@
         let totalCnt = 0;
         let res = "";
         for (const char of str) {
-          totalCnt += stringwidth__default.default(char);
+          totalCnt += stringwidth__default["default"](char);
           if (totalCnt > width) {
             return res;
           }
@@ -127,13 +142,6 @@
       };
     }
   });
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
   const _hoisted_1 = ["type", "disabled"];
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_Icon = vue.resolveComponent("Icon");
@@ -192,7 +200,7 @@
       ], 2)) : vue.createCommentVNode("", true)
     ], 6);
   }
-  const Input = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+  var Input = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
   exports2.Input = Input;
   Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
 });

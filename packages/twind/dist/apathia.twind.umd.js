@@ -1,29 +1,31 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("twind/css"), require("twind/sheets"), require("twind/colors"), require("twind"), require("lodash-es"), require("vue")) : typeof define === "function" && define.amd ? define(["exports", "twind/css", "twind/sheets", "twind/colors", "twind", "lodash-es", "vue"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.twind = {}, global["twind/css"], global["twind/sheets"], global["twind/colors"], global.twind, global["lodash-es"], global.Vue));
-})(this, function(exports2, css, sheets, colors, twind, lodashEs, vue) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("twind/css"), require("twind/sheets"), require("twind/colors"), require("twind"), require("lodash"), require("vue")) : typeof define === "function" && define.amd ? define(["exports", "twind/css", "twind/sheets", "twind/colors", "twind", "lodash", "vue"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.twind = {}, global["twind/css"], global["twind/sheets"], global["twind/colors"], global.twind, global.lodash, global.Vue));
+})(this, function(exports2, css, sheets, colors, twind, lodash, vue) {
   "use strict";
   function _interopNamespace(e) {
     if (e && e.__esModule)
       return e;
-    const n = Object.create(null, { [Symbol.toStringTag]: { value: "Module" } });
+    var n = Object.create(null, { [Symbol.toStringTag]: { value: "Module" } });
     if (e) {
-      for (const k in e) {
+      Object.keys(e).forEach(function(k) {
         if (k !== "default") {
-          const d = Object.getOwnPropertyDescriptor(e, k);
+          var d = Object.getOwnPropertyDescriptor(e, k);
           Object.defineProperty(n, k, d.get ? d : {
             enumerable: true,
-            get: () => e[k]
+            get: function() {
+              return e[k];
+            }
           });
         }
-      }
+      });
     }
-    n.default = e;
+    n["default"] = e;
     return Object.freeze(n);
   }
-  const css__namespace = /* @__PURE__ */ _interopNamespace(css);
-  const sheets__namespace = /* @__PURE__ */ _interopNamespace(sheets);
-  const colors__namespace = /* @__PURE__ */ _interopNamespace(colors);
-  const twind__namespace = /* @__PURE__ */ _interopNamespace(twind);
+  var css__namespace = /* @__PURE__ */ _interopNamespace(css);
+  var sheets__namespace = /* @__PURE__ */ _interopNamespace(sheets);
+  var colors__namespace = /* @__PURE__ */ _interopNamespace(colors);
+  var twind__namespace = /* @__PURE__ */ _interopNamespace(twind);
   const defaultTheme = {
     theme: {
       colors: {
@@ -83,7 +85,7 @@
   };
   function setupApathiaTwindTheme(getConfig) {
     const { setup } = twind__namespace;
-    setup(lodashEs.merge(defaultTheme, getConfig ? getConfig({
+    setup(lodash.merge(defaultTheme, getConfig ? getConfig({
       twind: twind__namespace,
       sheets: sheets__namespace,
       colors: colors__namespace,
@@ -91,12 +93,10 @@
     }) : {}));
   }
   const style = (...args) => {
-    if (process.env.NODE_ENV !== "production") {
-      if (args.length > 0 && !Array.isArray(args[0]) && typeof args[0] === "string" && args[0].includes("=>")) {
-        console.warn(
-          "\u8BF7\u4F7F\u7528\u6A21\u7248\u5B57\u7B26\u4E32\u8C03\u7528 style`a b ${css`a`}`, \u4E0D\u8981\u7528 style(`a b ${css`a`}`)\u3002"
-        );
-      }
+    if (args.length > 0 && !Array.isArray(args[0]) && typeof args[0] === "string" && args[0].includes("=>")) {
+      console.warn(
+        "\u8BF7\u4F7F\u7528\u6A21\u7248\u5B57\u7B26\u4E32\u8C03\u7528 style`a b ${css`a`}`, \u4E0D\u8981\u7528 style(`a b ${css`a`}`)\u3002"
+      );
     }
     return twind.tw(twind.apply(...args));
   };
@@ -111,23 +111,33 @@
   };
   Object.defineProperty(exports2, "animation", {
     enumerable: true,
-    get: () => css.animation
+    get: function() {
+      return css.animation;
+    }
   });
   Object.defineProperty(exports2, "apply", {
     enumerable: true,
-    get: () => css.apply
+    get: function() {
+      return css.apply;
+    }
   });
   Object.defineProperty(exports2, "css", {
     enumerable: true,
-    get: () => css.css
+    get: function() {
+      return css.css;
+    }
   });
   Object.defineProperty(exports2, "keyframes", {
     enumerable: true,
-    get: () => css.keyframes
+    get: function() {
+      return css.keyframes;
+    }
   });
   Object.defineProperty(exports2, "tw", {
     enumerable: true,
-    get: () => css.tw
+    get: function() {
+      return css.tw;
+    }
   });
   exports2.getComputedStyle = getComputedStyle;
   exports2.setupApathiaTwindTheme = setupApathiaTwindTheme;

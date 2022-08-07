@@ -1,15 +1,15 @@
 {
   "name": "@apathia/apathia.input",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "input",
   "author": "",
   "homepage": "",
   "main": "./dist/apathia.input.umd.js",
-  "module": "./dist/apathia.input.mjs",
+  "module": "./dist/apathia.input.es.js",
   "types": "./dist/index.d.ts",
   "source": "src/index.ts",
   "export": {
-    "import": "./dist/apathia.input.mjs",
+    "import": "./dist/apathia.input.es.js",
     "require": "./dist/apathia.input.umd.js"
   },
   "sideEffects": false,
@@ -33,9 +33,9 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.hooks": "workspace:^0.0.1",
-    "@apathia/apathia.icon": "workspace:^0.0.1",
-    "@apathia/apathia.twind": "workspace:^0.0.1",
-    "string-width": "^5.1.2"
+    "@apathia/apathia.hooks": "workspace:^0.0.6",
+    "@apathia/apathia.icon": "workspace:^0.0.6",
+    "@apathia/apathia.twind": "workspace:^0.0.6",
+    "string-width": "4.2.3"
   }
 }

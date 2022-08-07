@@ -9,7 +9,7 @@
     danger: ["fa", "exclamation"],
     default: ["fa", "info-circle"]
   };
-  const BaseAlert = vue.defineComponent({
+  var BaseAlert = vue.defineComponent({
     name: "Alert",
     props: {
       type: {

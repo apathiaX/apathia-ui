@@ -1,5 +1,5 @@
 {
-  "name": "@apathia/apathia.example",
+  "name": "@apathia1/apathia.example",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -20,8 +20,8 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia": "workspace:^0.0.1",
-    "@apathia/apathia.twind": "workspace:^0.0.1",
+    "@apathia/apathia": "workspace:^0.0.2",
+    "@apathia/apathia.twind": "workspace:^0.0.2",
     "lodash-es": "^4.17.21",
     "twind": "^0.16.17",
     "vue": "^3.2.37"

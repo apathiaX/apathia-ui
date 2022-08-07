@@ -5,6 +5,7 @@ import { computed, ref } from 'vue'
 import demos from './demos'
 // @ts-ignore
 import { Select, Option } from '@apathia/apathia'
+import * as apathia from '@apathia/apathia'
 
 const name = ref<string>('Select')
 
@@ -18,6 +19,8 @@ const getStyle = () => ({
     margin: 2rem auto;
   `}`}`,
 })
+
+console.log(apathia)
 
 const styles = getStyle()
 </script>
