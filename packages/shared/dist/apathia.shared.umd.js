@@ -174,7 +174,7 @@
     let anchorNode = el.parentNode;
     const bindingNode = binding.value || el.__parent;
     if (bindingNode) {
-      if (bindingNode instanceof HTMLElement) {
+      if (!(bindingNode instanceof HTMLElement)) {
         console.warn("v-auto-pos\u7684\u503C\u671F\u671B\u662F\u4E00\u4E2ADOM\u5BF9\u8C61");
       } else {
         anchorNode = bindingNode;

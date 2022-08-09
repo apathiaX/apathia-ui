@@ -28,7 +28,6 @@
     props: {
       tag: { type: [String, Object] },
       href: { type: String },
-      to: { type: [String, Object] },
       primary: { type: Boolean, default: false },
       secondary: { type: Boolean, default: false },
       success: { type: Boolean, default: false },
@@ -36,10 +35,10 @@
       info: { type: Boolean, default: false },
       warning: { type: Boolean, default: false },
       active: { type: Boolean, default: false },
-      hollow: { type: Boolean, default: false },
       plain: { type: Boolean, default: false },
       small: { type: Boolean, default: false },
       large: { type: Boolean, default: false },
+      round: { type: Boolean, default: false },
       disabled: { type: Boolean, default: void 0 }
     },
     setup(props, ctx) {
@@ -68,10 +67,10 @@
         active: apathia_twind.tw`${apathia_twind.css`
         filter: brightness(1.1) contrast(150%);
       `}`,
-        hollow: apathia_twind.style`bg-clip-text text-opacity-0`,
         plain: apathia_twind.style`border-0 hover:shadow-none`,
         small: apathia_twind.style`text-xs font-medium`,
         large: apathia_twind.style`text-xl`,
+        round: apathia_twind.style`rounded-full`,
         disabled: apathia_twind.style`cursor-not-allowed opacity-50`
       };
       return {
@@ -93,20 +92,19 @@
         [_ctx.styles.info]: _ctx.info,
         [_ctx.styles.warning]: _ctx.warning,
         [_ctx.styles.active]: _ctx.active,
-        [_ctx.styles.hollow]: _ctx.hollow || _ctx.plain,
         [_ctx.styles.plain]: _ctx.plain,
         [_ctx.styles.small]: _ctx.small,
         [_ctx.styles.large]: _ctx.large,
+        [_ctx.styles.round]: _ctx.round,
         [_ctx.styles.disabled]: _ctx.disableButton
       },
-      href: _ctx.href,
-      to: _ctx.to
+      href: _ctx.href
     }), {
       default: vue.withCtx(() => [
         vue.renderSlot(_ctx.$slots, "default")
       ]),
       _: 3
-    }, 16, ["class", "href", "to"]);
+    }, 16, ["class", "href"]);
   }
   var Button = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
   exports2.BaseButton = Button;

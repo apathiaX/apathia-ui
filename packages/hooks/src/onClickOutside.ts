@@ -1,15 +1,12 @@
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref } from 'vue'
 // @ts-ignore
-import { unrefElement, MaybeElementRef, noop } from '@apathia/apathia.shared'
+import { unrefElement, MaybeElementRef} from '@apathia/apathia.shared'
 import { useEventListener } from './useEventListener'
-
-// const defaultEvents = ['click']
 
 /**
  *
  * @param {Object} target dom el
  * @param {function} handler callback function
- * @param {scope} scope outside scope
  *
  * @return {function} stop stop listen function
  */
@@ -52,22 +49,4 @@ export function onClickOutside(
   const stop = () => cleanup.forEach(fn => fn())
 
   return stop
-}
-
-export function useClickAwayFixIOS() {
-  onMounted(() => {
-    if ('ontouchstart' in document.documentElement) {
-      Array.from(document.body.children).forEach(e =>
-        e.addEventListener('mouseover', noop),
-      )
-    }
-  })
-
-  onUnmounted(() => {
-    if ('ontouchstart' in document.documentElement) {
-      Array.from(document.body.children).forEach(e =>
-        e.removeEventListener('mouseover', noop),
-      )
-    }
-  })
 }

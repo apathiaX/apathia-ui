@@ -1,5 +1,5 @@
 <template>
-  <Select v-model="selectVal">
+  <Select v-model="selectVal" disabled>
     <Option v-for="item in options" :key="item.value" :value="item.value">{{
       item.label
     }}</Option>

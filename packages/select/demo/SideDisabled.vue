@@ -1,8 +1,12 @@
 <template>
   <Select v-model="selectVal">
-    <Option v-for="item in options" :key="item.value" :value="item.value">{{
-      item.label
-    }}</Option>
+    <Option
+      v-for="item in options"
+      :disabled="item.disabled"
+      :key="item.value"
+      :value="item.value"
+      >{{ item.label }}</Option
+    >
   </Select>
 </template>
 
@@ -17,6 +21,7 @@ const options = [
   {
     value: 'Option2',
     label: 'Option2',
+    disabled: true,
   },
   {
     value: 'Option3',

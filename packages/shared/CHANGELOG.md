@@ -1,5 +1,17 @@
 # @apathia/apathia.shared
 
+## 0.0.8
+
+### Patch Changes
+
+- fix hook and button
+
+## 0.0.7
+
+### Patch Changes
+
+- fix: select
+
 ## 0.0.6
 
 ### Patch Changes

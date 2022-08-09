@@ -29,6 +29,9 @@ type DomPositon = {
   isRoot: boolean
 }
 
+/**
+ * dom 元素位置的设定
+ */
 export default {
   beforeMount(el: HTMLElement) {
     el.style.position = 'absolute'
@@ -61,7 +64,7 @@ function autoset(el: El, binding: DirectiveBinding) {
   let anchorNode = el.parentNode as Element
   const bindingNode = binding.value || el.__parent
   if (bindingNode) {
-    if (bindingNode instanceof HTMLElement) {
+    if (!(bindingNode instanceof HTMLElement)) {
       console.warn('v-auto-pos的值期望是一个DOM对象')
     } else {
       anchorNode = bindingNode
@@ -77,10 +80,10 @@ function autoset(el: El, binding: DirectiveBinding) {
     width: document.body.offsetWidth,
     height: window.innerHeight,
   }
-
+  // 获取元素的位置，包含 top right bottom left width height
   const elRect = el.getBoundingClientRect()
   const anchorElRect = anchorNode.getBoundingClientRect()
-
+  // 判断是不是有根元素
   const isRoot = !!binding.modifiers.root
 
   setElementPosition(
@@ -92,6 +95,7 @@ function autoset(el: El, binding: DirectiveBinding) {
   )
 }
 
+// 检查设置的元素的位置是否符合要求
 function checkPosition(pos?: Position, align?: Align) {
   const arrX = ['left', 'right']
   const arrY = ['top', 'bottom']
@@ -185,6 +189,9 @@ function setElementPosition(
   } as Record<Position, string>
 
   if (!isRoot) {
+    // 没有绑定元素的情况，默认为body
+    // 如果位置为左右时，将左或右的位置设置为绑定元素的宽度，反之则为绑定元素的高度
+    // 位置时相反的， 比如 如果要在绑定元素的右边应该是距离左边绑定元素的宽度
     style[opposite[pos]] = `${
       [Position.Left, Position.Right].indexOf(pos) > -1
         ? parentElWidth
@@ -228,6 +235,7 @@ function setElementPosition(
   Object.assign(el.style, style)
 }
 
+// 处理元素的放置位置
 function resolvePosition(
   el: HTMLElement,
   isRoot: boolean,
@@ -235,8 +243,11 @@ function resolvePosition(
   parentElRect: DOMRect,
   currentElSize: DOMRect,
 ): DomPositon {
+  // 获取绑定元素到顶部的距离
   const { top } = parentElRect
+  // 获取绑定元素到页面底部的距离
   const bottom = clientSize.height - parentElRect.bottom
+  // 当前元素到顶部的距离
   const { height: currentElHeight } = currentElSize
   let delcarePos = false
   let delcareAlign = false
@@ -270,7 +281,9 @@ function resolvePosition(
 
   // 判断贴哪个边
   if (!delcarePos) {
+    // 判断绑定元素到底部的距离是否大于元素的距离，即判断绑定元素到底部的距离够不够放置目标元素
     const bottomEnough = bottom > currentElHeight
+    // 同理判断到顶部距离够不够
     const topEnough = top > currentElHeight
 
     // 有优先级，优先级别是bottom > top， 默认是bottom

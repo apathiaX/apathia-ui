@@ -20,8 +20,6 @@ const getStyle = () => ({
   `}`}`,
 })
 
-console.log(apathia)
-
 const styles = getStyle()
 </script>
 

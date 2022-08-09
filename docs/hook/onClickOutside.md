@@ -4,33 +4,16 @@
 
 ## 基础用法
 
-```html
-<template>
-  <button ref="btnRef">click me<button>
-</template>
+::: demo
+<<< @/../packages/hooks/demo/onClickOutside/Basic.vue
+:::
 
-<script>
-import { onClickOutside } from '@apathia/apathia'
+## 参数
 
-export default {
-  setup() {
-    const btnRef = ref(null)
-    onClickOutside(btnRef, () => {
-      console.log('你点到外面啦')
-    })
+>`onClickOutside(target, handler, scope?)`返回一个停止监听的函数
 
-    return {
-      btnRef
-    }
-  }
-}
-</script>
-```
+| 参数     |         说明         |     类型 | 默认值 |
+| --------- | :-----------------: | --------: | -----: |
+| target | 表示作用的元素，即哪个元素之外 | Ref<`HTMLElement`> HTMLElement | - |
+| handler | 事件处理函数 | EventListener | - |
 
-## api
-
-`onClickOutside(target, handler, scope?)`
-
-- target: `Ref<HTMLElement>` 或者 `HTMLElement`, 表示作用的元素，即哪个元素之外。
-- handler: 事件处理函数，接收一个事件对象，当点击元素之外需要触发的事件
-- scope: 非必传，作用范围。点击事件在scope之内才会调用handler, 默认是 `window`

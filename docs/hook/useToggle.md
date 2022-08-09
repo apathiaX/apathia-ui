@@ -1,16 +1,14 @@
 # useToggle
 
-```js
-import { useToggle } from '@apathia/apathia'
+## 基础使用
+boolean 的切换
+::: demo
+<<< @/../packages/hooks/demo/useToggle/Basic.vue
+:::
 
-export default {
-  setup() {
-    /**
-     * val: 响应式的 bool 值
-     * toggle: 切换
-     * setValue: fun 接收一个 bool 值，并赋值给 val
-     */
-    const [val, toggle, setValue] = useToggle(false)
-  }
-}
-```
+## 参数
+>`useToggle(val)` 将返回一个 响应式的 bool 值、 切换函数、 赋值函数
+
+| 参数     |         说明         |     类型 | 默认值 |
+| --------- | :-----------------: | --------: | -----: |
+| val | 初始化的 boolean 值 |  Boolean | false |

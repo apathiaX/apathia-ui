@@ -11,14 +11,13 @@
       [styles.info]: info,
       [styles.warning]: warning,
       [styles.active]: active,
-      [styles.hollow]: hollow || plain,
       [styles.plain]: plain,
       [styles.small]: small,
       [styles.large]: large,
+      [styles.round]: round,
       [styles.disabled]: disableButton,
     }"
     :href="href"
-    :to="to"
   >
     <slot></slot>
   </component>
@@ -38,7 +37,6 @@ export default defineComponent({
   props: {
     tag: { type: [String, Object] },
     href: { type: String },
-    to: { type: [String, Object] },
     primary: { type: Boolean, default: false },
     secondary: { type: Boolean, default: false },
     success: { type: Boolean, default: false },
@@ -46,10 +44,10 @@ export default defineComponent({
     info: { type: Boolean, default: false },
     warning: { type: Boolean, default: false },
     active: { type: Boolean, default: false },
-    hollow: { type: Boolean, default: false },
     plain: { type: Boolean, default: false },
     small: { type: Boolean, default: false },
     large: { type: Boolean, default: false },
+    round: { type: Boolean, default: false },
     disabled: { type: Boolean, default: undefined },
   },
   setup(props, ctx) {
@@ -68,7 +66,6 @@ export default defineComponent({
       }
       return tag && tag.value ? tag.value : 'button'
     })
-
     const userProps = { disabled: disableButton }
 
     const { getButtonProps } = useBaseButton(userProps, ctx)
@@ -84,10 +81,10 @@ export default defineComponent({
       active: tw`${css`
         filter: brightness(1.1) contrast(150%);
       `}`,
-      hollow: style`bg-clip-text text-opacity-0`,
       plain: style`border-0 hover:shadow-none`,
       small: style`text-xs font-medium`,
       large: style`text-xl`,
+      round: style`rounded-full`,
       disabled: style`cursor-not-allowed opacity-50`,
     }
 

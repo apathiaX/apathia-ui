@@ -1,5 +1,22 @@
 # @apathia/apathia.collapse
 
+## 0.0.8
+
+### Patch Changes
+
+- fix hook and button
+- Updated dependencies
+  - @apathia/apathia.hooks@0.0.8
+  - @apathia/apathia.shared@0.0.8
+
+## 0.0.7
+
+### Patch Changes
+
+- Updated dependencies
+  - @apathia/apathia.shared@0.0.7
+  - @apathia/apathia.hooks@0.0.7
+
 ## 0.0.6
 
 ### Patch Changes

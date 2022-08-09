@@ -1,5 +1,43 @@
 # @apathia/apathia
 
+## 0.0.11
+
+### Patch Changes
+
+- fix hook and button
+- Updated dependencies
+  - @apathia/apathia.alert@0.0.8
+  - @apathia/apathia.button@0.0.8
+  - @apathia/apathia.checkbox@0.0.8
+  - @apathia/apathia.collapse@0.0.8
+  - @apathia/apathia.confirm@0.0.8
+  - @apathia/apathia.form@0.0.8
+  - @apathia/apathia.hooks@0.0.8
+  - @apathia/apathia.input@0.0.8
+  - @apathia/apathia.modal@0.0.8
+  - @apathia/apathia.radio@0.0.8
+  - @apathia/apathia.select@0.0.8
+  - @apathia/apathia.upload@0.0.8
+
+## 0.0.10
+
+### Patch Changes
+
+- fix: select
+- Updated dependencies
+  - @apathia/apathia.select@0.0.7
+  - @apathia/apathia.alert@0.0.7
+  - @apathia/apathia.button@0.0.7
+  - @apathia/apathia.collapse@0.0.7
+  - @apathia/apathia.hooks@0.0.7
+  - @apathia/apathia.modal@0.0.7
+  - @apathia/apathia.upload@0.0.7
+  - @apathia/apathia.confirm@0.0.7
+  - @apathia/apathia.checkbox@0.0.7
+  - @apathia/apathia.form@0.0.7
+  - @apathia/apathia.input@0.0.7
+  - @apathia/apathia.radio@0.0.7
+
 ## 0.0.9
 
 ### Patch Changes

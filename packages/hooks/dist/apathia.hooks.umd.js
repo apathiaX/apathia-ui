@@ -91,18 +91,6 @@
     const stop = () => cleanup.forEach((fn) => fn());
     return stop;
   }
-  function useClickAwayFixIOS() {
-    vue.onMounted(() => {
-      if ("ontouchstart" in document.documentElement) {
-        Array.from(document.body.children).forEach((e) => e.addEventListener("mouseover", apathia_shared.noop));
-      }
-    });
-    vue.onUnmounted(() => {
-      if ("ontouchstart" in document.documentElement) {
-        Array.from(document.body.children).forEach((e) => e.removeEventListener("mouseover", apathia_shared.noop));
-      }
-    });
-  }
   function useResizeObserver(target, callback, options = {}) {
     let observer;
     const isSupported = window && "ResizeObserver" in window;
@@ -141,7 +129,6 @@
   }
   exports2.onClickOutside = onClickOutside;
   exports2.useAttrs = useAttrs;
-  exports2.useClickAwayFixIOS = useClickAwayFixIOS;
   exports2.useEventListener = useEventListener;
   exports2.useInjectProp = useInjectProp;
   exports2.useResizeObserver = useResizeObserver;

@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.button",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "button",
   "author": "",
   "homepage": "",
@@ -33,8 +33,8 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.hooks": "workspace:^0.0.6",
-    "@apathia/apathia.shared": "workspace:^0.0.6",
+    "@apathia/apathia.hooks": "workspace:^0.0.8",
+    "@apathia/apathia.shared": "workspace:^0.0.8",
     "@apathia/apathia.twind": "workspace:^0.0.6"
   }
 }

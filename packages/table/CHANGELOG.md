@@ -1,5 +1,22 @@
 # @apathia1/apathia.table
 
+## 0.0.8
+
+### Patch Changes
+
+- Updated dependencies
+  - @apathia/apathia.button@0.0.8
+  - @apathia/apathia.checkbox@0.0.8
+  - @apathia/apathia.hooks@0.0.8
+
+## 0.0.7
+
+### Patch Changes
+
+- @apathia/apathia.button@0.0.7
+- @apathia/apathia.hooks@0.0.7
+- @apathia/apathia.checkbox@0.0.7
+
 ## 0.0.6
 
 ### Patch Changes

@@ -89,18 +89,6 @@ function onClickOutside(target, handler) {
   const stop = () => cleanup.forEach((fn) => fn());
   return stop;
 }
-function useClickAwayFixIOS() {
-  onMounted(() => {
-    if ("ontouchstart" in document.documentElement) {
-      Array.from(document.body.children).forEach((e) => e.addEventListener("mouseover", noop));
-    }
-  });
-  onUnmounted(() => {
-    if ("ontouchstart" in document.documentElement) {
-      Array.from(document.body.children).forEach((e) => e.removeEventListener("mouseover", noop));
-    }
-  });
-}
 function useResizeObserver(target, callback, options = {}) {
   let observer;
   const isSupported = window && "ResizeObserver" in window;
@@ -137,4 +125,4 @@ function useToggle(initial) {
   };
   return [res, toggle, setShow];
 }
-export { onClickOutside, useAttrs, useClickAwayFixIOS, useEventListener, useInjectProp, useResizeObserver, useToggle };
+export { onClickOutside, useAttrs, useEventListener, useInjectProp, useResizeObserver, useToggle };

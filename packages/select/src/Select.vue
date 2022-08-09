@@ -129,10 +129,6 @@ export default defineComponent({
       type: [Number, String],
       default: 235,
     },
-    // remote: {
-    //   type: Boolean,
-    //   default: false,
-    // },
     isLoading: {
       type: Boolean,
       default: false,

@@ -38,6 +38,7 @@ export default function useSelect(userProps: UserProps, ctx: SetupContext) {
   const tempArr = shallowReactive<number[]>([])
   const tempMap = shallowReactive<Record<string, Option>>({})
   const inputFocused = ref(false)
+  // 记录 select 组件的状态
   const selectState = reactive({
     label: '',
     remote: filterable.value,
@@ -51,6 +52,7 @@ export default function useSelect(userProps: UserProps, ctx: SetupContext) {
     innerChange: false,
     indeed: true,
   })
+  // 动画的id
   const measureAFId = ref(0)
   const mutateAFId = ref(0)
   const pendingCacheUpdate = shallowReactive({
@@ -233,6 +235,7 @@ export default function useSelect(userProps: UserProps, ctx: SetupContext) {
     }
     if (!focusedEl) return
     // 按键变化焦点
+    // 控制某一项已经 active 但没有选中时，滑动窗口 仍然保持该元素 active
     measureAFId.value = requestAnimationFrame(() => {
       // measure
       const dropdown = unref(dropdownEl) as HTMLElement
