@@ -1,5 +1,11 @@
 # @apathia/apathia.alert
 
+## 0.0.9
+
+### Patch Changes
+
+- fix alert
+
 ## 0.0.8
 
 ### Patch Changes

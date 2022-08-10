@@ -1,7 +1,6 @@
-# Form, FormItem
+# Form 表单
 
-表单
-表单和表单项
+表单主要提供统一的格式和表单的布局，可以通过设置表单的属性，统一表单内元素的样式
 
 ## 基础用法
 
@@ -43,7 +42,7 @@ Form组件可以设置一些属性，这些属性会影响到Form组件下所有
 `FormItem` 的 `labelWidth`, `inline`, `labelPosition`可以覆盖`Form`的配置
 
 ::: tip
-如果在 `Form` 上设置了 `disabled = true`属性，使用 `Form`下面的所有 helm-ui表单（如Input, Checkbox)都会被disabled， 除非你在 表单组件上再传一个 disabled
+如果在 `Form` 上设置了 `disabled = true`属性，使用 `Form`下面的所有 apathia 表单（如Input, Checkbox)都会被disabled， 除非你在 表单组件上设置disabled 属性，默认表单组件的 `props` 优先级高于 `form`
 :::
 
 ```html
@@ -53,7 +52,7 @@ Form组件可以设置一些属性，这些属性会影响到Form组件下所有
   </FormItem>
 
   <FormItem>
-    <NumberInput /> <!-- will be disabled -->
+    <Input /> <!-- will be disabled -->
   </FormItem>
 </Form>
 ```

@@ -38,7 +38,7 @@ var BaseAlert = defineComponent({
     },
     showClose: {
       type: Boolean,
-      default: true
+      default: false
     },
     render: {
       type: Function
@@ -77,7 +77,7 @@ var BaseAlert = defineComponent({
     }, [createVNode(Icon, {
       "name": iconClass
     }, null)]) : null;
-    const renderDelIcon = props.duration === 0 && props.showClose ? createVNode("span", {
+    const renderDelIcon = props.duration === 0 || props.showClose ? createVNode("span", {
       "class": delIcon,
       "onClick": close
     }, [createTextVNode("\u2715")]) : null;

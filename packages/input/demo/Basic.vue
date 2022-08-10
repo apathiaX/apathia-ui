@@ -1,5 +1,5 @@
 <template>
-  <Input v-model="value" />
+  <Input v-model="value" placeholder="please input" />
 </template>
 
 <script>

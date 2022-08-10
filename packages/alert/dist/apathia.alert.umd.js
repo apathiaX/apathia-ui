@@ -38,7 +38,7 @@
       },
       showClose: {
         type: Boolean,
-        default: true
+        default: false
       },
       render: {
         type: Function
@@ -77,7 +77,7 @@
       }, [vue.createVNode(apathia_icon.Icon, {
         "name": iconClass
       }, null)]) : null;
-      const renderDelIcon = props.duration === 0 && props.showClose ? vue.createVNode("span", {
+      const renderDelIcon = props.duration === 0 || props.showClose ? vue.createVNode("span", {
         "class": delIcon,
         "onClick": close
       }, [vue.createTextVNode("\u2715")]) : null;

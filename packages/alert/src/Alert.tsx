@@ -45,7 +45,7 @@ export default defineComponent({
     },
     showClose: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     render: {
       type: Function as PropType<
@@ -92,7 +92,7 @@ export default defineComponent({
         </div>
       ) : null
     const renderDelIcon =
-      props.duration === 0 && props.showClose ? (
+      props.duration === 0 ||  props.showClose ? (
         <span class={delIcon} onClick={close}>
           ✕
         </span>

@@ -1,5 +1,15 @@
 # @apathia/apathia
 
+## 0.0.12
+
+### Patch Changes
+
+- fix alert
+- Updated dependencies
+  - @apathia/apathia.alert@0.0.9
+  - @apathia/apathia.input@0.0.9
+  - @apathia/apathia.upload@0.0.9
+
 ## 0.0.11
 
 ### Patch Changes
