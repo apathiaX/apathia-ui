@@ -72,9 +72,7 @@ import {
   provide,
   toRefs,
 } from 'vue'
-// @ts-ignore
 import { style, css } from '@apathia/apathia.twind'
-// @ts-ignore
 import { Loading } from '@apathia/apathia.loading'
 import TableHeader from './TableHeader.vue'
 import TableBody from './TableBody.vue'
@@ -94,7 +92,6 @@ import type {
 } from './types'
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-let id = 0
 export default defineComponent({
   name: 'Table',
 
@@ -266,18 +263,12 @@ export default defineComponent({
 
   setup(props, ctx) {
     const styles = getStyles()
-    // const tableData = ref<unknown[]>([])
 
     const currentId = computed(() =>
       props.currentSelected
         ? props.currentSelected[props.rowKey]
         : props.current,
     )
-
-    // TODO: remove?? 用来处理colgroup
-    id += 1
-    const instanceId = id
-    provide('tableId', instanceId)
 
     // 多选
     const { data, selected, selectedKeys, rowKey, columns } = toRefs(props)
@@ -297,7 +288,6 @@ export default defineComponent({
 
     provide('TableMultiSelected', tableMultiSelected)
 
-    // TODO? 要不要均分？如果是在一个table元素里，似乎不需要colgroup？
     const { containerRef, realColumns } = useTableColumns(props)
     const fixedHeader = computed(() => props.height !== 0)
 

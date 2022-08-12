@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.shared",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "description": "shared",
   "author": "",
   "homepage": "",
@@ -35,7 +35,7 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.twind": "workspace:^0.0.7",
+    "@apathia/apathia.twind": "workspace:^1.0.0",
     "lodash": "^4.17.21"
   }
 }

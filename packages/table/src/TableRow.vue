@@ -25,14 +25,6 @@
             col.disabledWhen ? !!col.disabledWhen({ row, rowIndex }) : false
           "
         />
-
-        <!-- iconfont -->
-        <!-- <span
-          v-else-if="col.type === 'expand' && expandable"
-          :class="expandActive ? 'v-icon-minus' : 'v-icon-plus'"
-          @click="toggleExpand"
-        ></span> -->
-
         <Icon
           v-else-if="col.type === 'expand' && expandable"
           :name="['fa', expandActive ? 'minus' : 'plus']"

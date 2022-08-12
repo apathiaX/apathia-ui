@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia",
-  "version": "0.0.13",
+  "version": "1.0.0",
   "description": "apathia",
   "author": "",
   "homepage": "",
@@ -36,22 +36,23 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.alert": "workspace:^0.0.10",
-    "@apathia/apathia.button": "workspace:^0.0.9",
-    "@apathia/apathia.checkbox": "workspace:^0.0.9",
-    "@apathia/apathia.collapse": "workspace:^0.0.9",
-    "@apathia/apathia.confirm": "workspace:^0.0.9",
-    "@apathia/apathia.custom-render": "workspace:^0.0.7",
-    "@apathia/apathia.form": "workspace:^0.0.9",
-    "@apathia/apathia.hooks": "workspace:^0.0.9",
-    "@apathia/apathia.icon": "workspace:^0.0.7",
-    "@apathia/apathia.input": "workspace:^0.0.10",
-    "@apathia/apathia.loading": "workspace:^0.0.7",
-    "@apathia/apathia.modal": "workspace:^0.0.9",
-    "@apathia/apathia.radio": "workspace:^0.0.9",
-    "@apathia/apathia.select": "workspace:^0.0.9",
-    "@apathia/apathia.table": "workspace:^0.0.9",
-    "@apathia/apathia.twind": "workspace:^0.0.7",
-    "@apathia/apathia.upload": "workspace:^0.0.10"
+    "@apathia/apathia.alert": "workspace:^1.0.0",
+    "@apathia/apathia.button": "workspace:^1.0.0",
+    "@apathia/apathia.checkbox": "workspace:^1.0.0",
+    "@apathia/apathia.collapse": "workspace:^1.0.0",
+    "@apathia/apathia.confirm": "workspace:^1.0.0",
+    "@apathia/apathia.custom-render": "workspace:^1.0.0",
+    "@apathia/apathia.form": "workspace:^1.0.0",
+    "@apathia/apathia.hooks": "workspace:^1.0.0",
+    "@apathia/apathia.icon": "workspace:^1.0.0",
+    "@apathia/apathia.input": "workspace:^1.0.0",
+    "@apathia/apathia.loading": "workspace:^1.0.0",
+    "@apathia/apathia.modal": "workspace:^1.0.0",
+    "@apathia/apathia.pagination": "workspace:^1.0.0",
+    "@apathia/apathia.radio": "workspace:^1.0.0",
+    "@apathia/apathia.select": "workspace:^1.0.0",
+    "@apathia/apathia.table": "workspace:^1.0.0",
+    "@apathia/apathia.twind": "workspace:^1.0.0",
+    "@apathia/apathia.upload": "workspace:^1.0.0"
   }
 }

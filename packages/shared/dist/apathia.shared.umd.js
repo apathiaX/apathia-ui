@@ -312,6 +312,19 @@
       isRoot
     };
   }
+  function mergeWithDefault(defaultValue, source) {
+    if (source === void 0) {
+      return defaultValue;
+    }
+    return Object.keys(defaultValue).reduce((acc, key) => {
+      if (source[key] !== void 0) {
+        acc[key] = lodash.cloneDeep(source[key]);
+      } else {
+        acc[key] = defaultValue[key];
+      }
+      return acc;
+    }, {});
+  }
   function noop() {
   }
   exports2.autoPos = autoPos;
@@ -321,6 +334,7 @@
   exports2.isPromise = isPromise;
   exports2.isString = isString;
   exports2.isSymbol = isSymbol;
+  exports2.mergeWithDefault = mergeWithDefault;
   exports2.mountComponent = mountComponent;
   exports2.mountContainerDom = mountContainerDom;
   exports2.noop = noop;

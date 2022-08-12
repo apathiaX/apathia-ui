@@ -86,19 +86,13 @@ export default defineComponent({
 
 const genDemoTemplate = name =>
   `<template>
-  <div>
-    <Card title="基础用法">
-      <${name} />
-    </Card>
-
-    <Card title="其他用法">
-      <${name} />
-    </Card>
-  </div>
+  <ClientOnly>
+    <${name} />
+  </ClientOnly>
 </template>
 
 <script setup>
-import { ${name} } from '@apathia/apathia'
+
 </script>
 
 `
@@ -193,15 +187,9 @@ import { ${name} } from '@apathia/apathia'
       },
     )
 
-    // set env
+    // 创建 demo
     fs.writeFileSync(
-      path.resolve(__dirname, '../example/src/env.js'),
-      `export const CURRENT_COMPONENT = '${componentName}'\n`,
-    )
-
-    // 创建 example demo
-    fs.writeFileSync(
-      path.resolve(__dirname, `../example/src/pages/${componentName}Demo.vue`),
+      resolvePath('demo/Basic.vue'),
       genDemoTemplate(componentName),
     )
 

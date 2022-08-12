@@ -1,1 +1,1 @@
-export const CURRENT_COMPONENT = 'Collapse'
+export const CURRENT_COMPONENT = 'Pagination'

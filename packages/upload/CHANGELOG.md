@@ -1,5 +1,36 @@
 # @apathia/apathia.upload
 
+## 1.0.0
+
+### Major Changes
+
+- add pagination
+
+### Patch Changes
+
+- Updated dependencies
+  - @apathia/apathia.alert@1.0.0
+  - @apathia/apathia.button@1.0.0
+  - @apathia/apathia.hooks@1.0.0
+  - @apathia/apathia.icon@1.0.0
+  - @apathia/apathia.input@1.0.0
+  - @apathia/apathia.shared@1.0.0
+  - @apathia/apathia.twind@1.0.0
+
+## 0.0.11
+
+### Patch Changes
+
+- add table
+- Updated dependencies
+  - @apathia/apathia.alert@0.0.11
+  - @apathia/apathia.button@0.0.10
+  - @apathia/apathia.hooks@0.0.10
+  - @apathia/apathia.icon@0.0.8
+  - @apathia/apathia.input@0.0.11
+  - @apathia/apathia.shared@0.0.10
+  - @apathia/apathia.twind@0.0.8
+
 ## 0.0.10
 
 ### Patch Changes

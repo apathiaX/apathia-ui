@@ -1,6 +1,6 @@
 import { render, unref } from "vue";
 import { style } from "@apathia/apathia.twind";
-import { throttle } from "lodash";
+import { throttle, cloneDeep } from "lodash";
 const isFunction = (val) => typeof val === "function";
 const isNumber = (val) => typeof val === "number";
 const isString = (val) => typeof val === "string";
@@ -311,6 +311,19 @@ function resolvePosition(el, isRoot, clientSize, parentElRect, currentElSize) {
     isRoot
   };
 }
+function mergeWithDefault(defaultValue, source) {
+  if (source === void 0) {
+    return defaultValue;
+  }
+  return Object.keys(defaultValue).reduce((acc, key) => {
+    if (source[key] !== void 0) {
+      acc[key] = cloneDeep(source[key]);
+    } else {
+      acc[key] = defaultValue[key];
+    }
+    return acc;
+  }, {});
+}
 function noop() {
 }
-export { autoPos, isFunction, isNumber, isObject, isPromise, isString, isSymbol, mountComponent, mountContainerDom, noop, promiseWrapper, raf, request, unrefElement };
+export { autoPos, isFunction, isNumber, isObject, isPromise, isString, isSymbol, mergeWithDefault, mountComponent, mountContainerDom, noop, promiseWrapper, raf, request, unrefElement };

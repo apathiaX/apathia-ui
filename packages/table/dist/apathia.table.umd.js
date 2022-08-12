@@ -805,7 +805,6 @@
     ]);
   }
   var ColGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
-  let id = 0;
   const _sfc_main = vue.defineComponent({
     name: "Table",
     components: {
@@ -930,9 +929,6 @@
       const currentId = vue.computed(
         () => props.currentSelected ? props.currentSelected[props.rowKey] : props.current
       );
-      id += 1;
-      const instanceId = id;
-      vue.provide("tableId", instanceId);
       const { data, selected, selectedKeys, rowKey, columns } = vue.toRefs(props);
       const tableMultiSelected = useTableSelected(
         data,

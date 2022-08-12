@@ -1,4 +1,4 @@
-import { defineComponent, computed, resolveComponent, openBlock, createElementBlock, normalizeClass, createElementVNode, createVNode, inject, normalizeStyle, Fragment, renderList, createBlock, toDisplayString, createCommentVNode, ref, mergeProps, withCtx, createTextVNode, Transition, onMounted, onUpdated, watch, provide, toRefs, renderSlot, shallowRef, unref } from "vue";
+import { defineComponent, computed, resolveComponent, openBlock, createElementBlock, normalizeClass, createElementVNode, createVNode, inject, normalizeStyle, Fragment, renderList, createBlock, toDisplayString, createCommentVNode, ref, mergeProps, withCtx, createTextVNode, Transition, onMounted, onUpdated, watch, toRefs, provide, renderSlot, shallowRef, unref } from "vue";
 import { style, css, apply } from "@apathia/apathia.twind";
 import { Loading } from "@apathia/apathia.loading";
 import { CustomRender } from "@apathia/apathia.custom-render";
@@ -810,7 +810,6 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   ]);
 }
 var ColGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
-let id = 0;
 const _sfc_main = defineComponent({
   name: "Table",
   components: {
@@ -935,9 +934,6 @@ const _sfc_main = defineComponent({
     const currentId = computed(
       () => props.currentSelected ? props.currentSelected[props.rowKey] : props.current
     );
-    id += 1;
-    const instanceId = id;
-    provide("tableId", instanceId);
     const { data, selected, selectedKeys, rowKey, columns } = toRefs(props);
     const tableMultiSelected = useTableSelected(
       data,

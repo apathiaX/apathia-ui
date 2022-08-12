@@ -1,5 +1,57 @@
 # @apathia/apathia
 
+## 1.0.0
+
+### Major Changes
+
+- add pagination
+
+### Patch Changes
+
+- Updated dependencies
+  - @apathia/apathia.alert@1.0.0
+  - @apathia/apathia.button@1.0.0
+  - @apathia/apathia.checkbox@1.0.0
+  - @apathia/apathia.collapse@1.0.0
+  - @apathia/apathia.confirm@1.0.0
+  - @apathia/apathia.custom-render@1.0.0
+  - @apathia/apathia.form@1.0.0
+  - @apathia/apathia.hooks@1.0.0
+  - @apathia/apathia.icon@1.0.0
+  - @apathia/apathia.input@1.0.0
+  - @apathia/apathia.loading@1.0.0
+  - @apathia/apathia.modal@1.0.0
+  - @apathia/apathia.radio@1.0.0
+  - @apathia/apathia.select@1.0.0
+  - @apathia/apathia.table@1.0.0
+  - @apathia/apathia.twind@1.0.0
+  - @apathia/apathia.upload@1.0.0
+  - @apathia/apathia.pagination@1.0.0
+
+## 0.0.14
+
+### Patch Changes
+
+- add table
+- Updated dependencies
+  - @apathia/apathia.alert@0.0.11
+  - @apathia/apathia.button@0.0.10
+  - @apathia/apathia.checkbox@0.0.10
+  - @apathia/apathia.collapse@0.0.10
+  - @apathia/apathia.confirm@0.0.10
+  - @apathia/apathia.custom-render@0.0.8
+  - @apathia/apathia.form@0.0.10
+  - @apathia/apathia.hooks@0.0.10
+  - @apathia/apathia.icon@0.0.8
+  - @apathia/apathia.input@0.0.11
+  - @apathia/apathia.loading@0.0.8
+  - @apathia/apathia.modal@0.0.10
+  - @apathia/apathia.radio@0.0.10
+  - @apathia/apathia.select@0.0.10
+  - @apathia/apathia.table@0.0.10
+  - @apathia/apathia.twind@0.0.8
+  - @apathia/apathia.upload@0.0.11
+
 ## 0.0.13
 
 ### Patch Changes

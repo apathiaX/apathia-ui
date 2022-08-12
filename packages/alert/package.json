@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.alert",
-  "version": "0.0.10",
+  "version": "1.0.0",
   "description": "alert",
   "author": "xzc01",
   "homepage": "",
@@ -33,9 +33,9 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.custom-render": "workspace:^0.0.7",
-    "@apathia/apathia.icon": "workspace:^0.0.7",
-    "@apathia/apathia.shared": "workspace:^0.0.9",
-    "@apathia/apathia.twind": "workspace:^0.0.7"
+    "@apathia/apathia.custom-render": "workspace:^1.0.0",
+    "@apathia/apathia.icon": "workspace:^1.0.0",
+    "@apathia/apathia.shared": "workspace:^1.0.0",
+    "@apathia/apathia.twind": "workspace:^1.0.0"
   }
 }

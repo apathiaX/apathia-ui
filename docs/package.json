@@ -7,7 +7,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@apathia/apathia.twind": "workspace:^0.0.6",
+    "@apathia/apathia.twind": "workspace:^0.0.8",
     "@apathia/vitepress-theme": "^0.0.2",
     "vitepress": "^0.22.3"
   }

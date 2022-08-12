@@ -1,6 +1,8 @@
 import type { CSSProperties } from 'vue';
 import type { RenderCustom, RenderFn } from '@apathia/apathia.custom-render';
-export declare type DataItem = Record<string, unknown>;
+export declare type DataItem = Record<string, unknown> & {
+    [rowKey: string]: string | number;
+};
 export interface Button {
     text: string;
     className?: string;
