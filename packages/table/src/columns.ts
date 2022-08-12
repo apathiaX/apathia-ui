@@ -2,15 +2,15 @@ import { ref, onMounted, watch, onUpdated, Ref } from 'vue'
 import { useEventListener } from '@apathia/apathia.hooks'
 import type { Column } from './types'
 
-// interface RealColumns {
-//   realColumns: Ref<Column[]>
-//   containerRef: Ref<HTMLElement | null>
-// }
+interface RealColumns {
+  realColumns: Ref<Column[]>
+  containerRef: Ref<HTMLElement | null>
+}
 
 export function useTableColumns(props: {
   columns: Column[]
   [x: string]: unknown
-}) {
+}): RealColumns {
   const tableWidth = ref(0)
   const containerRef = ref<HTMLElement | null>(null)
 

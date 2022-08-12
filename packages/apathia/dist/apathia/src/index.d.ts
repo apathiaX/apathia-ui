@@ -14,3 +14,4 @@ export * from '@apathia/apathia.checkbox';
 export * from '@apathia/apathia.loading';
 export * from '@apathia/apathia.hooks';
 export * from '@apathia/apathia.collapse';
+export * from '@apathia/apathia.table';
