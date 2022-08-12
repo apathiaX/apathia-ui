@@ -59,9 +59,9 @@
     }
   }
   function unrefElement(elRef) {
-    var _a;
+    var _a, _b;
     const plain = vue.unref(elRef);
-    return (_a = plain === null || plain === void 0 ? void 0 : plain.$el) !== null && _a !== void 0 ? _a : plain;
+    return (_b = (_a = plain) === null || _a === void 0 ? void 0 : _a.$el) !== null && _b !== void 0 ? _b : plain;
   }
   function getError(method, url, xhr) {
     let msg;

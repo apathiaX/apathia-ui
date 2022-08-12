@@ -136,14 +136,10 @@ export default defineComponent({
           if (colSpan === 0) return null
 
           if ('sortable' in column && column.sortable && !column.prop) {
-            // issue https://github.com/vitejs/vite/issues/3229
-            // TODO
-            if (process.env.NODE_ENV !== 'production') {
-              console.warn(
-                '[Table] 如果有排序，必须在prop字段中声明排序使用的字段',
-              )
-              return null
-            }
+            console.warn(
+              '[Table] 如果有排序，必须在prop字段中声明排序使用的字段',
+            )
+            return null
           }
 
           const cellClassNames = props.headerCellClassName?.({ colIndex }) || ''

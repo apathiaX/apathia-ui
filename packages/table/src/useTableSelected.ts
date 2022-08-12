@@ -32,6 +32,7 @@ export function useTableSelected(
     return data.value
       .filter((item, index) =>
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        // 由于selectedWhen 是可选的 所以加上！可以使用，如果没有传不会报错
         selectionColumn.disabledWhen!({ row: item, rowIndex: index }),
       )
       .reduce((map, item) => {

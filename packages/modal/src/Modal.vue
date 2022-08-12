@@ -6,13 +6,15 @@
           <div ref="shadeRef" :class="shadeClass">
             <div ref="modalRef" :style="widthStyle" :class="modalClass">
               <div :class="modalHeaderClass">
-                <div>
-                  <p :class="titleClass">{{ title }}</p>
-                  <p v-if="subTitle" :class="subTitleClass">{{ subTitle }}</p>
-                </div>
-                <span v-if="showClose" :class="delIconClass" @click="close"
-                  >✕</span
-                >
+                <slot name="header" :close="close">
+                  <div>
+                    <p :class="titleClass">{{ title }}</p>
+                    <p v-if="subTitle" :class="subTitleClass">{{ subTitle }}</p>
+                  </div>
+                  <span v-if="showClose" :class="delIconClass" @click="close"
+                    >✕</span
+                  >
+                </slot>
               </div>
               <div :class="modalContentClass">
                 <slot :close="close"></slot>
@@ -26,7 +28,8 @@
   <template v-else>
     <div v-show="modelValue" ref="shadeRef" :class="shadeClass">
       <div ref="modalRef" :style="widthStyle" :class="modalClass">
-        <div :class="modalHeaderClass">
+        <CustomRender v-if="renderHeader" :render="renderHeader" />
+        <div v-else :class="modalHeaderClass">
           <div>
             <p :class="titleClass">{{ title }}</p>
             <p v-if="subTitle" :class="subTitleClass">{{ subTitle }}</p>
@@ -73,6 +76,10 @@ export default defineComponent({
       default: '',
     },
     render: {
+      type: [String, Function] as PropType<RenderCustom>,
+      default: () => null,
+    },
+    renderHeader: {
       type: [String, Function] as PropType<RenderCustom>,
       default: () => null,
     },

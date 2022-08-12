@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script>
+<script lang="jsx">
 import { defineComponent, getCurrentInstance, h } from 'vue'
 
 export default defineComponent({
@@ -20,6 +20,9 @@ export default defineComponent({
             'div',
             '一个人的时候，怎么过？就算再难以承受，其实到最后我们总能走得过来。',
           ),
+        renderHeader: () => {
+          return h('div', '函数自定义表头')
+        },
       })
     }
     return {

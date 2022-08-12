@@ -134,6 +134,10 @@
         type: [String, Function],
         default: () => null
       },
+      renderHeader: {
+        type: [String, Function],
+        default: () => null
+      },
       top: {
         type: [Number, String],
         default: 60
@@ -251,20 +255,22 @@
                 vue.createElementVNode("div", {
                   class: vue.normalizeClass(_ctx.modalHeaderClass)
                 }, [
-                  vue.createElementVNode("div", null, [
-                    vue.createElementVNode("p", {
-                      class: vue.normalizeClass(_ctx.titleClass)
-                    }, vue.toDisplayString(_ctx.title), 3),
-                    _ctx.subTitle ? (vue.openBlock(), vue.createElementBlock("p", {
+                  vue.renderSlot(_ctx.$slots, "header", { close: _ctx.close }, () => [
+                    vue.createElementVNode("div", null, [
+                      vue.createElementVNode("p", {
+                        class: vue.normalizeClass(_ctx.titleClass)
+                      }, vue.toDisplayString(_ctx.title), 3),
+                      _ctx.subTitle ? (vue.openBlock(), vue.createElementBlock("p", {
+                        key: 0,
+                        class: vue.normalizeClass(_ctx.subTitleClass)
+                      }, vue.toDisplayString(_ctx.subTitle), 3)) : vue.createCommentVNode("", true)
+                    ]),
+                    _ctx.showClose ? (vue.openBlock(), vue.createElementBlock("span", {
                       key: 0,
-                      class: vue.normalizeClass(_ctx.subTitleClass)
-                    }, vue.toDisplayString(_ctx.subTitle), 3)) : vue.createCommentVNode("", true)
-                  ]),
-                  _ctx.showClose ? (vue.openBlock(), vue.createElementBlock("span", {
-                    key: 0,
-                    class: vue.normalizeClass(_ctx.delIconClass),
-                    onClick: _cache[0] || (_cache[0] = (...args) => _ctx.close && _ctx.close(...args))
-                  }, "\u2715", 2)) : vue.createCommentVNode("", true)
+                      class: vue.normalizeClass(_ctx.delIconClass),
+                      onClick: _cache[0] || (_cache[0] = (...args) => _ctx.close && _ctx.close(...args))
+                    }, "\u2715", 2)) : vue.createCommentVNode("", true)
+                  ])
                 ], 2),
                 vue.createElementVNode("div", {
                   class: vue.normalizeClass(_ctx.modalContentClass)
@@ -287,7 +293,11 @@
         style: vue.normalizeStyle(_ctx.widthStyle),
         class: vue.normalizeClass(_ctx.modalClass)
       }, [
-        vue.createElementVNode("div", {
+        _ctx.renderHeader ? (vue.openBlock(), vue.createBlock(_component_CustomRender, {
+          key: 0,
+          render: _ctx.renderHeader
+        }, null, 8, ["render"])) : (vue.openBlock(), vue.createElementBlock("div", {
+          key: 1,
           class: vue.normalizeClass(_ctx.modalHeaderClass)
         }, [
           vue.createElementVNode("div", null, [
@@ -304,7 +314,7 @@
             class: vue.normalizeClass(_ctx.delIconClass),
             onClick: _cache[1] || (_cache[1] = (...args) => _ctx.close && _ctx.close(...args))
           }, "\u2715", 2)) : vue.createCommentVNode("", true)
-        ], 2),
+        ], 2)),
         vue.createElementVNode("div", {
           class: vue.normalizeClass(_ctx.modalContentClass)
         }, [

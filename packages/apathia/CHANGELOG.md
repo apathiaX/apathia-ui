@@ -1,5 +1,28 @@
 # @apathia/apathia
 
+## 0.0.13
+
+### Patch Changes
+
+- add modal head
+- Updated dependencies
+  - @apathia/apathia.modal@0.0.9
+  - @apathia/apathia.alert@0.0.10
+  - @apathia/apathia.button@0.0.9
+  - @apathia/apathia.checkbox@0.0.9
+  - @apathia/apathia.collapse@0.0.9
+  - @apathia/apathia.confirm@0.0.9
+  - @apathia/apathia.custom-render@0.0.7
+  - @apathia/apathia.form@0.0.9
+  - @apathia/apathia.hooks@0.0.9
+  - @apathia/apathia.icon@0.0.7
+  - @apathia/apathia.input@0.0.10
+  - @apathia/apathia.loading@0.0.7
+  - @apathia/apathia.radio@0.0.9
+  - @apathia/apathia.select@0.0.9
+  - @apathia/apathia.twind@0.0.7
+  - @apathia/apathia.upload@0.0.10
+
 ## 0.0.12
 
 ### Patch Changes

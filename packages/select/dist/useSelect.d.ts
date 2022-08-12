@@ -38,7 +38,7 @@ export default function useSelect(userProps: UserProps, ctx: SetupContext): {
     register: (disabledOption: boolean, uid: number, value: ValueType, labelStr: string) => void;
     unregister: (uid: number) => void;
     updateRegister: (disabledVal: boolean, uid: number, value: ValueType, labelStr: string) => void;
-    focus: (uid: number, focusedEl?: HTMLElement) => void;
+    focus: (uid: number, focusedEl?: HTMLElement | undefined) => void;
     clear: () => void;
     isSameValue: (newVal: ValueType, oldVal: ValueType) => boolean;
     keyHandler: (event: KeyboardEvent) => void;

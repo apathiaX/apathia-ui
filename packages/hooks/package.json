@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.hooks",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "hooks",
   "author": "",
   "homepage": "",
@@ -33,6 +33,6 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.shared": "workspace:^0.0.8"
+    "@apathia/apathia.shared": "workspace:^0.0.9"
   }
 }

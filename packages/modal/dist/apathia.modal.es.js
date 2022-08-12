@@ -1,4 +1,4 @@
-import { ref, watch, nextTick, defineComponent, resolveComponent, openBlock, createBlock, Teleport, createVNode, Transition, mergeProps, withCtx, createElementBlock, normalizeClass, createElementVNode, normalizeStyle, toDisplayString, createCommentVNode, renderSlot, withDirectives, vShow, h, TransitionGroup, inject } from "vue";
+import { ref, watch, nextTick, defineComponent, resolveComponent, openBlock, createBlock, Teleport, createVNode, Transition, mergeProps, withCtx, createElementBlock, normalizeClass, createElementVNode, normalizeStyle, renderSlot, toDisplayString, createCommentVNode, withDirectives, vShow, h, TransitionGroup, inject } from "vue";
 import { keyframes, css, style, tw } from "@apathia/apathia.twind";
 import { CustomRender } from "@apathia/apathia.custom-render";
 import { useEventListener, onClickOutside } from "@apathia/apathia.hooks";
@@ -135,6 +135,10 @@ const _sfc_main = defineComponent({
       type: [String, Function],
       default: () => null
     },
+    renderHeader: {
+      type: [String, Function],
+      default: () => null
+    },
     top: {
       type: [Number, String],
       default: 60
@@ -252,20 +256,22 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               createElementVNode("div", {
                 class: normalizeClass(_ctx.modalHeaderClass)
               }, [
-                createElementVNode("div", null, [
-                  createElementVNode("p", {
-                    class: normalizeClass(_ctx.titleClass)
-                  }, toDisplayString(_ctx.title), 3),
-                  _ctx.subTitle ? (openBlock(), createElementBlock("p", {
+                renderSlot(_ctx.$slots, "header", { close: _ctx.close }, () => [
+                  createElementVNode("div", null, [
+                    createElementVNode("p", {
+                      class: normalizeClass(_ctx.titleClass)
+                    }, toDisplayString(_ctx.title), 3),
+                    _ctx.subTitle ? (openBlock(), createElementBlock("p", {
+                      key: 0,
+                      class: normalizeClass(_ctx.subTitleClass)
+                    }, toDisplayString(_ctx.subTitle), 3)) : createCommentVNode("", true)
+                  ]),
+                  _ctx.showClose ? (openBlock(), createElementBlock("span", {
                     key: 0,
-                    class: normalizeClass(_ctx.subTitleClass)
-                  }, toDisplayString(_ctx.subTitle), 3)) : createCommentVNode("", true)
-                ]),
-                _ctx.showClose ? (openBlock(), createElementBlock("span", {
-                  key: 0,
-                  class: normalizeClass(_ctx.delIconClass),
-                  onClick: _cache[0] || (_cache[0] = (...args) => _ctx.close && _ctx.close(...args))
-                }, "\u2715", 2)) : createCommentVNode("", true)
+                    class: normalizeClass(_ctx.delIconClass),
+                    onClick: _cache[0] || (_cache[0] = (...args) => _ctx.close && _ctx.close(...args))
+                  }, "\u2715", 2)) : createCommentVNode("", true)
+                ])
               ], 2),
               createElementVNode("div", {
                 class: normalizeClass(_ctx.modalContentClass)
@@ -288,7 +294,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       style: normalizeStyle(_ctx.widthStyle),
       class: normalizeClass(_ctx.modalClass)
     }, [
-      createElementVNode("div", {
+      _ctx.renderHeader ? (openBlock(), createBlock(_component_CustomRender, {
+        key: 0,
+        render: _ctx.renderHeader
+      }, null, 8, ["render"])) : (openBlock(), createElementBlock("div", {
+        key: 1,
         class: normalizeClass(_ctx.modalHeaderClass)
       }, [
         createElementVNode("div", null, [
@@ -305,7 +315,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           class: normalizeClass(_ctx.delIconClass),
           onClick: _cache[1] || (_cache[1] = (...args) => _ctx.close && _ctx.close(...args))
         }, "\u2715", 2)) : createCommentVNode("", true)
-      ], 2),
+      ], 2)),
       createElementVNode("div", {
         class: normalizeClass(_ctx.modalContentClass)
       }, [

@@ -1,5 +1,13 @@
 # @apathia/apathia.hooks
 
+## 0.0.9
+
+### Patch Changes
+
+- add modal head
+- Updated dependencies
+  - @apathia/apathia.shared@0.0.9
+
 ## 0.0.8
 
 ### Patch Changes

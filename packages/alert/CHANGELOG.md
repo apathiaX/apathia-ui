@@ -1,5 +1,16 @@
 # @apathia/apathia.alert
 
+## 0.0.10
+
+### Patch Changes
+
+- add modal head
+- Updated dependencies
+  - @apathia/apathia.custom-render@0.0.7
+  - @apathia/apathia.icon@0.0.7
+  - @apathia/apathia.shared@0.0.9
+  - @apathia/apathia.twind@0.0.7
+
 ## 0.0.9
 
 ### Patch Changes

@@ -1,5 +1,16 @@
 # @apathia/apathia.collapse
 
+## 0.0.9
+
+### Patch Changes
+
+- add modal head
+- Updated dependencies
+  - @apathia/apathia.hooks@0.0.9
+  - @apathia/apathia.icon@0.0.7
+  - @apathia/apathia.shared@0.0.9
+  - @apathia/apathia.twind@0.0.7
+
 ## 0.0.8
 
 ### Patch Changes

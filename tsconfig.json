@@ -17,5 +17,5 @@
     "packages/**/*",
     "types",
   ],
-  "exclude": ["dist", "node_modules", "table"]
+  "exclude": ["dist", "node_modules"]
 }

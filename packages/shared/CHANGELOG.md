@@ -1,5 +1,13 @@
 # @apathia/apathia.shared
 
+## 0.0.9
+
+### Patch Changes
+
+- add modal head
+- Updated dependencies
+  - @apathia/apathia.twind@0.0.7
+
 ## 0.0.8
 
 ### Patch Changes
