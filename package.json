@@ -9,8 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "pnpm build:core",
-    "build:core": "pnpm -r --filter !@apathia/apathia.example --filter !@apathia/vitepress-theme --filter @apathia/apathia* exec vite build -c ../../build/vite.build.js",
-    "build:style": "pnpm --filter @apathia/apathia exec vite build -c ../../build/vite.style.js",
+    "build:core": "pnpm -r --filter !@apathia/apathia.example --filter @apathia/apathia* exec vite build -c ../../build/vite.build.js",
     "clear": "rimraf 'packages/*/{lib,node_modules}' && rimraf node_modules",
     "createNew": "node scripts/create.js",
     "changeset": "changeset",
@@ -37,7 +36,7 @@
     "typescript",
     "component"
   ],
-  "author": "xzc",
+  "author": "xzc01",
   "license": "ISC",
   "devDependencies": {
     "@changesets/cli": "^2.24.1",

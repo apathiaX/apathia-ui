@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.modal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "modal",
   "author": "",
   "homepage": "",
@@ -33,10 +33,10 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.custom-render": "workspace:^1.0.0",
-    "@apathia/apathia.hooks": "workspace:^1.0.0",
-    "@apathia/apathia.shared": "workspace:^1.0.0",
-    "@apathia/apathia.twind": "workspace:^1.0.0",
+    "@apathia/apathia.custom-render": "workspace:^1.0.1",
+    "@apathia/apathia.hooks": "workspace:^1.0.1",
+    "@apathia/apathia.shared": "workspace:^1.0.1",
+    "@apathia/apathia.twind": "workspace:^1.0.1",
     "lodash": "^4.17.21"
   }
 }

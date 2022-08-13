@@ -1,5 +1,19 @@
 # @apathia1/apathia.table
 
+## 1.0.1
+
+### Patch Changes
+
+- fix table select
+- Updated dependencies
+  - @apathia/apathia.button@1.0.1
+  - @apathia/apathia.checkbox@1.0.1
+  - @apathia/apathia.custom-render@1.0.1
+  - @apathia/apathia.hooks@1.0.1
+  - @apathia/apathia.icon@1.0.1
+  - @apathia/apathia.loading@1.0.1
+  - @apathia/apathia.twind@1.0.1
+
 ## 1.0.0
 
 ### Major Changes

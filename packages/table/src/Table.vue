@@ -184,21 +184,12 @@ export default defineComponent({
       type: Number,
     },
 
-    pagination: {
-      type: Object as PropType<Pagination>,
-      default: () => ({}),
-    },
-
     /* -- UI trigger -- */
     showHeader: {
       type: Boolean,
       default: true,
     },
     showData: {
-      type: Boolean,
-      default: true,
-    },
-    showPagination: {
       type: Boolean,
       default: true,
     },

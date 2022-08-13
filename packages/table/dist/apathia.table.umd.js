@@ -136,7 +136,8 @@
       const styles = getStyles$2();
       const {
         allSelected,
-        toggleAllSelected
+        toggleAllSelected,
+        selectedMap
       } = vue.inject("TableMultiSelected");
       const handleColumnSortChange = ({
         prop,
@@ -149,6 +150,9 @@
       };
       const headerRowClasses = ((_a = props.headerRowClassName) === null || _a === void 0 ? void 0 : _a.call(props)) || "";
       const headerRowStyles = (_b = props.headerRowStyle) === null || _b === void 0 ? void 0 : _b.call(props);
+      const indeterminate = vue.computed(() => {
+        return Object.keys(selectedMap).length > 0 && !allSelected;
+      });
       const headerCols = vue.computed(() => props.columns.map((column, colIndex) => {
         var _a2, _b2;
         const {
@@ -187,6 +191,7 @@
         headerRowStyles,
         headerCols,
         allSelected,
+        indeterminate,
         handleColumnSortChange,
         toggleAllSelected
       };
@@ -250,8 +255,9 @@
             (col == null ? void 0 : col.type) === "selection" ? (vue.openBlock(), vue.createBlock(_component_Checkbox, {
               key: 0,
               "model-value": _ctx.allSelected,
+              indeterminate: _ctx.indeterminate,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.toggleAllSelected())
-            }, null, 8, ["model-value"])) : (col == null ? void 0 : col.title) ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
+            }, null, 8, ["model-value", "indeterminate"])) : (col == null ? void 0 : col.title) ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
               typeof col.title === "function" ? (vue.openBlock(), vue.createBlock(_component_CustomRender, {
                 key: 0,
                 render: col.title
@@ -861,19 +867,11 @@
       height: {
         type: Number
       },
-      pagination: {
-        type: Object,
-        default: () => ({})
-      },
       showHeader: {
         type: Boolean,
         default: true
       },
       showData: {
-        type: Boolean,
-        default: true
-      },
-      showPagination: {
         type: Boolean,
         default: true
       },

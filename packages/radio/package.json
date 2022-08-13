@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.radio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "radio",
   "author": "",
   "homepage": "",
@@ -34,8 +34,8 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.hooks": "workspace:^1.0.0",
-    "@apathia/apathia.twind": "workspace:^1.0.0",
+    "@apathia/apathia.hooks": "workspace:^1.0.1",
+    "@apathia/apathia.twind": "workspace:^1.0.1",
     "lodash": "^4.17.21"
   }
 }

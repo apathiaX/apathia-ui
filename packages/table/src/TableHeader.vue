@@ -20,6 +20,7 @@
         <Checkbox
           v-if="col?.type === 'selection'"
           :model-value="allSelected"
+          :indeterminate="indeterminate"
           @update:modelValue="toggleAllSelected()"
         />
         <template v-else-if="col?.title">
@@ -108,7 +109,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const styles = getStyles()
 
-    const { allSelected, toggleAllSelected } = inject(
+    const { allSelected, toggleAllSelected, selectedMap } = inject(
       'TableMultiSelected',
     ) as TableMultiSelectedHelper
 
@@ -127,6 +128,9 @@ export default defineComponent({
 
     const headerRowClasses = props.headerRowClassName?.() || ''
     const headerRowStyles = props.headerRowStyle?.()
+    const indeterminate = computed(() => {
+      return Object.keys(selectedMap).length > 0 && !allSelected
+    })
 
     const headerCols = computed(() =>
       props.columns
@@ -176,6 +180,7 @@ export default defineComponent({
       headerRowStyles,
       headerCols,
       allSelected,
+      indeterminate,
 
       handleColumnSortChange,
       toggleAllSelected,

@@ -1,5 +1,11 @@
 # @apathia/apathia.twind
 
+## 1.0.1
+
+### Patch Changes
+
+- fix table select
+
 ## 1.0.0
 
 ### Major Changes

@@ -141,7 +141,8 @@ var _sfc_main$4 = defineComponent({
     const styles = getStyles$2();
     const {
       allSelected,
-      toggleAllSelected
+      toggleAllSelected,
+      selectedMap
     } = inject("TableMultiSelected");
     const handleColumnSortChange = ({
       prop,
@@ -154,6 +155,9 @@ var _sfc_main$4 = defineComponent({
     };
     const headerRowClasses = ((_a = props.headerRowClassName) === null || _a === void 0 ? void 0 : _a.call(props)) || "";
     const headerRowStyles = (_b = props.headerRowStyle) === null || _b === void 0 ? void 0 : _b.call(props);
+    const indeterminate = computed(() => {
+      return Object.keys(selectedMap).length > 0 && !allSelected;
+    });
     const headerCols = computed(() => props.columns.map((column, colIndex) => {
       var _a2, _b2;
       const {
@@ -192,6 +196,7 @@ var _sfc_main$4 = defineComponent({
       headerRowStyles,
       headerCols,
       allSelected,
+      indeterminate,
       handleColumnSortChange,
       toggleAllSelected
     };
@@ -255,8 +260,9 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
           (col == null ? void 0 : col.type) === "selection" ? (openBlock(), createBlock(_component_Checkbox, {
             key: 0,
             "model-value": _ctx.allSelected,
+            indeterminate: _ctx.indeterminate,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.toggleAllSelected())
-          }, null, 8, ["model-value"])) : (col == null ? void 0 : col.title) ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+          }, null, 8, ["model-value", "indeterminate"])) : (col == null ? void 0 : col.title) ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
             typeof col.title === "function" ? (openBlock(), createBlock(_component_CustomRender, {
               key: 0,
               render: col.title
@@ -866,19 +872,11 @@ const _sfc_main = defineComponent({
     height: {
       type: Number
     },
-    pagination: {
-      type: Object,
-      default: () => ({})
-    },
     showHeader: {
       type: Boolean,
       default: true
     },
     showData: {
-      type: Boolean,
-      default: true
-    },
-    showPagination: {
       type: Boolean,
       default: true
     },
