@@ -43,7 +43,7 @@
 </template>
 
 <script lang="tsx">
-import { computed, defineComponent, PropType, inject } from 'vue'
+import { computed, defineComponent, PropType, inject, watch } from 'vue'
 // @ts-ignore
 import { style, css, apply } from '@apathia/apathia.twind'
 // @ts-ignore
@@ -128,9 +128,9 @@ export default defineComponent({
 
     const headerRowClasses = props.headerRowClassName?.() || ''
     const headerRowStyles = props.headerRowStyle?.()
-    const indeterminate = computed(() => {
-      return Object.keys(selectedMap).length > 0 && !allSelected
-    })
+    const indeterminate = computed(
+      () => Object.keys(selectedMap.value).length > 0 && !allSelected.value,
+    )
 
     const headerCols = computed(() =>
       props.columns

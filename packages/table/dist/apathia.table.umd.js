@@ -9,7 +9,7 @@
     }
     return target;
   };
-  const _sfc_main$5 = vue.defineComponent({
+  const _sfc_main$4 = vue.defineComponent({
     name: "GridSorter",
     components: {
       Icon: apathia_icon.Icon
@@ -46,7 +46,7 @@
     arrowDown: apathia_twind.style`-mt-px`,
     active: apathia_twind.style`text-gray-700`
   });
-  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_Icon = vue.resolveComponent("Icon");
     return vue.openBlock(), vue.createElementBlock("span", {
       class: vue.normalizeClass(_ctx.styles.arrowWrap)
@@ -67,7 +67,7 @@
       ], 2)
     ], 2);
   }
-  var TableSorter = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5]]);
+  var TableSorter = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4]]);
   function toStyleObject(value) {
     if (!value) {
       return {};
@@ -89,7 +89,7 @@
       return "";
     return typeof width === "number" || /^\d+$/.test(width) ? `${width}px` : width;
   }
-  var _sfc_main$4 = vue.defineComponent({
+  var _sfc_main$3 = vue.defineComponent({
     name: "TableHeader",
     components: {
       CustomRender: apathia_customRender.CustomRender,
@@ -150,9 +150,7 @@
       };
       const headerRowClasses = ((_a = props.headerRowClassName) === null || _a === void 0 ? void 0 : _a.call(props)) || "";
       const headerRowStyles = (_b = props.headerRowStyle) === null || _b === void 0 ? void 0 : _b.call(props);
-      const indeterminate = vue.computed(() => {
-        return Object.keys(selectedMap).length > 0 && !allSelected;
-      });
+      const indeterminate = vue.computed(() => Object.keys(selectedMap.value).length > 0 && !allSelected.value);
       const headerCols = vue.computed(() => props.columns.map((column, colIndex) => {
         var _a2, _b2;
         const {
@@ -225,7 +223,7 @@
   };
   const _hoisted_1$2 = ["colspan"];
   const _hoisted_2$2 = { key: 1 };
-  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_Checkbox = vue.resolveComponent("Checkbox");
     const _component_CustomRender = vue.resolveComponent("CustomRender");
     const _component_TableSorter = vue.resolveComponent("TableSorter");
@@ -274,8 +272,8 @@
       ], 6)
     ], 2);
   }
-  var TableHeader = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4]]);
-  var _sfc_main$3 = vue.defineComponent({
+  var TableHeader = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3]]);
+  var _sfc_main$2 = vue.defineComponent({
     name: "TableRow",
     components: {
       CustomRender: apathia_customRender.CustomRender,
@@ -486,7 +484,7 @@
   const _hoisted_2$1 = { key: 1 };
   const _hoisted_3$1 = { key: 0 };
   const _hoisted_4$1 = ["colspan"];
-  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_Checkbox = vue.resolveComponent("Checkbox");
     const _component_Icon = vue.resolveComponent("Icon");
     const _component_BaseButton = vue.resolveComponent("BaseButton");
@@ -575,8 +573,8 @@
       }, 8, ["enter-from-class", "enter-active-class", "leave-active-class", "leave-to-class"])
     ], 64);
   }
-  var TableRow = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3]]);
-  const _sfc_main$2 = vue.defineComponent({
+  var TableRow = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2]]);
+  const _sfc_main$1 = vue.defineComponent({
     name: "TableBody",
     components: {
       TableRow
@@ -655,7 +653,7 @@
       };
     }
   });
-  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_TableRow = vue.resolveComponent("TableRow");
     return vue.openBlock(), vue.createElementBlock("tbody", null, [
       (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.data, (row, rowIndex) => {
@@ -672,7 +670,7 @@
       }), 128))
     ]);
   }
-  var TableBody = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2]]);
+  var TableBody = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
   function useTableColumns(props) {
     const tableWidth = vue.ref(0);
     const containerRef = vue.ref(null);
@@ -776,47 +774,11 @@
       shiftToggle
     };
   }
-  const _sfc_main$1 = vue.defineComponent({
-    name: "ColGroup",
-    props: {
-      cols: {
-        type: Array,
-        required: true
-      }
-    },
-    setup(props) {
-      const colsProp = vue.computed(
-        () => props.cols.map((col) => {
-          const res = {};
-          if (col.width !== void 0) {
-            res.style = `width: ${col.width}px; min-width: ${col.width}px`;
-          }
-          if (col.colSpan)
-            res.colspan = `${col.colSpan}`;
-          if (col.align)
-            res.align = col.align;
-          return res;
-        })
-      );
-      return {
-        colsProp
-      };
-    }
-  });
-  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("colgroup", null, [
-      (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.colsProp, (item, index) => {
-        return vue.openBlock(), vue.createElementBlock("col", vue.mergeProps({ key: index }, item), null, 16);
-      }), 128))
-    ]);
-  }
-  var ColGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
   const _sfc_main = vue.defineComponent({
     name: "Table",
     components: {
       TableHeader,
       TableBody,
-      ColGroup,
       Loading: apathia_loading.Loading
     },
     props: {
@@ -976,7 +938,6 @@
   const _hoisted_3 = ["colspan"];
   const _hoisted_4 = /* @__PURE__ */ vue.createElementVNode("p", null, "\u6CA1\u6709\u6570\u636E", -1);
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_ColGroup = vue.resolveComponent("ColGroup");
     const _component_TableHeader = vue.resolveComponent("TableHeader");
     const _component_Loading = vue.resolveComponent("Loading");
     const _component_TableBody = vue.resolveComponent("TableBody");
@@ -987,7 +948,6 @@
         "max-height": _ctx.fixedHeader ? `${_ctx.height}px` : "auto"
       })
     }, [
-      vue.createVNode(_component_ColGroup, { cols: _ctx.realColumns }, null, 8, ["cols"]),
       vue.createElementVNode("table", vue.mergeProps({
         class: _ctx.styles.table,
         style: _ctx.tableStyle

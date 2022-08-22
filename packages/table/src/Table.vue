@@ -6,8 +6,6 @@
       'max-height': fixedHeader ? `${height}px` : 'auto',
     }"
   >
-    <ColGroup :cols="realColumns" />
-
     <table :class="styles.table" :style="tableStyle" v-bind="$attrs">
       <TableHeader
         v-if="showHeader"
@@ -78,10 +76,8 @@ import TableHeader from './TableHeader.vue'
 import TableBody from './TableBody.vue'
 import { useTableColumns } from './columns'
 import { useTableSelected } from './useTableSelected'
-import ColGroup from './Colgroup.vue'
 import type {
   Column,
-  Pagination,
   Sorter,
   HeaderClassNamesGenerator,
   HeaderStylesGenerator,
@@ -98,7 +94,6 @@ export default defineComponent({
   components: {
     TableHeader,
     TableBody,
-    ColGroup,
     Loading,
   },
 

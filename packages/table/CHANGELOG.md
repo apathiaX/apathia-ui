@@ -1,5 +1,11 @@
 # @apathia1/apathia.table
 
+## 1.0.2
+
+### Patch Changes
+
+- fix table
+
 ## 1.0.1
 
 ### Patch Changes

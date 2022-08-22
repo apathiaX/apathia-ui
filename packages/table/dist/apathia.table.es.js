@@ -14,7 +14,7 @@ var _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$5 = defineComponent({
+const _sfc_main$4 = defineComponent({
   name: "GridSorter",
   components: {
     Icon
@@ -51,7 +51,7 @@ const getStyles$3 = () => ({
   arrowDown: style`-mt-px`,
   active: style`text-gray-700`
 });
-function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_Icon = resolveComponent("Icon");
   return openBlock(), createElementBlock("span", {
     class: normalizeClass(_ctx.styles.arrowWrap)
@@ -72,7 +72,7 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     ], 2)
   ], 2);
 }
-var TableSorter = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5]]);
+var TableSorter = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4]]);
 function toStyleObject(value) {
   if (!value) {
     return {};
@@ -94,7 +94,7 @@ function toRealWidth(width) {
     return "";
   return typeof width === "number" || /^\d+$/.test(width) ? `${width}px` : width;
 }
-var _sfc_main$4 = defineComponent({
+var _sfc_main$3 = defineComponent({
   name: "TableHeader",
   components: {
     CustomRender,
@@ -155,9 +155,7 @@ var _sfc_main$4 = defineComponent({
     };
     const headerRowClasses = ((_a = props.headerRowClassName) === null || _a === void 0 ? void 0 : _a.call(props)) || "";
     const headerRowStyles = (_b = props.headerRowStyle) === null || _b === void 0 ? void 0 : _b.call(props);
-    const indeterminate = computed(() => {
-      return Object.keys(selectedMap).length > 0 && !allSelected;
-    });
+    const indeterminate = computed(() => Object.keys(selectedMap.value).length > 0 && !allSelected.value);
     const headerCols = computed(() => props.columns.map((column, colIndex) => {
       var _a2, _b2;
       const {
@@ -230,7 +228,7 @@ const getStyles$2 = () => {
 };
 const _hoisted_1$2 = ["colspan"];
 const _hoisted_2$2 = { key: 1 };
-function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_Checkbox = resolveComponent("Checkbox");
   const _component_CustomRender = resolveComponent("CustomRender");
   const _component_TableSorter = resolveComponent("TableSorter");
@@ -279,8 +277,8 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     ], 6)
   ], 2);
 }
-var TableHeader = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4]]);
-var _sfc_main$3 = defineComponent({
+var TableHeader = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3]]);
+var _sfc_main$2 = defineComponent({
   name: "TableRow",
   components: {
     CustomRender,
@@ -491,7 +489,7 @@ const _hoisted_1$1 = { key: 0 };
 const _hoisted_2$1 = { key: 1 };
 const _hoisted_3$1 = { key: 0 };
 const _hoisted_4$1 = ["colspan"];
-function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_Checkbox = resolveComponent("Checkbox");
   const _component_Icon = resolveComponent("Icon");
   const _component_BaseButton = resolveComponent("BaseButton");
@@ -580,8 +578,8 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
     }, 8, ["enter-from-class", "enter-active-class", "leave-active-class", "leave-to-class"])
   ], 64);
 }
-var TableRow = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3]]);
-const _sfc_main$2 = defineComponent({
+var TableRow = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2]]);
+const _sfc_main$1 = defineComponent({
   name: "TableBody",
   components: {
     TableRow
@@ -660,7 +658,7 @@ const _sfc_main$2 = defineComponent({
     };
   }
 });
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_TableRow = resolveComponent("TableRow");
   return openBlock(), createElementBlock("tbody", null, [
     (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.data, (row, rowIndex) => {
@@ -677,7 +675,7 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     }), 128))
   ]);
 }
-var TableBody = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2]]);
+var TableBody = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
 function useTableColumns(props) {
   const tableWidth = ref(0);
   const containerRef = ref(null);
@@ -781,47 +779,11 @@ function useTableSelected(data, selectedKeys, selected, key, columns, ctx) {
     shiftToggle
   };
 }
-const _sfc_main$1 = defineComponent({
-  name: "ColGroup",
-  props: {
-    cols: {
-      type: Array,
-      required: true
-    }
-  },
-  setup(props) {
-    const colsProp = computed(
-      () => props.cols.map((col) => {
-        const res = {};
-        if (col.width !== void 0) {
-          res.style = `width: ${col.width}px; min-width: ${col.width}px`;
-        }
-        if (col.colSpan)
-          res.colspan = `${col.colSpan}`;
-        if (col.align)
-          res.align = col.align;
-        return res;
-      })
-    );
-    return {
-      colsProp
-    };
-  }
-});
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("colgroup", null, [
-    (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.colsProp, (item, index) => {
-      return openBlock(), createElementBlock("col", mergeProps({ key: index }, item), null, 16);
-    }), 128))
-  ]);
-}
-var ColGroup = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
 const _sfc_main = defineComponent({
   name: "Table",
   components: {
     TableHeader,
     TableBody,
-    ColGroup,
     Loading
   },
   props: {
@@ -981,7 +943,6 @@ const _hoisted_2 = { style: { "height": "55px", "text-align": "center" } };
 const _hoisted_3 = ["colspan"];
 const _hoisted_4 = /* @__PURE__ */ createElementVNode("p", null, "\u6CA1\u6709\u6570\u636E", -1);
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_ColGroup = resolveComponent("ColGroup");
   const _component_TableHeader = resolveComponent("TableHeader");
   const _component_Loading = resolveComponent("Loading");
   const _component_TableBody = resolveComponent("TableBody");
@@ -992,7 +953,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       "max-height": _ctx.fixedHeader ? `${_ctx.height}px` : "auto"
     })
   }, [
-    createVNode(_component_ColGroup, { cols: _ctx.realColumns }, null, 8, ["cols"]),
     createElementVNode("table", mergeProps({
       class: _ctx.styles.table,
       style: _ctx.tableStyle

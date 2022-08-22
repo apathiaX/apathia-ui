@@ -1,5 +1,13 @@
 # @apathia/apathia
 
+## 1.0.2
+
+### Patch Changes
+
+- fix table
+- Updated dependencies
+  - @apathia/apathia.table@1.0.2
+
 ## 1.0.1
 
 ### Patch Changes
