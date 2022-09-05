@@ -73,13 +73,11 @@
         ctx
       );
       const styles = {
-        wrapper: apathia_twind.style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm ${apathia_twind.css`
-        line-height: 38px;
-      `}`,
-        wrapperDisabled: apathia_twind.style`text-gray-300 cursor-not-allowed`,
+        wrapper: apathia_twind.style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm`,
+        wrapperDisabled: apathia_twind.style`text-content-neutral cursor-not-allowed`,
         radio: apathia_twind.style`relative inline-block m-0 p-0 whitespace-nowrap align-middle`,
         inner: apathia_twind.tw(
-          apathia_twind.style`relative block w-4 h-4 top-0 left-0 bg-white border border-gray-500 outline-none`,
+          apathia_twind.style`relative block w-4 h-4 top-0 left-0 bg-content-white border border-fill-accent outline-none`,
           apathia_twind.css`
           border-radius: 100px;
           transition: all 0.3s;
@@ -87,12 +85,9 @@
             content: '';
             position: absolute;
             display: table;
-            width: 8px;
-            height: 8px;
             left: 3px;
             top: 3px;
-            border-radius: 4px;
-            ${apathia_twind.apply`bg-brand-500`}
+            ${apathia_twind.apply`w-2 h-2 bg-brand-primary rounded`}
             opacity: 0;
             transform: scale(0);
             transition: all 0.15s cubic-bezier(0.78, 0.14, 0.15, 0.86);
@@ -100,7 +95,7 @@
         `
         ),
         innerSelected: apathia_twind.tw(
-          apathia_twind.style`border-brand-300`,
+          apathia_twind.style`border-brand-hover`,
           apathia_twind.css`
           &::after {
             opacity: 1;
@@ -109,7 +104,7 @@
           }
         `
         ),
-        innerDisabled: apathia_twind.style`bg-gray-100 border-gray-300 cursor-not-allowed outline-none`,
+        innerDisabled: apathia_twind.style`bg-info-forbid border-line-accent cursor-not-allowed outline-none`,
         innerSelectedDisabled: apathia_twind.tw(apathia_twind.css`
         &::after {
           opacity: 1;
@@ -117,7 +112,7 @@
           transition: all 0.15s cubic-bezier(0.78, 0.14, 0.15, 0.86);
         }
       `),
-        ring: apathia_twind.style`focus:ring-2 focus:ring-brand-500`,
+        ring: apathia_twind.style`focus:ring-2 focus:ring-brand-primary`,
         input: apathia_twind.style`hidden`,
         contentWrap: apathia_twind.style`mx-1`
       };

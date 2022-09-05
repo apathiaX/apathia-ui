@@ -266,22 +266,19 @@
         innerOptions
       } = usePagination(userProps, ctx);
       const styles = {
-        wrapper: apathia_twind.style`relative bg-white py-3 flex items-center justify-between`,
-        ul: apathia_twind.style`relative z-0 inline-flex items-center -space-x-px text-sm font-medium`,
-        item: apathia_twind.style`relative inline-flex px-2 py-2 border border-gray-300 bg-white text-gray-700 
-      cursor-pointer select-none hover:bg-brand-500 hover:text-white`,
-        first: apathia_twind.style`rounded-l-md flex-shrink-0`,
-        last: apathia_twind.style`rounded-r-md flex-shrink-0`,
-        prev: apathia_twind.style`flex-shrink-0`,
-        next: apathia_twind.style`flex-shrink-0`,
-        active: apathia_twind.style`text-white bg-brand-500 border-brand-300 outline-none`,
-        itemDisabled: apathia_twind.style`cursor-not-allowed pointer-events-none text-gray-500 bg-gray-100 border-gray-300`,
-        numberBtn: apathia_twind.style`outline-none px-4 py-2`,
-        jump: apathia_twind.style`relative z-0 inline-flex items-center -space-x-px text-sm font-medium border border-gray-300 rounded-md`,
-        jumpInput: apathia_twind.style`outline-none text-center w-14 py-2 border-0 text-brand-500 rounded-l-md`,
-        jumpBtn: apathia_twind.style`text-center w-14 py-2 border-0 bg-white text-gray-700 rounded-r-md
-      cursor-pointer hover:bg-brand-500 hover:text-white`,
-        count: apathia_twind.style`px-4`
+        wrapper: apathia_twind.style`relative bg-fill-white py-3 flex items-center justify-between`,
+        ul: apathia_twind.style`relative z-0 inline-flex items-center text-base`,
+        item: apathia_twind.style`relative inline-flex flex-shrink-0 mx-1 px-btn-lg-y py-px border border-fill-neutral rounded 
+      bg-fill-white text-content-primary cursor-pointer select-none hover:bg-brand-primary hover:text-content-white`,
+        active: apathia_twind.style`text-content-white bg-brand-primary border-brand-primary outline-none`,
+        itemDisabled: apathia_twind.style`cursor-not-allowed pointer-events-none text-content-neutral bg-fill-light border-fill-gray`,
+        numberBtn: apathia_twind.style`outline-none`,
+        jump: apathia_twind.style`relative z-0 inline-flex items-center -space-x-px text-base border border-fill-neutral rounded`,
+        jumpInput: apathia_twind.style`outline-none text-center w-8 px-btn-lg-y py-px border-0 rounded`,
+        jumpBtn: apathia_twind.style`text-center w-14  px-btn-lg-y py-px border-0 bg-fill-white rounded
+      cursor-pointer hover:bg-brand-primary hover:text-content-white`,
+        count: apathia_twind.style`px-4`,
+        pages: apathia_twind.style`pr-1`
       };
       return {
         jumpTo,
@@ -303,8 +300,19 @@
       vue.createElementVNode("ul", {
         class: vue.normalizeClass(_ctx.styles.ul)
       }, [
-        _ctx.innerOptions.boundaryBtns ? (vue.openBlock(), vue.createElementBlock("li", {
+        _ctx.innerOptions.totalCount ? (vue.openBlock(), vue.createElementBlock("li", {
           key: 0,
+          class: vue.normalizeClass(_ctx.styles.count)
+        }, [
+          vue.renderSlot(_ctx.$slots, "total", {
+            totalItems: _ctx.totalItems,
+            totalPages: _ctx.totalPages
+          }, () => [
+            vue.createTextVNode(" \u5171" + vue.toDisplayString(_ctx.totalItems) + " \u6761\u6570\u636E ", 1)
+          ])
+        ], 2)) : vue.createCommentVNode("", true),
+        _ctx.innerOptions.boundaryBtns ? (vue.openBlock(), vue.createElementBlock("li", {
+          key: 1,
           class: vue.normalizeClass({
             [_ctx.styles.item]: true,
             [_ctx.styles.first]: true,
@@ -313,7 +321,7 @@
           onClick: _cache[0] || (_cache[0] = ($event) => _ctx.selectPage(1))
         }, vue.toDisplayString(_ctx.innerOptions.firstText), 3)) : vue.createCommentVNode("", true),
         _ctx.innerOptions.directionBtns ? (vue.openBlock(), vue.createElementBlock("li", {
-          key: 1,
+          key: 2,
           class: vue.normalizeClass({
             [_ctx.styles.item]: true,
             [_ctx.styles.prev]: true,
@@ -335,7 +343,7 @@
           }, vue.toDisplayString(page.text), 11, _hoisted_1);
         }), 128)),
         _ctx.innerOptions.directionBtns ? (vue.openBlock(), vue.createElementBlock("li", {
-          key: 2,
+          key: 3,
           class: vue.normalizeClass({
             [_ctx.styles.item]: true,
             [_ctx.styles.next]: true,
@@ -344,7 +352,7 @@
           onClick: _cache[2] || (_cache[2] = ($event) => _ctx.selectPage(_ctx.innerOptions.currentPage + 1))
         }, vue.toDisplayString(_ctx.innerOptions.nextText), 3)) : vue.createCommentVNode("", true),
         _ctx.innerOptions.boundaryBtns ? (vue.openBlock(), vue.createElementBlock("li", {
-          key: 3,
+          key: 4,
           class: vue.normalizeClass({
             [_ctx.styles.item]: true,
             [_ctx.styles.last]: true,
@@ -352,17 +360,6 @@
           }),
           onClick: _cache[3] || (_cache[3] = ($event) => _ctx.selectPage(_ctx.totalPages))
         }, vue.toDisplayString(_ctx.innerOptions.lastText), 3)) : vue.createCommentVNode("", true),
-        _ctx.innerOptions.totalCount ? (vue.openBlock(), vue.createElementBlock("li", {
-          key: 4,
-          class: vue.normalizeClass(_ctx.styles.count)
-        }, [
-          vue.renderSlot(_ctx.$slots, "total", {
-            totalItems: _ctx.totalItems,
-            totalPages: _ctx.totalPages
-          }, () => [
-            vue.createTextVNode(" \u5171 " + vue.toDisplayString(_ctx.totalItems) + " \u6761\u6570\u636E ", 1)
-          ])
-        ], 2)) : vue.createCommentVNode("", true),
         _ctx.innerOptions.jumpPage ? (vue.openBlock(), vue.createElementBlock("li", {
           key: 5,
           class: vue.normalizeClass({
@@ -378,6 +375,11 @@
           }, null, 34), [
             [vue.vModelText, _ctx.jumpTo]
           ]),
+          vue.createElementVNode("span", {
+            class: vue.normalizeClass({
+              [_ctx.styles.pages]: true
+            })
+          }, "/ " + vue.toDisplayString(_ctx.totalPages), 3),
           vue.createElementVNode("span", {
             class: vue.normalizeClass({
               [_ctx.styles.jumpBtn]: true

@@ -174,17 +174,15 @@
     }
   });
   const getStyles = () => {
-    const label = apathia_twind.apply`text-sm font-medium text-gray-700${apathia_twind.css`
-    line-height: 38px;
-  `}`;
+    const label = apathia_twind.apply`text-sm text-content-primary`;
     const mark = apathia_twind.css`
     &:before {
       content: '*';
-      ${apathia_twind.apply`text-red-500 align-top`}
+      ${apathia_twind.apply`text-error-primary align-top`}
     }
   `;
     return {
-      container: apathia_twind.style`mb-2`,
+      container: apathia_twind.style`mb-2 ml-2`,
       flex: apathia_twind.style`flex`,
       inlineFlex: apathia_twind.style`inline-flex mr-2 last:mr-0`,
       labelBlock: apathia_twind.style`w-full ${label}`,

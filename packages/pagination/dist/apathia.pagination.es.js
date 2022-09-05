@@ -1,4 +1,4 @@
-import { shallowReactive, ref, onBeforeUpdate, onUpdated, computed, watch, defineComponent, openBlock, createElementBlock, normalizeClass, createElementVNode, toDisplayString, createCommentVNode, Fragment, renderList, renderSlot, createTextVNode, withDirectives, withKeys, vModelText } from "vue";
+import { shallowReactive, ref, onBeforeUpdate, onUpdated, computed, watch, defineComponent, openBlock, createElementBlock, normalizeClass, createElementVNode, renderSlot, createTextVNode, toDisplayString, createCommentVNode, Fragment, renderList, withDirectives, withKeys, vModelText } from "vue";
 import { style } from "@apathia/apathia.twind";
 import { mergeWithDefault } from "@apathia/apathia.shared";
 const DEFAULT_OPTIONS = {
@@ -265,22 +265,19 @@ const _sfc_main = defineComponent({
       innerOptions
     } = usePagination(userProps, ctx);
     const styles = {
-      wrapper: style`relative bg-white py-3 flex items-center justify-between`,
-      ul: style`relative z-0 inline-flex items-center -space-x-px text-sm font-medium`,
-      item: style`relative inline-flex px-2 py-2 border border-gray-300 bg-white text-gray-700 
-      cursor-pointer select-none hover:bg-brand-500 hover:text-white`,
-      first: style`rounded-l-md flex-shrink-0`,
-      last: style`rounded-r-md flex-shrink-0`,
-      prev: style`flex-shrink-0`,
-      next: style`flex-shrink-0`,
-      active: style`text-white bg-brand-500 border-brand-300 outline-none`,
-      itemDisabled: style`cursor-not-allowed pointer-events-none text-gray-500 bg-gray-100 border-gray-300`,
-      numberBtn: style`outline-none px-4 py-2`,
-      jump: style`relative z-0 inline-flex items-center -space-x-px text-sm font-medium border border-gray-300 rounded-md`,
-      jumpInput: style`outline-none text-center w-14 py-2 border-0 text-brand-500 rounded-l-md`,
-      jumpBtn: style`text-center w-14 py-2 border-0 bg-white text-gray-700 rounded-r-md
-      cursor-pointer hover:bg-brand-500 hover:text-white`,
-      count: style`px-4`
+      wrapper: style`relative bg-fill-white py-3 flex items-center justify-between`,
+      ul: style`relative z-0 inline-flex items-center text-base`,
+      item: style`relative inline-flex flex-shrink-0 mx-1 px-btn-lg-y py-px border border-fill-neutral rounded 
+      bg-fill-white text-content-primary cursor-pointer select-none hover:bg-brand-primary hover:text-content-white`,
+      active: style`text-content-white bg-brand-primary border-brand-primary outline-none`,
+      itemDisabled: style`cursor-not-allowed pointer-events-none text-content-neutral bg-fill-light border-fill-gray`,
+      numberBtn: style`outline-none`,
+      jump: style`relative z-0 inline-flex items-center -space-x-px text-base border border-fill-neutral rounded`,
+      jumpInput: style`outline-none text-center w-8 px-btn-lg-y py-px border-0 rounded`,
+      jumpBtn: style`text-center w-14  px-btn-lg-y py-px border-0 bg-fill-white rounded
+      cursor-pointer hover:bg-brand-primary hover:text-content-white`,
+      count: style`px-4`,
+      pages: style`pr-1`
     };
     return {
       jumpTo,
@@ -302,8 +299,19 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     createElementVNode("ul", {
       class: normalizeClass(_ctx.styles.ul)
     }, [
-      _ctx.innerOptions.boundaryBtns ? (openBlock(), createElementBlock("li", {
+      _ctx.innerOptions.totalCount ? (openBlock(), createElementBlock("li", {
         key: 0,
+        class: normalizeClass(_ctx.styles.count)
+      }, [
+        renderSlot(_ctx.$slots, "total", {
+          totalItems: _ctx.totalItems,
+          totalPages: _ctx.totalPages
+        }, () => [
+          createTextVNode(" \u5171" + toDisplayString(_ctx.totalItems) + " \u6761\u6570\u636E ", 1)
+        ])
+      ], 2)) : createCommentVNode("", true),
+      _ctx.innerOptions.boundaryBtns ? (openBlock(), createElementBlock("li", {
+        key: 1,
         class: normalizeClass({
           [_ctx.styles.item]: true,
           [_ctx.styles.first]: true,
@@ -312,7 +320,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         onClick: _cache[0] || (_cache[0] = ($event) => _ctx.selectPage(1))
       }, toDisplayString(_ctx.innerOptions.firstText), 3)) : createCommentVNode("", true),
       _ctx.innerOptions.directionBtns ? (openBlock(), createElementBlock("li", {
-        key: 1,
+        key: 2,
         class: normalizeClass({
           [_ctx.styles.item]: true,
           [_ctx.styles.prev]: true,
@@ -334,7 +342,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         }, toDisplayString(page.text), 11, _hoisted_1);
       }), 128)),
       _ctx.innerOptions.directionBtns ? (openBlock(), createElementBlock("li", {
-        key: 2,
+        key: 3,
         class: normalizeClass({
           [_ctx.styles.item]: true,
           [_ctx.styles.next]: true,
@@ -343,7 +351,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         onClick: _cache[2] || (_cache[2] = ($event) => _ctx.selectPage(_ctx.innerOptions.currentPage + 1))
       }, toDisplayString(_ctx.innerOptions.nextText), 3)) : createCommentVNode("", true),
       _ctx.innerOptions.boundaryBtns ? (openBlock(), createElementBlock("li", {
-        key: 3,
+        key: 4,
         class: normalizeClass({
           [_ctx.styles.item]: true,
           [_ctx.styles.last]: true,
@@ -351,17 +359,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
         onClick: _cache[3] || (_cache[3] = ($event) => _ctx.selectPage(_ctx.totalPages))
       }, toDisplayString(_ctx.innerOptions.lastText), 3)) : createCommentVNode("", true),
-      _ctx.innerOptions.totalCount ? (openBlock(), createElementBlock("li", {
-        key: 4,
-        class: normalizeClass(_ctx.styles.count)
-      }, [
-        renderSlot(_ctx.$slots, "total", {
-          totalItems: _ctx.totalItems,
-          totalPages: _ctx.totalPages
-        }, () => [
-          createTextVNode(" \u5171 " + toDisplayString(_ctx.totalItems) + " \u6761\u6570\u636E ", 1)
-        ])
-      ], 2)) : createCommentVNode("", true),
       _ctx.innerOptions.jumpPage ? (openBlock(), createElementBlock("li", {
         key: 5,
         class: normalizeClass({
@@ -377,6 +374,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         }, null, 34), [
           [vModelText, _ctx.jumpTo]
         ]),
+        createElementVNode("span", {
+          class: normalizeClass({
+            [_ctx.styles.pages]: true
+          })
+        }, "/ " + toDisplayString(_ctx.totalPages), 3),
         createElementVNode("span", {
           class: normalizeClass({
             [_ctx.styles.jumpBtn]: true

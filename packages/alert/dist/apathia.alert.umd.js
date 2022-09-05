@@ -101,25 +101,25 @@
   function initStyle(type) {
     const Theme = {
       info: {
-        layout: apathia_twind.style`bg-gray-100 text-gray-700 bg-opacity-90 border(1 gray-300)`
+        layout: apathia_twind.style`bg-fill-light text-fill-primary`
       },
       danger: {
-        layout: apathia_twind.style`bg-red-100 text-red-700 bg-opacity-90 border(1 red-300)`
+        layout: apathia_twind.style`bg-error-light text-error-primary`
       },
       success: {
-        layout: apathia_twind.style`bg-green-100 text-green-700 bg-opacity-90 border(1 green-300)`
+        layout: apathia_twind.style`bg-success-light text-success-primary`
       },
       warning: {
-        layout: apathia_twind.style`bg-yellow-100 text-yellow-700 bg-opacity-90 border(1 yellow-300)`
+        layout: apathia_twind.style`bg-warning-light text-warning-primary`
       },
       default: {
-        layout: apathia_twind.style`bg-brand-100 text-brand-700 bg-opacity-90 border(1 brand-300)`
+        layout: apathia_twind.style`bg-brand-light text-brand-primary`
       }
     };
     const theme = Theme[type] || Theme.default;
-    const layout = apathia_twind.tw`${theme.layout} ${apathia_twind.apply`p-2.5 rounded-md flex mt-2 duration-300`}`;
+    const layout = apathia_twind.tw`${theme.layout} ${apathia_twind.apply`p-2.5 rounded flex mt-2 duration-300`}`;
     const iconWrap = apathia_twind.style`flex-shrink-0 w-4 mr-2`;
-    const delIcon = apathia_twind.style`ml-2 cursor-pointer hover:(text-red-500)`;
+    const delIcon = apathia_twind.style`ml-2 cursor-pointer hover:(text-error-active)`;
     const contentClass = apathia_twind.style`inline-block font-normal flex-grow break-all`;
     const titleClass = apathia_twind.style`text-lg`;
     const messageClass = apathia_twind.style`text-xs leading-normal`;

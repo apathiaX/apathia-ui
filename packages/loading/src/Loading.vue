@@ -33,6 +33,6 @@ export default defineComponent({
 })
 
 const getStyles = () => ({
-  spinnerItem: style`after:bg-brand-500`,
+  spinnerItem: style`after:bg-brand-primary`,
 })
 </script>

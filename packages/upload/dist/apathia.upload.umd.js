@@ -333,14 +333,14 @@
     }
   });
   const getStyles = () => ({
-    trigger: apathia_twind.style`flex items-start`,
-    drag: apathia_twind.style`group h-full flex justify-center text-gray-500 py-4 flex-col items-center bg-gray-100 border(2 dashed gray-300) rounded-md cursor-pointer hover:(border-brand-500 text-gray-700) ${apathia_twind.css(
-      { "min-height": "4rem", "min-width": "5rem" }
-    )}`,
-    draging: apathia_twind.style`border(brand-500) rounded-md text-brand-500`,
-    disabled: apathia_twind.style`cursor-not-allowd hover:(border(& dashed brand-700) text-black)`,
-    clickText: apathia_twind.style`text-brand-500 group-hover:(text-brand-700)`,
-    fileIcon: apathia_twind.style`block h-8 text-gray-500 group-hover:(text-gray-700) ${apathia_twind.css`
+    trigger: apathia_twind.style`flex items-start border-0`,
+    drag: apathia_twind.style`group flex justify-center text-content-primary py-4 flex-col items-center bg-fill-light 
+    border(2 dashed line-accent) rounded cursor-pointer hover:(border-brand-primary text-content-accent)
+    ${apathia_twind.css({ "min-height": "4rem", "min-width": "5rem" })}`,
+    draging: apathia_twind.style`border(brand-primary) rounded-md text-brand-primary`,
+    disabled: apathia_twind.style`cursor-not-allowd hover:(border(& dashed brand-active) text-content-primary)`,
+    clickText: apathia_twind.style`text-brand-primary group-hover:(text-brand-active)`,
+    fileIcon: apathia_twind.style`block text-content-secondary group-hover:(text-content-accent) ${apathia_twind.css`
     width: 1.5rem !important;
   `}`
   });

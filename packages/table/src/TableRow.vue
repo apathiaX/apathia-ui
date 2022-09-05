@@ -363,15 +363,14 @@ const getStyles = () => {
   `
 
   return {
-    table: style`min-w-full divide-y divide-gray-300 border(& solid gray-300) text(sm left) leading-normal rounded-sm box-border m-0 p-0`,
-    row: style`hover:(bg-gray-100) transition`,
-    cell: style`px-2 py-2.5 border(b solid gray-300) break-words`,
+    row: style`hover:(bg-fill-light) transition`,
+    cell: style`px-2 py-3 border(b solid line-accent) break-words text-sm`,
     fixedColumnLeft: style`sticky z-20 left-0 ${borderRight}`,
     fixedColumnRight: style`sticky z-20 right-0 ${borderLeft}`,
-    borderd: style`border(r solid gray-300)`,
-    stripedRow: style`bg-gray-100`,
-    activeRow: style`bg-brand-300`,
-    whiteRow: style`bg-white`,
+    borderd: style`border(r solid line-accent)`,
+    stripedRow: style`bg-fill-light`,
+    activeRow: style`bg-brand-hover`,
+    whiteRow: style`bg-fill-white`,
     cellBtnsWrap: style`inline-flex flex-wrap ${css`
       --gap: 0.25rem;
       --column-gap: var(--gap);

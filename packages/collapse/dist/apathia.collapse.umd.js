@@ -108,7 +108,7 @@
     }
   });
   function initStyle() {
-    const headerClass = apathia_twind.style`flex items-center h-10 leading-10 bg-gray-100 rounded cursor-pointer`;
+    const headerClass = apathia_twind.style`flex items-center h-10 leading-10 bg-fill-light rounded cursor-pointer`;
     const rollClass = apathia_twind.style`rotate-90 translate-y-0.5 duration-300`;
     const headerDisableClass = apathia_twind.style`cursor-not-allowed`;
     const icon = apathia_twind.style`mx-2 transition`;

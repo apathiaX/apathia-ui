@@ -1,5 +1,15 @@
 <template>
-  <div :class="[styles.inputContainer, $attrs.class]" :style="attrs.style">
+  <div
+    :class="[
+      {
+        [styles.inputContainer]: true,
+        [styles.active]: activeVal,
+        [styles.disabled]: !!disableInput,
+      },
+      $attrs.class,
+    ]"
+    :style="attrs.style"
+  >
     <span v-if="withPrepend" :class="styles.prepend">
       <slot name="prepend"></slot>
     </span>
@@ -22,6 +32,8 @@
         ]"
         :disabled="!!disableInput"
         @input="handleInput"
+        @blur="() => (activeVal = false)"
+        @focus="() => (activeVal = true)"
       />
       <Icon
         v-if="showClearIcon"
@@ -54,29 +66,28 @@ import { useAttrs, useInjectProp } from '@apathia/apathia.hooks'
 import { Icon } from '@apathia/apathia.icon'
 
 const getStyles = () => {
-  const prependAndAppend = apply`text(gray-500 sm) px-3 inline-flex items-center border border-gray-300 bg-gray-100`
-  const commonIcon = apply`absolute self-center px-1 text-gray-300`
-  const interactiveIcon = apply`${commonIcon}cursor-pointer hover:(text-gray-700)`
+  const prependAndAppend = apply`text(content-accent sm) px-2 inline-flex items-center bg-fill-gray`
+  const commonIcon = apply`absolute self-center text-fill-secondary`
+  const interactiveIcon = apply`${commonIcon}cursor-pointer hover:(text-fill-accent)`
 
   return {
-    inputContainer: style`relative flex w-full`,
-    inputWrapper: style`relative flex flex-grow-1`,
-    input: style`w-full block border border-gray-300 shadow-sm rounded-md text-sm py-2 px-3 outline-none focus:(bg-white border-brand-500)`,
+    inputContainer: style`relative flex w-full h-8 border rounded border-line-accent bg-content-white shadow`,
+    inputWrapper: style`relative flex rounded flex-grow-1 bg-content-white`,
+    input: style`w-full h-full rounded block text-sm outline-none py-1.5 pl-2`,
 
     withPrefix: style`pl-9`,
-    withPrepend: style`rounded-l-none`, // 取消左边框
-    withAppend: style`rounded-r-none`, // 取消右边框
-    withSuffix: style`pr-9`,
-    withSuffixAndClear: style`pr-14`,
-    disabled: style`bg-gray-100`,
+    disabled: style(
+      'cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-neutral',
+    ),
+    active: style`border-brand-primary`,
 
-    prepend: tw`${prependAndAppend}${apply`rounded-l-md border-r-0`}`,
+    prepend: tw`${prependAndAppend}${apply`rounded-l border-r-0`}`,
 
-    clearableIcon: tw`${interactiveIcon}${apply`right-2 px-0`}`,
-    clearWithSuffix: tw`${interactiveIcon}${apply`right-7`}`,
-    append: tw`${prependAndAppend}${apply`rounded-r-md border-l-0`}`,
+    clearableIcon: tw`${interactiveIcon}${apply`right-2`}`,
+    clearWithSuffix: tw`${interactiveIcon}${apply`right-8`}`,
+    append: tw`${prependAndAppend}${apply`rounded-r`}`,
 
-    suffixBtn: tw`${interactiveIcon}${apply`right-2 px-0`}`,
+    suffixBtn: tw`${interactiveIcon}${apply`right-2`}`,
   }
 }
 
@@ -123,6 +134,7 @@ export default defineComponent({
 
   setup(props, ctx) {
     const inputRef = ref<HTMLInputElement | null>(null)
+    const activeVal = ref<boolean>(false)
 
     const withPrepend = computed(() => ctx.slots.prepend !== undefined)
     const withAppend = computed(() => ctx.slots.append !== undefined)
@@ -168,8 +180,7 @@ export default defineComponent({
       return res
     }
 
-    const onSearch = (e: MouseEvent) => {
-      e.preventDefault()
+    const onSearch = () => {
       if (inputRef.value) {
         inputRef.value.focus()
       }
@@ -190,6 +201,7 @@ export default defineComponent({
     return {
       inputRef,
       inputVal,
+      activeVal,
       handleInput,
       attrs,
       withPrepend,

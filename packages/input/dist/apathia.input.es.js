@@ -11,24 +11,23 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 const getStyles = () => {
-  const prependAndAppend = apply`text(gray-500 sm) px-3 inline-flex items-center border border-gray-300 bg-gray-100`;
-  const commonIcon = apply`absolute self-center px-1 text-gray-300`;
-  const interactiveIcon = apply`${commonIcon}cursor-pointer hover:(text-gray-700)`;
+  const prependAndAppend = apply`text(content-accent sm) px-2 inline-flex items-center bg-fill-gray`;
+  const commonIcon = apply`absolute self-center text-fill-secondary`;
+  const interactiveIcon = apply`${commonIcon}cursor-pointer hover:(text-fill-accent)`;
   return {
-    inputContainer: style`relative flex w-full`,
-    inputWrapper: style`relative flex flex-grow-1`,
-    input: style`w-full block border border-gray-300 shadow-sm rounded-md text-sm py-2 px-3 outline-none focus:(bg-white border-brand-500)`,
+    inputContainer: style`relative flex w-full h-8 border rounded border-line-accent bg-content-white shadow`,
+    inputWrapper: style`relative flex rounded flex-grow-1 bg-content-white`,
+    input: style`w-full h-full rounded block text-sm outline-none py-1.5 pl-2`,
     withPrefix: style`pl-9`,
-    withPrepend: style`rounded-l-none`,
-    withAppend: style`rounded-r-none`,
-    withSuffix: style`pr-9`,
-    withSuffixAndClear: style`pr-14`,
-    disabled: style`bg-gray-100`,
-    prepend: tw`${prependAndAppend}${apply`rounded-l-md border-r-0`}`,
-    clearableIcon: tw`${interactiveIcon}${apply`right-2 px-0`}`,
-    clearWithSuffix: tw`${interactiveIcon}${apply`right-7`}`,
-    append: tw`${prependAndAppend}${apply`rounded-r-md border-l-0`}`,
-    suffixBtn: tw`${interactiveIcon}${apply`right-2 px-0`}`
+    disabled: style(
+      "cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-neutral"
+    ),
+    active: style`border-brand-primary`,
+    prepend: tw`${prependAndAppend}${apply`rounded-l border-r-0`}`,
+    clearableIcon: tw`${interactiveIcon}${apply`right-2`}`,
+    clearWithSuffix: tw`${interactiveIcon}${apply`right-8`}`,
+    append: tw`${prependAndAppend}${apply`rounded-r`}`,
+    suffixBtn: tw`${interactiveIcon}${apply`right-2`}`
   };
 };
 const _sfc_main = defineComponent({
@@ -69,6 +68,7 @@ const _sfc_main = defineComponent({
   emits: ["update:modelValue", "input", "search"],
   setup(props, ctx) {
     const inputRef = ref(null);
+    const activeVal = ref(false);
     const withPrepend = computed(() => ctx.slots.prepend !== void 0);
     const withAppend = computed(() => ctx.slots.append !== void 0);
     const disableInput = useInjectProp(
@@ -108,8 +108,7 @@ const _sfc_main = defineComponent({
       }
       return res;
     };
-    const onSearch = (e) => {
-      e.preventDefault();
+    const onSearch = () => {
       if (inputRef.value) {
         inputRef.value.focus();
       }
@@ -127,6 +126,7 @@ const _sfc_main = defineComponent({
     return {
       inputRef,
       inputVal,
+      activeVal,
       handleInput,
       attrs,
       withPrepend,
@@ -143,7 +143,14 @@ const _hoisted_1 = ["type", "disabled"];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_Icon = resolveComponent("Icon");
   return openBlock(), createElementBlock("div", {
-    class: normalizeClass([_ctx.styles.inputContainer, _ctx.$attrs.class]),
+    class: normalizeClass([
+      {
+        [_ctx.styles.inputContainer]: true,
+        [_ctx.styles.active]: _ctx.activeVal,
+        [_ctx.styles.disabled]: !!_ctx.disableInput
+      },
+      _ctx.$attrs.class
+    ]),
     style: normalizeStyle(_ctx.attrs.style)
   }, [
     _ctx.withPrepend ? (openBlock(), createElementBlock("span", {
@@ -172,7 +179,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           _ctx.inputClass
         ],
         disabled: !!_ctx.disableInput,
-        onInput: _cache[1] || (_cache[1] = (...args) => _ctx.handleInput && _ctx.handleInput(...args))
+        onInput: _cache[1] || (_cache[1] = (...args) => _ctx.handleInput && _ctx.handleInput(...args)),
+        onBlur: _cache[2] || (_cache[2] = () => _ctx.activeVal = false),
+        onFocus: _cache[3] || (_cache[3] = () => _ctx.activeVal = true)
       }), null, 16, _hoisted_1), [
         [vModelDynamic, _ctx.inputVal]
       ]),

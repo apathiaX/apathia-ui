@@ -1,5 +1,15 @@
 # @apathia/apathia.input
 
+## 1.0.2
+
+### Patch Changes
+
+- change default theme
+- Updated dependencies
+  - @apathia/apathia.twind@1.0.2
+  - @apathia/apathia.hooks@1.0.2
+  - @apathia/apathia.icon@1.0.2
+
 ## 1.0.1
 
 ### Patch Changes

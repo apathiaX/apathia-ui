@@ -45,11 +45,10 @@ const _sfc_main$4 = defineComponent({
   }
 });
 const getStyles$3 = () => ({
-  arrowWrap: style`ml-1`,
-  arrow: style`text-gray-300 cursor-pointer h-3`,
-  arrowUp: style`-mb-px`,
-  arrowDown: style`-mt-px`,
-  active: style`text-gray-700`
+  arrowWrap: style`inline-block pl-px`,
+  arrow: style`text-content-neutral cursor-pointer`,
+  arrowIcon: style`h-3.5 w-3.5 align-middle`,
+  active: style`text-content-accent`
 });
 function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_Icon = resolveComponent("Icon");
@@ -209,17 +208,16 @@ const getStyles$2 = () => {
   `;
   return {
     headerWrap: style`overflow-hidden`,
-    table: style`min-w-full divide-y divide-gray-300 border(& solid gray-300) text(sm left) leading-normal rounded-sm box-border m-0 p-0`,
-    thead: style`bg-gray-100`,
-    th: style`text(left xs gray-500) px-2 py-3 border-dashed border bg-gray-100 font-medium tracking-wider break-words box-border leading-normal ${css`
-      ${apply("border-gray-100")};
+    thead: style`bg-fill-light`,
+    th: style`text(left content-accent) text-sm font-normal px-2 py-3 border-dashed border bg-fill-gray tracking-wider break-words box-border leading-normal ${css`
+      ${apply("border-fill-gray")};
       border-width: 1px 1px 1px 0;
       border-style: solid;
       &:first-child {
         border-left-width: 1px;
       }
     `}`,
-    thBordered: style`border(gray-300)`,
+    thBordered: style`border-line-accent`,
     fixed: style`sticky`,
     fixedHeader: style`top-0`,
     fixedColumnLeft: style`left-0 ${borderRight}`,
@@ -463,15 +461,14 @@ const getStyles$1 = () => {
     border-left: 1px solid rgb(0 0 0 / 12%);
   `;
   return {
-    table: style`min-w-full divide-y divide-gray-300 border(& solid gray-300) text(sm left) leading-normal rounded-sm box-border m-0 p-0`,
-    row: style`hover:(bg-gray-100) transition`,
-    cell: style`px-2 py-2.5 border(b solid gray-300) break-words`,
+    row: style`hover:(bg-fill-light) transition`,
+    cell: style`px-2 py-3 border(b solid line-accent) break-words text-sm`,
     fixedColumnLeft: style`sticky z-20 left-0 ${borderRight}`,
     fixedColumnRight: style`sticky z-20 right-0 ${borderLeft}`,
-    borderd: style`border(r solid gray-300)`,
-    stripedRow: style`bg-gray-100`,
-    activeRow: style`bg-brand-300`,
-    whiteRow: style`bg-white`,
+    borderd: style`border(r solid line-accent)`,
+    stripedRow: style`bg-fill-light`,
+    activeRow: style`bg-brand-hover`,
+    whiteRow: style`bg-fill-white`,
     cellBtnsWrap: style`inline-flex flex-wrap ${css`
       --gap: 0.25rem;
       --column-gap: var(--gap);
@@ -933,8 +930,8 @@ const _sfc_main = defineComponent({
   }
 });
 const getStyles = () => ({
-  container: style`shadow relative overflow-auto border(b gray-300)`,
-  table: style`min-w-full w-full table-fixed divide-y divide-gray-300 text(sm left) leading-normal rounded-sm box-border m-0 p-0 ${css(
+  container: style`shadow relative overflow-auto border(b line-accent)`,
+  table: style`min-w-full w-full table-fixed divide-y divide-line-accent text(sm left) leading-normal rounded box-border m-0 p-0 ${css(
     { "border-collapse": "separate", "border-spacing": 0 }
   )}`
 });

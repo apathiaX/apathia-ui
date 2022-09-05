@@ -1,5 +1,5 @@
 import { computed, unref, defineComponent, ref, toRefs, openBlock, createElementBlock, normalizeClass, createElementVNode, withModifiers, withKeys, renderSlot, createCommentVNode } from "vue";
-import { style, css, tw, apply } from "@apathia/apathia.twind";
+import { style, tw, css, apply } from "@apathia/apathia.twind";
 import { useInjectProp } from "@apathia/apathia.hooks";
 function useCheckbox(userProps, ctx) {
   const { disabled, modelValue, trueValue, falseValue, value, inputEl } = userProps;
@@ -102,14 +102,11 @@ const _sfc_main = defineComponent({
       ctx
     );
     const styles = {
-      wrapper: style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm ${css`
-        line-height: 38px;
-        height: 38px;
-      `}`,
-      disabledWrapper: style`text-gray-500 cursor-not-allowed`,
+      wrapper: style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm`,
+      disabledWrapper: style`text-fill-accent cursor-not-allowed`,
       checkbox: style`relative inline-block p-0 whitespace-nowrap outline-none align-middle`,
       inner: tw(
-        style`relative block w-4 h-4 top-0 left-0 bg-white border border-gray-500 rounded outline-none`,
+        style`relative block w-4 h-4 top-0 left-0 bg-fill-white border border-fill-accent rounded outline-none`,
         css`
           transition: all 0.3s;
           &::after {
@@ -128,7 +125,7 @@ const _sfc_main = defineComponent({
           }
         `
       ),
-      checkedBlueBorder: style`bg-brand-500 border-brand-500`,
+      checkedBlueBorder: style`bg-brand-primary border-brand-primary`,
       checkedAfter: tw(css`
         &::after {
           transform: rotate(45deg) scale(1);
@@ -142,14 +139,14 @@ const _sfc_main = defineComponent({
         }
       `),
       disabledInner: tw(
-        style`bg-gray-100 border-gray-500 cursor-not-allowed outline-none`,
+        style`bg-fill-gray border-fill-accent cursor-not-allowed outline-none`,
         css`
           &::after {
-            ${apply`border-gray-500`}
+            ${apply`border-fill-accent`}
           }
         `
       ),
-      ring: style`focus:ring-2 focus:ring-brand-500`,
+      ring: style`focus:ring-2 focus:ring-brand-primary`,
       input: style`hidden`,
       contentWrap: style`mx-1`
     };

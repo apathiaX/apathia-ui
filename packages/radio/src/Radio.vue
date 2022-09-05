@@ -105,13 +105,11 @@ export default defineComponent({
     )
 
     const styles = {
-      wrapper: style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm ${css`
-        line-height: 38px;
-      `}`,
-      wrapperDisabled: style`text-gray-300 cursor-not-allowed`,
+      wrapper: style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm`,
+      wrapperDisabled: style`text-content-neutral cursor-not-allowed`,
       radio: style`relative inline-block m-0 p-0 whitespace-nowrap align-middle`,
       inner: tw(
-        style`relative block w-4 h-4 top-0 left-0 bg-white border border-gray-500 outline-none`,
+        style`relative block w-4 h-4 top-0 left-0 bg-content-white border border-fill-accent outline-none`,
         css`
           border-radius: 100px;
           transition: all 0.3s;
@@ -119,12 +117,9 @@ export default defineComponent({
             content: '';
             position: absolute;
             display: table;
-            width: 8px;
-            height: 8px;
             left: 3px;
             top: 3px;
-            border-radius: 4px;
-            ${apply`bg-brand-500`}
+            ${apply`w-2 h-2 bg-brand-primary rounded`}
             opacity: 0;
             transform: scale(0);
             transition: all 0.15s cubic-bezier(0.78, 0.14, 0.15, 0.86);
@@ -132,7 +127,7 @@ export default defineComponent({
         `,
       ),
       innerSelected: tw(
-        style`border-brand-300`,
+        style`border-brand-hover`,
         css`
           &::after {
             opacity: 1;
@@ -141,7 +136,7 @@ export default defineComponent({
           }
         `,
       ),
-      innerDisabled: style`bg-gray-100 border-gray-300 cursor-not-allowed outline-none`,
+      innerDisabled: style`bg-info-forbid border-line-accent cursor-not-allowed outline-none`,
       innerSelectedDisabled: tw(css`
         &::after {
           opacity: 1;
@@ -149,7 +144,7 @@ export default defineComponent({
           transition: all 0.15s cubic-bezier(0.78, 0.14, 0.15, 0.86);
         }
       `),
-      ring: style`focus:ring-2 focus:ring-brand-500`,
+      ring: style`focus:ring-2 focus:ring-brand-primary`,
       input: style`hidden`,
       contentWrap: style`mx-1`,
     }

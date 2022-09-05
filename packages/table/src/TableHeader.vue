@@ -198,17 +198,16 @@ const getStyles = () => {
 
   return {
     headerWrap: style`overflow-hidden`,
-    table: style`min-w-full divide-y divide-gray-300 border(& solid gray-300) text(sm left) leading-normal rounded-sm box-border m-0 p-0`,
-    thead: style`bg-gray-100`,
-    th: style`text(left xs gray-500) px-2 py-3 border-dashed border bg-gray-100 font-medium tracking-wider break-words box-border leading-normal ${css`
-      ${apply('border-gray-100')};
+    thead: style`bg-fill-light`,
+    th: style`text(left content-accent) text-sm font-normal px-2 py-3 border-dashed border bg-fill-gray tracking-wider break-words box-border leading-normal ${css`
+      ${apply('border-fill-gray')};
       border-width: 1px 1px 1px 0;
       border-style: solid;
       &:first-child {
         border-left-width: 1px;
       }
     `}`,
-    thBordered: style`border(gray-300)`,
+    thBordered: style`border-line-accent`,
     fixed: style`sticky`,
     fixedHeader: style`top-0`,
     fixedColumnLeft: style`left-0 ${borderRight}`,

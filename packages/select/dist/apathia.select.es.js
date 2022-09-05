@@ -523,25 +523,24 @@ const _sfc_main$1 = defineComponent({
     provide(FocusKey, focus);
     provide(SameValueCompareKey, isSameValue);
     const styles = {
-      selectWrapper: style`relative`,
+      selectWrapper: style`flex relative border rounded border-line-accent bg-content-white shadow h-8`,
       disabled: style(
-        "cursor-not-allowed pointer-events-none bg-gray-100 border-gray-100 placeholder-gray-300"
+        "cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-secondary"
       ),
-      active: style(""),
-      inputSelected: style`w-full block border border-gray-300 shadow-sm rounded-md text-sm py-2 px-3 outline-none focus:(bg-white border-brand-500)
-        cursor-pointer`,
+      active: style("border-brand-primary"),
+      inputSelected: style`flex-1 rounded text-sm py-1.5 pl-2 outline-none cursor-pointer`,
       focused: style("select-none"),
       arrow: style(
-        "ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none h-9 w-7 text-brand-700"
+        "absolute inset-y-0 right-0 flex items-center pr-2 pl-1.5 py-btn-sm-y pointer-events-none h-8 w-8 text-content-secondary"
       ),
       clearableIcon: style(
-        "hidden absolute w-4 h-4 rounded-full top-2.5 right-8 items-center bg-brand-300 text-white cursor-pointer hover:bg-brand-500"
+        "hidden absolute w-3.5 h-3.5 rounded-full top-2.5 right-7 items-center bg-fill-secondary text-content-white cursor-pointer hover:bg-fill-accent"
       ),
       clearable: style("block"),
-      dropdownContainer: style`z-dropdown block h-0 absolute mt-1 border border(solid gray-300) rounded-md bg-white shadow-lg opacity-0 transition duration-200 overflow-y-hidden`,
+      dropdownContainer: style`z-dropdown block h-0 absolute mt-1 border border-line-accent rounded bg-content-white shadow opacity-0 transition duration-200 overflow-y-hidden`,
       dropdownContainerShow: style`h-auto opacity-100`,
       optionList: style`max-h-56 text-base overflow-auto focus:outline-none sm:text-sm`,
-      tips: style("ml-3 py-2 text-gray-500 text-left mr-2")
+      tips: style("ml-3 py-2 text-fill-secondary text-left mr-2")
     };
     return {
       filterStr,
@@ -788,13 +787,13 @@ const _sfc_main = defineComponent({
     };
     const { getRootProps, isSelected, isFocused, isHidden } = useOption(userProps);
     const styles = {
-      wrapper: style`block text-gray-900 cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
-      selected: style`font-bold`,
-      focused: style`text-white bg-brand-500`,
+      wrapper: style`block text-content-primary cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
+      selected: style`font-bold text-brand-primary`,
+      focused: style`text-brand-primary bg-fill-gray`,
       text: style`overflow-hidden overflow-ellipsis whitespace-nowrap`,
-      checkMark: style`absolute right-4 text-brand-500`,
-      focusMark: style`text-white`,
-      disabled: style`text-gray-300 bg-gray-100 cursor-not-allowed`
+      checkMark: style`absolute right-4 text-brand-primary`,
+      focusMark: style`text-fill-white`,
+      disabled: style`text-content-secondary bg-info-forbid cursor-not-allowed`
     };
     return {
       updateRegister,

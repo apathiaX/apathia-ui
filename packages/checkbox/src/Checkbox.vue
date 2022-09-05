@@ -100,14 +100,11 @@ export default defineComponent({
     )
 
     const styles = {
-      wrapper: style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm ${css`
-        line-height: 38px;
-        height: 38px;
-      `}`,
-      disabledWrapper: style`text-gray-500 cursor-not-allowed`,
+      wrapper: style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm`,
+      disabledWrapper: style`text-fill-accent cursor-not-allowed`,
       checkbox: style`relative inline-block p-0 whitespace-nowrap outline-none align-middle`,
       inner: tw(
-        style`relative block w-4 h-4 top-0 left-0 bg-white border border-gray-500 rounded outline-none`,
+        style`relative block w-4 h-4 top-0 left-0 bg-fill-white border border-fill-accent rounded outline-none`,
         css`
           transition: all 0.3s;
           &::after {
@@ -127,7 +124,7 @@ export default defineComponent({
         `,
       ),
 
-      checkedBlueBorder: style`bg-brand-500 border-brand-500`,
+      checkedBlueBorder: style`bg-brand-primary border-brand-primary`,
       // check mark
       checkedAfter: tw(css`
         &::after {
@@ -143,14 +140,14 @@ export default defineComponent({
         }
       `),
       disabledInner: tw(
-        style`bg-gray-100 border-gray-500 cursor-not-allowed outline-none`,
+        style`bg-fill-gray border-fill-accent cursor-not-allowed outline-none`,
         css`
           &::after {
-            ${apply`border-gray-500`}
+            ${apply`border-fill-accent`}
           }
         `,
       ),
-      ring: style`focus:ring-2 focus:ring-brand-500`,
+      ring: style`focus:ring-2 focus:ring-brand-primary`,
       input: style`hidden`,
       contentWrap: style`mx-1`,
     }

@@ -1,5 +1,19 @@
 # @apathia1/apathia.table
 
+## 1.0.3
+
+### Patch Changes
+
+- change default theme
+- Updated dependencies
+  - @apathia/apathia.button@1.0.2
+  - @apathia/apathia.checkbox@1.0.2
+  - @apathia/apathia.loading@1.0.2
+  - @apathia/apathia.twind@1.0.2
+  - @apathia/apathia.custom-render@1.0.2
+  - @apathia/apathia.hooks@1.0.2
+  - @apathia/apathia.icon@1.0.2
+
 ## 1.0.2
 
 ### Patch Changes

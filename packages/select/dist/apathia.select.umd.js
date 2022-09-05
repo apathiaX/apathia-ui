@@ -521,25 +521,24 @@
       vue.provide(FocusKey, focus);
       vue.provide(SameValueCompareKey, isSameValue);
       const styles = {
-        selectWrapper: apathia_twind.style`relative`,
+        selectWrapper: apathia_twind.style`flex relative border rounded border-line-accent bg-content-white shadow h-8`,
         disabled: apathia_twind.style(
-          "cursor-not-allowed pointer-events-none bg-gray-100 border-gray-100 placeholder-gray-300"
+          "cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-secondary"
         ),
-        active: apathia_twind.style(""),
-        inputSelected: apathia_twind.style`w-full block border border-gray-300 shadow-sm rounded-md text-sm py-2 px-3 outline-none focus:(bg-white border-brand-500)
-        cursor-pointer`,
+        active: apathia_twind.style("border-brand-primary"),
+        inputSelected: apathia_twind.style`flex-1 rounded text-sm py-1.5 pl-2 outline-none cursor-pointer`,
         focused: apathia_twind.style("select-none"),
         arrow: apathia_twind.style(
-          "ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none h-9 w-7 text-brand-700"
+          "absolute inset-y-0 right-0 flex items-center pr-2 pl-1.5 py-btn-sm-y pointer-events-none h-8 w-8 text-content-secondary"
         ),
         clearableIcon: apathia_twind.style(
-          "hidden absolute w-4 h-4 rounded-full top-2.5 right-8 items-center bg-brand-300 text-white cursor-pointer hover:bg-brand-500"
+          "hidden absolute w-3.5 h-3.5 rounded-full top-2.5 right-7 items-center bg-fill-secondary text-content-white cursor-pointer hover:bg-fill-accent"
         ),
         clearable: apathia_twind.style("block"),
-        dropdownContainer: apathia_twind.style`z-dropdown block h-0 absolute mt-1 border border(solid gray-300) rounded-md bg-white shadow-lg opacity-0 transition duration-200 overflow-y-hidden`,
+        dropdownContainer: apathia_twind.style`z-dropdown block h-0 absolute mt-1 border border-line-accent rounded bg-content-white shadow opacity-0 transition duration-200 overflow-y-hidden`,
         dropdownContainerShow: apathia_twind.style`h-auto opacity-100`,
         optionList: apathia_twind.style`max-h-56 text-base overflow-auto focus:outline-none sm:text-sm`,
-        tips: apathia_twind.style("ml-3 py-2 text-gray-500 text-left mr-2")
+        tips: apathia_twind.style("ml-3 py-2 text-fill-secondary text-left mr-2")
       };
       return {
         filterStr,
@@ -786,13 +785,13 @@
       };
       const { getRootProps, isSelected, isFocused, isHidden } = useOption(userProps);
       const styles = {
-        wrapper: apathia_twind.style`block text-gray-900 cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
-        selected: apathia_twind.style`font-bold`,
-        focused: apathia_twind.style`text-white bg-brand-500`,
+        wrapper: apathia_twind.style`block text-content-primary cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
+        selected: apathia_twind.style`font-bold text-brand-primary`,
+        focused: apathia_twind.style`text-brand-primary bg-fill-gray`,
         text: apathia_twind.style`overflow-hidden overflow-ellipsis whitespace-nowrap`,
-        checkMark: apathia_twind.style`absolute right-4 text-brand-500`,
-        focusMark: apathia_twind.style`text-white`,
-        disabled: apathia_twind.style`text-gray-300 bg-gray-100 cursor-not-allowed`
+        checkMark: apathia_twind.style`absolute right-4 text-brand-primary`,
+        focusMark: apathia_twind.style`text-fill-white`,
+        disabled: apathia_twind.style`text-content-secondary bg-info-forbid cursor-not-allowed`
       };
       return {
         updateRegister,

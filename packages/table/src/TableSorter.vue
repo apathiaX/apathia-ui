@@ -63,10 +63,9 @@ export default defineComponent({
 })
 
 const getStyles = () => ({
-  arrowWrap: style`ml-1`,
-  arrow: style`text-gray-300 cursor-pointer h-3`,
-  arrowUp: style`-mb-px`,
-  arrowDown: style`-mt-px`,
-  active: style`text-gray-700`,
+  arrowWrap: style`inline-block pl-px`,
+  arrow: style`text-content-neutral cursor-pointer`,
+  arrowIcon: style`h-3.5 w-3.5 align-middle`,
+  active: style`text-content-accent`,
 })
 </script>

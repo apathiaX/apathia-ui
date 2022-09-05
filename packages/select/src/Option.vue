@@ -90,13 +90,13 @@ export default defineComponent({
       useOption(userProps)
 
     const styles = {
-      wrapper: style`block text-gray-900 cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
-      selected: style`font-bold`,
-      focused: style`text-white bg-brand-500`,
+      wrapper: style`block text-content-primary cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
+      selected: style`font-bold text-brand-primary`,
+      focused: style`text-brand-primary bg-fill-gray`,
       text: style`overflow-hidden overflow-ellipsis whitespace-nowrap`,
-      checkMark: style`absolute right-4 text-brand-500`,
-      focusMark: style`text-white`,
-      disabled: style`text-gray-300 bg-gray-100 cursor-not-allowed`,
+      checkMark: style`absolute right-4 text-brand-primary`,
+      focusMark: style`text-fill-white`,
+      disabled: style`text-content-secondary bg-info-forbid cursor-not-allowed`,
     }
 
     return {

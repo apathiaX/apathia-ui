@@ -305,8 +305,8 @@ export default defineComponent({
 })
 
 const getStyles = () => ({
-  container: style`shadow relative overflow-auto border(b gray-300)`,
-  table: style`min-w-full w-full table-fixed divide-y divide-gray-300 text(sm left) leading-normal rounded-sm box-border m-0 p-0 ${css(
+  container: style`shadow relative overflow-auto border(b line-accent)`,
+  table: style`min-w-full w-full table-fixed divide-y divide-line-accent text(sm left) leading-normal rounded box-border m-0 p-0 ${css(
     { 'border-collapse': 'separate', 'border-spacing': 0 },
   )}`,
 })

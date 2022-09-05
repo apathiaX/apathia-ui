@@ -1,5 +1,11 @@
 # @apathia/apathia.custom-render
 
+## 1.0.2
+
+### Patch Changes
+
+- change default theme
+
 ## 1.0.1
 
 ### Patch Changes

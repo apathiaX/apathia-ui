@@ -14,24 +14,23 @@
     return target;
   };
   const getStyles = () => {
-    const prependAndAppend = apathia_twind.apply`text(gray-500 sm) px-3 inline-flex items-center border border-gray-300 bg-gray-100`;
-    const commonIcon = apathia_twind.apply`absolute self-center px-1 text-gray-300`;
-    const interactiveIcon = apathia_twind.apply`${commonIcon}cursor-pointer hover:(text-gray-700)`;
+    const prependAndAppend = apathia_twind.apply`text(content-accent sm) px-2 inline-flex items-center bg-fill-gray`;
+    const commonIcon = apathia_twind.apply`absolute self-center text-fill-secondary`;
+    const interactiveIcon = apathia_twind.apply`${commonIcon}cursor-pointer hover:(text-fill-accent)`;
     return {
-      inputContainer: apathia_twind.style`relative flex w-full`,
-      inputWrapper: apathia_twind.style`relative flex flex-grow-1`,
-      input: apathia_twind.style`w-full block border border-gray-300 shadow-sm rounded-md text-sm py-2 px-3 outline-none focus:(bg-white border-brand-500)`,
+      inputContainer: apathia_twind.style`relative flex w-full h-8 border rounded border-line-accent bg-content-white shadow`,
+      inputWrapper: apathia_twind.style`relative flex rounded flex-grow-1 bg-content-white`,
+      input: apathia_twind.style`w-full h-full rounded block text-sm outline-none py-1.5 pl-2`,
       withPrefix: apathia_twind.style`pl-9`,
-      withPrepend: apathia_twind.style`rounded-l-none`,
-      withAppend: apathia_twind.style`rounded-r-none`,
-      withSuffix: apathia_twind.style`pr-9`,
-      withSuffixAndClear: apathia_twind.style`pr-14`,
-      disabled: apathia_twind.style`bg-gray-100`,
-      prepend: apathia_twind.tw`${prependAndAppend}${apathia_twind.apply`rounded-l-md border-r-0`}`,
-      clearableIcon: apathia_twind.tw`${interactiveIcon}${apathia_twind.apply`right-2 px-0`}`,
-      clearWithSuffix: apathia_twind.tw`${interactiveIcon}${apathia_twind.apply`right-7`}`,
-      append: apathia_twind.tw`${prependAndAppend}${apathia_twind.apply`rounded-r-md border-l-0`}`,
-      suffixBtn: apathia_twind.tw`${interactiveIcon}${apathia_twind.apply`right-2 px-0`}`
+      disabled: apathia_twind.style(
+        "cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-neutral"
+      ),
+      active: apathia_twind.style`border-brand-primary`,
+      prepend: apathia_twind.tw`${prependAndAppend}${apathia_twind.apply`rounded-l border-r-0`}`,
+      clearableIcon: apathia_twind.tw`${interactiveIcon}${apathia_twind.apply`right-2`}`,
+      clearWithSuffix: apathia_twind.tw`${interactiveIcon}${apathia_twind.apply`right-8`}`,
+      append: apathia_twind.tw`${prependAndAppend}${apathia_twind.apply`rounded-r`}`,
+      suffixBtn: apathia_twind.tw`${interactiveIcon}${apathia_twind.apply`right-2`}`
     };
   };
   const _sfc_main = vue.defineComponent({
@@ -72,6 +71,7 @@
     emits: ["update:modelValue", "input", "search"],
     setup(props, ctx) {
       const inputRef = vue.ref(null);
+      const activeVal = vue.ref(false);
       const withPrepend = vue.computed(() => ctx.slots.prepend !== void 0);
       const withAppend = vue.computed(() => ctx.slots.append !== void 0);
       const disableInput = apathia_hooks.useInjectProp(
@@ -111,8 +111,7 @@
         }
         return res;
       };
-      const onSearch = (e) => {
-        e.preventDefault();
+      const onSearch = () => {
         if (inputRef.value) {
           inputRef.value.focus();
         }
@@ -130,6 +129,7 @@
       return {
         inputRef,
         inputVal,
+        activeVal,
         handleInput,
         attrs,
         withPrepend,
@@ -146,7 +146,14 @@
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_Icon = vue.resolveComponent("Icon");
     return vue.openBlock(), vue.createElementBlock("div", {
-      class: vue.normalizeClass([_ctx.styles.inputContainer, _ctx.$attrs.class]),
+      class: vue.normalizeClass([
+        {
+          [_ctx.styles.inputContainer]: true,
+          [_ctx.styles.active]: _ctx.activeVal,
+          [_ctx.styles.disabled]: !!_ctx.disableInput
+        },
+        _ctx.$attrs.class
+      ]),
       style: vue.normalizeStyle(_ctx.attrs.style)
     }, [
       _ctx.withPrepend ? (vue.openBlock(), vue.createElementBlock("span", {
@@ -175,7 +182,9 @@
             _ctx.inputClass
           ],
           disabled: !!_ctx.disableInput,
-          onInput: _cache[1] || (_cache[1] = (...args) => _ctx.handleInput && _ctx.handleInput(...args))
+          onInput: _cache[1] || (_cache[1] = (...args) => _ctx.handleInput && _ctx.handleInput(...args)),
+          onBlur: _cache[2] || (_cache[2] = () => _ctx.activeVal = false),
+          onFocus: _cache[3] || (_cache[3] = () => _ctx.activeVal = true)
         }), null, 16, _hoisted_1), [
           [vue.vModelDynamic, _ctx.inputVal]
         ]),

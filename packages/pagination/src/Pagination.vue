@@ -1,6 +1,11 @@
 <template>
   <nav :class="styles.wrapper">
     <ul :class="styles.ul">
+      <li v-if="innerOptions.totalCount" :class="styles.count">
+        <slot name="total" :totalItems="totalItems" :totalPages="totalPages">
+          共{{ totalItems }} 条数据
+        </slot>
+      </li>
       <li
         v-if="innerOptions.boundaryBtns"
         :class="{
@@ -64,11 +69,6 @@
         {{ innerOptions.lastText }}
       </li>
 
-      <li v-if="innerOptions.totalCount" :class="styles.count">
-        <slot name="total" :totalItems="totalItems" :totalPages="totalPages">
-          共 {{ totalItems }} 条数据
-        </slot>
-      </li>
       <li
         v-if="innerOptions.jumpPage"
         :class="{
@@ -82,6 +82,12 @@
           }"
           @keyup.enter="selectPage(jumpTo)"
         />
+        <span
+          :class="{
+            [styles.pages]: true,
+          }"
+          >/ {{ totalPages }}</span
+        >
         <span
           :class="{
             [styles.jumpBtn]: true,
@@ -130,24 +136,21 @@ export default defineComponent({
     } = usePagination(userProps, ctx)
 
     const styles = {
-      wrapper: style`relative bg-white py-3 flex items-center justify-between`,
-      ul: style`relative z-0 inline-flex items-center -space-x-px text-sm font-medium`,
+      wrapper: style`relative bg-fill-white py-3 flex items-center justify-between`,
+      ul: style`relative z-0 inline-flex items-center text-base`,
 
-      item: style`relative inline-flex px-2 py-2 border border-gray-300 bg-white text-gray-700 
-      cursor-pointer select-none hover:bg-brand-500 hover:text-white`,
+      item: style`relative inline-flex flex-shrink-0 mx-1 px-btn-lg-y py-px border border-fill-neutral rounded 
+      bg-fill-white text-content-primary cursor-pointer select-none hover:bg-brand-primary hover:text-content-white`,
 
-      first: style`rounded-l-md flex-shrink-0`,
-      last: style`rounded-r-md flex-shrink-0`,
-      prev: style`flex-shrink-0`,
-      next: style`flex-shrink-0`,
-      active: style`text-white bg-brand-500 border-brand-300 outline-none`,
-      itemDisabled: style`cursor-not-allowed pointer-events-none text-gray-500 bg-gray-100 border-gray-300`,
-      numberBtn: style`outline-none px-4 py-2`,
-      jump: style`relative z-0 inline-flex items-center -space-x-px text-sm font-medium border border-gray-300 rounded-md`,
-      jumpInput: style`outline-none text-center w-14 py-2 border-0 text-brand-500 rounded-l-md`,
-      jumpBtn: style`text-center w-14 py-2 border-0 bg-white text-gray-700 rounded-r-md
-      cursor-pointer hover:bg-brand-500 hover:text-white`,
+      active: style`text-content-white bg-brand-primary border-brand-primary outline-none`,
+      itemDisabled: style`cursor-not-allowed pointer-events-none text-content-neutral bg-fill-light border-fill-gray`,
+      numberBtn: style`outline-none`,
+      jump: style`relative z-0 inline-flex items-center -space-x-px text-base border border-fill-neutral rounded`,
+      jumpInput: style`outline-none text-center w-8 px-btn-lg-y py-px border-0 rounded`,
+      jumpBtn: style`text-center w-14  px-btn-lg-y py-px border-0 bg-fill-white rounded
+      cursor-pointer hover:bg-brand-primary hover:text-content-white`,
       count: style`px-4`,
+      pages: style`pr-1`,
     }
 
     return {

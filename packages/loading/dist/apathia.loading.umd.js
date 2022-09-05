@@ -19,7 +19,7 @@
     }
   });
   const getStyles = () => ({
-    spinnerItem: apathia_twind.style`after:bg-brand-500`
+    spinnerItem: apathia_twind.style`after:bg-brand-primary`
   });
   const _hoisted_1 = { class: "lds-spinner" };
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {

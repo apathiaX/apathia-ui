@@ -136,17 +136,15 @@ export default defineComponent({
 })
 
 const getStyles = () => {
-  const label = apply`text-sm font-medium text-gray-700${css`
-    line-height: 38px;
-  `}`
+  const label = apply`text-sm text-content-primary`
   const mark = css`
     &:before {
       content: '*';
-      ${apply`text-red-500 align-top`}
+      ${apply`text-error-primary align-top`}
     }
   `
   return {
-    container: style`mb-2`,
+    container: style`mb-2 ml-2`,
     flex: style`flex`,
     inlineFlex: style`inline-flex mr-2 last:mr-0`,
     labelBlock: style`w-full ${label}`,

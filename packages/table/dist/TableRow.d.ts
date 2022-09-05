@@ -195,7 +195,6 @@ declare const _default: import("vue").DefineComponent<{
     handleRowMouseUp: (e: Event) => void;
     toggleExpand: () => void;
     styles: {
-        table: string;
         row: string;
         cell: string;
         fixedColumnLeft: string;

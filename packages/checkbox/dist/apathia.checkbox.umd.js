@@ -103,14 +103,11 @@
         ctx
       );
       const styles = {
-        wrapper: apathia_twind.style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm ${apathia_twind.css`
-        line-height: 38px;
-        height: 38px;
-      `}`,
-        disabledWrapper: apathia_twind.style`text-gray-500 cursor-not-allowed`,
+        wrapper: apathia_twind.style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm`,
+        disabledWrapper: apathia_twind.style`text-fill-accent cursor-not-allowed`,
         checkbox: apathia_twind.style`relative inline-block p-0 whitespace-nowrap outline-none align-middle`,
         inner: apathia_twind.tw(
-          apathia_twind.style`relative block w-4 h-4 top-0 left-0 bg-white border border-gray-500 rounded outline-none`,
+          apathia_twind.style`relative block w-4 h-4 top-0 left-0 bg-fill-white border border-fill-accent rounded outline-none`,
           apathia_twind.css`
           transition: all 0.3s;
           &::after {
@@ -129,7 +126,7 @@
           }
         `
         ),
-        checkedBlueBorder: apathia_twind.style`bg-brand-500 border-brand-500`,
+        checkedBlueBorder: apathia_twind.style`bg-brand-primary border-brand-primary`,
         checkedAfter: apathia_twind.tw(apathia_twind.css`
         &::after {
           transform: rotate(45deg) scale(1);
@@ -143,14 +140,14 @@
         }
       `),
         disabledInner: apathia_twind.tw(
-          apathia_twind.style`bg-gray-100 border-gray-500 cursor-not-allowed outline-none`,
+          apathia_twind.style`bg-fill-gray border-fill-accent cursor-not-allowed outline-none`,
           apathia_twind.css`
           &::after {
-            ${apathia_twind.apply`border-gray-500`}
+            ${apathia_twind.apply`border-fill-accent`}
           }
         `
         ),
-        ring: apathia_twind.style`focus:ring-2 focus:ring-brand-500`,
+        ring: apathia_twind.style`focus:ring-2 focus:ring-brand-primary`,
         input: apathia_twind.style`hidden`,
         contentWrap: apathia_twind.style`mx-1`
       };

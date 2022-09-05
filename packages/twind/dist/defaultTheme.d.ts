@@ -1,45 +1,138 @@
 export declare const defaultTheme: {
     theme: {
         colors: {
-            black: string;
-            white: string;
-            transparent: string;
-            red: {
-                100: "#fee2e2";
-                300: "#fca5a5";
-                500: "#ef4444";
-                700: "#b91c1c";
-                900: "#7f1d1d";
-            };
-            yellow: {
-                100: "#fef9c3";
-                300: "#fde047";
-                500: "#eab308";
-                700: "#a16207";
-                900: "#713f12";
-            };
-            green: {
-                100: "#dcfce7";
-                300: "#86efac";
-                500: "#22c55e";
-                700: "#15803d";
-                900: "#14532d";
-            };
-            gray: {
-                50: "#f9fafb";
-                100: "#f3f4f6";
-                300: "#d1d5db";
-                500: "#6b7280";
-                700: "#374151";
-                900: "#111827";
-            };
             brand: {
-                100: "#dbeafe";
-                300: "#93c5fd";
-                500: "#3b82f6";
-                700: "#1d4ed8";
-                900: "#1e3a8a";
+                primary: string;
+                hover: string;
+                active: string;
+                forbid: string;
+                light: string;
             };
+            content: {
+                primary: string;
+                accent: string;
+                secondary: string;
+                neutral: string;
+                white: string;
+                link: string;
+            };
+            fill: {
+                primary: string;
+                accent: string;
+                secondary: string;
+                neutral: string;
+                gray: string;
+                light: string;
+                white: string;
+            };
+            line: {
+                primary: string;
+                accent: string;
+                secondary: string;
+            };
+            pink: {
+                primary: string;
+                hover: string;
+                active: string;
+                forbid: string;
+                light: string;
+            };
+            success: {
+                primary: string;
+                hover: string;
+                active: string;
+                forbid: string;
+                light: string;
+            };
+            warning: {
+                primary: string;
+                hover: string;
+                active: string;
+                forbid: string;
+                light: string;
+            };
+            error: {
+                primary: string;
+                hover: string;
+                active: string;
+                forbid: string;
+                light: string;
+            };
+            info: {
+                primary: string;
+                hover: string;
+                active: string;
+                forbid: string;
+                light: string;
+            };
+            transparent: string;
+        };
+        fontSize: {
+            xs: (string | {
+                lineHeight: string;
+            })[];
+            sm: (string | {
+                lineHeight: string;
+            })[];
+            base: (string | {
+                lineHeight: string;
+            })[];
+            lg: (string | {
+                lineHeight: string;
+            })[];
+            xl: (string | {
+                lineHeight: string;
+            })[];
+            '2xl': (string | {
+                lineHeight: string;
+            })[];
+        };
+        boxShadow: {
+            sm: string;
+            DEFAULT: string;
+            md: string;
+            lg: string;
+            none: string;
+        };
+        padding: {
+            px: string;
+            0: string;
+            0.5: string;
+            1: string;
+            1.5: string;
+            2: string;
+            2.5: string;
+            3: string;
+            3.5: string;
+            4: string;
+            5: string;
+            6: string;
+            7: string;
+            8: string;
+            9: string;
+            10: string;
+            11: string;
+            12: string;
+            14: string;
+            16: string;
+            20: string;
+            24: string;
+            28: string;
+            32: string;
+            36: string;
+            40: string;
+            44: string;
+            48: string;
+            52: string;
+            56: string;
+            60: string;
+            64: string;
+            72: string;
+            80: string;
+            96: string;
+            'btn-sm-y': string;
+            'btn-md-y': string;
+            'btn-lg-y': string;
         };
         zIndex: {
             0: string;

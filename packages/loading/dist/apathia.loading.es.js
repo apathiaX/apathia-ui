@@ -17,7 +17,7 @@ const _sfc_main = defineComponent({
   }
 });
 const getStyles = () => ({
-  spinnerItem: style`after:bg-brand-500`
+  spinnerItem: style`after:bg-brand-primary`
 });
 const _hoisted_1 = { class: "lds-spinner" };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {

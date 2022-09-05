@@ -40,11 +40,10 @@
     }
   });
   const getStyles$3 = () => ({
-    arrowWrap: apathia_twind.style`ml-1`,
-    arrow: apathia_twind.style`text-gray-300 cursor-pointer h-3`,
-    arrowUp: apathia_twind.style`-mb-px`,
-    arrowDown: apathia_twind.style`-mt-px`,
-    active: apathia_twind.style`text-gray-700`
+    arrowWrap: apathia_twind.style`inline-block pl-px`,
+    arrow: apathia_twind.style`text-content-neutral cursor-pointer`,
+    arrowIcon: apathia_twind.style`h-3.5 w-3.5 align-middle`,
+    active: apathia_twind.style`text-content-accent`
   });
   function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_Icon = vue.resolveComponent("Icon");
@@ -204,17 +203,16 @@
   `;
     return {
       headerWrap: apathia_twind.style`overflow-hidden`,
-      table: apathia_twind.style`min-w-full divide-y divide-gray-300 border(& solid gray-300) text(sm left) leading-normal rounded-sm box-border m-0 p-0`,
-      thead: apathia_twind.style`bg-gray-100`,
-      th: apathia_twind.style`text(left xs gray-500) px-2 py-3 border-dashed border bg-gray-100 font-medium tracking-wider break-words box-border leading-normal ${apathia_twind.css`
-      ${apathia_twind.apply("border-gray-100")};
+      thead: apathia_twind.style`bg-fill-light`,
+      th: apathia_twind.style`text(left content-accent) text-sm font-normal px-2 py-3 border-dashed border bg-fill-gray tracking-wider break-words box-border leading-normal ${apathia_twind.css`
+      ${apathia_twind.apply("border-fill-gray")};
       border-width: 1px 1px 1px 0;
       border-style: solid;
       &:first-child {
         border-left-width: 1px;
       }
     `}`,
-      thBordered: apathia_twind.style`border(gray-300)`,
+      thBordered: apathia_twind.style`border-line-accent`,
       fixed: apathia_twind.style`sticky`,
       fixedHeader: apathia_twind.style`top-0`,
       fixedColumnLeft: apathia_twind.style`left-0 ${borderRight}`,
@@ -458,15 +456,14 @@
     border-left: 1px solid rgb(0 0 0 / 12%);
   `;
     return {
-      table: apathia_twind.style`min-w-full divide-y divide-gray-300 border(& solid gray-300) text(sm left) leading-normal rounded-sm box-border m-0 p-0`,
-      row: apathia_twind.style`hover:(bg-gray-100) transition`,
-      cell: apathia_twind.style`px-2 py-2.5 border(b solid gray-300) break-words`,
+      row: apathia_twind.style`hover:(bg-fill-light) transition`,
+      cell: apathia_twind.style`px-2 py-3 border(b solid line-accent) break-words text-sm`,
       fixedColumnLeft: apathia_twind.style`sticky z-20 left-0 ${borderRight}`,
       fixedColumnRight: apathia_twind.style`sticky z-20 right-0 ${borderLeft}`,
-      borderd: apathia_twind.style`border(r solid gray-300)`,
-      stripedRow: apathia_twind.style`bg-gray-100`,
-      activeRow: apathia_twind.style`bg-brand-300`,
-      whiteRow: apathia_twind.style`bg-white`,
+      borderd: apathia_twind.style`border(r solid line-accent)`,
+      stripedRow: apathia_twind.style`bg-fill-light`,
+      activeRow: apathia_twind.style`bg-brand-hover`,
+      whiteRow: apathia_twind.style`bg-fill-white`,
       cellBtnsWrap: apathia_twind.style`inline-flex flex-wrap ${apathia_twind.css`
       --gap: 0.25rem;
       --column-gap: var(--gap);
@@ -928,8 +925,8 @@
     }
   });
   const getStyles = () => ({
-    container: apathia_twind.style`shadow relative overflow-auto border(b gray-300)`,
-    table: apathia_twind.style`min-w-full w-full table-fixed divide-y divide-gray-300 text(sm left) leading-normal rounded-sm box-border m-0 p-0 ${apathia_twind.css(
+    container: apathia_twind.style`shadow relative overflow-auto border(b line-accent)`,
+    table: apathia_twind.style`min-w-full w-full table-fixed divide-y divide-line-accent text(sm left) leading-normal rounded box-border m-0 p-0 ${apathia_twind.css(
       { "border-collapse": "separate", "border-spacing": 0 }
     )}`
   });

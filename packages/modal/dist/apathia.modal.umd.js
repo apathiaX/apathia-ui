@@ -208,13 +208,13 @@
       animation: "0.5s ease",
       animationName: flash
     });
-    const shadeClass = apathia_twind.style`fixed inset-0 h-full bg-gray-500 bg-opacity-50 overflow-auto ${flashCss}`;
-    const modalClass = apathia_twind.style`mx-auto rounded-md bg-white mb-8 -translate-y-5 ${slideinCss}`;
-    const modalHeaderClass = apathia_twind.style`flex justify-between p-4 rounded-t-md text-black border(b solid gray-300)`;
+    const shadeClass = apathia_twind.style`fixed inset-0 h-full bg-fill-gray bg-opacity-50 overflow-auto ${flashCss}`;
+    const modalClass = apathia_twind.style`mx-auto rounded bg-fill-white mb-8 -translate-y-5 ${slideinCss}`;
+    const modalHeaderClass = apathia_twind.style`flex justify-between p-4 rounded-t text-content-primary border(b solid fill-neutral)`;
     const modalContentClass = apathia_twind.style`p-4`;
-    const delIconClass = apathia_twind.style`font-medium self-start ml-3 cursor-pointer hover:(text-red-500)`;
+    const delIconClass = apathia_twind.style`font-medium self-start ml-3 cursor-pointer hover:(text-error-primary)`;
     const titleClass = apathia_twind.tw`text-lg`;
-    const subTitleClass = apathia_twind.tw`text-gray-300 text-sm mt-0.5`;
+    const subTitleClass = apathia_twind.tw`text-content-accent text-sm mt-0.5`;
     const transitionClass = {
       "leave-to-class": apathia_twind.tw`opacity-0`
     };

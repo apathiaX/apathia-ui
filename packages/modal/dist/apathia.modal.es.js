@@ -209,13 +209,13 @@ function initStyle() {
     animation: "0.5s ease",
     animationName: flash
   });
-  const shadeClass = style`fixed inset-0 h-full bg-gray-500 bg-opacity-50 overflow-auto ${flashCss}`;
-  const modalClass = style`mx-auto rounded-md bg-white mb-8 -translate-y-5 ${slideinCss}`;
-  const modalHeaderClass = style`flex justify-between p-4 rounded-t-md text-black border(b solid gray-300)`;
+  const shadeClass = style`fixed inset-0 h-full bg-fill-gray bg-opacity-50 overflow-auto ${flashCss}`;
+  const modalClass = style`mx-auto rounded bg-fill-white mb-8 -translate-y-5 ${slideinCss}`;
+  const modalHeaderClass = style`flex justify-between p-4 rounded-t text-content-primary border(b solid fill-neutral)`;
   const modalContentClass = style`p-4`;
-  const delIconClass = style`font-medium self-start ml-3 cursor-pointer hover:(text-red-500)`;
+  const delIconClass = style`font-medium self-start ml-3 cursor-pointer hover:(text-error-primary)`;
   const titleClass = tw`text-lg`;
-  const subTitleClass = tw`text-gray-300 text-sm mt-0.5`;
+  const subTitleClass = tw`text-content-accent text-sm mt-0.5`;
   const transitionClass = {
     "leave-to-class": tw`opacity-0`
   };

@@ -1,5 +1,30 @@
 # @apathia/apathia
 
+## 1.0.3
+
+### Patch Changes
+
+- change default theme
+- Updated dependencies
+  - @apathia/apathia.alert@1.0.2
+  - @apathia/apathia.button@1.0.2
+  - @apathia/apathia.checkbox@1.0.2
+  - @apathia/apathia.collapse@1.0.2
+  - @apathia/apathia.form@1.0.2
+  - @apathia/apathia.input@1.0.2
+  - @apathia/apathia.loading@1.0.2
+  - @apathia/apathia.modal@1.0.2
+  - @apathia/apathia.pagination@1.0.2
+  - @apathia/apathia.radio@1.0.2
+  - @apathia/apathia.select@1.0.2
+  - @apathia/apathia.table@1.0.3
+  - @apathia/apathia.twind@1.0.2
+  - @apathia/apathia.upload@1.0.2
+  - @apathia/apathia.confirm@1.0.2
+  - @apathia/apathia.custom-render@1.0.2
+  - @apathia/apathia.hooks@1.0.2
+  - @apathia/apathia.icon@1.0.2
+
 ## 1.0.2
 
 ### Patch Changes

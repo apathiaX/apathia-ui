@@ -29,13 +29,14 @@
       tag: { type: [String, Object] },
       href: { type: String },
       primary: { type: Boolean, default: false },
-      secondary: { type: Boolean, default: false },
       success: { type: Boolean, default: false },
       danger: { type: Boolean, default: false },
       info: { type: Boolean, default: false },
       warning: { type: Boolean, default: false },
+      pink: { type: Boolean, defult: false },
       active: { type: Boolean, default: false },
       plain: { type: Boolean, default: false },
+      hollow: { type: Boolean, default: false },
       small: { type: Boolean, default: false },
       large: { type: Boolean, default: false },
       round: { type: Boolean, default: false },
@@ -56,48 +57,97 @@
       });
       const userProps = { disabled: disableButton };
       const { getButtonProps } = useButton(userProps, ctx);
-      const styles = {
-        base: apathia_twind.style`inline-block border no-underline rounded-md px-4 py-2 transition duration-500 ease select-none focus:outline-none hover:shadow-lg text-sm mr-2 whitespace-nowrap`,
-        primary: apathia_twind.style`border-brand-500 bg-brand-500 text-white hover:bg-brand-700`,
-        success: apathia_twind.style`border-green-500 bg-green-500 text-white hover:bg-green-700`,
-        danger: apathia_twind.style`border-red-500 bg-red-500 text-white hover:bg-red-700`,
-        warning: apathia_twind.style`border-yellow-500 bg-yellow-500 text-white hover:bg-yellow-700`,
-        info: apathia_twind.style`border-gray-500 bg-gray-500 text-white hover:bg-gray-700`,
-        secondary: apathia_twind.style`border-gray-500 bg-gray-500 text-gray-300 hover:bg-gray-700`,
-        active: apathia_twind.tw`${apathia_twind.css`
-        filter: brightness(1.1) contrast(150%);
-      `}`,
-        plain: apathia_twind.style`border-0 hover:shadow-none`,
-        small: apathia_twind.style`text-xs font-medium`,
-        large: apathia_twind.style`text-xl`,
-        round: apathia_twind.style`rounded-full`,
-        disabled: apathia_twind.style`cursor-not-allowed opacity-50`
-      };
+      const styles = getStyles();
+      const btnClass = vue.computed(() => {
+        const themeString = props.primary && "primary" || props.pink && "pink" || props.success && "success" || props.danger && "danger" || props.info && "info" || props.warning && "warning" || "primary";
+        return [
+          styles.themeStyles.base,
+          styles.themeStyles[themeString],
+          props.small ? styles.size.small : "",
+          props.large ? styles.size.large : "",
+          props.hollow ? `${styles.hollow.base} ${styles.hollow[themeString]}` : "",
+          props.plain ? styles.plain[themeString] : "",
+          props.active ? styles.active[themeString] : "",
+          props.disabled ? `${styles.disabled.base} ${styles.disabled[themeString]}` : "",
+          props.round ? styles.size.round : ""
+        ];
+      });
       return {
         getButtonProps,
         disableButton,
         tagType,
-        styles
+        btnClass
       };
     }
   });
+  const getStyles = () => {
+    const themeStyles = {
+      base: apathia_twind.style`inline-block border-0 no-underline rounded-md py-btn-md-y px-2 transition focus:outline-none duration-500 ease select-none text-base mr-2 whitespace-nowrap text-base text-center ${apathia_twind.css`
+      min-width: 3.75rem;
+    `}`,
+      primary: apathia_twind.style`bg-brand-primary text-content-white hover:bg-brand-hover active:bg-brand-active`,
+      pink: apathia_twind.style`bg-pink-primary text-content-white hover:bg-pink-hover active:bg-pink-active`,
+      success: apathia_twind.style`bg-success-primary text-content-white hover:bg-success-hover active:bg-success-active`,
+      danger: apathia_twind.style`bg-error-primary text-content-white hover:bg-error-hover active:bg-error-active`,
+      warning: apathia_twind.style`bg-warning-primary text-content-white hover:bg-warning-hover active:bg-warning-active`,
+      info: apathia_twind.style`bg-info-primary text-content-accent hover:bg-info-hover active:bg-info-active`
+    };
+    const activeStyles = {
+      primary: apathia_twind.style`bg-brand-active`,
+      pink: apathia_twind.style`bg-pink-active`,
+      success: apathia_twind.style`bg-success-active`,
+      danger: apathia_twind.style`bg-error-active`,
+      warning: apathia_twind.style`bg-warning-active`,
+      info: apathia_twind.style`bg-fill-neutral`,
+      secondary: apathia_twind.style`border-brand-active text-brand-active`
+    };
+    const disableStyles = {
+      base: apathia_twind.style`cursor-not-allowed`,
+      primary: apathia_twind.style`bg-brand-forbid`,
+      pink: apathia_twind.style`bg-pink-forbid`,
+      success: apathia_twind.style`bg-success-forbid`,
+      danger: apathia_twind.style`bg-error-forbid`,
+      warning: apathia_twind.style`bg-warning-forbid`,
+      info: apathia_twind.style`bg-fill-gray`
+    };
+    const hollowStyles = {
+      base: apathia_twind.style`bg-fill-white border`,
+      primary: apathia_twind.style`text-brand-primary hover:text-content-white`,
+      pink: apathia_twind.style`text-pink-primary hover:text-content-white`,
+      success: apathia_twind.style`text-success-primary hover:text-content-white`,
+      danger: apathia_twind.style`text-error-primary hover:text-content-white`,
+      warning: apathia_twind.style`text-warning-primary hover:text-content-white`,
+      info: apathia_twind.style`text-content-accent hover:bg-success-primary hover:text-content-primary`
+    };
+    const plainStyles = {
+      primary: apathia_twind.style`bg-brand-light text-brand-primary hover:text-content-white`,
+      pink: apathia_twind.style`bg-pink-light text-pink-primary hover:text-content-white`,
+      success: apathia_twind.style`bg-success-light text-success-primary hover:text-content-white`,
+      danger: apathia_twind.style`bg-error-light text-error-primary hover:text-content-white`,
+      warning: apathia_twind.style`bg-warning-light text-warning-primary hover:text-content-white`,
+      info: apathia_twind.style`bg-fill-light text-content-accent hover:text-content-primary`
+    };
+    const sizeStyles = {
+      small: apathia_twind.style`text-sm font-medium py-btn-sm-y ${apathia_twind.css`
+      min-width: 3.5rem;
+    `}`,
+      large: apathia_twind.style`text-base py-btn-lg-y ${apathia_twind.css`
+      width: 4rem;
+    `}`,
+      round: apathia_twind.style`rounded-full`
+    };
+    return {
+      themeStyles,
+      active: activeStyles,
+      disabled: disableStyles,
+      hollow: hollowStyles,
+      plain: plainStyles,
+      size: sizeStyles
+    };
+  };
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(_ctx.tagType), vue.mergeProps({ ..._ctx.getButtonProps() }, {
-      class: {
-        [_ctx.styles.base]: true,
-        [_ctx.styles.primary]: _ctx.primary,
-        [_ctx.styles.secondary]: _ctx.secondary,
-        [_ctx.styles.success]: _ctx.success,
-        [_ctx.styles.danger]: _ctx.danger,
-        [_ctx.styles.info]: _ctx.info,
-        [_ctx.styles.warning]: _ctx.warning,
-        [_ctx.styles.active]: _ctx.active,
-        [_ctx.styles.plain]: _ctx.plain,
-        [_ctx.styles.small]: _ctx.small,
-        [_ctx.styles.large]: _ctx.large,
-        [_ctx.styles.round]: _ctx.round,
-        [_ctx.styles.disabled]: _ctx.disableButton
-      },
+      class: _ctx.btnClass,
       href: _ctx.href
     }), {
       default: vue.withCtx(() => [

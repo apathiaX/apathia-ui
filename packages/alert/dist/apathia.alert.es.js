@@ -101,25 +101,25 @@ var BaseAlert = defineComponent({
 function initStyle(type) {
   const Theme = {
     info: {
-      layout: style`bg-gray-100 text-gray-700 bg-opacity-90 border(1 gray-300)`
+      layout: style`bg-fill-light text-fill-primary`
     },
     danger: {
-      layout: style`bg-red-100 text-red-700 bg-opacity-90 border(1 red-300)`
+      layout: style`bg-error-light text-error-primary`
     },
     success: {
-      layout: style`bg-green-100 text-green-700 bg-opacity-90 border(1 green-300)`
+      layout: style`bg-success-light text-success-primary`
     },
     warning: {
-      layout: style`bg-yellow-100 text-yellow-700 bg-opacity-90 border(1 yellow-300)`
+      layout: style`bg-warning-light text-warning-primary`
     },
     default: {
-      layout: style`bg-brand-100 text-brand-700 bg-opacity-90 border(1 brand-300)`
+      layout: style`bg-brand-light text-brand-primary`
     }
   };
   const theme = Theme[type] || Theme.default;
-  const layout = tw`${theme.layout} ${apply`p-2.5 rounded-md flex mt-2 duration-300`}`;
+  const layout = tw`${theme.layout} ${apply`p-2.5 rounded flex mt-2 duration-300`}`;
   const iconWrap = style`flex-shrink-0 w-4 mr-2`;
-  const delIcon = style`ml-2 cursor-pointer hover:(text-red-500)`;
+  const delIcon = style`ml-2 cursor-pointer hover:(text-error-active)`;
   const contentClass = style`inline-block font-normal flex-grow break-all`;
   const titleClass = style`text-lg`;
   const messageClass = style`text-xs leading-normal`;

@@ -16,7 +16,7 @@ interface Props {
 const props = defineProps<Props>()
 
 const styles = {
-  container: tw`${apply`border border rounded-md border-gray-300 p-4 m-5 hover:(shadow-md)`}`,
-  title: tw`${apply`text-lg font-semibold font-sans text-gray-900 mb-2`}`,
+  container: tw`${apply`border border rounded border-line-accent p-4 m-5 hover:(shadow)`}`,
+  title: tw`${apply`text-lg font-semibold font-sans text-content-primary mb-2`}`,
 }
 </script>
