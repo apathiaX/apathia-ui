@@ -53,7 +53,7 @@ export function request<T>(
 ) {
   return new Promise<T>((resole, reject) => {
     if (typeof XMLHttpRequest === 'undefined') {
-      reject(new Error('[Helm] XMLHttpRequest was not been supported'))
+      reject(new Error('XMLHttpRequest was not been supported'))
     }
 
     const xhr = new XMLHttpRequest()
