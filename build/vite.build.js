@@ -16,13 +16,16 @@ const resolveGlobal = id => {
   if (id === 'vue') {
     return 'Vue'
   }
+  // 进行名字的替换，可以直接引入使用
   return id.indexOf('@apathia/apathia') > -1 ? resolveBareName(id) : id
 }
 
-// console.log(process.env.PNPM_PACKAGE_NAME);
+// console.log('param', process.env.PNPM_PACKAGE_NAME)
+// process.env.PNPM_PACKAGE_NAME: 项目的名称
 const pkgName = resolveBareName(process.env.PNPM_PACKAGE_NAME)
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
+// 获取dependencies中的包
 const { dependencies = {} } = require(path.join(
   __dirname,
   `../packages/${pkgName}/package.json`,
@@ -60,6 +63,7 @@ export default defineConfig({
     },
     rollupOptions: {
       external(id) {
+        // 不打包vue和本项目的其他package
         // subpath
         return (
           /^vue/.test(id) || deps.some(dep => new RegExp(`^${dep}`).test(id))
@@ -67,6 +71,7 @@ export default defineConfig({
       },
       output: {
         dir: 'dist',
+        // 配置全局变量，可以直接引入组件的名称不需要加项目名称
         globals: resolveGlobal,
         exports: 'named',
       },
