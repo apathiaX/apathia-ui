@@ -141,7 +141,7 @@ var _sfc_main$3 = defineComponent({
     const {
       allSelected,
       toggleAllSelected,
-      selectedMap
+      indeterminate
     } = inject("TableMultiSelected");
     const handleColumnSortChange = ({
       prop,
@@ -154,7 +154,6 @@ var _sfc_main$3 = defineComponent({
     };
     const headerRowClasses = ((_a = props.headerRowClassName) === null || _a === void 0 ? void 0 : _a.call(props)) || "";
     const headerRowStyles = (_b = props.headerRowStyle) === null || _b === void 0 ? void 0 : _b.call(props);
-    const indeterminate = computed(() => Object.keys(selectedMap.value).length > 0 && !allSelected.value);
     const headerCols = computed(() => props.columns.map((column, colIndex) => {
       var _a2, _b2;
       const {
@@ -768,9 +767,16 @@ function useTableSelected(data, selectedKeys, selected, key, columns, ctx) {
       return acc;
     }, {}));
   };
+  const indeterminate = computed(() => {
+    const intersection = data.value.filter((item) => {
+      return selectedMap.value[`${item[key.value]}`];
+    });
+    return intersection.length > 0 && !allSelected.value;
+  });
   return {
     selectedMap,
     allSelected,
+    indeterminate,
     toggleItem,
     toggleAllSelected,
     shiftToggle

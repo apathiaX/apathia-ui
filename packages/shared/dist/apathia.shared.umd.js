@@ -88,7 +88,7 @@
   function request(method, url, data, options) {
     return new Promise((resole, reject) => {
       if (typeof XMLHttpRequest === "undefined") {
-        reject(new Error("[Helm] XMLHttpRequest was not been supported"));
+        reject(new Error("XMLHttpRequest was not been supported"));
       }
       const xhr = new XMLHttpRequest();
       xhr.open(method, url, true);

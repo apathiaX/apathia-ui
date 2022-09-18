@@ -1,9 +1,10 @@
-import { SetupContext, Ref, WritableComputedRef } from 'vue';
+import { SetupContext, Ref, WritableComputedRef, ComputedRef } from 'vue';
 import type { Column, DataItem } from './types';
 declare type Event = 'update:selected' | 'update:selectedKeys';
 export interface TableMultiSelectedHelper {
     selectedMap: WritableComputedRef<Record<string, boolean>>;
     allSelected: WritableComputedRef<boolean>;
+    indeterminate: ComputedRef<boolean>;
     toggleItem: (i: DataItem) => void;
     toggleAllSelected: () => void;
     shiftToggle: (range: DataItem[]) => void;

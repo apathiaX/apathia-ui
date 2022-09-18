@@ -109,7 +109,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const styles = getStyles()
 
-    const { allSelected, toggleAllSelected, selectedMap } = inject(
+    const { allSelected, toggleAllSelected, indeterminate } = inject(
       'TableMultiSelected',
     ) as TableMultiSelectedHelper
 
@@ -128,9 +128,6 @@ export default defineComponent({
 
     const headerRowClasses = props.headerRowClassName?.() || ''
     const headerRowStyles = props.headerRowStyle?.()
-    const indeterminate = computed(
-      () => Object.keys(selectedMap.value).length > 0 && !allSelected.value,
-    )
 
     const headerCols = computed(() =>
       props.columns

@@ -1,5 +1,11 @@
 # @apathia1/apathia.table
 
+## 1.0.4
+
+### Patch Changes
+
+- fix: table select
+
 ## 1.0.3
 
 ### Patch Changes

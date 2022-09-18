@@ -1,10 +1,11 @@
-import { computed, SetupContext, Ref, WritableComputedRef } from 'vue'
+import { computed, SetupContext, Ref, WritableComputedRef, ComputedRef } from 'vue'
 import type { Column, DataItem } from './types'
 
 type Event = 'update:selected' | 'update:selectedKeys'
 export interface TableMultiSelectedHelper {
   selectedMap: WritableComputedRef<Record<string, boolean>>
   allSelected: WritableComputedRef<boolean>
+  indeterminate: ComputedRef<boolean>
   toggleItem: (i: DataItem) => void
   toggleAllSelected: () => void
   shiftToggle: (range: DataItem[]) => void
@@ -35,7 +36,7 @@ export function useTableSelected(
         // 由于selectedWhen 是可选的 所以加上！可以使用，如果没有传不会报错
         selectionColumn.disabledWhen!({ row: item, rowIndex: index }),
       )
-      .reduce((map, item) => {
+      .reduce((map: Record<string, boolean>, item) => {
         map[`${item[key.value]}`] = true
         return map
       }, {})
@@ -130,9 +131,17 @@ export function useTableSelected(
     }
   }
 
+  const indeterminate = computed(() => {
+    const intersection = data.value.filter(item => {
+      return selectedMap.value[`${item[key.value]}`]
+    })
+    return intersection.length > 0 && !allSelected.value
+  })
+
   return {
     selectedMap,
     allSelected,
+    indeterminate,
 
     toggleItem,
     toggleAllSelected,
