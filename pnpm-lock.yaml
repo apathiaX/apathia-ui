@@ -68,7 +68,7 @@ importers:
 
   docs:
     specifiers:
-      '@apathia/apathia.twind': workspace:^0.0.8
+      '@apathia/apathia.twind': workspace:1.0.2
       '@apathia/vitepress-theme': ^0.0.2
       vitepress: ^0.22.3
     devDependencies:
@@ -105,10 +105,10 @@ importers:
 
   packages/alert:
     specifiers:
-      '@apathia/apathia.custom-render': workspace:^0.0.7
-      '@apathia/apathia.icon': workspace:^0.0.7
-      '@apathia/apathia.shared': workspace:^0.0.9
-      '@apathia/apathia.twind': workspace:^0.0.7
+      '@apathia/apathia.custom-render': workspace:^1.0.2
+      '@apathia/apathia.icon': workspace:^1.0.2
+      '@apathia/apathia.shared': workspace:^1.0.2
+      '@apathia/apathia.twind': workspace:^1.0.2
       vue: ^3.2.37
     dependencies:
       '@apathia/apathia.custom-render': link:../custom-render
@@ -120,24 +120,25 @@ importers:
 
   packages/apathia:
     specifiers:
-      '@apathia/apathia.alert': workspace:^0.0.11
-      '@apathia/apathia.button': workspace:^0.0.10
-      '@apathia/apathia.checkbox': workspace:^0.0.10
-      '@apathia/apathia.collapse': workspace:^0.0.10
-      '@apathia/apathia.confirm': workspace:^0.0.10
-      '@apathia/apathia.custom-render': workspace:^0.0.8
-      '@apathia/apathia.form': workspace:^0.0.10
-      '@apathia/apathia.hooks': workspace:^0.0.10
-      '@apathia/apathia.icon': workspace:^0.0.8
-      '@apathia/apathia.input': workspace:^0.0.11
-      '@apathia/apathia.loading': workspace:^0.0.8
-      '@apathia/apathia.modal': workspace:^0.0.10
-      '@apathia/apathia.pagination': workspace:^0.0.1
-      '@apathia/apathia.radio': workspace:^0.0.10
-      '@apathia/apathia.select': workspace:^0.0.10
-      '@apathia/apathia.table': workspace:^0.0.10
-      '@apathia/apathia.twind': workspace:^0.0.8
-      '@apathia/apathia.upload': workspace:^0.0.11
+      '@apathia/apathia.alert': workspace:^1.0.2
+      '@apathia/apathia.button': workspace:^1.0.2
+      '@apathia/apathia.checkbox': workspace:^1.0.2
+      '@apathia/apathia.collapse': workspace:^1.0.2
+      '@apathia/apathia.confirm': workspace:^1.0.2
+      '@apathia/apathia.custom-render': workspace:^1.0.2
+      '@apathia/apathia.form': workspace:^1.0.2
+      '@apathia/apathia.hooks': workspace:^1.0.2
+      '@apathia/apathia.icon': workspace:^1.0.2
+      '@apathia/apathia.input': workspace:^1.0.2
+      '@apathia/apathia.loading': workspace:^1.0.2
+      '@apathia/apathia.modal': workspace:^1.0.2
+      '@apathia/apathia.pagination': workspace:^1.0.2
+      '@apathia/apathia.popper': workspace:^0.0.1
+      '@apathia/apathia.radio': workspace:^1.0.2
+      '@apathia/apathia.select': workspace:^1.0.2
+      '@apathia/apathia.table': workspace:^1.0.4
+      '@apathia/apathia.twind': workspace:^1.0.2
+      '@apathia/apathia.upload': workspace:^1.0.2
       vue: ^3.2.37
     dependencies:
       '@apathia/apathia.alert': link:../alert
@@ -153,6 +154,7 @@ importers:
       '@apathia/apathia.loading': link:../loading
       '@apathia/apathia.modal': link:../modal
       '@apathia/apathia.pagination': link:../pagination
+      '@apathia/apathia.popper': link:../popper
       '@apathia/apathia.radio': link:../radio
       '@apathia/apathia.select': link:../select
       '@apathia/apathia.table': link:../table
@@ -163,9 +165,9 @@ importers:
 
   packages/button:
     specifiers:
-      '@apathia/apathia.hooks': workspace:^0.0.9
-      '@apathia/apathia.shared': workspace:^0.0.9
-      '@apathia/apathia.twind': workspace:^0.0.7
+      '@apathia/apathia.hooks': workspace:^1.0.2
+      '@apathia/apathia.shared': workspace:^1.0.2
+      '@apathia/apathia.twind': workspace:^1.0.2
       vue: ^3.2.37
     dependencies:
       '@apathia/apathia.hooks': link:../hooks
@@ -176,8 +178,8 @@ importers:
 
   packages/checkbox:
     specifiers:
-      '@apathia/apathia.hooks': workspace:^0.0.9
-      '@apathia/apathia.twind': workspace:^0.0.7
+      '@apathia/apathia.hooks': workspace:^1.0.2
+      '@apathia/apathia.twind': workspace:^1.0.2
       vue: ^3.2.37
     dependencies:
       '@apathia/apathia.hooks': link:../hooks
@@ -187,10 +189,10 @@ importers:
 
   packages/collapse:
     specifiers:
-      '@apathia/apathia.hooks': workspace:^0.0.9
-      '@apathia/apathia.icon': workspace:^0.0.7
-      '@apathia/apathia.shared': workspace:^0.0.9
-      '@apathia/apathia.twind': workspace:^0.0.7
+      '@apathia/apathia.hooks': workspace:^1.0.2
+      '@apathia/apathia.icon': workspace:^1.0.2
+      '@apathia/apathia.shared': workspace:^1.0.2
+      '@apathia/apathia.twind': workspace:^1.0.2
       vue: ^3.2.37
     dependencies:
       '@apathia/apathia.hooks': link:../hooks
@@ -202,10 +204,10 @@ importers:
 
   packages/confirm:
     specifiers:
-      '@apathia/apathia.button': workspace:^0.0.9
-      '@apathia/apathia.custom-render': workspace:^0.0.7
-      '@apathia/apathia.modal': workspace:^0.0.9
-      '@apathia/apathia.twind': workspace:^0.0.7
+      '@apathia/apathia.button': workspace:^1.0.2
+      '@apathia/apathia.custom-render': workspace:^1.0.2
+      '@apathia/apathia.modal': workspace:^1.0.2
+      '@apathia/apathia.twind': workspace:^1.0.2
       vue: ^3.2.37
     dependencies:
       '@apathia/apathia.button': link:../button
@@ -223,8 +225,8 @@ importers:
 
   packages/form:
     specifiers:
-      '@apathia/apathia.hooks': workspace:^0.0.9
-      '@apathia/apathia.twind': workspace:^0.0.7
+      '@apathia/apathia.hooks': workspace:^1.0.2
+      '@apathia/apathia.twind': workspace:^1.0.2
       vue: ^3.2.37
     dependencies:
       '@apathia/apathia.hooks': link:../hooks
@@ -234,7 +236,7 @@ importers:
 
   packages/hooks:
     specifiers:
-      '@apathia/apathia.shared': workspace:^0.0.9
+      '@apathia/apathia.shared': workspace:^1.0.2
       vue: ^3.2.37
     dependencies:
       '@apathia/apathia.shared': link:../shared
@@ -260,9 +262,9 @@ importers:
 
   packages/input:
     specifiers:
-      '@apathia/apathia.hooks': workspace:^0.0.9
-      '@apathia/apathia.icon': workspace:^0.0.7
-      '@apathia/apathia.twind': workspace:^0.0.7
+      '@apathia/apathia.hooks': workspace:^1.0.2
+      '@apathia/apathia.icon': workspace:^1.0.2
+      '@apathia/apathia.twind': workspace:^1.0.2
       string-width: 4.2.3
       vue: ^3.2.37
     dependencies:
@@ -275,7 +277,7 @@ importers:
 
   packages/loading:
     specifiers:
-      '@apathia/apathia.twind': workspace:^0.0.7
+      '@apathia/apathia.twind': workspace:^1.0.2
       vue: ^3.2.37
     dependencies:
       '@apathia/apathia.twind': link:../twind
@@ -284,10 +286,10 @@ importers:
 
   packages/modal:
     specifiers:
-      '@apathia/apathia.custom-render': workspace:^0.0.7
-      '@apathia/apathia.hooks': workspace:^0.0.9
-      '@apathia/apathia.shared': workspace:^0.0.9
-      '@apathia/apathia.twind': workspace:^0.0.7
+      '@apathia/apathia.custom-render': workspace:^1.0.2
+      '@apathia/apathia.hooks': workspace:^1.0.2
+      '@apathia/apathia.shared': workspace:^1.0.2
+      '@apathia/apathia.twind': workspace:^1.0.2
       lodash: ^4.17.21
       vue: ^3.2.37
     dependencies:
@@ -301,8 +303,8 @@ importers:
 
   packages/pagination:
     specifiers:
-      '@apathia/apathia.shared': workspace:^0.0.10
-      '@apathia/apathia.twind': workspace:^0.0.8
+      '@apathia/apathia.shared': workspace:^1.0.2
+      '@apathia/apathia.twind': workspace:^1.0.2
       vue: ^3.2.37
     dependencies:
       '@apathia/apathia.shared': link:../shared
@@ -310,10 +312,27 @@ importers:
     devDependencies:
       vue: 3.2.37
 
+  packages/popper:
+    specifiers:
+      '@apathia/apathia.custom-render': workspace:^1.0.2
+      '@apathia/apathia.hooks': workspace:^1.0.2
+      '@apathia/apathia.shared': workspace:^1.0.2
+      '@apathia/apathia.twind': workspace:^1.0.2
+      '@popperjs/core': ^2.11.6
+      vue: ^3.2.37
+    dependencies:
+      '@apathia/apathia.custom-render': link:../custom-render
+      '@apathia/apathia.hooks': link:../hooks
+      '@apathia/apathia.shared': link:../shared
+      '@apathia/apathia.twind': link:../twind
+      '@popperjs/core': 2.11.6
+    devDependencies:
+      vue: 3.2.37
+
   packages/radio:
     specifiers:
-      '@apathia/apathia.hooks': workspace:^0.0.9
-      '@apathia/apathia.twind': workspace:^0.0.7
+      '@apathia/apathia.hooks': workspace:^1.0.2
+      '@apathia/apathia.twind': workspace:^1.0.2
       '@types/lodash': ^4.14.182
       lodash: ^4.17.21
       vue: ^3.2.37
@@ -327,10 +346,10 @@ importers:
 
   packages/select:
     specifiers:
-      '@apathia/apathia.hooks': workspace:^0.0.9
-      '@apathia/apathia.icon': workspace:^0.0.7
-      '@apathia/apathia.shared': workspace:^0.0.9
-      '@apathia/apathia.twind': workspace:^0.0.7
+      '@apathia/apathia.hooks': workspace:^1.0.2
+      '@apathia/apathia.icon': workspace:^1.0.2
+      '@apathia/apathia.shared': workspace:^1.0.2
+      '@apathia/apathia.twind': workspace:^1.0.2
       '@types/lodash': ^4.14.182
       '@types/node': ^18.6.3
       lodash: ^4.17.21
@@ -348,7 +367,7 @@ importers:
 
   packages/shared:
     specifiers:
-      '@apathia/apathia.twind': workspace:^0.0.7
+      '@apathia/apathia.twind': workspace:^1.0.2
       '@types/lodash': ^4.14.182
       '@types/node': ^18.6.3
       lodash: ^4.17.21
@@ -363,13 +382,13 @@ importers:
 
   packages/table:
     specifiers:
-      '@apathia/apathia.button': workspace:^0.0.9
-      '@apathia/apathia.checkbox': workspace:^0.0.9
-      '@apathia/apathia.custom-render': workspace:^0.0.7
-      '@apathia/apathia.hooks': workspace:^0.0.9
-      '@apathia/apathia.icon': workspace:^0.0.7
-      '@apathia/apathia.loading': workspace:^0.0.7
-      '@apathia/apathia.twind': workspace:^0.0.7
+      '@apathia/apathia.button': workspace:^1.0.2
+      '@apathia/apathia.checkbox': workspace:^1.0.2
+      '@apathia/apathia.custom-render': workspace:^1.0.2
+      '@apathia/apathia.hooks': workspace:^1.0.2
+      '@apathia/apathia.icon': workspace:^1.0.2
+      '@apathia/apathia.loading': workspace:^1.0.2
+      '@apathia/apathia.twind': workspace:^1.0.2
       '@types/lodash': ^4.14.182
       lodash: ^4.17.21
       vue: ^3.2.37
@@ -401,13 +420,13 @@ importers:
 
   packages/upload:
     specifiers:
-      '@apathia/apathia.alert': workspace:^0.0.10
-      '@apathia/apathia.button': workspace:^0.0.9
-      '@apathia/apathia.hooks': workspace:^0.0.9
-      '@apathia/apathia.icon': workspace:^0.0.7
-      '@apathia/apathia.input': workspace:^0.0.10
-      '@apathia/apathia.shared': workspace:^0.0.9
-      '@apathia/apathia.twind': workspace:^0.0.7
+      '@apathia/apathia.alert': workspace:^1.0.2
+      '@apathia/apathia.button': workspace:^1.0.2
+      '@apathia/apathia.hooks': workspace:^1.0.2
+      '@apathia/apathia.icon': workspace:^1.0.2
+      '@apathia/apathia.input': workspace:^1.0.2
+      '@apathia/apathia.shared': workspace:^1.0.2
+      '@apathia/apathia.twind': workspace:^1.0.2
       lodash: ^4.17.21
       vue: ^3.2.37
     dependencies:
@@ -1497,6 +1516,10 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
+  /@popperjs/core/2.11.6:
+    resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
+    dev: false
+
   /@rollup/pluginutils/4.2.1:
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
     engines: {node: '>= 8.0.0'}
@@ -1763,7 +1786,7 @@ packages:
       vite: ^2.5.10
       vue: ^3.2.25
     dependencies:
-      vite: 2.9.14_sass@1.54.4
+      vite: 2.9.14
       vue: 3.2.37
     dev: true
 

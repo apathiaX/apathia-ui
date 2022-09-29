@@ -16,3 +16,4 @@ export * from '../../select/src';
 export * from '../../collapse/src';
 export * from '../../radio/src';
 export * from '../../pagination';
+export * from '../../popper/src';

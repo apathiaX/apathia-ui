@@ -8,6 +8,7 @@ const map = {
     'Input': '输入框',
     'Modal': '模态窗',
     'Pagination': '分页',
+    'Popper': '提示',
     'Radio': '单选框',
     'Select': '下拉选择器',
     'Table': '表格',

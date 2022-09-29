@@ -132,6 +132,7 @@ const genDemoTemplate = name =>
 
   // make src dir
   fs.mkdirSync(resolvePath('src'))
+  fs.mkdirSync(resolvePath('demo'))
 
   if (type === 'tsutil') {
     fs.writeFileSync(resolvePath('src/index.ts'), 'export default {}')

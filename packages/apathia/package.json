@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "apathia",
   "author": "xzc01",
   "homepage": "http://www.apathia.club/",
@@ -53,6 +53,7 @@
     "@apathia/apathia.loading": "workspace:^1.0.2",
     "@apathia/apathia.modal": "workspace:^1.0.2",
     "@apathia/apathia.pagination": "workspace:^1.0.2",
+    "@apathia/apathia.popper": "workspace:^0.0.2",
     "@apathia/apathia.radio": "workspace:^1.0.2",
     "@apathia/apathia.select": "workspace:^1.0.2",
     "@apathia/apathia.table": "workspace:^1.0.4",

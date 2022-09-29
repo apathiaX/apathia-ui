@@ -1,5 +1,13 @@
 # @apathia/apathia
 
+## 1.0.5
+
+### Patch Changes
+
+- add popper
+- Updated dependencies
+  - @apathia/apathia.popper@0.0.2
+
 ## 1.0.4
 
 ### Patch Changes
