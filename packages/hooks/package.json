@@ -30,9 +30,12 @@
     "vue": "^3.2.37"
   },
   "peerDependencies": {
-    "vue": "^3.2.37"
+    "vue": "^3.2.37",
+    "vue-router": "^4.0.0-0"
   },
   "dependencies": {
-    "@apathia/apathia.shared": "workspace:^1.0.2"
+    "@apathia/apathia.shared": "workspace:^1.0.2",
+    "@types/lodash-es": "^4.17.6",
+    "lodash-es": "^4.17.21"
   }
 }
