@@ -1,6 +1,6 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.shared")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.shared"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.hooks = {}, global.Vue, global.shared));
-})(this, function(exports2, vue, apathia_shared) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.shared"), require("vue-router"), require("lodash-es")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.shared", "vue-router", "lodash-es"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.hooks = {}, global.Vue, global.shared, global["vue-router"], global["lodash-es"]));
+})(this, function(exports2, vue, apathia_shared, vueRouter, lodashEs) {
   "use strict";
   function useInjectProp(injectKey, injectDefault, propRef) {
     const injectValue = vue.inject(injectKey, injectDefault);
@@ -127,11 +127,76 @@
     };
     return [res, toggle, setShow];
   }
+  function baseMerge(obj = {}, source, nullSafe = false) {
+    if (source == null) {
+      return obj;
+    }
+    const result = {};
+    Object.keys(obj).forEach((key) => {
+      let val = source[key];
+      const useObjVal = nullSafe ? val == null : val === void 0;
+      if (useObjVal) {
+        val = obj[key];
+      }
+      result[key] = lodashEs.cloneDeep(val);
+    });
+    return result;
+  }
+  function useRouteFetch(filter, fetchData, reduceFilter) {
+    const router = vueRouter.useRouter();
+    const route = vueRouter.useRoute();
+    const reactiveFilter = vue.reactive(baseMerge(filter, route.query));
+    const stopWatch = vue.watch(() => [route.query, route.params], ([query]) => {
+      updateFilter(query, reactiveFilter, reduceFilter);
+      fetchData(route);
+    }, { immediate: true });
+    vueRouter.onBeforeRouteLeave(() => {
+      stopWatch();
+    });
+    function setQuery(query = {}) {
+      const pushRoute = {
+        path: route.path,
+        query: Object.assign(Object.assign({}, query), { r: new Date().valueOf() })
+      };
+      router.push(pushRoute);
+    }
+    function refetch() {
+      fetchData(route);
+    }
+    function resetFilter() {
+      Object.keys(filter).forEach((key) => {
+        reactiveFilter[key] = filter[key];
+      });
+    }
+    return {
+      filter: reactiveFilter,
+      setQuery,
+      route,
+      refetch,
+      resetFilter,
+      stopWatch
+    };
+  }
+  function updateFilter(query, filter, reduceFilter) {
+    if (query == null) {
+      return;
+    }
+    Object.keys(vue.toRaw(filter)).forEach((key) => {
+      const val = query[key] == null ? filter[key] : query[key];
+      if (reduceFilter) {
+        filter[key] = reduceFilter(key, val);
+      } else {
+        filter[key] = val;
+      }
+    });
+  }
+  exports2.baseMerge = baseMerge;
   exports2.onClickOutside = onClickOutside;
   exports2.useAttrs = useAttrs;
   exports2.useEventListener = useEventListener;
   exports2.useInjectProp = useInjectProp;
   exports2.useResizeObserver = useResizeObserver;
+  exports2.useRouteFetch = useRouteFetch;
   exports2.useToggle = useToggle;
   Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
 });

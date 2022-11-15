@@ -1,5 +1,7 @@
-import { inject, computed, unref, getCurrentInstance, shallowRef, reactive, watchEffect, isRef, onMounted, onUnmounted, ref, watch } from "vue";
+import { inject, computed, unref, getCurrentInstance, shallowRef, reactive, watchEffect, isRef, onMounted, onUnmounted, ref, watch, toRaw } from "vue";
 import { noop, unrefElement } from "@apathia/apathia.shared";
+import { useRouter, useRoute, onBeforeRouteLeave } from "vue-router";
+import { cloneDeep } from "lodash-es";
 function useInjectProp(injectKey, injectDefault, propRef) {
   const injectValue = inject(injectKey, injectDefault);
   const finalValue = computed(() => {
@@ -125,4 +127,67 @@ function useToggle(initial) {
   };
   return [res, toggle, setShow];
 }
-export { onClickOutside, useAttrs, useEventListener, useInjectProp, useResizeObserver, useToggle };
+function baseMerge(obj = {}, source, nullSafe = false) {
+  if (source == null) {
+    return obj;
+  }
+  const result = {};
+  Object.keys(obj).forEach((key) => {
+    let val = source[key];
+    const useObjVal = nullSafe ? val == null : val === void 0;
+    if (useObjVal) {
+      val = obj[key];
+    }
+    result[key] = cloneDeep(val);
+  });
+  return result;
+}
+function useRouteFetch(filter, fetchData, reduceFilter) {
+  const router = useRouter();
+  const route = useRoute();
+  const reactiveFilter = reactive(baseMerge(filter, route.query));
+  const stopWatch = watch(() => [route.query, route.params], ([query]) => {
+    updateFilter(query, reactiveFilter, reduceFilter);
+    fetchData(route);
+  }, { immediate: true });
+  onBeforeRouteLeave(() => {
+    stopWatch();
+  });
+  function setQuery(query = {}) {
+    const pushRoute = {
+      path: route.path,
+      query: Object.assign(Object.assign({}, query), { r: new Date().valueOf() })
+    };
+    router.push(pushRoute);
+  }
+  function refetch() {
+    fetchData(route);
+  }
+  function resetFilter() {
+    Object.keys(filter).forEach((key) => {
+      reactiveFilter[key] = filter[key];
+    });
+  }
+  return {
+    filter: reactiveFilter,
+    setQuery,
+    route,
+    refetch,
+    resetFilter,
+    stopWatch
+  };
+}
+function updateFilter(query, filter, reduceFilter) {
+  if (query == null) {
+    return;
+  }
+  Object.keys(toRaw(filter)).forEach((key) => {
+    const val = query[key] == null ? filter[key] : query[key];
+    if (reduceFilter) {
+      filter[key] = reduceFilter(key, val);
+    } else {
+      filter[key] = val;
+    }
+  });
+}
+export { baseMerge, onClickOutside, useAttrs, useEventListener, useInjectProp, useResizeObserver, useRouteFetch, useToggle };
