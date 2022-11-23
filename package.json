@@ -22,7 +22,8 @@
     "postinstall": "husky install",
     "docs:dev": "vitepress dev docs --port 8080",
     "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "docs:serve": "vitepress serve docs",
+    "example:dev": "pnpm run -C example dev"
   },
   "lint-staged": {
     "*.{ts,vue,js,jsx,ts,tsx}": [

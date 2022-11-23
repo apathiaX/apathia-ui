@@ -122,6 +122,7 @@ importers:
       '@apathia/apathia.affix': workspace:^0.0.1
       '@apathia/apathia.alert': workspace:^1.0.2
       '@apathia/apathia.button': workspace:^1.0.2
+      '@apathia/apathia.cascader': workspace:^0.0.1
       '@apathia/apathia.checkbox': workspace:^1.0.2
       '@apathia/apathia.collapse': workspace:^1.0.2
       '@apathia/apathia.confirm': workspace:^1.0.2
@@ -145,6 +146,7 @@ importers:
       '@apathia/apathia.affix': link:../affix
       '@apathia/apathia.alert': link:../alert
       '@apathia/apathia.button': link:../button
+      '@apathia/apathia.cascader': link:../cascader
       '@apathia/apathia.checkbox': link:../checkbox
       '@apathia/apathia.collapse': link:../collapse
       '@apathia/apathia.confirm': link:../confirm
@@ -174,6 +176,23 @@ importers:
       vue: ^3.2.37
     dependencies:
       '@apathia/apathia.hooks': link:../hooks
+      '@apathia/apathia.shared': link:../shared
+      '@apathia/apathia.twind': link:../twind
+    devDependencies:
+      vue: 3.2.37
+
+  packages/cascader:
+    specifiers:
+      '@apathia/apathia.checkbox': workspace:^1.0.2
+      '@apathia/apathia.hooks': workspace:^1.0.3
+      '@apathia/apathia.icon': workspace:^1.0.2
+      '@apathia/apathia.shared': workspace:^1.0.2
+      '@apathia/apathia.twind': workspace:^1.0.2
+      vue: ^3.2.37
+    dependencies:
+      '@apathia/apathia.checkbox': link:../checkbox
+      '@apathia/apathia.hooks': link:../hooks
+      '@apathia/apathia.icon': link:../icon
       '@apathia/apathia.shared': link:../shared
       '@apathia/apathia.twind': link:../twind
     devDependencies:

@@ -43,6 +43,7 @@
     "@apathia/apathia.affix": "workspace:^0.0.1",
     "@apathia/apathia.alert": "workspace:^1.0.2",
     "@apathia/apathia.button": "workspace:^1.0.2",
+    "@apathia/apathia.cascader": "workspace:^0.0.1",
     "@apathia/apathia.checkbox": "workspace:^1.0.2",
     "@apathia/apathia.collapse": "workspace:^1.0.2",
     "@apathia/apathia.confirm": "workspace:^1.0.2",
