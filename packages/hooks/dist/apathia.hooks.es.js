@@ -1,7 +1,7 @@
-import { inject, computed, unref, getCurrentInstance, shallowRef, reactive, watchEffect, isRef, onMounted, onUnmounted, ref, watch, toRaw } from "vue";
+import { inject, computed, unref, getCurrentInstance, shallowRef, reactive, watchEffect, isRef, onMounted, onUnmounted, ref, watch, toRaw, onUpdated } from "vue";
 import { noop, unrefElement } from "@apathia/apathia.shared";
 import { useRouter, useRoute, onBeforeRouteLeave } from "vue-router";
-import { cloneDeep } from "lodash-es";
+import { cloneDeep, debounce } from "lodash-es";
 function useInjectProp(injectKey, injectDefault, propRef) {
   const injectValue = inject(injectKey, injectDefault);
   const finalValue = computed(() => {
@@ -190,4 +190,62 @@ function updateFilter(query, filter, reduceFilter) {
     }
   });
 }
-export { baseMerge, onClickOutside, useAttrs, useEventListener, useInjectProp, useResizeObserver, useRouteFetch, useToggle };
+function useScrollX(translate = true) {
+  const contentRef = ref(null);
+  let stop = null;
+  const listenerWheel = () => {
+    if (stop) {
+      stop();
+    }
+    const el = contentRef.value;
+    const clientWidth = (el === null || el === void 0 ? void 0 : el.clientWidth) || 0;
+    const scrollWidth = (el === null || el === void 0 ? void 0 : el.scrollWidth) || 0;
+    if (el && scrollWidth > clientWidth) {
+      stop = useEventListener(el, "wheel", wheel, { passive: true });
+    }
+    if (el && scrollWidth <= clientWidth) {
+      if (el)
+        el.style.transform = "";
+    }
+  };
+  onUpdated(listenerWheel);
+  onMounted(listenerWheel);
+  useEventListener("resize", debounce(listenerWheel, 400));
+  function getCurrentTranslate() {
+    var _a, _b;
+    if (translate) {
+      const res = /\d+/.exec(((_a = contentRef.value) === null || _a === void 0 ? void 0 : _a.style.transform) || "");
+      return res ? +res : 0;
+    }
+    return ((_b = contentRef.value) === null || _b === void 0 ? void 0 : _b.scrollLeft) || 0;
+  }
+  function setTranslate(value) {
+    const el = contentRef.value;
+    if (!el)
+      return;
+    if (translate) {
+      el.style.transform = `translateX(-${value}px)`;
+    } else {
+      el.scrollLeft = value;
+    }
+  }
+  function wheel(e) {
+    const el = contentRef.value;
+    const clientWidth = (el === null || el === void 0 ? void 0 : el.clientWidth) || 0;
+    const scrollWidth = (el === null || el === void 0 ? void 0 : el.scrollWidth) || 0;
+    const maxTranslate = scrollWidth - clientWidth;
+    const speed = e.deltaY < 0 ? e.deltaY : -e.deltaY;
+    const step = parseInt(`${clientWidth / 3e3 * speed}`, 10);
+    const currTranslate = getCurrentTranslate();
+    let finalTranslate = currTranslate;
+    if (e.deltaY < 0)
+      finalTranslate = currTranslate - step < 0 ? 0 : currTranslate - step;
+    if (e.deltaY > 0)
+      finalTranslate = currTranslate + step > maxTranslate ? maxTranslate : currTranslate + step;
+    setTranslate(finalTranslate);
+  }
+  return {
+    contentRef
+  };
+}
+export { baseMerge, onClickOutside, useAttrs, useEventListener, useInjectProp, useResizeObserver, useRouteFetch, useScrollX, useToggle };

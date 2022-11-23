@@ -1,5 +1,14 @@
 # @apathia/apathia
 
+## 1.0.8
+
+### Patch Changes
+
+- add cascader
+- Updated dependencies
+  - @apathia/apathia.cascader@0.0.2
+  - @apathia/apathia.hooks@1.0.4
+
 ## 1.0.7
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.cascader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "cascader",
   "author": "",
   "homepage": "",
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@apathia/apathia.checkbox": "workspace:^1.0.2",
-    "@apathia/apathia.hooks": "workspace:^1.0.3",
+    "@apathia/apathia.hooks": "workspace:^1.0.4",
     "@apathia/apathia.icon": "workspace:^1.0.2",
     "@apathia/apathia.shared": "workspace:^1.0.2",
     "@apathia/apathia.twind": "workspace:^1.0.2"
