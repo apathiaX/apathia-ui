@@ -16,6 +16,10 @@ interface affixProps {
   offsetBottom?: number
 }
 
+defineOptions({
+  name: 'Affix',
+})
+
 const props = withDefaults(defineProps<affixProps>(), {
   offsetTop: 0,
 })

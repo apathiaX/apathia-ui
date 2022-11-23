@@ -2,8 +2,11 @@
   typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.twind")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.twind"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.affix = {}, global.Vue, global.twind));
 })(this, function(exports2, vue, apathia_twind) {
   "use strict";
+  const __default__ = vue.defineComponent({
+    name: "Affix"
+  });
   const _sfc_main = /* @__PURE__ */ vue.defineComponent({
-    __name: "Affix",
+    ...__default__,
     props: {
       offsetTop: { default: 0 },
       offsetBottom: null

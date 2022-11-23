@@ -146,6 +146,11 @@ const getStyles = () => ({
   icon: style`absolute right-4 text-sm`,
 })
 
+defineOptions({
+  name: 'Cascader',
+  inheritAttrs: false,
+})
+
 const props = withDefaults(defineProps<CascaderProps>(), {
   placeholder: '请选择',
   emitPath: true,

@@ -4,8 +4,11 @@ import { Checkbox } from "@apathia/apathia.checkbox";
 import { Icon } from "@apathia/apathia.icon";
 import { style, css } from "@apathia/apathia.twind";
 import { autoPos } from "@apathia/apathia.shared";
+const __default__$1 = defineComponent({
+  name: "Node"
+});
 const _sfc_main$1 = /* @__PURE__ */ defineComponent({
-  __name: "Nodes",
+  ...__default__$1,
   props: {
     nodes: { default: () => [] },
     focus: { type: Boolean, default: false },
@@ -123,8 +126,12 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
   }
 });
 const _hoisted_1 = ["onClick", "onMouseenter"];
+const __default__ = defineComponent({
+  name: "Cascader",
+  inheritAttrs: false
+});
 const _sfc_main = /* @__PURE__ */ defineComponent({
-  __name: "Cascader",
+  ...__default__,
   props: {
     modelValue: null,
     placeholder: { default: "\u8BF7\u9009\u62E9" },

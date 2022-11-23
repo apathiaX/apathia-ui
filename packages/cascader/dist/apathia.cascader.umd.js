@@ -2,8 +2,11 @@
   typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.hooks"), require("@apathia/apathia.checkbox"), require("@apathia/apathia.icon"), require("@apathia/apathia.twind"), require("@apathia/apathia.shared")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.hooks", "@apathia/apathia.checkbox", "@apathia/apathia.icon", "@apathia/apathia.twind", "@apathia/apathia.shared"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.cascader = {}, global.Vue, global.hooks, global.checkbox, global.icon, global.twind, global.shared));
 })(this, function(exports2, vue, apathia_hooks, apathia_checkbox, apathia_icon, apathia_twind, apathia_shared) {
   "use strict";
+  const __default__$1 = vue.defineComponent({
+    name: "Node"
+  });
   const _sfc_main$1 = /* @__PURE__ */ vue.defineComponent({
-    __name: "Nodes",
+    ...__default__$1,
     props: {
       nodes: { default: () => [] },
       focus: { type: Boolean, default: false },
@@ -121,8 +124,12 @@
     }
   });
   const _hoisted_1 = ["onClick", "onMouseenter"];
+  const __default__ = vue.defineComponent({
+    name: "Cascader",
+    inheritAttrs: false
+  });
   const _sfc_main = /* @__PURE__ */ vue.defineComponent({
-    __name: "Cascader",
+    ...__default__,
     props: {
       modelValue: null,
       placeholder: { default: "\u8BF7\u9009\u62E9" },

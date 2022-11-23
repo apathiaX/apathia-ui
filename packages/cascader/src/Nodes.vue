@@ -59,6 +59,10 @@ import { Icon } from '@apathia/apathia.icon'
 import { useScrollX, onClickOutside } from '@apathia/apathia.hooks'
 import type { Node } from './types'
 
+defineOptions({
+  name: 'Node',
+})
+
 function getStyles() {
   return {
     container: style`w-full relative flex shadow h-8 border rounded border-line-accent bg-content-white text-sm items-center`,
