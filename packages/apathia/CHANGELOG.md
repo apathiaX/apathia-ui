@@ -1,5 +1,11 @@
 # @apathia/apathia
 
+## 1.0.7
+
+### Patch Changes
+
+- add affix
+
 ## 1.0.6
 
 ### Patch Changes

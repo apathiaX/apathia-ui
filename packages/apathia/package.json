@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "apathia",
   "author": "xzc01",
   "homepage": "http://www.apathia.club/",
@@ -40,6 +40,7 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
+    "@apathia/apathia.affix": "workspace:^0.0.1",
     "@apathia/apathia.alert": "workspace:^1.0.2",
     "@apathia/apathia.button": "workspace:^1.0.2",
     "@apathia/apathia.checkbox": "workspace:^1.0.2",

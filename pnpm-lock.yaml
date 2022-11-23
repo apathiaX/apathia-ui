@@ -68,7 +68,7 @@ importers:
 
   example:
     specifiers:
-      '@apathia/apathia': workspace:^1.0.5
+      '@apathia/apathia': workspace:^1.0.6
       '@apathia/apathia.twind': workspace:^1.0.2
       '@vitejs/plugin-vue': ^3.0.0
       '@vitejs/plugin-vue-jsx': ^2.0.0
@@ -93,6 +93,15 @@ importers:
       vite: 3.0.8
       vue-tsc: 0.38.9_typescript@4.7.4
 
+  packages/affix:
+    specifiers:
+      '@apathia/apathia.twind': workspace:^1.0.2
+      vue: ^3.2.37
+    dependencies:
+      '@apathia/apathia.twind': link:../twind
+    devDependencies:
+      vue: 3.2.37
+
   packages/alert:
     specifiers:
       '@apathia/apathia.custom-render': workspace:^1.0.2
@@ -110,6 +119,7 @@ importers:
 
   packages/apathia:
     specifiers:
+      '@apathia/apathia.affix': workspace:^0.0.1
       '@apathia/apathia.alert': workspace:^1.0.2
       '@apathia/apathia.button': workspace:^1.0.2
       '@apathia/apathia.checkbox': workspace:^1.0.2
@@ -132,6 +142,7 @@ importers:
       '@apathia/apathia.upload': workspace:^1.0.2
       vue: ^3.2.37
     dependencies:
+      '@apathia/apathia.affix': link:../affix
       '@apathia/apathia.alert': link:../alert
       '@apathia/apathia.button': link:../button
       '@apathia/apathia.checkbox': link:../checkbox
