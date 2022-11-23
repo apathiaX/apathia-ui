@@ -1,4 +1,4 @@
-const map = {
+export default {
     'Button': '按钮',
     'Checkbox': '多选框',
     'Collapse': '折叠面板',
@@ -16,5 +16,3 @@ const map = {
     'Toast': '轻提示',
     'Upload': '上传'
 }
-
-module.exports.nameMap = map

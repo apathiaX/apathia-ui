@@ -1,5 +1,6 @@
 {
   "name": "docs",
+  "type": "module",
   "scripts": {
     "dev": "vitepress dev --port 8080",
     "build": "vitepress build",
@@ -8,7 +9,12 @@
   "license": "MIT",
   "devDependencies": {
     "@apathia/apathia.twind": "workspace:1.0.2",
-    "@apathia/vitepress-theme": "^0.0.2",
-    "vitepress": "^0.22.3"
+    "@apathia/vitepress-theme": "^1.0.1",
+    "vite": "^2.9.9",
+    "vitepress": "1.0.0-alpha.29"
+  },
+  "dependencies": {
+    "@docsearch/css": "^3.3.0",
+    "@docsearch/js": "^3.3.0"
   }
 }
