@@ -63,23 +63,12 @@ export default defineComponent({
 
 const genVueTemplate = name => `<template>
   <div>
-    hello world
+    hello ${name}
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-// import { tw, apply } from '@apathia/apathia.twind'
+<script setup lang="ts">
 
-export default defineComponent({
-  name: '${name}',
-
-  props: {},
-
-  setup(props, ctx) {
-    return {}
-  },
-})
 </script>
 
 `
