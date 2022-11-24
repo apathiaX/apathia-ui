@@ -1,0 +1,1 @@
+import{_ as s,c as a,o,b as n}from"./app.f8817b4c.js";const C=JSON.parse('{"title":"hooks","description":"","frontmatter":{},"headers":[],"relativePath":"hook/index.md"}'),p={name:"hook/index.md"},e=n("",7),l=[e];function t(c,r,i,d,D,h){return o(),a("div",null,l)}const F=s(p,[["render",t]]);export{C as __pageData,F as default};

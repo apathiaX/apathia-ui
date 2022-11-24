@@ -13,7 +13,6 @@ import * as comp from '../../../packages/apathia/src/export.ts'
 
 export function registerComponents(app) {
   // vitepress插件
-  console.log(Demo)
   app.component('Demo', Demo)
   app.component('DemoBlock', DemoBlock)
 

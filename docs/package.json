@@ -10,11 +10,7 @@
   "devDependencies": {
     "@apathia/apathia.twind": "workspace:1.0.2",
     "@apathia/vitepress-theme": "^1.0.1",
-    "vite": "^2.9.9",
+    "vite": "^2.9.15",
     "vitepress": "1.0.0-alpha.29"
-  },
-  "dependencies": {
-    "@docsearch/css": "^3.3.0",
-    "@docsearch/js": "^3.3.0"
   }
 }
