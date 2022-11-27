@@ -190,6 +190,64 @@
       }
     });
   }
+  function useScrollX(translate = true) {
+    const contentRef = vue.ref(null);
+    let stop = null;
+    const listenerWheel = () => {
+      if (stop) {
+        stop();
+      }
+      const el = contentRef.value;
+      const clientWidth = (el === null || el === void 0 ? void 0 : el.clientWidth) || 0;
+      const scrollWidth = (el === null || el === void 0 ? void 0 : el.scrollWidth) || 0;
+      if (el && scrollWidth > clientWidth) {
+        stop = useEventListener(el, "wheel", wheel, { passive: true });
+      }
+      if (el && scrollWidth <= clientWidth) {
+        if (el)
+          el.style.transform = "";
+      }
+    };
+    vue.onUpdated(listenerWheel);
+    vue.onMounted(listenerWheel);
+    useEventListener("resize", lodashEs.debounce(listenerWheel, 400));
+    function getCurrentTranslate() {
+      var _a, _b;
+      if (translate) {
+        const res = /\d+/.exec(((_a = contentRef.value) === null || _a === void 0 ? void 0 : _a.style.transform) || "");
+        return res ? +res : 0;
+      }
+      return ((_b = contentRef.value) === null || _b === void 0 ? void 0 : _b.scrollLeft) || 0;
+    }
+    function setTranslate(value) {
+      const el = contentRef.value;
+      if (!el)
+        return;
+      if (translate) {
+        el.style.transform = `translateX(-${value}px)`;
+      } else {
+        el.scrollLeft = value;
+      }
+    }
+    function wheel(e) {
+      const el = contentRef.value;
+      const clientWidth = (el === null || el === void 0 ? void 0 : el.clientWidth) || 0;
+      const scrollWidth = (el === null || el === void 0 ? void 0 : el.scrollWidth) || 0;
+      const maxTranslate = scrollWidth - clientWidth;
+      const speed = e.deltaY < 0 ? e.deltaY : -e.deltaY;
+      const step = parseInt(`${clientWidth / 3e3 * speed}`, 10);
+      const currTranslate = getCurrentTranslate();
+      let finalTranslate = currTranslate;
+      if (e.deltaY < 0)
+        finalTranslate = currTranslate - step < 0 ? 0 : currTranslate - step;
+      if (e.deltaY > 0)
+        finalTranslate = currTranslate + step > maxTranslate ? maxTranslate : currTranslate + step;
+      setTranslate(finalTranslate);
+    }
+    return {
+      contentRef
+    };
+  }
   exports2.baseMerge = baseMerge;
   exports2.onClickOutside = onClickOutside;
   exports2.useAttrs = useAttrs;
@@ -197,6 +255,7 @@
   exports2.useInjectProp = useInjectProp;
   exports2.useResizeObserver = useResizeObserver;
   exports2.useRouteFetch = useRouteFetch;
+  exports2.useScrollX = useScrollX;
   exports2.useToggle = useToggle;
   Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
 });

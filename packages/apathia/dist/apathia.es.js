@@ -18,3 +18,5 @@ export * from "@apathia/apathia.table";
 export * from "@apathia/apathia.pagination";
 export * from "@apathia/apathia.popper";
 export * from "@apathia/apathia.datepicker";
+export * from "@apathia/apathia.affix";
+export * from "@apathia/apathia.cascader";

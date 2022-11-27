@@ -1,4 +1,3 @@
-/// <reference types="lodash" />
 import { Ref, SetupContext } from 'vue';
 import { ValueType, Option } from './types';
 interface UserProps {
