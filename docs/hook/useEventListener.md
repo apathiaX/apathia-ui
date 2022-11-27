@@ -17,7 +17,9 @@ useEventListener 应在 setup 内使用,这样才会在组件卸载时自动销�
 ## 监听键盘事件
 
 ::: demo
-<<< @/../packages/hooks/demo/useEventListener/Keyboard.vue
+
+<<< @/../packages/hooks/demo/useEventListener/Onkeyboard.vue
+
 :::
 target
 
