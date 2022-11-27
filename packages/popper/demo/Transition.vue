@@ -17,6 +17,7 @@
 </template>
 
 <script setup>
+import { getCurrentInstance } from 'vue'
 const { proxy } = getCurrentInstance()
 const { css, tw, apply } = proxy.cssInJs // 不用全局绑定，import上面的注释
 const getStyles = () => {

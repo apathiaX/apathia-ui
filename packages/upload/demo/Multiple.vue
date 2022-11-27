@@ -2,26 +2,17 @@
   <Upload
     v-model="file2s"
     :multiple="true"
-    action="/x/admin/creative/material/upload"
+    action="/upload/path"
     :resolve-url="resolveLocation"
   />
 </template>
 
-<script>
-import { ref, defineComponent } from 'vue'
+<script setup>
+import { ref } from 'vue'
 
-export default defineComponent({
-  setup() {
-    const file2s = ref('')
+const file2s = ref('')
 
-    const resolveLocation = resp => {
-      return resp.data
-    }
-
-    return {
-      file2s,
-      resolveLocation,
-    }
-  },
-})
+const resolveLocation = resp => {
+  return resp.data
+}
 </script>

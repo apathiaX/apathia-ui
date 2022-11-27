@@ -6,7 +6,7 @@
     @show="show"
     @after-hide="afterHide"
   >
-    <BaseButton>Click</BaseButton>
+    <BaseButton plain>Click</BaseButton>
     <template #content>
       <div>Some Content</div>
       <div>Some Content</div>

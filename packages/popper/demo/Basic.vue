@@ -1,17 +1,12 @@
 <template>
   <Popper :content="content">
-    <BaseButton>Click</BaseButton>
+    <BaseButton plain>Click</BaseButton>
   </Popper>
 </template>
 
-<script>
-import { ref, defineComponent } from 'vue'
-export default defineComponent({
-  setup() {
-    const content = ref(
-      'this is popper content, this is popper content, this is popper content',
-    )
-    return { content }
-  },
-})
+<script setup>
+import { ref } from 'vue'
+const content = ref(
+  'this is popper content, this is popper content, this is popper content',
+)
 </script>

@@ -1,4 +1,13 @@
 <template>
+  <div>
+    <span style="color: #ba16e7">selected:</span>
+    <span v-for="(item, index) in selected" :key="index">{{`${item.name}-${item.age}`}}、</span>
+  </div>
+  <div>
+    <span style="color: #ba16e7">selectedKeys:</span>
+    <span v-for="(item, index) in selectedKeys" :key="index">{{item}}、</span>
+  </div>
+
   <Table
     v-model:selected="selected"
     v-model:selectedKeys="selectedKeys"
@@ -6,9 +15,6 @@
     :data="data"
     :columns="multiselectColumns"
   />
-
-  <p><span style="color: #ba16e7">selected:</span> {{ selected }}</p>
-  <p><span style="color: #ba16e7">selectedKeys:</span> {{ selectedKeys }}</p>
 </template>
 
 <script>
@@ -27,6 +33,7 @@ export default defineComponent({
         title: '全选',
         width: 40,
         type: 'selection',
+        disabledWhen: ({row, rowIndex}) => rowIndex === 1
       },
       {
         title: '姓名',

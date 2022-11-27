@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { ref, defineComponent } from 'vue'
+import { ref } from 'vue'
 
 const show = ref(false)
 const showModal = () => {

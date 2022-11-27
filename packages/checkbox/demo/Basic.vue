@@ -1,16 +1,10 @@
 <template>
-  <Checkbox v-model="base"> 是否为热血青年 </Checkbox>
+  <Checkbox v-model="base1"> 选项一 </Checkbox>
+  <Checkbox v-model="base2"> 选项二 </Checkbox>
 </template>
 
-<script>
-import { ref, defineComponent } from 'vue'
-
-export default defineComponent({
-  setup() {
-    const base = ref(true)
-    return {
-      base,
-    }
-  },
-})
+<script setup>
+import { ref } from 'vue'
+const base1 = ref(true)
+const base2 = ref(true)
 </script>

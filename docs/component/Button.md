@@ -1,4 +1,4 @@
-# BaseButton
+# BaseButton 按钮
 
 常用的操作按钮
 
@@ -22,9 +22,9 @@
 
 ## 禁用状态
 
-你可以使用` disabled `属性来定义按钮是否被禁用。
+你可以使用`disabled`属性来定义按钮是否被禁用。
 
-使用` disabled `属性来控制按钮是否为禁用状态。 该属性接受一个` Boolean `类型的值。
+使用`disabled`属性来控制按钮是否为禁用状态。 该属性接受一个`Boolean`类型的值。
 :::demo
 
 <<< @/../packages/button/demo/State.vue
@@ -35,7 +35,7 @@
 
 除了默认的大小，按钮组件还提供了几种额外的尺寸可供选择，以便适配不同的场景。
 
-可使用` large `和` small `来设置按钮大小。
+可使用`large`和`small`来设置按钮大小。
 :::demo
 
 <<< @/../packages/button/demo/Size.vue
@@ -59,21 +59,20 @@
 <<< @/../packages/button/demo/Custom.vue
 :::
 
-
 ## Button Props
 
-| prop      |     说明     |           类型 | 默认值 |
-| --------- | :----------: | -------------: | -----: |
-| tag        | component tag |  string,object | button |
-| href      |     链接     |         string |     '' |
-| primary   |     基础     |        boolean |  false |
-| secondary |     次要     |        boolean |  false |
-| success   |     成功     |        boolean |  false |
-| danger    |     危险     |        boolean |  false |
-| info      |     信息     |        boolean |  false |
-| warning   |     警告     |        boolean |  false |
-| plain     |   文字模式   |        boolean |  false |
-| active    |    激活的    |        boolean |  false |
-| small     |    小尺寸    |        boolean |  false |
-| large     |    大尺寸    |        boolean |  false |
-| disabled  |     禁用     |        boolean |  false |
+| prop      |     说明      |          类型 | 默认值 |
+| --------- | :-----------: | ------------: | -----: |
+| tag       | component tag | string,object | button |
+| href      |     链接      |        string |     '' |
+| primary   |     基础      |       boolean |  false |
+| secondary |     次要      |       boolean |  false |
+| success   |     成功      |       boolean |  false |
+| danger    |     危险      |       boolean |  false |
+| info      |     信息      |       boolean |  false |
+| warning   |     警告      |       boolean |  false |
+| plain     |   文字模式    |       boolean |  false |
+| active    |    激活的     |       boolean |  false |
+| small     |    小尺寸     |       boolean |  false |
+| large     |    大尺寸     |       boolean |  false |
+| disabled  |     禁用      |       boolean |  false |

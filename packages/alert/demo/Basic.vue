@@ -1,39 +1,20 @@
 <template>
-  <BaseButton success @click="success">success</BaseButton>
-  <BaseButton danger @click="danger">danger</BaseButton>
-  <BaseButton default @click="default1">default</BaseButton>
-  <BaseButton info @click="info">info</BaseButton>
-  <BaseButton warning @click="warning">warning</BaseButton>
+  <BaseButton @click="open">点击弹出</BaseButton>
+  <BaseButton @click="openVn">danger</BaseButton>
 </template>
 
-<script>
-import { getCurrentInstance, defineComponent } from 'vue'
-
-export default defineComponent({
-  setup() {
-    const { proxy } = getCurrentInstance()
-    const success = () => {
-      proxy.$toast.success('title', 'subtitle')
-    }
-    const info = () => {
-      proxy.$toast.info('title', 'subtitle')
-    }
-    const warning = () => {
-      proxy.$toast.warning('title', 'subtitle')
-    }
-    const danger = () => {
-      proxy.$toast.danger('title', 'subtitle')
-    }
-    const default1 = () => {
-      proxy.$toast.default('title', 'subtitle')
-    }
-    return {
-      success,
-      info,
-      warning,
-      danger,
-      default1,
-    }
-  },
-})
+<script setup>
+import { getCurrentInstance, h } from 'vue'
+const {proxy} = getCurrentInstance()
+const open = () => {
+  proxy.$toast.info('', 'toast message')
+}
+const openVn = () => {
+  proxy.$toast({
+    type: 'info',
+    render: ({ close }) => h('div', { onClick: close }, [
+      h('span', null, 'VNode')
+    ])
+  })
+}
 </script>

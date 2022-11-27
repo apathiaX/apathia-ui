@@ -5,7 +5,7 @@
       <span style="color: red">{{ showData }}</span>
     </p>
     <Select v-model="selectVal" filterable @query-change="handleChange">
-      <Option v-for="item in states">{{ item }}</Option>
+      <Option v-for="item in states" :value="item" :key="item">{{ item }}</Option>
       <template #no-result> 没有搜索结果</template>
       <template #loading>正在加载</template>
     </Select>

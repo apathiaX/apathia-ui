@@ -1,13 +1,15 @@
 <template>
-  <Form :disabled="false" label-width="10rem" label-position="left">
+  <Form labelWidth="100">
     <FormItem label="姓名" required style="color: red">
       <Input v-model="form.name" />
     </FormItem>
-    <FormItem label="手机号" :label-width="200" label-position="right">
+    <FormItem label="手机号">
       <Input v-model="form.phone" />
     </FormItem>
-    <FormItem label="喜欢打游戏吗">
-      <Checkbox v-model="form.enjoy_game" :true-value="1" :false-value="0" />
+    <FormItem label="喜欢的运动">
+      <Checkbox v-model="form.enjoy_game" value="running">跑步</Checkbox>
+      <Checkbox v-model="form.enjoy_game" value="swimming">游泳</Checkbox>
+      <Checkbox v-model="form.enjoy_game" value="basketball">篮球</Checkbox>
     </FormItem>
     <FormItem label="性别">
       <RadioGroup v-model="form.gender">
@@ -27,24 +29,16 @@
   </Form>
 </template>
 
-<script>
-import { reactive, defineComponent } from 'vue'
+<script setup>
+import { reactive } from 'vue'
 
-export default defineComponent({
-  setup() {
-    const form = reactive({
-      name: '',
-      phone: 0,
-      enjoy_game: 1,
-      secret: false,
-      gender: 0,
-      other: '',
-      fav_fruit: 1,
-    })
-
-    return {
-      form,
-    }
-  },
+const form = reactive({
+  name: '',
+  phone: 0,
+  enjoy_game: [],
+  secret: false,
+  gender: 0,
+  other: '',
+  fav_fruit: 1,
 })
 </script>

@@ -1,16 +1,8 @@
 <template>
-  <Input v-model="value" placeholder="please input" />
+  <Input v-model="value" placeholder="请输入"/>
 </template>
 
-<script>
-import { ref, defineComponent } from 'vue'
-
-export default defineComponent({
-  setup() {
-    const value = ref('')
-    return {
-      value,
-    }
-  },
-})
+<script setup>
+import { ref } from 'vue'
+const value = ref('')
 </script>

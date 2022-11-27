@@ -1,31 +1,25 @@
-// const path = require('path')
-// const fs = require('fs')
-// const {nameMap} = require('./nameMap')
 import path from 'path'
 import fs from 'fs'
 import nameMap from './nameMap'
 import { demoBlockPlugin } from '@apathia/vitepress-theme'
 import { defineConfig } from 'vitepress'
 
-// import nameMap from './nameMap'
-
 const getIntroductionSidebar = () => {
   return [
     {
       text: '快速上手',
+      collapsible: true,
       items: [
-        { text: '介绍', link: '/' },
-        { text: '安装', link: '/introduction/install' },
+        { 
+          text: '介绍',
+          link: '/introduction/index'
+        },
+        { 
+          text: '安装', 
+          link: '/introduction/install'
+        },
       ]
     },
-    // {
-    //   text: '组件',
-    //   link: '/component/button'
-    // },
-    // {
-    //   text: 'Hooks',
-    //   link: '/hook/index'
-    // }
   ]
 }
 
@@ -42,17 +36,20 @@ const generatePathsFromDir = (dirPath, prefix) => {
       link: `${prefix}/${name}`
     }
   })
+  const text = prefix.split('/')[1].slice(0,1).toUpperCase() + prefix.split('/')[1].slice(1)
   return [{
-    text: prefix,
-    items
+    text,
+    items,
+    collapsible: true,
   }]
 }
 
 export default defineConfig(
   {
+    title: 'Apathia Component 中文文档',
+    description: '基于vue3 + typescript + twind 的vue组件库',
     lang: 'zh-CN',
-    title: 'Apathia',
-    description: 'Vite & Vue powered static site generator.',
+    head: [['link', { rel: 'icon', type: 'image/svg+xml', href: 'icon.png' }]],
    
     markdown: {
       config: (md) => {
@@ -61,8 +58,13 @@ export default defineConfig(
     },
   
     themeConfig: {
-      repo: 'https://git.bilibili.co/mng-components/helm',
+      siteTitle:'Apathia Component 中文文档',
+      repoLabel:'GitHub',
       docsDir: 'docs',
+      docsBranch: 'master',
+      lastUpdatedText: '最近更新时间',
+      logo: '/icon.png',
+      repo: 'https://github.com/apathia1220/apathia-vue',
   
       editLinks: true,
       editLinkText: 'Edit this page on Github',
@@ -71,12 +73,12 @@ export default defineConfig(
       nav: [
         {
           text: '介绍',
-          link: '/introduction/',
+          link: '/introduction/index',
           activeMatch: '^/$|^/introduction/'
         },
         {
           text: '组件',
-          link: '/component/button',
+          link: '/component/index',
           activeMatch: '^/component'
         },
         {

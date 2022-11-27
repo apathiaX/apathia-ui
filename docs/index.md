@@ -1,24 +1,37 @@
 ---
-home: true
-heroImage: /logo.svg
-actionText: Get Started
-actionLink: /introduction/
+layout: home
 
-altActionText: Learn More
-altActionLink: /introduction/
-
+hero:
+  name: Apathia Component
+  text: 使用文档
+  tagline: 基于vue3 + typescript + twind 的vue组件库
+  image:
+    src: ./icon.png
+    alt: VitePress
+  actions:
+    - theme: brand
+      text: 开始使用
+      link: /introduction/
+    - theme: alt
+      text: GitHub
+      link: https://github.com/apathia1220/apathia-vue
 features:
-    - title: 💡 Instant Server Start
-      details: On demand file serving over native ESM, no bundling required!
-    - title: ⚡️ Lightning Fast HMR
-      details: Hot Module Replacement (HMR) that stays fast regardless of app size.
-    - title: 🛠️ Rich Features
-      details: Out-of-the-box support for TypeScript, JSX, CSS and more.
-    - title: 📦 Optimized Build
-      details: Pre-configured Rollup build with multi-page and library mode support.
-    - title: 🔩 Universal Plugins
-      details: Rollup-superset plugin interface shared between dev and build.
-    - title: 🔑 Fully Typed APIs
-      details: Flexible programmatic APIs with full TypeScript typing.
-footer: Apathia
+  - title: UI
+    icon: 🎉
+    details: UI 和 代码展示统一
+  - title: Code
+    icon: 📖
+    details: 组件名称汉化同时展示代码语法高亮更清晰
+  - title: Type
+    icon: 🔎
+    details: 使用Typescript编写且包含常用的 Composition api
+  - title: Style
+    icon: ⚡️
+    details: 可自定义的全局样式
+  - title: Feature
+    icon: 🛠️
+    details: Css-in-Js 方便快捷
+  - title: Install
+    icon: 💡
+    details: 可通过包管理器直接下载安装并使用
 ---

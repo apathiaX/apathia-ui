@@ -6,6 +6,7 @@ export default {
     'CustomRender': '自定义渲染',
     'Form': '表单',
     'Input': '输入框',
+    'Icon': '图标',
     'Modal': '模态窗',
     'Pagination': '分页',
     'Popper': '提示',
