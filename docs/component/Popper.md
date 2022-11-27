@@ -29,7 +29,7 @@ app.use(usePoppertip)
 :::
 :::demo
 
-<<< @/../packages/popper/demo/function/Basic.vue
+<<< @/../packages/popper/demo/Functional.vue
 :::
 
 ## 自定义内容
