@@ -50,6 +50,7 @@ export default defineConfig(
     description: '基于vue3 + typescript + twind 的vue组件库',
     lang: 'zh-CN',
     head: [['link', { rel: 'icon', type: 'image/svg+xml', href: 'icon.png' }]],
+    base: '/apathia-vue/',
    
     markdown: {
       config: (md) => {
