@@ -7,7 +7,7 @@ hero:
   tagline: 基于vue3 + typescript + twind 的vue组件库
   image:
     src: ./icon.png
-    alt: VitePress
+    alt: Apathia
   actions:
     - theme: brand
       text: 开始使用

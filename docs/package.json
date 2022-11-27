@@ -8,8 +8,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@apathia/apathia.twind": "workspace:1.0.2",
     "@apathia/vitepress-theme": "^1.0.1",
+    "@vitejs/plugin-vue-jsx": "^1.1.4",
     "vite": "^2.9.15",
     "vitepress": "1.0.0-alpha.29"
   }

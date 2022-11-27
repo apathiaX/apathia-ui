@@ -1,7 +1,7 @@
 import Demo from '@apathia/vitepress-theme/dist/components/Demo.vue'
 import DemoBlock from '@apathia/vitepress-theme/dist/components/DemoBlock.vue'
 
-import { tw, apply, css } from '@apathia/apathia.twind'
+import { tw, apply, css } from '../../../packages/twind'
 
 import * as comp from '../../../packages/apathia/src/export.ts'
 
