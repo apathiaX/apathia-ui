@@ -13,8 +13,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: yarn
-      - run: yarn install --frozen-lockfile
+          cache: pnpm-cache
+      - run: pnpm i --frozen-lockfile
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
