@@ -20,7 +20,7 @@ export function useScrollX(translate = true) {
     const scrollWidth = el?.scrollWidth || 0
 
     if (el && scrollWidth > clientWidth) {
-      stop = useEventListener(el, 'wheel', wheel, { passive: true })
+      stop = useEventListener(el as HTMLElement, 'wheel', wheel, { passive: true })
     }
 
     if (el && scrollWidth <= clientWidth) {

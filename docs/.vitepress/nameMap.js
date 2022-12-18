@@ -15,5 +15,6 @@ export default {
     'Table': '表格',
     'Tabs': '标签页',
     'Toast': '轻提示',
+    'Switch': '选择',
     'Upload': '上传'
 }

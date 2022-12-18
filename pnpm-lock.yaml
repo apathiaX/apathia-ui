@@ -124,6 +124,7 @@ importers:
       '@apathia/apathia.popper': workspace:^0.0.2
       '@apathia/apathia.radio': workspace:^1.0.2
       '@apathia/apathia.select': workspace:^1.0.2
+      '@apathia/apathia.switch': workspace:^0.0.1
       '@apathia/apathia.table': workspace:^1.0.4
       '@apathia/apathia.tag': workspace:^0.0.1
       '@apathia/apathia.twind': workspace:^1.0.2
@@ -150,6 +151,7 @@ importers:
       '@apathia/apathia.popper': link:../popper
       '@apathia/apathia.radio': link:../radio
       '@apathia/apathia.select': link:../select
+      '@apathia/apathia.switch': link:../switch
       '@apathia/apathia.table': link:../table
       '@apathia/apathia.tag': link:../tag
       '@apathia/apathia.twind': link:../twind
@@ -430,6 +432,19 @@ importers:
       '@types/lodash': 4.14.182
       '@types/node': 18.7.2
       vue: 3.2.37
+
+  packages/switch:
+    specifiers:
+      '@apathia/apathia.custom-render': workspace:^1.0.2
+      '@apathia/apathia.hooks': workspace:^1.0.4
+      '@apathia/apathia.twind': workspace:^1.0.2
+      vue: ^3.2.37
+    dependencies:
+      '@apathia/apathia.custom-render': link:../custom-render
+      '@apathia/apathia.hooks': link:../hooks
+      '@apathia/apathia.twind': link:../twind
+    devDependencies:
+      vue: 3.2.45
 
   packages/table:
     specifiers:
@@ -5223,6 +5238,7 @@ packages:
 
   /sourcemap-codec/1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
+    deprecated: Please use @jridgewell/sourcemap-codec instead
 
   /spawndamnit/2.0.0:
     resolution: {integrity: sha512-j4JKEcncSjFlqIwU5L/rp2N5SIPsdxaRsIv678+TZxZ0SRDJTm8JrxJMjE/XuiEZNEir3S8l0Fa3Ke339WI4qA==}
