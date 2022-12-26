@@ -5,6 +5,7 @@ import {
   ref,
   nextTick,
   ComponentPublicInstance,
+  Ref,
 } from 'vue'
 import {
   createPopper,
@@ -49,7 +50,7 @@ export function usePopper(option: Option, emitOption: EmitOption) {
   } else if (option.target) {
     target = option.target
   } else {
-    target = ref<HTMLElement | null>(null)
+    target = ref<HTMLElement | null>(null) as Ref<HTMLElement | null>
   }
 
   let instance: PopperInstance | null = null
@@ -180,7 +181,7 @@ export function usePopper(option: Option, emitOption: EmitOption) {
         gpuAcceleration: false,
       },
     },
-  ]
+  ] as StrictModifiers[]
   const initPopper = () => {
     if (!visibility.value) {
       return
@@ -192,7 +193,7 @@ export function usePopper(option: Option, emitOption: EmitOption) {
         options: {
           element: arrowRef.value,
         },
-      })
+      } as StrictModifiers)
     }
     const targetEl = getTarget()
     const contentEl = contentRef.value

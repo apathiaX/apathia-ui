@@ -40,7 +40,7 @@ function resetStyle(el) {
   el.style.transition = "";
   el.style.overflow = "";
 }
-var CollapseTransition = defineComponent({
+var CollapseTransition$1 = defineComponent({
   name: "CollapseTransition",
   props: {
     duration: {
@@ -63,7 +63,7 @@ var _export_sfc = (sfc, props) => {
 const _sfc_main = defineComponent({
   name: "Collapse",
   components: {
-    CollapseTransition,
+    CollapseTransition: CollapseTransition$1,
     Icon
   },
   props: {
@@ -158,4 +158,17 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   ], 64);
 }
 var Collapse = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+var CollapseTransition = defineComponent({
+  name: "CollapseTransition",
+  props: {
+    duration: {
+      type: Number,
+      default: 400
+    }
+  },
+  setup(props, { slots }) {
+    const { getTransitionProps } = useTransition(props);
+    return () => h(Transition, getTransitionProps(), slots);
+  }
+});
 export { Collapse, CollapseTransition };

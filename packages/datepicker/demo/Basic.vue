@@ -1,10 +1,16 @@
 <template>
-  <ClientOnly>
-    <Datepicker />
-  </ClientOnly>
+  <Datepicker v-model="time" />
 </template>
 
-<script setup>
+<script>
+import { ref, defineComponent } from 'vue'
 
+export default defineComponent({
+  setup() {
+    const time = ref('')
+    return {
+      time,
+    }
+  },
+})
 </script>
-

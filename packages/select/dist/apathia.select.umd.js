@@ -1,12 +1,12 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.twind"), require("@apathia/apathia.hooks"), require("@apathia/apathia.shared"), require("lodash"), require("@apathia/apathia.icon")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.twind", "@apathia/apathia.hooks", "@apathia/apathia.shared", "lodash", "@apathia/apathia.icon"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.select = {}, global.Vue, global.twind, global.hooks, global.shared, global.lodash, global.icon));
-})(this, function(exports2, vue, apathia_twind, apathia_hooks, apathia_shared, lodash, apathia_icon) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.hooks"), require("@apathia/apathia.shared"), require("@apathia/apathia.twind"), require("lodash"), require("@apathia/apathia.icon")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.hooks", "@apathia/apathia.shared", "@apathia/apathia.twind", "lodash", "@apathia/apathia.icon"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.select = {}, global.Vue, global.hooks, global.shared, global.twind, global.lodash, global.icon));
+})(this, function(exports2, vue, apathia_hooks, apathia_shared, apathia_twind, lodash, apathia_icon) {
   "use strict";
-  var Direction;
+  exports2.Direction = void 0;
   (function(Direction2) {
     Direction2["UP"] = "up";
     Direction2["DOWN"] = "down";
-  })(Direction || (Direction = {}));
+  })(exports2.Direction || (exports2.Direction = {}));
   function useSelect(userProps, ctx) {
     const { disabled, modelValue, valueKey, filterable, emptyText, placeholder } = userProps;
     const rootEl = vue.ref(null);
@@ -142,7 +142,7 @@
     const getNextId = (curId, direction) => {
       const optionIds = selectState.optionIds;
       let newIndex = optionIds.indexOf(curId);
-      if (direction === Direction.UP) {
+      if (direction === exports2.Direction.UP) {
         if (newIndex <= 0) {
           newIndex = optionIds.length - 1;
         } else {
@@ -243,12 +243,12 @@
         case "ArrowDown":
           event.preventDefault();
           event.stopPropagation();
-          keyFocus(Direction.DOWN);
+          keyFocus(exports2.Direction.DOWN);
           break;
         case "ArrowUp":
           event.preventDefault();
           event.stopPropagation();
-          keyFocus(Direction.UP);
+          keyFocus(exports2.Direction.UP);
           break;
       }
     };
@@ -520,26 +520,7 @@
       vue.provide(ChangeHandlerKey, changeHandler);
       vue.provide(FocusKey, focus);
       vue.provide(SameValueCompareKey, isSameValue);
-      const styles = {
-        selectWrapper: apathia_twind.style`flex relative border rounded border-line-accent bg-content-white shadow h-8`,
-        disabled: apathia_twind.style(
-          "cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-secondary"
-        ),
-        active: apathia_twind.style("border-brand-primary"),
-        inputSelected: apathia_twind.style`flex-1 rounded text-sm py-1.5 pl-2 outline-none cursor-pointer`,
-        focused: apathia_twind.style("select-none"),
-        arrow: apathia_twind.style(
-          "absolute inset-y-0 right-0 flex items-center pr-2 pl-1.5 py-btn-sm-y pointer-events-none h-8 w-8 text-content-secondary"
-        ),
-        clearableIcon: apathia_twind.style(
-          "hidden absolute w-3.5 h-3.5 rounded-full top-2.5 right-7 items-center bg-fill-secondary text-content-white cursor-pointer hover:bg-fill-accent"
-        ),
-        clearable: apathia_twind.style("block"),
-        dropdownContainer: apathia_twind.style`z-dropdown block h-0 absolute mt-1 border border-line-accent rounded bg-content-white shadow opacity-0 transition duration-200 overflow-y-hidden`,
-        dropdownContainerShow: apathia_twind.style`h-auto opacity-100`,
-        optionList: apathia_twind.style`max-h-56 text-base overflow-auto focus:outline-none sm:text-sm`,
-        tips: apathia_twind.style("ml-3 py-2 text-fill-secondary text-left mr-2")
-      };
+      const styles = getSelectStyles();
       return {
         filterStr,
         updateRegister,
@@ -563,6 +544,26 @@
         rootEl
       };
     }
+  });
+  const getSelectStyles = () => ({
+    selectWrapper: apathia_twind.style`flex relative border rounded border-line-accent bg-content-white shadow h-8`,
+    disabled: apathia_twind.style(
+      "cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-secondary"
+    ),
+    active: apathia_twind.style("border-brand-primary"),
+    inputSelected: apathia_twind.style`flex-1 rounded text-sm py-1.5 pl-2 outline-none cursor-pointer`,
+    focused: apathia_twind.style("select-none"),
+    arrow: apathia_twind.style(
+      "absolute inset-y-0 right-0 flex items-center pr-2 pl-1.5 py-btn-sm-y pointer-events-none h-8 w-8 text-content-secondary"
+    ),
+    clearableIcon: apathia_twind.style(
+      "hidden absolute w-3.5 h-3.5 rounded-full top-2.5 right-7 items-center bg-fill-secondary text-content-white cursor-pointer hover:bg-fill-accent"
+    ),
+    clearable: apathia_twind.style("block"),
+    dropdownContainer: apathia_twind.style`z-dropdown block h-0 absolute mt-1 border border-line-accent rounded bg-content-white shadow opacity-0 transition duration-200 overflow-y-hidden`,
+    dropdownContainerShow: apathia_twind.style`h-auto opacity-100`,
+    optionList: apathia_twind.style`max-h-56 text-base overflow-auto focus:outline-none sm:text-sm`,
+    tips: apathia_twind.style("ml-3 py-2 text-fill-secondary text-left mr-2")
   });
   const _hoisted_1 = /* @__PURE__ */ vue.createElementVNode("path", {
     "fill-rule": "evenodd",
@@ -784,15 +785,7 @@
         compoId
       };
       const { getRootProps, isSelected, isFocused, isHidden } = useOption(userProps);
-      const styles = {
-        wrapper: apathia_twind.style`block text-content-primary cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
-        selected: apathia_twind.style`font-bold text-brand-primary`,
-        focused: apathia_twind.style`text-brand-primary bg-fill-gray`,
-        text: apathia_twind.style`overflow-hidden overflow-ellipsis whitespace-nowrap`,
-        checkMark: apathia_twind.style`absolute right-4 text-brand-primary`,
-        focusMark: apathia_twind.style`text-fill-white`,
-        disabled: apathia_twind.style`text-content-secondary bg-info-forbid cursor-not-allowed`
-      };
+      const styles = getOptionStyles();
       return {
         updateRegister,
         selectState,
@@ -810,6 +803,15 @@
         console.warn("<Option> \u5E94\u8BE5\u5728 <Select> \u5185\u4F7F\u7528");
       }
     }
+  });
+  const getOptionStyles = () => ({
+    wrapper: apathia_twind.style`block text-content-primary cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
+    selected: apathia_twind.style`font-bold text-brand-primary`,
+    focused: apathia_twind.style`text-brand-primary bg-fill-gray`,
+    text: apathia_twind.style`overflow-hidden overflow-ellipsis whitespace-nowrap`,
+    checkMark: apathia_twind.style`absolute right-4 text-brand-primary`,
+    focusMark: apathia_twind.style`text-fill-white`,
+    disabled: apathia_twind.style`text-content-secondary bg-info-forbid cursor-not-allowed`
   });
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_Icon = vue.resolveComponent("Icon");

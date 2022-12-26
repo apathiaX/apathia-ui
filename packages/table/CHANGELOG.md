@@ -1,5 +1,36 @@
 # @apathia1/apathia.table
 
+## 1.1.0
+
+### Minor Changes
+
+- add demo && type export
+
+### Patch Changes
+
+- Updated dependencies
+  - @apathia/apathia.button@1.1.0
+  - @apathia/apathia.checkbox@1.1.0
+  - @apathia/apathia.custom-render@1.1.0
+  - @apathia/apathia.hooks@1.1.0
+  - @apathia/apathia.icon@1.1.0
+  - @apathia/apathia.loading@1.1.0
+  - @apathia/apathia.twind@1.1.0
+
+## 1.0.5
+
+### Patch Changes
+
+- add type export
+- Updated dependencies
+  - @apathia/apathia.button@1.0.3
+  - @apathia/apathia.checkbox@1.0.3
+  - @apathia/apathia.hooks@1.0.5
+  - @apathia/apathia.loading@1.0.3
+  - @apathia/apathia.custom-render@1.0.3
+  - @apathia/apathia.icon@1.0.3
+  - @apathia/apathia.twind@1.0.3
+
 ## 1.0.4
 
 ### Patch Changes

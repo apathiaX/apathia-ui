@@ -11,11 +11,10 @@
 
 <script lang="ts">
 import { toRefs, defineComponent, computed, Ref } from 'vue'
-// @ts-ignore
-import { css, style, tw } from '@apathia/apathia.twind'
-// @ts-ignore
 import { useInjectProp } from '@apathia/apathia.hooks'
+import { css, style } from '@apathia/apathia.twind'
 import useBaseButton from './useButton'
+// import { getButtonStyles } from './styles'
 
 export default defineComponent({
   name: 'BaseButton',
@@ -58,7 +57,7 @@ export default defineComponent({
 
     const { getButtonProps } = useBaseButton(userProps, ctx)
 
-    const styles = getStyles()
+    const styles = getButtonStyles()
 
     const btnClass = computed(() => {
       const themeString =
@@ -96,75 +95,75 @@ export default defineComponent({
   },
 })
 
-const getStyles = () => {
-  const themeStyles = {
-    base: style`inline-block border-0 no-underline rounded-md py-btn-md-y px-2 transition focus:outline-none duration-500 ease select-none text-base mr-2 whitespace-nowrap text-base text-center ${css`
-      min-width: 3.75rem;
-    `}`,
-    primary: style`bg-brand-primary text-content-white hover:bg-brand-hover active:bg-brand-active`,
-    pink: style`bg-pink-primary text-content-white hover:bg-pink-hover active:bg-pink-active`,
-    success: style`bg-success-primary text-content-white hover:bg-success-hover active:bg-success-active`,
-    danger: style`bg-error-primary text-content-white hover:bg-error-hover active:bg-error-active`,
-    warning: style`bg-warning-primary text-content-white hover:bg-warning-hover active:bg-warning-active`,
-    info: style`bg-info-primary text-content-accent hover:bg-info-hover active:bg-info-active`,
-  }
-  const activeStyles = {
-    primary: style`bg-brand-active`,
-    pink: style`bg-pink-active`,
-    success: style`bg-success-active`,
-    danger: style`bg-error-active`,
-    warning: style`bg-warning-active`,
-    info: style`bg-fill-neutral`,
-    secondary: style`border-brand-active text-brand-active`,
-  }
-
-  const disableStyles = {
-    base: style`cursor-not-allowed`,
-    primary: style`bg-brand-forbid`,
-    pink: style`bg-pink-forbid`,
-    success: style`bg-success-forbid`,
-    danger: style`bg-error-forbid`,
-    warning: style`bg-warning-forbid`,
-    info: style`bg-fill-gray`,
-  }
-
-  const hollowStyles = {
-    base: style`bg-fill-white border`,
-    primary: style`text-brand-primary hover:text-content-white`,
-    pink: style`text-pink-primary hover:text-content-white`,
-    success: style`text-success-primary hover:text-content-white`,
-    danger: style`text-error-primary hover:text-content-white`,
-    warning: style`text-warning-primary hover:text-content-white`,
-    info: style`text-content-accent hover:bg-success-primary hover:text-content-primary`,
-  }
-
-  const plainStyles = {
-    // base: style``,
-    primary: style`bg-brand-light text-brand-primary hover:text-content-white`,
-    pink: style`bg-pink-light text-pink-primary hover:text-content-white`,
-    success: style`bg-success-light text-success-primary hover:text-content-white`,
-    danger: style`bg-error-light text-error-primary hover:text-content-white`,
-    warning: style`bg-warning-light text-warning-primary hover:text-content-white`,
-    info: style`bg-fill-light text-content-accent hover:text-content-primary`,
-    // secondary: style`bg-brand-borbid`,
-  }
-  const sizeStyles = {
-    small: style`text-sm font-medium py-btn-sm-y ${css`
-      min-width: 3.5rem;
-    `}`,
-    large: style`text-base py-btn-lg-y ${css`
-      width: 4rem;
-    `}`,
-    round: style`rounded-full`,
-  }
-
-  return {
-    themeStyles: themeStyles,
-    active: activeStyles,
-    disabled: disableStyles,
-    hollow: hollowStyles,
-    plain: plainStyles,
-    size: sizeStyles,
-  }
+const getButtonStyles = () => {
+    const themeStyles = {
+      base: style`inline-block border-0 no-underline rounded-md py-btn-md-y px-2 transition focus:outline-none duration-500 ease select-none text-base mr-2 whitespace-nowrap text-base text-center ${css`
+        min-width: 3.75rem;
+      `}`,
+      primary: style`bg-brand-primary text-content-white hover:bg-brand-hover active:bg-brand-active`,
+      pink: style`bg-pink-primary text-content-white hover:bg-pink-hover active:bg-pink-active`,
+      success: style`bg-success-primary text-content-white hover:bg-success-hover active:bg-success-active`,
+      danger: style`bg-error-primary text-content-white hover:bg-error-hover active:bg-error-active`,
+      warning: style`bg-warning-primary text-content-white hover:bg-warning-hover active:bg-warning-active`,
+      info: style`bg-info-primary text-content-accent hover:bg-info-hover active:bg-info-active`,
+    }
+    const activeStyles = {
+      primary: style`bg-brand-active`,
+      pink: style`bg-pink-active`,
+      success: style`bg-success-active`,
+      danger: style`bg-error-active`,
+      warning: style`bg-warning-active`,
+      info: style`bg-fill-neutral`,
+      secondary: style`border-brand-active text-brand-active`,
+    }
+  
+    const disableStyles = {
+      base: style`cursor-not-allowed`,
+      primary: style`bg-brand-forbid`,
+      pink: style`bg-pink-forbid`,
+      success: style`bg-success-forbid`,
+      danger: style`bg-error-forbid`,
+      warning: style`bg-warning-forbid`,
+      info: style`bg-fill-gray`,
+    }
+  
+    const hollowStyles = {
+      base: style`bg-fill-white border`,
+      primary: style`text-brand-primary hover:text-content-white`,
+      pink: style`text-pink-primary hover:text-content-white`,
+      success: style`text-success-primary hover:text-content-white`,
+      danger: style`text-error-primary hover:text-content-white`,
+      warning: style`text-warning-primary hover:text-content-white`,
+      info: style`text-content-accent hover:bg-success-primary hover:text-content-primary`,
+    }
+  
+    const plainStyles = {
+      // base: style``,
+      primary: style`bg-brand-light text-brand-primary hover:text-content-white`,
+      pink: style`bg-pink-light text-pink-primary hover:text-content-white`,
+      success: style`bg-success-light text-success-primary hover:text-content-white`,
+      danger: style`bg-error-light text-error-primary hover:text-content-white`,
+      warning: style`bg-warning-light text-warning-primary hover:text-content-white`,
+      info: style`bg-fill-light text-content-accent hover:text-content-primary`,
+      // secondary: style`bg-brand-borbid`,
+    }
+    const sizeStyles = {
+      small: style`text-sm font-medium py-btn-sm-y ${css`
+        min-width: 3.5rem;
+      `}`,
+      large: style`text-base py-btn-lg-y ${css`
+        width: 4rem;
+      `}`,
+      round: style`rounded-full`,
+    }
+  
+    return {
+      themeStyles: themeStyles,
+      active: activeStyles,
+      disabled: disableStyles,
+      hollow: hollowStyles,
+      plain: plainStyles,
+      size: sizeStyles,
+    }
 }
 </script>

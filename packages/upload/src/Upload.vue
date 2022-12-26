@@ -50,17 +50,11 @@
 
 <script lang="ts">
 import { computed, defineComponent, inject, ref, watch, PropType } from 'vue'
-// @ts-ignore
 import { style, css } from '@apathia/apathia.twind'
-// @ts-ignore
 import { toast } from '@apathia/apathia.alert'
-// @ts-ignore
 import { BaseButton } from '@apathia/apathia.button'
-// @ts-ignore
 import { Input } from '@apathia/apathia.input'
-// @ts-ignore
 import { Icon } from '@apathia/apathia.icon'
-// @ts-ignore
 import { promiseWrapper, request, MaybePromise } from '@apathia/apathia.shared'
 import { useDragDrop } from './useDragDrop'
 import { sizeFormat } from './utils'

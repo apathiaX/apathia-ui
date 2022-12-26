@@ -8,12 +8,21 @@
   />
 </template>
 
-<script setup>
+<script>
 import { ref } from 'vue'
 
-const file4s = ref([])
+export default {
+  setup() {
+    const file4s = ref('')
 
-const resolveLocation = resp => {
-  return resp.data
+    const resolveLocation = resp => {
+      return resp.data
+    }
+
+    return {
+      file4s,
+      resolveLocation
+    }
+  }
 }
 </script>

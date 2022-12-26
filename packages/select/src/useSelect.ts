@@ -11,26 +11,16 @@ import {
   watch,
   onBeforeUnmount,
 } from 'vue'
-// @ts-ignore
 import { onClickOutside, useResizeObserver } from '@apathia/apathia.hooks'
-import { ValueType, Direction, Option } from './types'
-
-interface UserProps {
-  modelValue: Ref<ValueType>
-  filterable: Ref<boolean>
-  valueKey: Ref<string>
-  disabled: Ref<boolean | undefined>
-  emptyText: Ref<string>
-  placeholder: Ref<string>
-}
+import { ValueType, Direction, Option, UserProps } from './types'
 
 export default function useSelect(userProps: UserProps, ctx: SetupContext) {
   const { disabled, modelValue, valueKey, filterable, emptyText, placeholder } =
     userProps
 
-  const rootEl = ref<HTMLElement | null>(null)
-  const inputEl = ref<HTMLInputElement | null>(null)
-  const dropdownEl = ref<HTMLElement | null>(null)
+  const rootEl = ref<HTMLElement | null>(null)  as Ref<HTMLElement | null>
+  const inputEl = ref<HTMLInputElement | null>(null) as Ref<HTMLElement | null>
+  const dropdownEl = ref<HTMLElement | null>(null) as Ref<HTMLElement | null>
 
   const active = ref(false)
   const filterStr = ref('')

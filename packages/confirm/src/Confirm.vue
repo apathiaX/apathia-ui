@@ -16,14 +16,10 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-//@ts-ignore
-import { tw, apply } from '@apathia/apathia.twind'
-// @ts-ignore
 import { BaseButton } from '@apathia/apathia.button'
-// @ts-ignore
 import { CustomRender } from '@apathia/apathia.custom-render'
-// @ts-ignore
 import type { RenderCustom } from '@apathia/apathia.custom-render'
+import { tw, apply } from '@apathia/apathia.twind'
 
 export default defineComponent({
   name: 'Confirm',

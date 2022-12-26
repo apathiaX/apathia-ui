@@ -1,10 +1,7 @@
 import { defineComponent, ref, computed, onMounted, onBeforeUnmount, openBlock, createElementBlock, createElementVNode, normalizeClass, unref, normalizeStyle, renderSlot, withDirectives, vShow } from "vue";
 import { tw, apply } from "@apathia/apathia.twind";
-const __default__ = defineComponent({
-  name: "Affix"
-});
 const _sfc_main = /* @__PURE__ */ defineComponent({
-  ...__default__,
+  __name: "Affix",
   props: {
     offsetTop: { default: 0 },
     offsetBottom: null

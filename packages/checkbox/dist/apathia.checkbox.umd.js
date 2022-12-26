@@ -1,6 +1,6 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.twind"), require("@apathia/apathia.hooks")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.twind", "@apathia/apathia.hooks"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.checkbox = {}, global.Vue, global.twind, global.hooks));
-})(this, function(exports2, vue, apathia_twind, apathia_hooks) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.hooks"), require("@apathia/apathia.twind")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.hooks", "@apathia/apathia.twind"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.checkbox = {}, global.Vue, global.hooks, global.twind));
+})(this, function(exports2, vue, apathia_hooks, apathia_twind) {
   "use strict";
   function useCheckbox(userProps, ctx) {
     const { disabled, modelValue, trueValue, falseValue, value, inputEl } = userProps;
@@ -102,55 +102,7 @@
         userProps,
         ctx
       );
-      const styles = {
-        wrapper: apathia_twind.style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm`,
-        disabledWrapper: apathia_twind.style`text-fill-accent cursor-not-allowed`,
-        checkbox: apathia_twind.style`relative inline-block p-0 whitespace-nowrap outline-none align-middle`,
-        inner: apathia_twind.tw(
-          apathia_twind.style`relative block w-4 h-4 top-0 left-0 bg-fill-white border border-fill-accent rounded outline-none`,
-          apathia_twind.css`
-          transition: all 0.3s;
-          &::after {
-            content: '';
-            display: table;
-            position: absolute;
-            width: 5px;
-            height: 9px;
-            top: 1px;
-            left: 5px;
-            border: 2px solid #fff;
-            border-top: 0;
-            border-left: 0;
-            transform: rotate(45deg) scale(0);
-            transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6);
-          }
-        `
-        ),
-        checkedBlueBorder: apathia_twind.style`bg-brand-primary border-brand-primary`,
-        checkedAfter: apathia_twind.tw(apathia_twind.css`
-        &::after {
-          transform: rotate(45deg) scale(1);
-          transition: all 0.15s cubic-bezier(0.12, 0.4, 0.29, 1.46);
-        }
-      `),
-        indeterAfter: apathia_twind.tw(apathia_twind.css`
-        &::after {
-          transform: rotate(90deg) scale(1);
-          border-bottom: 0;
-        }
-      `),
-        disabledInner: apathia_twind.tw(
-          apathia_twind.style`bg-fill-gray border-fill-accent cursor-not-allowed outline-none`,
-          apathia_twind.css`
-          &::after {
-            ${apathia_twind.apply`border-fill-accent`}
-          }
-        `
-        ),
-        ring: apathia_twind.style`focus:ring-2 focus:ring-brand-primary`,
-        input: apathia_twind.style`hidden`,
-        contentWrap: apathia_twind.style`mx-1`
-      };
+      const styles = getCheckboxStyles();
       return {
         inputEl,
         isChecked,
@@ -159,6 +111,55 @@
         styles
       };
     }
+  });
+  const getCheckboxStyles = () => ({
+    wrapper: apathia_twind.style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm`,
+    disabledWrapper: apathia_twind.style`text-fill-accent cursor-not-allowed`,
+    checkbox: apathia_twind.style`relative inline-block p-0 whitespace-nowrap outline-none align-middle`,
+    inner: apathia_twind.tw(
+      apathia_twind.style`relative block w-4 h-4 top-0 left-0 bg-fill-white border border-fill-accent rounded outline-none`,
+      apathia_twind.css`
+        transition: all 0.3s;
+        &::after {
+          content: '';
+          display: table;
+          position: absolute;
+          width: 5px;
+          height: 9px;
+          top: 1px;
+          left: 5px;
+          border: 2px solid #fff;
+          border-top: 0;
+          border-left: 0;
+          transform: rotate(45deg) scale(0);
+          transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6);
+        }
+      `
+    ),
+    checkedBlueBorder: apathia_twind.style`bg-brand-primary border-brand-primary`,
+    checkedAfter: apathia_twind.tw(apathia_twind.css`
+      &::after {
+        transform: rotate(45deg) scale(1);
+        transition: all 0.15s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+      }
+    `),
+    indeterAfter: apathia_twind.tw(apathia_twind.css`
+      &::after {
+        transform: rotate(90deg) scale(1);
+        border-bottom: 0;
+      }
+    `),
+    disabledInner: apathia_twind.tw(
+      apathia_twind.style`bg-fill-gray border-fill-accent cursor-not-allowed outline-none`,
+      apathia_twind.css`
+        &::after {
+          ${apathia_twind.apply`border-fill-accent`}
+        }
+      `
+    ),
+    ring: apathia_twind.style`focus:ring-2 focus:ring-brand-primary`,
+    input: apathia_twind.style`hidden`,
+    contentWrap: apathia_twind.style`mx-1`
   });
   const _hoisted_1 = ["checked", "disabled", "value"];
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {

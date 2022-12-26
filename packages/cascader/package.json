@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.cascader",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "cascader",
   "author": "",
   "homepage": "",
@@ -33,10 +33,10 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.checkbox": "workspace:^1.0.2",
-    "@apathia/apathia.hooks": "workspace:^1.0.4",
-    "@apathia/apathia.icon": "workspace:^1.0.2",
-    "@apathia/apathia.shared": "workspace:^1.0.2",
-    "@apathia/apathia.twind": "workspace:^1.0.2"
+    "@apathia/apathia.checkbox": "workspace:^1.1.0",
+    "@apathia/apathia.hooks": "workspace:^1.1.0",
+    "@apathia/apathia.icon": "workspace:^1.1.0",
+    "@apathia/apathia.shared": "workspace:^1.1.0",
+    "@apathia/apathia.twind": "workspace:^1.1.0"
   }
 }

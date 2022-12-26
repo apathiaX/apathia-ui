@@ -10,7 +10,6 @@
         v-if="innerOptions.boundaryBtns"
         :class="{
           [styles.item]: true,
-          [styles.first]: true,
           [styles.itemDisabled]: innerOptions.currentPage === 1,
         }"
         @click="selectPage(1)"
@@ -21,7 +20,6 @@
         v-if="innerOptions.directionBtns"
         :class="{
           [styles.item]: true,
-          [styles.prev]: true,
           [styles.itemDisabled]: innerOptions.currentPage === 1,
         }"
         @click="selectPage(innerOptions.currentPage - 1)"
@@ -46,7 +44,6 @@
         v-if="innerOptions.directionBtns"
         :class="{
           [styles.item]: true,
-          [styles.next]: true,
           [styles.itemDisabled]:
             innerOptions.currentPage === totalPages ||
             innerOptions.totalItems === 0,
@@ -59,7 +56,6 @@
         v-if="innerOptions.boundaryBtns"
         :class="{
           [styles.item]: true,
-          [styles.last]: true,
           [styles.itemDisabled]:
             innerOptions.currentPage === totalPages ||
             innerOptions.totalItems === 0,
@@ -103,8 +99,8 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { style } from '@apathia/apathia.twind'
 import { usePagination } from './usePagination'
+import { style } from '@apathia/apathia.twind'
 
 export default defineComponent({
   name: 'Pagination',
@@ -135,23 +131,7 @@ export default defineComponent({
       innerOptions,
     } = usePagination(userProps, ctx)
 
-    const styles = {
-      wrapper: style`relative bg-fill-white py-3 flex items-center justify-between`,
-      ul: style`relative z-0 inline-flex items-center text-base`,
-
-      item: style`relative inline-flex flex-shrink-0 mx-1 px-btn-lg-y py-px border border-fill-neutral rounded 
-      bg-fill-white text-content-primary cursor-pointer select-none hover:bg-brand-primary hover:text-content-white`,
-
-      active: style`text-content-white bg-brand-primary border-brand-primary outline-none`,
-      itemDisabled: style`cursor-not-allowed pointer-events-none text-content-neutral bg-fill-light border-fill-gray`,
-      numberBtn: style`outline-none`,
-      jump: style`relative z-0 inline-flex items-center -space-x-px text-base border border-fill-neutral rounded`,
-      jumpInput: style`outline-none text-center w-8 px-btn-lg-y py-px border-0 rounded`,
-      jumpBtn: style`text-center w-14  px-btn-lg-y py-px border-0 bg-fill-white rounded
-      cursor-pointer hover:bg-brand-primary hover:text-content-white`,
-      count: style`px-4`,
-      pages: style`pr-1`,
-    }
+    const styles = getPagonationStyles()
 
     return {
       jumpTo,
@@ -164,5 +144,23 @@ export default defineComponent({
       styles,
     }
   },
+})
+
+const getPagonationStyles = () => ({
+    wrapper: style`relative bg-fill-white py-3 flex items-center justify-between`,
+    ul: style`relative z-0 inline-flex items-center text-base`,
+
+    item: style`relative inline-flex flex-shrink-0 mx-1 px-btn-lg-y py-px border border-fill-neutral rounded 
+    bg-fill-white text-content-primary cursor-pointer select-none hover:bg-brand-primary hover:text-content-white`,
+
+    active: style`text-content-white bg-brand-primary border-brand-primary outline-none`,
+    itemDisabled: style`cursor-not-allowed pointer-events-none text-content-neutral bg-fill-light border-fill-gray`,
+    numberBtn: style`outline-none`,
+    jump: style`relative z-0 inline-flex items-center -space-x-px text-base border border-fill-neutral rounded`,
+    jumpInput: style`outline-none text-center w-8 px-btn-lg-y py-px border-0 rounded`,
+    jumpBtn: style`text-center w-14  px-btn-lg-y py-px border-0 bg-fill-white rounded
+    cursor-pointer hover:bg-brand-primary hover:text-content-white`,
+    count: style`px-4`,
+    pages: style`pr-1`,
 })
 </script>

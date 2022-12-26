@@ -1,9 +1,8 @@
 import { h } from 'vue'
-// @ts-ignore
 import { useModal } from '@apathia/apathia.modal'
-// @ts-ignore
-import type { RenderCustom } from '@apathia/apathia.custom-render'
 import Confirm from './Confirm.vue'
+import { ConfirmProps } from './types'
+import type { ModalProps } from '@apathia/apathia.modal'
 
 const defaultOptions = {
   title: '',
@@ -11,31 +10,6 @@ const defaultOptions = {
   confirmText: '确认',
   cancelText: '取消',
   btnPosition: 'right',
-}
-
-type ConfirmProps = {
-  render: string | RenderCustom
-  renderFooter?: RenderCustom<{
-    confirm?: (...args: any) => any
-    cancel?: (...args: any) => any
-  }>
-  confirmText?: string
-  cancelText?: string
-  btnPosition?: 'left' | 'right' | 'center'
-}
-
-type ModalProps = {
-  modelValue?: boolean
-  title?: string
-  subTitle?: string
-  render?: RenderCustom
-  top?: number | string
-  width?: number | string
-  showClose?: boolean
-  maskClosable?: boolean
-  keyboard?: boolean
-  beforeClose?: () => boolean
-  onClose?: () => void
 }
 
 export function useConfirm() {

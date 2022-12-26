@@ -7,11 +7,19 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script>
+import { ref, defineComponent } from 'vue'
 
-const show = ref(false)
-const showModal = () => {
-  show.value = true
-}
+export default defineComponent({
+  setup() {
+    const show = ref(false)
+    const showModal = () => {
+      show.value = true
+    }
+    return {
+      show,
+      showModal,
+    }
+  },
+})
 </script>

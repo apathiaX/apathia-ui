@@ -1,25 +1,5 @@
 import type { Ref, SetupContext } from 'vue';
-declare type PaginationConfiger = {
-    currentPage: number;
-    totalItems: number;
-    pageSize: number;
-    totalPages: number;
-    maxLength: number;
-    keepMiddle: boolean;
-    directionBtns: boolean;
-    previousText: string;
-    nextText: string;
-    boundaryBtns: boolean;
-    firstText: string;
-    lastText: string;
-    totalCount: boolean;
-    jumpPage: boolean;
-    [x: string]: any;
-};
-interface PaginationProps {
-    options: Ref<Partial<PaginationConfiger>>;
-}
-declare type PaginationEvent = 'page-change';
+import { PaginationConfiger, PaginationEvent, PaginationProps } from './types';
 export declare function usePagination(props: PaginationProps, ctx: SetupContext<PaginationEvent[]>): {
     jumpTo: Ref<string>;
     pages: Ref<{
@@ -32,4 +12,3 @@ export declare function usePagination(props: PaginationProps, ctx: SetupContext<
     setPageBtnRef: (el: HTMLElement) => void;
     innerOptions: import("vue").ShallowReactive<PaginationConfiger>;
 };
-export {};

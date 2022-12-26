@@ -1,11 +1,9 @@
 import { defineComponent, onMounted, PropType } from 'vue'
-// @ts-ignore
-import { style, apply, tw } from '@apathia/apathia.twind'
-// @ts-ignore
 import { Icon } from '@apathia/apathia.icon'
 import type { AlertType } from './AlertFn'
-// @ts-ignore
 import { RenderFn } from '@apathia/apathia.custom-render'
+import { style, apply, tw } from '@apathia/apathia.twind'
+// import { initAlertStyle } from './styles'
 
 const iconClassMap: Record<AlertType, [string, string]> = {
   info: ['fa', 'info-circle'],
@@ -13,6 +11,45 @@ const iconClassMap: Record<AlertType, [string, string]> = {
   success: ['fa', 'check'],
   danger: ['fa', 'exclamation'],
   default: ['fa', 'info-circle'],
+}
+
+function initAlertStyle(type: AlertType) {
+  const Theme = {
+    info: {
+      layout: style`bg-fill-light text-fill-primary`,
+    },
+    danger: {
+      layout: style`bg-error-light text-error-primary`,
+    },
+    success: {
+      layout: style`bg-success-light text-success-primary`,
+    },
+    warning: {
+      layout: style`bg-warning-light text-warning-primary`,
+    },
+    default: {
+      layout: style`bg-brand-light text-brand-primary`,
+    },
+  }
+
+  const theme = Theme[type] || Theme.default
+  const layout = tw`${
+    theme.layout
+  } ${apply`p-2.5 rounded flex mt-2 duration-300`}`
+  const iconWrap = style`flex-shrink-0 w-4 mr-2`
+  const delIcon = style`ml-2 cursor-pointer hover:(text-error-active)`
+  const contentClass = style`inline-block font-normal flex-grow break-all`
+  const titleClass = style`text-lg`
+  const messageClass = style`text-xs leading-normal`
+
+  return {
+    layout,
+    iconWrap,
+    delIcon,
+    contentClass,
+    titleClass,
+    messageClass,
+  }
 }
 
 export default defineComponent({
@@ -64,7 +101,7 @@ export default defineComponent({
       contentClass,
       titleClass,
       messageClass,
-    } = initStyle(props.type)
+    } = initAlertStyle(props.type)
     let timer: any
 
     function close() {
@@ -115,42 +152,3 @@ export default defineComponent({
     )
   },
 })
-
-function initStyle(type: AlertType) {
-  const Theme = {
-    info: {
-      layout: style`bg-fill-light text-fill-primary`,
-    },
-    danger: {
-      layout: style`bg-error-light text-error-primary`,
-    },
-    success: {
-      layout: style`bg-success-light text-success-primary`,
-    },
-    warning: {
-      layout: style`bg-warning-light text-warning-primary`,
-    },
-    default: {
-      layout: style`bg-brand-light text-brand-primary`,
-    },
-  }
-
-  const theme = Theme[type] || Theme.default
-  const layout = tw`${
-    theme.layout
-  } ${apply`p-2.5 rounded flex mt-2 duration-300`}`
-  const iconWrap = style`flex-shrink-0 w-4 mr-2`
-  const delIcon = style`ml-2 cursor-pointer hover:(text-error-active)`
-  const contentClass = style`inline-block font-normal flex-grow break-all`
-  const titleClass = style`text-lg`
-  const messageClass = style`text-xs leading-normal`
-
-  return {
-    layout,
-    iconWrap,
-    delIcon,
-    contentClass,
-    titleClass,
-    messageClass,
-  }
-}

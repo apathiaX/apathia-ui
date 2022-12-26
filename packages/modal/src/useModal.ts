@@ -8,9 +8,7 @@ import {
   App,
   inject,
 } from 'vue'
-// @ts-ignore
 import { tw } from '@apathia/apathia.twind'
-// @ts-ignore
 import { mountComponent, mountContainerDom } from '@apathia/apathia.shared'
 import { tryCloseLastModal } from './modalStack'
 import { hideScrollbar, showScrollbar } from './helper'

@@ -6,7 +6,6 @@
 
 <script lang="ts">
 import { computed, defineComponent, provide, toRefs } from 'vue'
-// @ts-ignore
 import { useInjectProp } from '@apathia/apathia.hooks'
 
 export default defineComponent({

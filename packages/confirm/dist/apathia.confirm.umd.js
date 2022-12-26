@@ -1,6 +1,6 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.twind"), require("@apathia/apathia.button"), require("@apathia/apathia.custom-render"), require("@apathia/apathia.modal")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.twind", "@apathia/apathia.button", "@apathia/apathia.custom-render", "@apathia/apathia.modal"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.confirm = {}, global.Vue, global.twind, global.button, global["custom-render"], global.modal));
-})(this, function(exports2, vue, apathia_twind, apathia_button, apathia_customRender, apathia_modal) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.button"), require("@apathia/apathia.custom-render"), require("@apathia/apathia.twind"), require("@apathia/apathia.modal")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.button", "@apathia/apathia.custom-render", "@apathia/apathia.twind", "@apathia/apathia.modal"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.confirm = {}, global.Vue, global.button, global["custom-render"], global.twind, global.modal));
+})(this, function(exports2, vue, apathia_button, apathia_customRender, apathia_twind, apathia_modal) {
   "use strict";
   var _export_sfc = (sfc, props) => {
     const target = sfc.__vccOpts || sfc;

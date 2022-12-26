@@ -2,13 +2,10 @@ import { defineComponent, ref, openBlock, createElementBlock, normalizeClass, un
 import { onClickOutside, useScrollX } from "@apathia/apathia.hooks";
 import { Checkbox } from "@apathia/apathia.checkbox";
 import { Icon } from "@apathia/apathia.icon";
-import { style, css } from "@apathia/apathia.twind";
 import { autoPos } from "@apathia/apathia.shared";
-const __default__$1 = defineComponent({
-  name: "Node"
-});
+import { style, css } from "@apathia/apathia.twind";
 const _sfc_main$1 = /* @__PURE__ */ defineComponent({
-  ...__default__$1,
+  __name: "Nodes",
   props: {
     nodes: { default: () => [] },
     focus: { type: Boolean, default: false },
@@ -21,14 +18,14 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
   emits: ["clear", "remove", "update:focus", "search-change"],
   setup(__props, { emit }) {
     const props = __props;
-    function getStyles() {
+    const getNodeStyles = () => {
       return {
         container: style`w-full relative flex shadow h-8 border rounded border-line-accent bg-content-white text-sm items-center`,
         wrap: style`h-full w-full overflow-hidden`,
         active: style`border-brand-primary`,
         nodes: style`w-full flex-1 flex-nowrap whitespace-nowrap py-btn-md-y px-1.5 overflow-x-scroll ${css`
-      height: calc(100% + 17px);
-    `}`,
+        height: calc(100% + 17px);
+      `}`,
         search: style`flex-1 outline-none`,
         tag: style`rounded inline-flex text-xs text-content-accent items-center py-1 pl-1.5 bg-fill-light h-5 mr-1 flex-shrink-0`,
         iconWrap: style`h-4 w-4 inline-flex items-center justify-center rounded-full ml-1`,
@@ -36,8 +33,8 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
         clearIcon: style`absolute right-2 top-1/2 -translate-y-2/4 cursor-pointer ml-2 text-content-neutral hover:(text-content-primary)`,
         placeholder: style`text-content-secondary`
       };
-    }
-    const styles = getStyles();
+    };
+    const styles = getNodeStyles();
     const searchInput = ref("");
     const onSearchInput = (e) => {
       emit("search-change", e.target.value);
@@ -126,12 +123,8 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
   }
 });
 const _hoisted_1 = ["onClick", "onMouseenter"];
-const __default__ = defineComponent({
-  name: "Cascader",
-  inheritAttrs: false
-});
 const _sfc_main = /* @__PURE__ */ defineComponent({
-  ...__default__,
+  __name: "Cascader",
   props: {
     modelValue: null,
     placeholder: { default: "\u8BF7\u9009\u62E9" },
@@ -168,14 +161,14 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       const newItems = newArr.filter((item) => !oldMap[item.fullkey]);
       return oldArr.concat(newItems);
     };
-    const getStyles = () => ({
+    const getCascaderStyles = () => ({
       dropdown: style`absolute z-dropdown`,
       panelContainer: style`flex mt-1 border border-line-accent rounded bg-content-white shadow`,
       scrollWrap: style`border-r border-line-accent overflow-hidden w-48 last-child:border-r-0 `,
       panel: style`overflow-scroll ${css`
-    width: calc(100% + 38px);
-    height: calc(100% + 38px);
-  `}`,
+      width: calc(100% + 38px);
+      height: calc(100% + 38px);
+    `}`,
       node: style`relative h-12 px-2 flex items-center cursor-pointer mt-2 whitespace-nowrap overflow-hidden overflow-ellipsis hover:(bg-fill-light rounded) text-sm`,
       nodeDisabled: style`text-content-neutral cursor-not-allowed`,
       nodeActive: style`text-brand-active text-base`,
@@ -495,7 +488,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const handleSearchChange = (search) => {
       emit("search-change", search);
     };
-    const styles = getStyles();
+    const styles = getCascaderStyles();
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", {
         ref_key: "cascaderRef",
@@ -579,4 +572,5 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-export { _sfc_main as Cascader };
+const Triggers = ["click", "hover"];
+export { _sfc_main as Cascader, Triggers };

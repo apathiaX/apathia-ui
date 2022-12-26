@@ -1,4 +1,4 @@
-import { ref, onMounted, onUpdated } from 'vue'
+import { ref, onMounted, onUpdated, Ref } from 'vue'
 import { debounce } from 'lodash-es'
 import { useEventListener } from './useEventListener'
 
@@ -7,8 +7,8 @@ import { useEventListener } from './useEventListener'
  * * 需要将容器设置 overflow-hidden
  * @returns content ref
  */
-export function useScrollX(translate = true) {
-  const contentRef = ref<HTMLElement | null>(null)
+export function useScrollX(translate:boolean = true) {
+  const contentRef = ref<HTMLElement | null>(null) as Ref<HTMLElement | null>
 
   let stop: ((...args: any) => void) | null = null
   const listenerWheel = () => {

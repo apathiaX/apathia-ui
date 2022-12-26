@@ -86,10 +86,10 @@ import { ref, computed, onMounted, watch, withDefaults } from 'vue'
 import { onClickOutside } from '@apathia/apathia.hooks'
 import { Checkbox } from '@apathia/apathia.checkbox'
 import { Icon } from '@apathia/apathia.icon'
-import { style, css } from '@apathia/apathia.twind'
 import { autoPos as vAutoPos } from '@apathia/apathia.shared'
+import { style, css } from '@apathia/apathia.twind'
 import Nodes from './Nodes.vue'
-import { TriggerType, Triggers, Node } from './types'
+import { TriggerType, Node } from './types'
 
 type ValueType =
   | string
@@ -99,20 +99,20 @@ type ValueType =
 
 interface CascaderProps {
   modelValue: ValueType
-  placeholder: string
-  emitPath: boolean
+  placeholder?: string
+  emitPath?: boolean
   disabled?: boolean
-  clearable: boolean
-  showAllLevels: boolean
+  clearable?: boolean
+  showAllLevels?: boolean
   autoFocus?: boolean
   changeOnSelect: boolean
-  separator: string
+  separator?: string
   data: Array<Record<string, any>>
-  trigger: TriggerType
-  fieldNames: Record<'label' | 'value' | 'children', string>
-  multiple: boolean
+  trigger?: TriggerType
+  fieldNames?: Record<'label' | 'value' | 'children', string>
+  multiple?: boolean
   height?: string | number
-  search: boolean
+  search?: boolean
 }
 
 const generateKey = (val: string | number) => `_${val}_`
@@ -131,24 +131,24 @@ const mergeArray = (oldArr: Node[], newArr: Node[]) => {
   return oldArr.concat(newItems)
 }
 
-const getStyles = () => ({
-  dropdown: style`absolute z-dropdown`,
-  panelContainer: style`flex mt-1 border border-line-accent rounded bg-content-white shadow`,
-  scrollWrap: style`border-r border-line-accent overflow-hidden w-48 last-child:border-r-0 `,
-  panel: style`overflow-scroll ${css`
-    width: calc(100% + 38px);
-    height: calc(100% + 38px);
-  `}`,
-  node: style`relative h-12 px-2 flex items-center cursor-pointer mt-2 whitespace-nowrap overflow-hidden overflow-ellipsis hover:(bg-fill-light rounded) text-sm`,
-  nodeDisabled: style`text-content-neutral cursor-not-allowed`,
-  nodeActive: style`text-brand-active text-base`,
-  checkbox: style`h-auto pl-1`,
-  icon: style`absolute right-4 text-sm`,
-})
+// defineOptions({
+//   name: 'Cascader',
+//   inheritAttrs: false,
+// })
 
-defineOptions({
-  name: 'Cascader',
-  inheritAttrs: false,
+const getCascaderStyles = () => ({
+    dropdown: style`absolute z-dropdown`,
+    panelContainer: style`flex mt-1 border border-line-accent rounded bg-content-white shadow`,
+    scrollWrap: style`border-r border-line-accent overflow-hidden w-48 last-child:border-r-0 `,
+    panel: style`overflow-scroll ${css`
+      width: calc(100% + 38px);
+      height: calc(100% + 38px);
+    `}`,
+    node: style`relative h-12 px-2 flex items-center cursor-pointer mt-2 whitespace-nowrap overflow-hidden overflow-ellipsis hover:(bg-fill-light rounded) text-sm`,
+    nodeDisabled: style`text-content-neutral cursor-not-allowed`,
+    nodeActive: style`text-brand-active text-base`,
+    checkbox: style`h-auto pl-1`,
+    icon: style`absolute right-4 text-sm`,
 })
 
 const props = withDefaults(defineProps<CascaderProps>(), {
@@ -569,5 +569,5 @@ const handleSearchChange = (search: string) => {
   emit('search-change', search)
 }
 
-const styles = getStyles()
+const styles = getCascaderStyles()
 </script>

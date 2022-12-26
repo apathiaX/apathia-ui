@@ -6,8 +6,15 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import { ref } from 'vue'
 
-const switchVal = ref<boolean>(false)
+export default {
+  setup() {
+    const switchVal = ref<boolean>(false)
+    return {
+      switchVal
+    }
+  }
+}
 </script>

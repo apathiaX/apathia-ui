@@ -41,15 +41,29 @@
   </Form>
  </template>
  
- <script setup>
- import { ref } from 'vue'
- 
- const inputVal1 = ref('')
- const inputVal2 = ref('')
- const inputVal3 = ref('')
- const inputVal4 = ref('')
- 
- const selectVal1 = ref('')
- const selectVal2 = ref('')
- </script>
+
+<script>
+import { ref, defineComponent } from 'vue'
+
+export default defineComponent({
+  setup() {
+    const inputVal1 = ref('')
+    const inputVal2 = ref('')
+    const inputVal3 = ref('')
+    const inputVal4 = ref('')
+    
+    const selectVal1 = ref('')
+    const selectVal2 = ref('')
+    return {
+      inputVal1,
+      inputVal2,
+      inputVal3,
+      inputVal4,
+
+      selectVal1,
+      selectVal2
+    }
+  },
+})
+</script>
  

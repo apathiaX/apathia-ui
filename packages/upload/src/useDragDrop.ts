@@ -1,7 +1,5 @@
 import { ComputedRef, Ref, ref } from 'vue'
-// @ts-ignore
 import { useEventListener } from '@apathia/apathia.hooks'
-// @ts-ignore
 import { MaybeRef } from '@apathia/apathia.shared'
 
 export function useDragDrop(

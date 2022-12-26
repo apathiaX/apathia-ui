@@ -12,10 +12,18 @@
   </Form>
 </template>
 
-<script setup>
-import { reactive } from 'vue'
-const form = reactive({
-  name: '',
-  phone: ''
+<script>
+import { defineComponent, reactive } from 'vue'
+
+export default defineComponent({
+  setup() {
+    const form = reactive({
+      name: '',
+      phone: ''
+    })
+    return {
+      form
+    }
+  }
 })
 </script>

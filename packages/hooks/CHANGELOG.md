@@ -1,5 +1,24 @@
 # @apathia/apathia.hooks
 
+## 1.1.0
+
+### Minor Changes
+
+- add demo && type export
+
+### Patch Changes
+
+- Updated dependencies
+  - @apathia/apathia.shared@1.1.0
+
+## 1.0.5
+
+### Patch Changes
+
+- add type export
+- Updated dependencies
+  - @apathia/apathia.shared@1.0.3
+
 ## 1.0.4
 
 ### Patch Changes

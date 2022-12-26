@@ -45,7 +45,6 @@ import {
   isRef,
 } from 'vue'
 import { noop } from 'lodash'
-// @ts-ignore
 import { tw, css, style, apply } from '@apathia/apathia.twind'
 
 import useRadio from './useRadio'

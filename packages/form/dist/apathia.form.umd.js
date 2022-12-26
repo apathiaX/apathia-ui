@@ -63,13 +63,13 @@
         FORM_LABEL_ALIGN_KEY,
         vue.computed(() => props.labelAlign)
       );
-      const styles = getStyles$1();
+      const styles = getFromStyle();
       return {
         styles
       };
     }
   });
-  const getStyles$1 = () => ({
+  const getFromStyle = () => ({
     form: apathia_twind.style`mb-2`
   });
   function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
@@ -115,7 +115,7 @@
       }
     },
     setup(props) {
-      const styles = getStyles();
+      const styles = getFormItemStyle();
       const realLabelPosition = apathia_hooks.useInjectProp(
         FORM_LABEL_POSITION_KEY,
         "left",
@@ -173,14 +173,14 @@
       };
     }
   });
-  const getStyles = () => {
+  const getFormItemStyle = () => {
     const label = apathia_twind.apply`text-sm text-content-primary`;
     const mark = apathia_twind.css`
-    &:before {
-      content: '*';
-      ${apathia_twind.apply`text-error-primary align-top`}
-    }
-  `;
+      &:before {
+        content: '*';
+        ${apathia_twind.apply`text-error-primary align-top`}
+      }
+    `;
     return {
       container: apathia_twind.style`mb-2 ml-2`,
       flex: apathia_twind.style`flex`,

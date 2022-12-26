@@ -16,16 +16,24 @@ import { withDefaults, inject } from 'vue'
 import { DropdownInstance } from '@apathia/apathia.popper'
 import { style } from '@apathia/apathia.twind'
 
-defineOptions({
-  name: 'DropdownItem',
-})
+// defineOptions({
+//   name: 'DropdownItem',
+// })
 
 interface DropdownItemProps {
-  active: boolean
-  disabled: boolean
+  active?: boolean
+  disabled?: boolean
 }
 
-const props = withDefaults(defineProps<DropdownItemProps>(), {
+const getDropdownItemStyle = () => (
+    {
+        menuItem: style`block px-2 py-2 rounded text(sm content-primary) hover:bg-fill-light cursor-pointer`,
+        active: style`text-brand-active`,
+        disabled: style`text-content-neutral hover:bg-fill-white cursor-default pointer-events-none`,
+    }
+)
+
+withDefaults(defineProps<DropdownItemProps>(), {
   active: false,
   disabled: false,
 })
@@ -39,9 +47,5 @@ const clickCurItem = () => {
   }
 }
 
-const styles = {
-  menuItem: style`block px-2 py-2 rounded text(sm content-primary) hover:bg-fill-light cursor-pointer`,
-  active: style`text-brand-active`,
-  disabled: style`text-content-neutral hover:bg-fill-white cursor-default pointer-events-none`,
-}
+const styles = getDropdownItemStyle()
 </script>

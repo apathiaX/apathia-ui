@@ -1,6 +1,6 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.twind"), require("@apathia/apathia.shared")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.twind", "@apathia/apathia.shared"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.pagination = {}, global.Vue, global.twind, global.shared));
-})(this, function(exports2, vue, apathia_twind, apathia_shared) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.shared"), require("@apathia/apathia.twind")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.shared", "@apathia/apathia.twind"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.pagination = {}, global.Vue, global.shared, global.twind));
+})(this, function(exports2, vue, apathia_shared, apathia_twind) {
   "use strict";
   const DEFAULT_OPTIONS = {
     currentPage: 1,
@@ -265,21 +265,7 @@
         setPageBtnRef,
         innerOptions
       } = usePagination(userProps, ctx);
-      const styles = {
-        wrapper: apathia_twind.style`relative bg-fill-white py-3 flex items-center justify-between`,
-        ul: apathia_twind.style`relative z-0 inline-flex items-center text-base`,
-        item: apathia_twind.style`relative inline-flex flex-shrink-0 mx-1 px-btn-lg-y py-px border border-fill-neutral rounded 
-      bg-fill-white text-content-primary cursor-pointer select-none hover:bg-brand-primary hover:text-content-white`,
-        active: apathia_twind.style`text-content-white bg-brand-primary border-brand-primary outline-none`,
-        itemDisabled: apathia_twind.style`cursor-not-allowed pointer-events-none text-content-neutral bg-fill-light border-fill-gray`,
-        numberBtn: apathia_twind.style`outline-none`,
-        jump: apathia_twind.style`relative z-0 inline-flex items-center -space-x-px text-base border border-fill-neutral rounded`,
-        jumpInput: apathia_twind.style`outline-none text-center w-8 px-btn-lg-y py-px border-0 rounded`,
-        jumpBtn: apathia_twind.style`text-center w-14  px-btn-lg-y py-px border-0 bg-fill-white rounded
-      cursor-pointer hover:bg-brand-primary hover:text-content-white`,
-        count: apathia_twind.style`px-4`,
-        pages: apathia_twind.style`pr-1`
-      };
+      const styles = getPagonationStyles();
       return {
         jumpTo,
         pages,
@@ -291,6 +277,21 @@
         styles
       };
     }
+  });
+  const getPagonationStyles = () => ({
+    wrapper: apathia_twind.style`relative bg-fill-white py-3 flex items-center justify-between`,
+    ul: apathia_twind.style`relative z-0 inline-flex items-center text-base`,
+    item: apathia_twind.style`relative inline-flex flex-shrink-0 mx-1 px-btn-lg-y py-px border border-fill-neutral rounded 
+    bg-fill-white text-content-primary cursor-pointer select-none hover:bg-brand-primary hover:text-content-white`,
+    active: apathia_twind.style`text-content-white bg-brand-primary border-brand-primary outline-none`,
+    itemDisabled: apathia_twind.style`cursor-not-allowed pointer-events-none text-content-neutral bg-fill-light border-fill-gray`,
+    numberBtn: apathia_twind.style`outline-none`,
+    jump: apathia_twind.style`relative z-0 inline-flex items-center -space-x-px text-base border border-fill-neutral rounded`,
+    jumpInput: apathia_twind.style`outline-none text-center w-8 px-btn-lg-y py-px border-0 rounded`,
+    jumpBtn: apathia_twind.style`text-center w-14  px-btn-lg-y py-px border-0 bg-fill-white rounded
+    cursor-pointer hover:bg-brand-primary hover:text-content-white`,
+    count: apathia_twind.style`px-4`,
+    pages: apathia_twind.style`pr-1`
   });
   const _hoisted_1 = ["onClick"];
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -315,7 +316,6 @@
           key: 1,
           class: vue.normalizeClass({
             [_ctx.styles.item]: true,
-            [_ctx.styles.first]: true,
             [_ctx.styles.itemDisabled]: _ctx.innerOptions.currentPage === 1
           }),
           onClick: _cache[0] || (_cache[0] = ($event) => _ctx.selectPage(1))
@@ -324,7 +324,6 @@
           key: 2,
           class: vue.normalizeClass({
             [_ctx.styles.item]: true,
-            [_ctx.styles.prev]: true,
             [_ctx.styles.itemDisabled]: _ctx.innerOptions.currentPage === 1
           }),
           onClick: _cache[1] || (_cache[1] = ($event) => _ctx.selectPage(_ctx.innerOptions.currentPage - 1))
@@ -346,7 +345,6 @@
           key: 3,
           class: vue.normalizeClass({
             [_ctx.styles.item]: true,
-            [_ctx.styles.next]: true,
             [_ctx.styles.itemDisabled]: _ctx.innerOptions.currentPage === _ctx.totalPages || _ctx.innerOptions.totalItems === 0
           }),
           onClick: _cache[2] || (_cache[2] = ($event) => _ctx.selectPage(_ctx.innerOptions.currentPage + 1))
@@ -355,7 +353,6 @@
           key: 4,
           class: vue.normalizeClass({
             [_ctx.styles.item]: true,
-            [_ctx.styles.last]: true,
             [_ctx.styles.itemDisabled]: _ctx.innerOptions.currentPage === _ctx.totalPages || _ctx.innerOptions.totalItems === 0
           }),
           onClick: _cache[3] || (_cache[3] = ($event) => _ctx.selectPage(_ctx.totalPages))

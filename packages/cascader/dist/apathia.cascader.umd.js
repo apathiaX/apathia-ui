@@ -1,12 +1,9 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.hooks"), require("@apathia/apathia.checkbox"), require("@apathia/apathia.icon"), require("@apathia/apathia.twind"), require("@apathia/apathia.shared")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.hooks", "@apathia/apathia.checkbox", "@apathia/apathia.icon", "@apathia/apathia.twind", "@apathia/apathia.shared"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.cascader = {}, global.Vue, global.hooks, global.checkbox, global.icon, global.twind, global.shared));
-})(this, function(exports2, vue, apathia_hooks, apathia_checkbox, apathia_icon, apathia_twind, apathia_shared) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.hooks"), require("@apathia/apathia.checkbox"), require("@apathia/apathia.icon"), require("@apathia/apathia.shared"), require("@apathia/apathia.twind")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.hooks", "@apathia/apathia.checkbox", "@apathia/apathia.icon", "@apathia/apathia.shared", "@apathia/apathia.twind"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.cascader = {}, global.Vue, global.hooks, global.checkbox, global.icon, global.shared, global.twind));
+})(this, function(exports2, vue, apathia_hooks, apathia_checkbox, apathia_icon, apathia_shared, apathia_twind) {
   "use strict";
-  const __default__$1 = vue.defineComponent({
-    name: "Node"
-  });
   const _sfc_main$1 = /* @__PURE__ */ vue.defineComponent({
-    ...__default__$1,
+    __name: "Nodes",
     props: {
       nodes: { default: () => [] },
       focus: { type: Boolean, default: false },
@@ -19,14 +16,14 @@
     emits: ["clear", "remove", "update:focus", "search-change"],
     setup(__props, { emit }) {
       const props = __props;
-      function getStyles() {
+      const getNodeStyles = () => {
         return {
           container: apathia_twind.style`w-full relative flex shadow h-8 border rounded border-line-accent bg-content-white text-sm items-center`,
           wrap: apathia_twind.style`h-full w-full overflow-hidden`,
           active: apathia_twind.style`border-brand-primary`,
           nodes: apathia_twind.style`w-full flex-1 flex-nowrap whitespace-nowrap py-btn-md-y px-1.5 overflow-x-scroll ${apathia_twind.css`
-      height: calc(100% + 17px);
-    `}`,
+        height: calc(100% + 17px);
+      `}`,
           search: apathia_twind.style`flex-1 outline-none`,
           tag: apathia_twind.style`rounded inline-flex text-xs text-content-accent items-center py-1 pl-1.5 bg-fill-light h-5 mr-1 flex-shrink-0`,
           iconWrap: apathia_twind.style`h-4 w-4 inline-flex items-center justify-center rounded-full ml-1`,
@@ -34,8 +31,8 @@
           clearIcon: apathia_twind.style`absolute right-2 top-1/2 -translate-y-2/4 cursor-pointer ml-2 text-content-neutral hover:(text-content-primary)`,
           placeholder: apathia_twind.style`text-content-secondary`
         };
-      }
-      const styles = getStyles();
+      };
+      const styles = getNodeStyles();
       const searchInput = vue.ref("");
       const onSearchInput = (e) => {
         emit("search-change", e.target.value);
@@ -124,12 +121,8 @@
     }
   });
   const _hoisted_1 = ["onClick", "onMouseenter"];
-  const __default__ = vue.defineComponent({
-    name: "Cascader",
-    inheritAttrs: false
-  });
   const _sfc_main = /* @__PURE__ */ vue.defineComponent({
-    ...__default__,
+    __name: "Cascader",
     props: {
       modelValue: null,
       placeholder: { default: "\u8BF7\u9009\u62E9" },
@@ -166,14 +159,14 @@
         const newItems = newArr.filter((item) => !oldMap[item.fullkey]);
         return oldArr.concat(newItems);
       };
-      const getStyles = () => ({
+      const getCascaderStyles = () => ({
         dropdown: apathia_twind.style`absolute z-dropdown`,
         panelContainer: apathia_twind.style`flex mt-1 border border-line-accent rounded bg-content-white shadow`,
         scrollWrap: apathia_twind.style`border-r border-line-accent overflow-hidden w-48 last-child:border-r-0 `,
         panel: apathia_twind.style`overflow-scroll ${apathia_twind.css`
-    width: calc(100% + 38px);
-    height: calc(100% + 38px);
-  `}`,
+      width: calc(100% + 38px);
+      height: calc(100% + 38px);
+    `}`,
         node: apathia_twind.style`relative h-12 px-2 flex items-center cursor-pointer mt-2 whitespace-nowrap overflow-hidden overflow-ellipsis hover:(bg-fill-light rounded) text-sm`,
         nodeDisabled: apathia_twind.style`text-content-neutral cursor-not-allowed`,
         nodeActive: apathia_twind.style`text-brand-active text-base`,
@@ -493,7 +486,7 @@
       const handleSearchChange = (search) => {
         emit("search-change", search);
       };
-      const styles = getStyles();
+      const styles = getCascaderStyles();
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", {
           ref_key: "cascaderRef",
@@ -577,6 +570,8 @@
       };
     }
   });
+  const Triggers = ["click", "hover"];
   exports2.Cascader = _sfc_main;
+  exports2.Triggers = Triggers;
   Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
 });

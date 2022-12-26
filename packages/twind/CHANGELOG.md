@@ -1,5 +1,17 @@
 # @apathia/apathia.twind
 
+## 1.1.0
+
+### Minor Changes
+
+- add demo && type export
+
+## 1.0.3
+
+### Patch Changes
+
+- add type export
+
 ## 1.0.2
 
 ### Patch Changes

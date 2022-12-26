@@ -37,28 +37,28 @@
 <script setup lang="ts">
 import { computed, provide, ref, toRef, withDefaults } from 'vue'
 import { cloneDeep } from 'lodash-es'
-import { style } from '@apathia/apathia.twind'
 import { BaseButton } from '@apathia/apathia.button'
 import { useToggle, useInjectProp } from '@apathia/apathia.hooks'
 import Tag from './Tag.vue'
 import type { TagItem } from './types'
+import { style } from '@apathia/apathia.twind'
 
-defineOptions({
-  name: 'Tags',
-})
+// defineOptions({
+//   name: 'Tags',
+// })
 
-function initStyle() {
-  const tagClass = style`duration-300 my-1`
-  const inputWrap = style`inline-block w-20 m-1`
-  const addBtn = style`w-20 text-xs`
-  const list = style`inline-block`
-
-  return {
-    list,
-    addBtn,
-    tagClass,
-    inputWrap,
-  }
+const getTagsStyle = () => {
+    const tagClass = style`duration-300 my-1`
+    const inputWrap = style`inline-block w-20 m-1`
+    const addBtn = style`w-20 text-xs`
+    const list = style`inline-block`
+  
+    return {
+      list,
+      addBtn,
+      tagClass,
+      inputWrap,
+    }
 }
 
 interface TagsProps {
@@ -68,10 +68,10 @@ interface TagsProps {
   danger?: boolean
   warning?: boolean
   hollow?: boolean
-  closable: boolean
-  showTag: (tag: TagItem) => string
-  handleTag: (str: string) => TagItem
-  disabled: boolean
+  closable?: boolean
+  showTag?: (tag: TagItem) => string
+  handleTag?: (str: string) => TagItem
+  disabled?: boolean
 }
 
 provide('WithinTags', true)
@@ -85,7 +85,7 @@ const props = withDefaults(defineProps<TagsProps>(), {
 
 const emit = defineEmits(['change', 'update:modelValue'])
 
-const styles = initStyle()
+const styles = getTagsStyle()
 
 const [isAdding, , toggleAdding] = useToggle(false)
 const tagText = ref('')

@@ -1,7 +1,7 @@
 import { ref, shallowReactive, reactive, computed, nextTick, watch, unref, onBeforeUnmount, defineComponent, toRefs, provide, resolveDirective, openBlock, createElementBlock, mergeProps, createElementVNode, normalizeClass, withModifiers, createCommentVNode, createBlock, Teleport, withDirectives, normalizeStyle, renderSlot, onMounted, inject, getCurrentInstance, resolveComponent } from "vue";
-import { style } from "@apathia/apathia.twind";
 import { useResizeObserver, onClickOutside, useInjectProp } from "@apathia/apathia.hooks";
 import { autoPos, noop } from "@apathia/apathia.shared";
+import { style } from "@apathia/apathia.twind";
 import { debounce } from "lodash";
 import { Icon } from "@apathia/apathia.icon";
 var Direction;
@@ -522,26 +522,7 @@ const _sfc_main$1 = defineComponent({
     provide(ChangeHandlerKey, changeHandler);
     provide(FocusKey, focus);
     provide(SameValueCompareKey, isSameValue);
-    const styles = {
-      selectWrapper: style`flex relative border rounded border-line-accent bg-content-white shadow h-8`,
-      disabled: style(
-        "cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-secondary"
-      ),
-      active: style("border-brand-primary"),
-      inputSelected: style`flex-1 rounded text-sm py-1.5 pl-2 outline-none cursor-pointer`,
-      focused: style("select-none"),
-      arrow: style(
-        "absolute inset-y-0 right-0 flex items-center pr-2 pl-1.5 py-btn-sm-y pointer-events-none h-8 w-8 text-content-secondary"
-      ),
-      clearableIcon: style(
-        "hidden absolute w-3.5 h-3.5 rounded-full top-2.5 right-7 items-center bg-fill-secondary text-content-white cursor-pointer hover:bg-fill-accent"
-      ),
-      clearable: style("block"),
-      dropdownContainer: style`z-dropdown block h-0 absolute mt-1 border border-line-accent rounded bg-content-white shadow opacity-0 transition duration-200 overflow-y-hidden`,
-      dropdownContainerShow: style`h-auto opacity-100`,
-      optionList: style`max-h-56 text-base overflow-auto focus:outline-none sm:text-sm`,
-      tips: style("ml-3 py-2 text-fill-secondary text-left mr-2")
-    };
+    const styles = getSelectStyles();
     return {
       filterStr,
       updateRegister,
@@ -565,6 +546,26 @@ const _sfc_main$1 = defineComponent({
       rootEl
     };
   }
+});
+const getSelectStyles = () => ({
+  selectWrapper: style`flex relative border rounded border-line-accent bg-content-white shadow h-8`,
+  disabled: style(
+    "cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-secondary"
+  ),
+  active: style("border-brand-primary"),
+  inputSelected: style`flex-1 rounded text-sm py-1.5 pl-2 outline-none cursor-pointer`,
+  focused: style("select-none"),
+  arrow: style(
+    "absolute inset-y-0 right-0 flex items-center pr-2 pl-1.5 py-btn-sm-y pointer-events-none h-8 w-8 text-content-secondary"
+  ),
+  clearableIcon: style(
+    "hidden absolute w-3.5 h-3.5 rounded-full top-2.5 right-7 items-center bg-fill-secondary text-content-white cursor-pointer hover:bg-fill-accent"
+  ),
+  clearable: style("block"),
+  dropdownContainer: style`z-dropdown block h-0 absolute mt-1 border border-line-accent rounded bg-content-white shadow opacity-0 transition duration-200 overflow-y-hidden`,
+  dropdownContainerShow: style`h-auto opacity-100`,
+  optionList: style`max-h-56 text-base overflow-auto focus:outline-none sm:text-sm`,
+  tips: style("ml-3 py-2 text-fill-secondary text-left mr-2")
 });
 const _hoisted_1 = /* @__PURE__ */ createElementVNode("path", {
   "fill-rule": "evenodd",
@@ -786,15 +787,7 @@ const _sfc_main = defineComponent({
       compoId
     };
     const { getRootProps, isSelected, isFocused, isHidden } = useOption(userProps);
-    const styles = {
-      wrapper: style`block text-content-primary cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
-      selected: style`font-bold text-brand-primary`,
-      focused: style`text-brand-primary bg-fill-gray`,
-      text: style`overflow-hidden overflow-ellipsis whitespace-nowrap`,
-      checkMark: style`absolute right-4 text-brand-primary`,
-      focusMark: style`text-fill-white`,
-      disabled: style`text-content-secondary bg-info-forbid cursor-not-allowed`
-    };
+    const styles = getOptionStyles();
     return {
       updateRegister,
       selectState,
@@ -812,6 +805,15 @@ const _sfc_main = defineComponent({
       console.warn("<Option> \u5E94\u8BE5\u5728 <Select> \u5185\u4F7F\u7528");
     }
   }
+});
+const getOptionStyles = () => ({
+  wrapper: style`block text-content-primary cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
+  selected: style`font-bold text-brand-primary`,
+  focused: style`text-brand-primary bg-fill-gray`,
+  text: style`overflow-hidden overflow-ellipsis whitespace-nowrap`,
+  checkMark: style`absolute right-4 text-brand-primary`,
+  focusMark: style`text-fill-white`,
+  disabled: style`text-content-secondary bg-info-forbid cursor-not-allowed`
 });
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_Icon = resolveComponent("Icon");
@@ -837,4 +839,4 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   ], 16);
 }
 var Option = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
-export { Option, Select };
+export { Direction, Option, Select };

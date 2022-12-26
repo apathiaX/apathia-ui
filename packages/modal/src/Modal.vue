@@ -46,11 +46,8 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-// @ts-ignore
 import { tw, css, keyframes, style } from '@apathia/apathia.twind'
-// @ts-ignore
 import { CustomRender } from '@apathia/apathia.custom-render'
-// @ts-ignore
 import type { RenderCustom } from '@apathia/apathia.custom-render'
 import { showScrollbar } from './helper'
 import { createModal } from './createModal'

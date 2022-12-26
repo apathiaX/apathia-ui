@@ -13,8 +13,18 @@
   </RadioGroup>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-const value1 = ref(1)
-const value2 = ref(2)
+<script>
+import { defineComponent, ref } from 'vue'
+
+export default defineComponent({
+  setup() {
+    const value1 = ref(1)
+    const value2 = ref(2)
+    
+    return {
+      value1,
+      value2
+    }
+  }
+})
 </script>

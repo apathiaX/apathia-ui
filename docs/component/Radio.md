@@ -18,7 +18,8 @@
 disabled 属性可以用来控制单选框的禁用状态。
 
 > 你只需要为单选框设置 disabled 属性就能控制其禁用状态。
-> :::demo
+
+:::demo
 
 <<< @/../packages/radio/demo/Disabled.vue
 

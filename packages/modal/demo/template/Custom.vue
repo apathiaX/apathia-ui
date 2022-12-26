@@ -15,13 +15,24 @@
   </div>
 </template>
 
-<script setup>
-import { getCurrentInstance, ref } from 'vue'
-const {proxy} = getCurrentInstance()
-const { style } = proxy
-const contentClass = style`flex w-full justify-between`
-const show = ref(false)
-const showModal = () => {
-  show.value = true
-}
+<script>
+import { defineComponent, getCurrentInstance, ref } from 'vue'
+
+export default defineComponent({
+  setup() {
+    const {proxy} = getCurrentInstance()
+    const { style } = proxy
+    const contentClass = style`flex w-full justify-between`
+    const show = ref(false)
+    const showModal = () => {
+      show.value = true
+    }
+
+    return {
+      contentClass,
+      show,
+      showModal
+    }
+  }
+})
 </script>

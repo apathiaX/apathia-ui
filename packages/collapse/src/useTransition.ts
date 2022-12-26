@@ -1,5 +1,4 @@
 import { RendererElement } from 'vue'
-// @ts-ignore
 import { raf } from '@apathia/apathia.shared'
 
 type TransitionProps = {

@@ -72,11 +72,10 @@
 </template>
 
 <script lang="ts">
-// @ts-nocheck
 import { defineComponent, toRefs, provide, SetupContext, PropType } from 'vue'
-import { style } from '@apathia/apathia.twind'
 import { useInjectProp } from '@apathia/apathia.hooks'
 import { autoPos } from '@apathia/apathia.shared'
+import { style } from '@apathia/apathia.twind'
 import useSelect from './useSelect'
 import {
   ChangeHandlerKey,
@@ -87,7 +86,7 @@ import {
   UnregisterKey,
   UpdateRegisterKey,
 } from './injectKeys'
-import { ValueType } from './types'
+import { SelectValueType as ValueType, UserProps } from './types'
 
 export default defineComponent({
   name: 'Select',
@@ -189,7 +188,7 @@ export default defineComponent({
       getInputProps,
       getDropdownProps,
       rootEl,
-    } = useSelect(userProps, ctx as SetupContext)
+    } = useSelect(userProps as UserProps, ctx as SetupContext)
 
     provide(UpdateRegisterKey, updateRegister)
     provide(RegisterKey, register)
@@ -199,28 +198,7 @@ export default defineComponent({
     provide(FocusKey, focus)
     provide(SameValueCompareKey, isSameValue)
 
-    const styles = {
-      selectWrapper: style`flex relative border rounded border-line-accent bg-content-white shadow h-8`,
-      disabled: style(
-        'cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-secondary',
-      ),
-      active: style('border-brand-primary'),
-      inputSelected: style`flex-1 rounded text-sm py-1.5 pl-2 outline-none cursor-pointer`,
-      focused: style('select-none'),
-      arrow: style(
-        'absolute inset-y-0 right-0 flex items-center pr-2 pl-1.5 py-btn-sm-y pointer-events-none h-8 w-8 text-content-secondary',
-      ),
-      clearableIcon: style(
-        'hidden absolute w-3.5 h-3.5 rounded-full top-2.5 right-7 items-center bg-fill-secondary text-content-white cursor-pointer hover:bg-fill-accent',
-      ),
-      clearable: style('block'),
-
-      dropdownContainer: style`z-dropdown block h-0 absolute mt-1 border border-line-accent rounded bg-content-white shadow opacity-0 transition duration-200 overflow-y-hidden`,
-      dropdownContainerShow: style`h-auto opacity-100`,
-
-      optionList: style`max-h-56 text-base overflow-auto focus:outline-none sm:text-sm`,
-      tips: style('ml-3 py-2 text-fill-secondary text-left mr-2'),
-    }
+    const styles = getSelectStyles()
 
     return {
       filterStr,
@@ -245,5 +223,28 @@ export default defineComponent({
       rootEl,
     }
   },
+})
+
+const getSelectStyles = () => ({
+    selectWrapper: style`flex relative border rounded border-line-accent bg-content-white shadow h-8`,
+    disabled: style(
+      'cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-secondary',
+    ),
+    active: style('border-brand-primary'),
+    inputSelected: style`flex-1 rounded text-sm py-1.5 pl-2 outline-none cursor-pointer`,
+    focused: style('select-none'),
+    arrow: style(
+      'absolute inset-y-0 right-0 flex items-center pr-2 pl-1.5 py-btn-sm-y pointer-events-none h-8 w-8 text-content-secondary',
+    ),
+    clearableIcon: style(
+      'hidden absolute w-3.5 h-3.5 rounded-full top-2.5 right-7 items-center bg-fill-secondary text-content-white cursor-pointer hover:bg-fill-accent',
+    ),
+    clearable: style('block'),
+
+    dropdownContainer: style`z-dropdown block h-0 absolute mt-1 border border-line-accent rounded bg-content-white shadow opacity-0 transition duration-200 overflow-y-hidden`,
+    dropdownContainerShow: style`h-auto opacity-100`,
+
+    optionList: style`max-h-56 text-base overflow-auto focus:outline-none sm:text-sm`,
+    tips: style('ml-3 py-2 text-fill-secondary text-left mr-2'),
 })
 </script>

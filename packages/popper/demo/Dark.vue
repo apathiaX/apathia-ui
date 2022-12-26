@@ -17,16 +17,26 @@
   </Popper>
 </template>
 
-<script setup>
-const hide = val => {
-  console.log('hide', val)
-}
+<script>
+export default {
+  setup() {
+    const hide = val => {
+      console.log('hide', val)
+    }
 
-const show = val => {
-  console.log('show', val)
-}
+    const show = val => {
+      console.log('show', val)
+    }
 
-const afterHide = () => {
-  console.log('afterHide', '在隐藏动画结束后触发')
+    const afterHide = () => {
+      console.log('afterHide', '在隐藏动画结束后触发')
+    }
+
+    return {
+      hide,
+      show,
+      afterHide
+    }
+  }
 }
 </script>

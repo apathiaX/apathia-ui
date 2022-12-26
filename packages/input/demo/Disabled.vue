@@ -2,8 +2,15 @@
   <Input v-model="value" disabled />
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script>
+import { ref, defineComponent } from 'vue'
 
-const value = ref('')
+export default defineComponent({
+  setup() {
+    const value = ref('')
+    return {
+      value,
+    }
+  },
+})
 </script>

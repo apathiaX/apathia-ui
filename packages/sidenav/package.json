@@ -1,0 +1,41 @@
+{
+  "name": "@apathia/apathia.sidenav",
+  "version": "0.1.0",
+  "description": "sidenav",
+  "author": "",
+  "homepage": "",
+  "main": "dist/apathia.sidenav.umd.js",
+  "module": "dist/apathia.sidenav.es.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "export": {
+    "import": "dist/apathia.sidenav.es.js",
+    "require": "dist/apathia.sidenav.umd.js"
+  },
+  "sideEffects": false,
+  "directories": {
+    "lib": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "devDependencies": {
+    "vue": "^3.2.37"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.37"
+  },
+  "dependencies": {
+    "@apathia/apathia.hooks": "workspace:^1.1.0",
+    "@apathia/apathia.icon": "workspace:^1.1.0",
+    "@apathia/apathia.scroll-container": "workspace:^0.1.0",
+    "@apathia/apathia.twind": "workspace:^1.1.0"
+  }
+}

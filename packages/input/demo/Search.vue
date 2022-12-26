@@ -5,13 +5,24 @@
    <Input v-model="value" search @Search="search" />
  </template>
  
- <script setup>
- import { ref } from 'vue'
- const value = ref('')
- const text = ref('')
- 
- const search = value => {
-   text.value = value
- }
- </script>
+
+<script>
+import { ref, defineComponent } from 'vue'
+
+export default defineComponent({
+  setup() {
+    const value = ref('')
+    const text = ref('')
+    
+    const search = value => {
+      text.value = value
+    }
+    return {
+      value,
+      text,
+      search
+    }
+  },
+})
+</script>
  

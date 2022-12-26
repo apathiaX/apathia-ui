@@ -9,6 +9,40 @@
     danger: ["fa", "exclamation"],
     default: ["fa", "info-circle"]
   };
+  function initAlertStyle(type) {
+    const Theme = {
+      info: {
+        layout: apathia_twind.style`bg-fill-light text-fill-primary`
+      },
+      danger: {
+        layout: apathia_twind.style`bg-error-light text-error-primary`
+      },
+      success: {
+        layout: apathia_twind.style`bg-success-light text-success-primary`
+      },
+      warning: {
+        layout: apathia_twind.style`bg-warning-light text-warning-primary`
+      },
+      default: {
+        layout: apathia_twind.style`bg-brand-light text-brand-primary`
+      }
+    };
+    const theme = Theme[type] || Theme.default;
+    const layout = apathia_twind.tw`${theme.layout} ${apathia_twind.apply`p-2.5 rounded flex mt-2 duration-300`}`;
+    const iconWrap = apathia_twind.style`flex-shrink-0 w-4 mr-2`;
+    const delIcon = apathia_twind.style`ml-2 cursor-pointer hover:(text-error-active)`;
+    const contentClass = apathia_twind.style`inline-block font-normal flex-grow break-all`;
+    const titleClass = apathia_twind.style`text-lg`;
+    const messageClass = apathia_twind.style`text-xs leading-normal`;
+    return {
+      layout,
+      iconWrap,
+      delIcon,
+      contentClass,
+      titleClass,
+      messageClass
+    };
+  }
   var BaseAlert = vue.defineComponent({
     name: "Alert",
     props: {
@@ -55,7 +89,7 @@
         contentClass,
         titleClass,
         messageClass
-      } = initStyle(props.type);
+      } = initAlertStyle(props.type);
       let timer;
       function close() {
         clearTimer();
@@ -98,40 +132,6 @@
       }, [render]);
     }
   });
-  function initStyle(type) {
-    const Theme = {
-      info: {
-        layout: apathia_twind.style`bg-fill-light text-fill-primary`
-      },
-      danger: {
-        layout: apathia_twind.style`bg-error-light text-error-primary`
-      },
-      success: {
-        layout: apathia_twind.style`bg-success-light text-success-primary`
-      },
-      warning: {
-        layout: apathia_twind.style`bg-warning-light text-warning-primary`
-      },
-      default: {
-        layout: apathia_twind.style`bg-brand-light text-brand-primary`
-      }
-    };
-    const theme = Theme[type] || Theme.default;
-    const layout = apathia_twind.tw`${theme.layout} ${apathia_twind.apply`p-2.5 rounded flex mt-2 duration-300`}`;
-    const iconWrap = apathia_twind.style`flex-shrink-0 w-4 mr-2`;
-    const delIcon = apathia_twind.style`ml-2 cursor-pointer hover:(text-error-active)`;
-    const contentClass = apathia_twind.style`inline-block font-normal flex-grow break-all`;
-    const titleClass = apathia_twind.style`text-lg`;
-    const messageClass = apathia_twind.style`text-xs leading-normal`;
-    return {
-      layout,
-      iconWrap,
-      delIcon,
-      contentClass,
-      titleClass,
-      messageClass
-    };
-  }
   const AlertContainer = vue.defineComponent({
     name: "AlertContainer",
     props: {

@@ -11,11 +11,20 @@
   </Popper>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script>
+import { defineComponent, ref } from 'vue'
 
-const visible = ref(false)
-const handleManual = () => {
-  visible.value = !visible.value
-}
+export default defineComponent({
+  setup() {
+    const visible = ref(false)
+    const handleManual = () => {
+      visible.value = !visible.value
+    }
+
+    return {
+      visible,
+      handleManual
+    }
+  }
+})
 </script>

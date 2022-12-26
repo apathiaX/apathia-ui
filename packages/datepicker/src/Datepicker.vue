@@ -22,15 +22,15 @@ import { Input } from '@apathia/apathia.input'
 import flatpickr from 'flatpickr'
 import ConfirmPlugin from './confirmPlugin'
 import { Mandarin } from 'flatpickr/./dist/l10n/zh'
-import RangeSelectPlugin, { RangeItem, RangeConfig } from './rangeSelectPlugin'
-import type { DateFormatType } from './types'
+import RangeSelectPlugin from './rangeSelectPlugin'
+import type { DateFormatType, RangeItem, RangeConfig } from './types'
 
 interface DateProps {
-  options: flatpickr.Options.Options
+  options?: flatpickr.Options.Options
   modelValue: string | number
-  dateFormat: DateFormatType
-  timestamp: boolean
-  range: RangeConfig
+  dateFormat?: DateFormatType
+  timestamp?: boolean
+  range?: RangeConfig
 }
 
 const EnableTimeRegExp = /H|h|G|k/

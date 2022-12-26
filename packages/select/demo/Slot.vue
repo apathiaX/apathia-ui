@@ -11,34 +11,43 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script>
+import { defineComponent, ref } from 'vue'
 
-const selectVal = ref('')
-const cities = [
-  {
-    value: 'Beijing',
-    label: 'Beijing',
-  },
-  {
-    value: 'Shanghai',
-    label: 'Shanghai',
-  },
-  {
-    value: 'Nanjing',
-    label: 'Nanjing',
-  },
-  {
-    value: 'Chengdu',
-    label: 'Chengdu',
-  },
-  {
-    value: 'Shenzhen',
-    label: 'Shenzhen',
-  },
-  {
-    value: 'Guangzhou',
-    label: 'Guangzhou',
-  },
-]
+export default defineComponent({
+  setup() {
+    const selectVal = ref('')
+    const cities = [
+      {
+        value: 'Beijing',
+        label: 'Beijing',
+      },
+      {
+        value: 'Shanghai',
+        label: 'Shanghai',
+      },
+      {
+        value: 'Nanjing',
+        label: 'Nanjing',
+      },
+      {
+        value: 'Chengdu',
+        label: 'Chengdu',
+      },
+      {
+        value: 'Shenzhen',
+        label: 'Shenzhen',
+      },
+      {
+        value: 'Guangzhou',
+        label: 'Guangzhou',
+      },
+    ]
+
+    return {
+      selectVal,
+      cities
+    }
+  }
+})
 </script>

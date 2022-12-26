@@ -1,7 +1,5 @@
-import { watch, ref, nextTick, SetupContext } from 'vue'
-// @ts-ignore
+import { watch, ref, nextTick, SetupContext, Ref } from 'vue'
 import { onClickOutside } from '@apathia/apathia.hooks'
-// @ts-ignore
 import { mountContainerDom } from '@apathia/apathia.shared'
 import { pushModal, popModalStack } from './modalStack'
 import { hideScrollbar } from './helper'
@@ -11,8 +9,8 @@ export function createModal(
   props: ModalProps,
   ctx: SetupContext<('close' | 'update:modelValue')[]>,
 ) {
-  const shadeRef = ref<HTMLElement | null>(null)
-  const modalRef = ref<HTMLElement | null>(null)
+  const shadeRef = ref<HTMLElement | null>(null) as Ref<HTMLElement | null>
+  const modalRef = ref<HTMLElement | null>(null) as Ref<HTMLElement | null>
   const widthStyle = getWidthStyle(props.width, props.top)
   const isTemplate = !!ctx.slots.default
 

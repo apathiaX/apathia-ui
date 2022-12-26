@@ -1,5 +1,88 @@
 # @apathia/apathia
 
+## 1.1.0
+
+### Minor Changes
+
+- add demo && type export
+
+### Patch Changes
+
+- Updated dependencies
+  - @apathia/apathia.affix@0.1.0
+  - @apathia/apathia.alert@1.1.0
+  - @apathia/apathia.button@1.1.0
+  - @apathia/apathia.cascader@0.1.0
+  - @apathia/apathia.checkbox@1.1.0
+  - @apathia/apathia.collapse@1.1.0
+  - @apathia/apathia.confirm@1.1.0
+  - @apathia/apathia.custom-render@1.1.0
+  - @apathia/apathia.datepicker@0.1.0
+  - @apathia/apathia.dropdown@0.1.0
+  - @apathia/apathia.form@1.1.0
+  - @apathia/apathia.hooks@1.1.0
+  - @apathia/apathia.icon@1.1.0
+  - @apathia/apathia.input@1.1.0
+  - @apathia/apathia.loading@1.1.0
+  - @apathia/apathia.modal@1.1.0
+  - @apathia/apathia.pagination@1.1.0
+  - @apathia/apathia.popper@0.1.0
+  - @apathia/apathia.radio@1.1.0
+  - @apathia/apathia.select@1.1.0
+  - @apathia/apathia.switch@0.1.0
+  - @apathia/apathia.table@1.1.0
+  - @apathia/apathia.tag@0.1.0
+  - @apathia/apathia.twind@1.1.0
+  - @apathia/apathia.upload@1.1.0
+  - @apathia/apathia.image@0.1.0
+  - @apathia/apathia.navbar@0.1.0
+  - @apathia/apathia.scroll-container@0.1.0
+  - @apathia/apathia.sidenav@0.1.0
+  - @apathia/apathia.slider@0.1.0
+  - @apathia/apathia.tabs@0.1.0
+  - @apathia/apathia.textarea@0.1.0
+  - @apathia/apathia.transfer@0.1.0
+
+## 1.0.9
+
+### Patch Changes
+
+- add type export
+- Updated dependencies
+  - @apathia/apathia.alert@1.0.3
+  - @apathia/apathia.button@1.0.3
+  - @apathia/apathia.cascader@0.0.3
+  - @apathia/apathia.checkbox@1.0.3
+  - @apathia/apathia.collapse@1.0.3
+  - @apathia/apathia.confirm@1.0.3
+  - @apathia/apathia.datepicker@0.0.2
+  - @apathia/apathia.dropdown@0.0.2
+  - @apathia/apathia.form@1.0.3
+  - @apathia/apathia.hooks@1.0.5
+  - @apathia/apathia.input@1.0.3
+  - @apathia/apathia.loading@1.0.3
+  - @apathia/apathia.modal@1.0.3
+  - @apathia/apathia.pagination@1.0.3
+  - @apathia/apathia.popper@0.0.3
+  - @apathia/apathia.radio@1.0.3
+  - @apathia/apathia.select@1.0.3
+  - @apathia/apathia.tag@0.0.2
+  - @apathia/apathia.upload@1.0.3
+  - @apathia/apathia.affix@0.0.2
+  - @apathia/apathia.custom-render@1.0.3
+  - @apathia/apathia.icon@1.0.3
+  - @apathia/apathia.image@0.0.2
+  - @apathia/apathia.navbar@0.0.2
+  - @apathia/apathia.scroll-container@0.0.2
+  - @apathia/apathia.sidenav@0.0.2
+  - @apathia/apathia.slider@0.0.2
+  - @apathia/apathia.switch@0.0.2
+  - @apathia/apathia.table@1.0.5
+  - @apathia/apathia.tabs@0.0.2
+  - @apathia/apathia.textarea@0.0.2
+  - @apathia/apathia.transfer@0.0.2
+  - @apathia/apathia.twind@1.0.3
+
 ## 1.0.8
 
 ### Patch Changes

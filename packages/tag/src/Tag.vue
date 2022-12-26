@@ -27,47 +27,47 @@
 </template>
 
 <script setup lang="ts">
+import { style } from '@apathia/apathia.twind';
 import { computed, inject, withDefaults } from 'vue'
-import { style } from '@apathia/apathia.twind'
 
-defineOptions({
-  name: 'Tag',
-})
+// defineOptions({
+//   name: 'Tag',
+// })
 
-function initStyle() {
-  const size = style`text-xs`
-  const theme = {
-    default: style`bg-fill-gray text-content-accent`,
-    primary: style`bg-brand-light text-brand-primary`,
-    success: style`bg-success-light text-success-primary`,
-    danger: style`bg-error-light text-error-primary`,
-    warning: style`bg-warning-light text-warning-primary`,
-  }
-
-  const hollow = style`border bg-opacity-40`
-  const icon = style`inline-block`
-  const layout = style`inline-flex items-center mr-1 px-1.5 py-1 rounded cursor-default font-medium`
-  const delIcon = style`inline-block cursor-pointer ml-1.5 hover:(text-error-primary)`
-
-  return {
-    theme,
-    layout,
-    delIcon,
-    icon,
-    size,
-    hollow,
-  }
+const getTagStyle = () => {
+    const size = style`text-xs`
+    const theme = {
+      default: style`bg-fill-gray text-content-accent`,
+      primary: style`bg-brand-light text-brand-primary`,
+      success: style`bg-success-light text-success-primary`,
+      danger: style`bg-error-light text-error-primary`,
+      warning: style`bg-warning-light text-warning-primary`,
+    }
+  
+    const hollow = style`border bg-opacity-40`
+    const icon = style`inline-block`
+    const layout = style`inline-flex items-center mr-1 px-1.5 py-1 rounded cursor-default font-medium`
+    const delIcon = style`inline-block cursor-pointer ml-1.5 hover:(text-error-primary)`
+  
+    return {
+      theme,
+      layout,
+      delIcon,
+      icon,
+      size,
+      hollow,
+    }
 }
 
 interface TagProps {
-  text: string
-  iconClass: string
+  text?: string
+  iconClass?: string
   primary?: boolean
   success?: boolean
   danger?: boolean
   warning?: boolean
   hollow?: boolean
-  closable: boolean
+  closable?: boolean
 }
 
 const props = withDefaults(defineProps<TagProps>(), {
@@ -78,7 +78,7 @@ const props = withDefaults(defineProps<TagProps>(), {
 
 const emit = defineEmits(['close'])
 
-const styles = initStyle()
+const styles = getTagStyle()
 const formDisabled = inject('FormDisabled', false)
 const withinTags = inject('WithinTags', false)
 

@@ -1,13 +1,5 @@
 import { Ref, SetupContext } from 'vue';
-import { ValueType, Option } from './types';
-interface UserProps {
-    modelValue: Ref<ValueType>;
-    filterable: Ref<boolean>;
-    valueKey: Ref<string>;
-    disabled: Ref<boolean | undefined>;
-    emptyText: Ref<string>;
-    placeholder: Ref<string>;
-}
+import { ValueType, Option, UserProps } from './types';
 export default function useSelect(userProps: UserProps, ctx: SetupContext): {
     getRootProps: () => {
         disabled: boolean;
@@ -64,6 +56,5 @@ export default function useSelect(userProps: UserProps, ctx: SetupContext): {
     finalPlaceholder: import("vue").ComputedRef<string>;
     isNoResult: import("vue").ComputedRef<boolean>;
     rootEl: Ref<HTMLElement | null>;
-    inputEl: Ref<HTMLInputElement | null>;
+    inputEl: Ref<HTMLElement | null>;
 };
-export {};

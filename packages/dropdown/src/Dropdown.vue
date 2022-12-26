@@ -32,34 +32,34 @@ import { BaseButton } from '@apathia/apathia.button'
 import { Popper, TriggerType, Placement } from '@apathia/apathia.popper'
 import { style } from '@apathia/apathia.twind'
 
-defineOptions({
-  name: 'Dropdown',
-})
+// defineOptions({
+//   name: 'Dropdown',
+// })
 
-const initStyles = () => ({
-  transitionClass: {
-    'enter-from-class': style`transform opacity-0 scale-95`,
-    'enter-active-class': style`transition ease-out duration-100`,
-    'enter-to-class': style`transform opacity-100 scale-100`,
-    'leave-from-class': style`transform opacity-100 scale-100`,
-    'leave-active-class': style`transition ease-in duration-75`,
-    'leave-to-class': style`transform opacity-0 scale-95`,
-  },
-  staticStyle: {
-    popper: style`max-w-7xl rounded shadow-lg bg-fill-white`,
-    divide: style`divide-y divide-fill-light py-0`,
-    iconClass: style`text-xs`,
-    baseButton: style`m-0`,
-  },
+const getDropdownStyle = () => ({
+    transitionClass: {
+      'enter-from-class': style`transform opacity-0 scale-95`,
+      'enter-active-class': style`transition ease-out duration-100`,
+      'enter-to-class': style`transform opacity-100 scale-100`,
+      'leave-from-class': style`transform opacity-100 scale-100`,
+      'leave-active-class': style`transition ease-in duration-75`,
+      'leave-to-class': style`transform opacity-0 scale-95`,
+    },
+    staticStyle: {
+      popper: style`max-w-7xl rounded shadow-lg bg-fill-white`,
+      divide: style`divide-y divide-fill-light py-0`,
+      iconClass: style`text-xs`,
+      baseButton: style`m-0`,
+    },
 })
 
 interface DropdownProps {
-  delay: number
-  disabled: boolean
-  label: string
-  trigger: TriggerType
-  placement: Placement
-  hideOnClick: boolean
+  delay?: number
+  disabled?: boolean
+  label?: string
+  trigger?: TriggerType
+  placement?: Placement
+  hideOnClick?: boolean
 }
 
 const props = withDefaults(defineProps<DropdownProps>(), {
@@ -96,5 +96,5 @@ provide('updateDivide', (v: boolean) => {
   divide.value = v
 })
 
-const { transitionClass, staticStyle } = initStyles()
+const { transitionClass, staticStyle } = getDropdownStyle()
 </script>

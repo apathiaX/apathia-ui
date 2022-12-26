@@ -54,31 +54,15 @@
 
 <script setup lang="ts">
 import { withDefaults, ref } from 'vue'
-import { style, css } from '@apathia/apathia.twind'
 import { Icon } from '@apathia/apathia.icon'
 import { useScrollX, onClickOutside } from '@apathia/apathia.hooks'
+import { style, css } from '@apathia/apathia.twind'
 import type { Node } from './types'
+// import { getNodeStyles } from './styles'
 
-defineOptions({
-  name: 'Node',
-})
-
-function getStyles() {
-  return {
-    container: style`w-full relative flex shadow h-8 border rounded border-line-accent bg-content-white text-sm items-center`,
-    wrap: style`h-full w-full overflow-hidden`,
-    active: style`border-brand-primary`,
-    nodes: style`w-full flex-1 flex-nowrap whitespace-nowrap py-btn-md-y px-1.5 overflow-x-scroll ${css`
-      height: calc(100% + 17px);
-    `}`,
-    search: style`flex-1 outline-none`,
-    tag: style`rounded inline-flex text-xs text-content-accent items-center py-1 pl-1.5 bg-fill-light h-5 mr-1 flex-shrink-0`,
-    iconWrap: style`h-4 w-4 inline-flex items-center justify-center rounded-full ml-1`,
-    nodeRemove: style`p-1.5 text-content-accent hover:(text-content-primary) cursor-pointer`,
-    clearIcon: style`absolute right-2 top-1/2 -translate-y-2/4 cursor-pointer ml-2 text-content-neutral hover:(text-content-primary)`,
-    placeholder: style`text-content-secondary`,
-  }
-}
+// defineOptions({
+//   name: 'Node',
+// })
 
 interface NodeProps {
   nodes: Node[]
@@ -88,6 +72,23 @@ interface NodeProps {
   placeholder: string
   clearable: boolean
   search: boolean
+}
+
+const getNodeStyles = () => {
+    return {
+      container: style`w-full relative flex shadow h-8 border rounded border-line-accent bg-content-white text-sm items-center`,
+      wrap: style`h-full w-full overflow-hidden`,
+      active: style`border-brand-primary`,
+      nodes: style`w-full flex-1 flex-nowrap whitespace-nowrap py-btn-md-y px-1.5 overflow-x-scroll ${css`
+        height: calc(100% + 17px);
+      `}`,
+      search: style`flex-1 outline-none`,
+      tag: style`rounded inline-flex text-xs text-content-accent items-center py-1 pl-1.5 bg-fill-light h-5 mr-1 flex-shrink-0`,
+      iconWrap: style`h-4 w-4 inline-flex items-center justify-center rounded-full ml-1`,
+      nodeRemove: style`p-1.5 text-content-accent hover:(text-content-primary) cursor-pointer`,
+      clearIcon: style`absolute right-2 top-1/2 -translate-y-2/4 cursor-pointer ml-2 text-content-neutral hover:(text-content-primary)`,
+      placeholder: style`text-content-secondary`,
+    }
 }
 
 const props = withDefaults(defineProps<NodeProps>(), {
@@ -103,7 +104,7 @@ const props = withDefaults(defineProps<NodeProps>(), {
 
 const emit = defineEmits(['clear', 'remove', 'update:focus', 'search-change'])
 
-const styles = getStyles()
+const styles = getNodeStyles()
 
 const searchInput = ref<string>('')
 const onSearchInput = (e: Event) => {

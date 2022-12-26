@@ -1,6 +1,6 @@
 import { shallowReactive, ref, onBeforeUpdate, onUpdated, computed, watch, defineComponent, openBlock, createElementBlock, normalizeClass, createElementVNode, renderSlot, createTextVNode, toDisplayString, createCommentVNode, Fragment, renderList, withDirectives, withKeys, vModelText } from "vue";
-import { style } from "@apathia/apathia.twind";
 import { mergeWithDefault } from "@apathia/apathia.shared";
+import { style } from "@apathia/apathia.twind";
 const DEFAULT_OPTIONS = {
   currentPage: 1,
   totalItems: 0,
@@ -264,21 +264,7 @@ const _sfc_main = defineComponent({
       setPageBtnRef,
       innerOptions
     } = usePagination(userProps, ctx);
-    const styles = {
-      wrapper: style`relative bg-fill-white py-3 flex items-center justify-between`,
-      ul: style`relative z-0 inline-flex items-center text-base`,
-      item: style`relative inline-flex flex-shrink-0 mx-1 px-btn-lg-y py-px border border-fill-neutral rounded 
-      bg-fill-white text-content-primary cursor-pointer select-none hover:bg-brand-primary hover:text-content-white`,
-      active: style`text-content-white bg-brand-primary border-brand-primary outline-none`,
-      itemDisabled: style`cursor-not-allowed pointer-events-none text-content-neutral bg-fill-light border-fill-gray`,
-      numberBtn: style`outline-none`,
-      jump: style`relative z-0 inline-flex items-center -space-x-px text-base border border-fill-neutral rounded`,
-      jumpInput: style`outline-none text-center w-8 px-btn-lg-y py-px border-0 rounded`,
-      jumpBtn: style`text-center w-14  px-btn-lg-y py-px border-0 bg-fill-white rounded
-      cursor-pointer hover:bg-brand-primary hover:text-content-white`,
-      count: style`px-4`,
-      pages: style`pr-1`
-    };
+    const styles = getPagonationStyles();
     return {
       jumpTo,
       pages,
@@ -290,6 +276,21 @@ const _sfc_main = defineComponent({
       styles
     };
   }
+});
+const getPagonationStyles = () => ({
+  wrapper: style`relative bg-fill-white py-3 flex items-center justify-between`,
+  ul: style`relative z-0 inline-flex items-center text-base`,
+  item: style`relative inline-flex flex-shrink-0 mx-1 px-btn-lg-y py-px border border-fill-neutral rounded 
+    bg-fill-white text-content-primary cursor-pointer select-none hover:bg-brand-primary hover:text-content-white`,
+  active: style`text-content-white bg-brand-primary border-brand-primary outline-none`,
+  itemDisabled: style`cursor-not-allowed pointer-events-none text-content-neutral bg-fill-light border-fill-gray`,
+  numberBtn: style`outline-none`,
+  jump: style`relative z-0 inline-flex items-center -space-x-px text-base border border-fill-neutral rounded`,
+  jumpInput: style`outline-none text-center w-8 px-btn-lg-y py-px border-0 rounded`,
+  jumpBtn: style`text-center w-14  px-btn-lg-y py-px border-0 bg-fill-white rounded
+    cursor-pointer hover:bg-brand-primary hover:text-content-white`,
+  count: style`px-4`,
+  pages: style`pr-1`
 });
 const _hoisted_1 = ["onClick"];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -314,7 +315,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         key: 1,
         class: normalizeClass({
           [_ctx.styles.item]: true,
-          [_ctx.styles.first]: true,
           [_ctx.styles.itemDisabled]: _ctx.innerOptions.currentPage === 1
         }),
         onClick: _cache[0] || (_cache[0] = ($event) => _ctx.selectPage(1))
@@ -323,7 +323,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         key: 2,
         class: normalizeClass({
           [_ctx.styles.item]: true,
-          [_ctx.styles.prev]: true,
           [_ctx.styles.itemDisabled]: _ctx.innerOptions.currentPage === 1
         }),
         onClick: _cache[1] || (_cache[1] = ($event) => _ctx.selectPage(_ctx.innerOptions.currentPage - 1))
@@ -345,7 +344,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         key: 3,
         class: normalizeClass({
           [_ctx.styles.item]: true,
-          [_ctx.styles.next]: true,
           [_ctx.styles.itemDisabled]: _ctx.innerOptions.currentPage === _ctx.totalPages || _ctx.innerOptions.totalItems === 0
         }),
         onClick: _cache[2] || (_cache[2] = ($event) => _ctx.selectPage(_ctx.innerOptions.currentPage + 1))
@@ -354,7 +352,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         key: 4,
         class: normalizeClass({
           [_ctx.styles.item]: true,
-          [_ctx.styles.last]: true,
           [_ctx.styles.itemDisabled]: _ctx.innerOptions.currentPage === _ctx.totalPages || _ctx.innerOptions.totalItems === 0
         }),
         onClick: _cache[3] || (_cache[3] = ($event) => _ctx.selectPage(_ctx.totalPages))

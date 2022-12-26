@@ -22,11 +22,8 @@
 
 <script lang="ts">
 import { defineComponent, inject, toRefs, getCurrentInstance } from 'vue'
-// @ts-ignore
 import { noop } from '@apathia/apathia.shared'
-// @ts-ignore
 import { style } from '@apathia/apathia.twind'
-// @ts-ignore
 import { Icon } from '@apathia/apathia.icon'
 import { useOption } from './useOption'
 import {
@@ -89,15 +86,7 @@ export default defineComponent({
     const { getRootProps, isSelected, isFocused, isHidden } =
       useOption(userProps)
 
-    const styles = {
-      wrapper: style`block text-content-primary cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
-      selected: style`font-bold text-brand-primary`,
-      focused: style`text-brand-primary bg-fill-gray`,
-      text: style`overflow-hidden overflow-ellipsis whitespace-nowrap`,
-      checkMark: style`absolute right-4 text-brand-primary`,
-      focusMark: style`text-fill-white`,
-      disabled: style`text-content-secondary bg-info-forbid cursor-not-allowed`,
-    }
+    const styles = getOptionStyles()
 
     return {
       updateRegister,
@@ -117,5 +106,15 @@ export default defineComponent({
       console.warn('<Option> 应该在 <Select> 内使用')
     }
   },
+})
+
+const getOptionStyles = () => ({
+    wrapper: style`block text-content-primary cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
+    selected: style`font-bold text-brand-primary`,
+    focused: style`text-brand-primary bg-fill-gray`,
+    text: style`overflow-hidden overflow-ellipsis whitespace-nowrap`,
+    checkMark: style`absolute right-4 text-brand-primary`,
+    focusMark: style`text-fill-white`,
+    disabled: style`text-content-secondary bg-info-forbid cursor-not-allowed`,
 })
 </script>

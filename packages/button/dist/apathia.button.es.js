@@ -1,8 +1,8 @@
 import { defineComponent, toRefs, computed, openBlock, createBlock, resolveDynamicComponent, mergeProps, withCtx, renderSlot } from "vue";
-import { style, css } from "@apathia/apathia.twind";
 import { useInjectProp } from "@apathia/apathia.hooks";
+import { style, css } from "@apathia/apathia.twind";
 import { isFunction, noop } from "@apathia/apathia.shared";
-function useButton(userProps, ctx) {
+function useButton$1(userProps, ctx) {
   const { disabled } = userProps;
   const { onclick = noop, ondblclick = noop, onmousedown = noop, onmouseup = noop } = ctx.attrs;
   const getButtonProps = () => ({
@@ -56,8 +56,8 @@ const _sfc_main = defineComponent({
       return tag && tag.value ? tag.value : "button";
     });
     const userProps = { disabled: disableButton };
-    const { getButtonProps } = useButton(userProps, ctx);
-    const styles = getStyles();
+    const { getButtonProps } = useButton$1(userProps, ctx);
+    const styles = getButtonStyles();
     const btnClass = computed(() => {
       const themeString = props.primary && "primary" || props.pink && "pink" || props.success && "success" || props.danger && "danger" || props.info && "info" || props.warning && "warning" || "primary";
       return [
@@ -80,11 +80,11 @@ const _sfc_main = defineComponent({
     };
   }
 });
-const getStyles = () => {
+const getButtonStyles = () => {
   const themeStyles = {
     base: style`inline-block border-0 no-underline rounded-md py-btn-md-y px-2 transition focus:outline-none duration-500 ease select-none text-base mr-2 whitespace-nowrap text-base text-center ${css`
-      min-width: 3.75rem;
-    `}`,
+        min-width: 3.75rem;
+      `}`,
     primary: style`bg-brand-primary text-content-white hover:bg-brand-hover active:bg-brand-active`,
     pink: style`bg-pink-primary text-content-white hover:bg-pink-hover active:bg-pink-active`,
     success: style`bg-success-primary text-content-white hover:bg-success-hover active:bg-success-active`,
@@ -129,11 +129,11 @@ const getStyles = () => {
   };
   const sizeStyles = {
     small: style`text-sm font-medium py-btn-sm-y ${css`
-      min-width: 3.5rem;
-    `}`,
+        min-width: 3.5rem;
+      `}`,
     large: style`text-base py-btn-lg-y ${css`
-      width: 4rem;
-    `}`,
+        width: 4rem;
+      `}`,
     round: style`rounded-full`
   };
   return {
@@ -157,4 +157,18 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 16, ["class", "href"]);
 }
 var Button = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+function useButton(userProps, ctx) {
+  const { disabled } = userProps;
+  const { onclick = noop, ondblclick = noop, onmousedown = noop, onmouseup = noop } = ctx.attrs;
+  const getButtonProps = () => ({
+    disabled: !!disabled.value,
+    onclick: !disabled.value && isFunction(onclick) ? onclick : noop,
+    ondblclick: !disabled.value && isFunction(ondblclick) ? ondblclick : noop,
+    onmousedown: !disabled.value && isFunction(onmousedown) ? onmousedown : noop,
+    onmouseup: !disabled.value && isFunction(onmouseup) ? onmouseup : noop
+  });
+  return {
+    getButtonProps
+  };
+}
 export { Button as BaseButton, useButton };

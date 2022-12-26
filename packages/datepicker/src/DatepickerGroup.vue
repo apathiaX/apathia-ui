@@ -30,18 +30,17 @@ import { ref, withDefaults, toRef, watch } from 'vue'
 import { style } from '@apathia/apathia.twind'
 import { useInjectProp } from '@apathia/apathia.hooks'
 import DatePicker from './Datepicker.vue'
-import { RangeItem, RangeConfig } from './rangeSelectPlugin'
-import type { DateFormatType } from './types'
+import type { DateFormatType, RangeItem, RangeConfig } from './types'
 
 interface GroupProps {
-  startTime: string | number
-  endTime: string | number
-  dateFormat: DateFormatType
-  timestamp: boolean
-  disabled: boolean
-  startDateOptions: flatpickr.Options.Options
-  endDateOptions: flatpickr.Options.Options
-  range: RangeConfig
+  startTime?: string | number
+  endTime?: string | number
+  dateFormat?: DateFormatType
+  timestamp?: boolean
+  disabled?: boolean
+  startDateOptions?: flatpickr.Options.Options
+  endDateOptions?: flatpickr.Options.Options
+  range?: RangeConfig
 }
 
 const getStyles = () => ({

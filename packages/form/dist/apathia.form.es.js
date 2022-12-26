@@ -62,13 +62,13 @@ const _sfc_main$1 = defineComponent({
       FORM_LABEL_ALIGN_KEY,
       computed(() => props.labelAlign)
     );
-    const styles = getStyles$1();
+    const styles = getFromStyle();
     return {
       styles
     };
   }
 });
-const getStyles$1 = () => ({
+const getFromStyle = () => ({
   form: style`mb-2`
 });
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
@@ -114,7 +114,7 @@ const _sfc_main = defineComponent({
     }
   },
   setup(props) {
-    const styles = getStyles();
+    const styles = getFormItemStyle();
     const realLabelPosition = useInjectProp(
       FORM_LABEL_POSITION_KEY,
       "left",
@@ -172,14 +172,14 @@ const _sfc_main = defineComponent({
     };
   }
 });
-const getStyles = () => {
+const getFormItemStyle = () => {
   const label = apply`text-sm text-content-primary`;
   const mark = css`
-    &:before {
-      content: '*';
-      ${apply`text-error-primary align-top`}
-    }
-  `;
+      &:before {
+        content: '*';
+        ${apply`text-error-primary align-top`}
+      }
+    `;
   return {
     container: style`mb-2 ml-2`,
     flex: style`flex`,

@@ -12,13 +12,13 @@ import { onBeforeUnmount, onMounted, ref, computed, withDefaults } from 'vue'
 import { tw, apply } from '@apathia/apathia.twind'
 
 interface affixProps {
-  offsetTop: number
+  offsetTop?: number
   offsetBottom?: number
 }
 
-defineOptions({
-  name: 'Affix',
-})
+// defineOptions({
+//   name: 'Affix',
+// })
 
 const props = withDefaults(defineProps<affixProps>(), {
   offsetTop: 0,

@@ -24,3 +24,15 @@ export * from '@apathia/apathia.cascader'
 export * from '@apathia/apathia.dropdown'
 export * from '@apathia/apathia.tag'
 export * from '@apathia/apathia.switch'
+export * from '@apathia/apathia.image'
+export * from '@apathia/apathia.navbar'
+export * from '@apathia/apathia.sidenav'
+export * from '@apathia/apathia.slider'
+export * from '@apathia/apathia.transfer'
+export * from '@apathia/apathia.scroll-container'
+export * from '@apathia/apathia.textarea'
+export * from '@apathia/apathia.tabs'
+
+// import { setupApathiaTwindTheme } from '@apathia/apathia.twind'
+
+// setupApathiaTwindTheme()

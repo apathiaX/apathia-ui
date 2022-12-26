@@ -6,9 +6,8 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType, provide } from 'vue'
-// @ts-ignore
-import { style } from '@apathia/apathia.twind'
 import * as constants from './constants'
+import { style } from '@apathia/apathia.twind'
 
 export default defineComponent({
   name: 'Form',
@@ -61,7 +60,7 @@ export default defineComponent({
       computed(() => props.labelAlign),
     )
 
-    const styles = getStyles()
+    const styles = getFromStyle()
 
     return {
       styles,
@@ -69,7 +68,7 @@ export default defineComponent({
   },
 })
 
-const getStyles = () => ({
-  form: style`mb-2`,
+const getFromStyle = () => ({
+    form: style`mb-2`,
 })
 </script>

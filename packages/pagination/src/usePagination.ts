@@ -8,30 +8,9 @@ import {
 } from 'vue'
 import type { Ref, SetupContext } from 'vue'
 import { mergeWithDefault } from '@apathia/apathia.shared'
+import { PaginationConfiger, PaginationEvent, PaginationProps, PageItem } from './types'
 
-type PaginationConfiger = {
-  currentPage: number
-  totalItems: number
-  pageSize: number
-  totalPages: number
-  maxLength: number
-  keepMiddle: boolean
-  directionBtns: boolean
-  previousText: string
-  nextText: string
-  boundaryBtns: boolean
-  firstText: string
-  lastText: string
-  totalCount: boolean
-  jumpPage: boolean
-  // ?? only to avoid type warning
-  [x: string]: any
-}
-
-interface PaginationProps {
-  options: Ref<Partial<PaginationConfiger>>
-}
-
+  
 const DEFAULT_OPTIONS: PaginationConfiger = {
   currentPage: 1,
   totalItems: 0,
@@ -49,13 +28,6 @@ const DEFAULT_OPTIONS: PaginationConfiger = {
   jumpPage: false,
 }
 
-type PageItem = {
-  number: number
-  text: string | number
-}
-
-type PaginationEvent = 'page-change'
-
 export function usePagination(
   props: PaginationProps,
   ctx: SetupContext<PaginationEvent[]>,
@@ -72,7 +44,7 @@ export function usePagination(
   const init = ref(false)
   // const pages = [] as PageItem[] // Available pages array for v-for
   const pages = ref<PageItem[]>([])
-  const btnsRef = ref<HTMLElement[]>([])
+  const btnsRef = ref<HTMLElement[]>([]) as Ref<HTMLElement[]>
 
   const setPageBtnRef = (el: HTMLElement) => {
     btnsRef.value.push(el)

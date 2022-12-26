@@ -14,11 +14,8 @@
 </template>
 
 <script lang="ts">
-// @ts-nocheck
 import { computed, defineComponent, StyleValue, toRef } from 'vue'
 import type { PropType } from 'vue'
-// @ts-ignore
-import { tw, apply, style, css } from '@apathia/apathia.twind'
 import {
   POSITION,
   ALIGN,
@@ -27,8 +24,8 @@ import {
   FORM_ITEM_INLINE_KEY,
   FORM_LABEL_ALIGN_KEY,
 } from './constants'
-// @ts-ignore
 import { useInjectProp } from '@apathia/apathia.hooks'
+import { apply, css, style, tw } from '@apathia/apathia.twind'
 
 export default defineComponent({
   name: 'FormItem',
@@ -67,7 +64,7 @@ export default defineComponent({
   },
 
   setup(props) {
-    const styles = getStyles()
+    const styles = getFormItemStyle()
 
     const realLabelPosition = useInjectProp(
       FORM_LABEL_POSITION_KEY,
@@ -110,7 +107,7 @@ export default defineComponent({
     }
 
     const labelStyle = computed<StyleValue>(() => ({
-      width: parseWidth(realLabelWidth.value),
+      width: parseWidth(realLabelWidth.value as string | number),
       display: realLabelPosition.value === 'top' ? 'block' : '',
       'text-align': realLabelPosition.value === 'right' ? 'right' : 'left',
       'margin-bottom': realLabelPosition.value === 'top' ? '0.5rem' : '',
@@ -135,25 +132,25 @@ export default defineComponent({
   },
 })
 
-const getStyles = () => {
-  const label = apply`text-sm text-content-primary`
-  const mark = css`
-    &:before {
-      content: '*';
-      ${apply`text-error-primary align-top`}
+const getFormItemStyle = () => {
+    const label = apply`text-sm text-content-primary`
+    const mark = css`
+      &:before {
+        content: '*';
+        ${apply`text-error-primary align-top`}
+      }
+    `
+    return {
+      container: style`mb-2 ml-2`,
+      flex: style`flex`,
+      inlineFlex: style`inline-flex mr-2 last:mr-0`,
+      labelBlock: style`w-full ${label}`,
+      labelInline: style`mr-2 flex-shrink-0 ${label}`,
+      labelAlignTop: style`self-start`,
+      labelAlignCenter: style`self-center`,
+      labelAlignBottom: style`self-end`,
+      labelRequired: tw`${mark}`,
+      content: style`flex-auto`,
     }
-  `
-  return {
-    container: style`mb-2 ml-2`,
-    flex: style`flex`,
-    inlineFlex: style`inline-flex mr-2 last:mr-0`,
-    labelBlock: style`w-full ${label}`,
-    labelInline: style`mr-2 flex-shrink-0 ${label}`,
-    labelAlignTop: style`self-start`,
-    labelAlignCenter: style`self-center`,
-    labelAlignBottom: style`self-end`,
-    labelRequired: tw`${mark}`,
-    content: style`flex-auto`,
   }
-}
 </script>

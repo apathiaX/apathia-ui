@@ -17,7 +17,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-// @ts-ignore
 import { style } from '@apathia/apathia.twind'
 
 export default defineComponent({

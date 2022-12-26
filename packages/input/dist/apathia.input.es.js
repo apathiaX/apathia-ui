@@ -1,7 +1,7 @@
 import stringwidth from "string-width";
 import { defineComponent, ref, computed, toRef, nextTick, resolveComponent, openBlock, createElementBlock, normalizeClass, normalizeStyle, renderSlot, createCommentVNode, createElementVNode, withDirectives, mergeProps, vModelDynamic, createBlock, withModifiers } from "vue";
-import { apply, style, tw } from "@apathia/apathia.twind";
 import { useInjectProp, useAttrs } from "@apathia/apathia.hooks";
+import { apply, style, tw } from "@apathia/apathia.twind";
 import { Icon } from "@apathia/apathia.icon";
 var _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -9,26 +9,6 @@ var _export_sfc = (sfc, props) => {
     target[key] = val;
   }
   return target;
-};
-const getStyles = () => {
-  const prependAndAppend = apply`text(content-accent sm) px-2 inline-flex items-center bg-fill-gray`;
-  const commonIcon = apply`absolute self-center text-fill-secondary`;
-  const interactiveIcon = apply`${commonIcon}cursor-pointer hover:(text-fill-accent)`;
-  return {
-    inputContainer: style`relative flex w-full h-8 border rounded border-line-accent bg-content-white shadow`,
-    inputWrapper: style`relative flex rounded flex-grow-1 bg-content-white`,
-    input: style`w-full h-full rounded block text-sm outline-none py-1.5 pl-2`,
-    withPrefix: style`pl-9`,
-    disabled: style(
-      "cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-neutral"
-    ),
-    active: style`border-brand-primary`,
-    prepend: tw`${prependAndAppend}${apply`rounded-l border-r-0`}`,
-    clearableIcon: tw`${interactiveIcon}${apply`right-2`}`,
-    clearWithSuffix: tw`${interactiveIcon}${apply`right-8`}`,
-    append: tw`${prependAndAppend}${apply`rounded-r`}`,
-    suffixBtn: tw`${interactiveIcon}${apply`right-2`}`
-  };
 };
 const _sfc_main = defineComponent({
   name: "Input",
@@ -139,6 +119,26 @@ const _sfc_main = defineComponent({
     };
   }
 });
+const getStyles = () => {
+  const prependAndAppend = apply`text(content-accent sm) px-2 inline-flex items-center bg-fill-gray`;
+  const commonIcon = apply`absolute self-center text-fill-secondary`;
+  const interactiveIcon = apply`${commonIcon}cursor-pointer hover:(text-fill-accent)`;
+  return {
+    inputContainer: style`relative flex w-full h-8 border rounded border-line-accent bg-content-white shadow`,
+    inputWrapper: style`relative flex rounded flex-grow-1 bg-content-white`,
+    input: style`w-full h-full rounded block text-sm outline-none py-1.5 pl-2`,
+    withPrefix: style`pl-9`,
+    disabled: style(
+      "cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-neutral"
+    ),
+    active: style`border-brand-primary`,
+    prepend: tw`${prependAndAppend}${apply`rounded-l border-r-0`}`,
+    clearableIcon: tw`${interactiveIcon}${apply`right-2`}`,
+    clearWithSuffix: tw`${interactiveIcon}${apply`right-8`}`,
+    append: tw`${prependAndAppend}${apply`rounded-r`}`,
+    suffixBtn: tw`${interactiveIcon}${apply`right-2`}`
+  };
+};
 const _hoisted_1 = ["type", "disabled"];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_Icon = resolveComponent("Icon");
@@ -170,10 +170,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         class: [
           {
             [_ctx.styles.input]: true,
-            [_ctx.styles.withPrepend]: _ctx.withPrepend,
-            [_ctx.styles.withSuffix]: _ctx.search || _ctx.showClearIcon,
-            [_ctx.styles.withSuffixAndClear]: _ctx.search && _ctx.showClearIcon,
-            [_ctx.styles.withAppend]: _ctx.withAppend,
             [_ctx.styles.disabled]: !!_ctx.disableInput
           },
           _ctx.inputClass

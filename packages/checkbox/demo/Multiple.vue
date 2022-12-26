@@ -9,13 +9,22 @@
   <Checkbox v-model="likes" value="pear">梨🍐</Checkbox>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-const map ={
-  'apple': '苹果🍎',
-  'banana': '香蕉🍌',
-  'pear': '梨🍐'
-}
-const likes = ref([])
+<script>
+import { defineComponent, ref } from 'vue'
 
+export default defineComponent({
+  setup() {
+    const map ={
+      'apple': '苹果🍎',
+      'banana': '香蕉🍌',
+      'pear': '梨🍐'
+    }
+    const likes = ref([])
+
+    return {
+      map,
+      likes
+    }
+  }
+})
 </script>

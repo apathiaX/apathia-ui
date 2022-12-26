@@ -29,16 +29,23 @@
   </Form>
 </template>
 
-<script setup>
-import { reactive } from 'vue'
+<script>
+import { defineComponent, reactive } from 'vue'
 
-const form = reactive({
-  name: '',
-  phone: 0,
-  enjoy_game: [],
-  secret: false,
-  gender: 0,
-  other: '',
-  fav_fruit: 1,
+export default defineComponent({
+  setup() {
+    const form = reactive({
+      name: '',
+      phone: 0,
+      enjoy_game: [],
+      secret: false,
+      gender: 0,
+      other: '',
+      fav_fruit: 1,
+    })
+    return {
+      form
+    }
+  }
 })
 </script>

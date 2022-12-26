@@ -1,6 +1,6 @@
 import { computed, unref, defineComponent, ref, toRefs, openBlock, createElementBlock, normalizeClass, createElementVNode, withModifiers, withKeys, renderSlot, createCommentVNode } from "vue";
-import { style, tw, css, apply } from "@apathia/apathia.twind";
 import { useInjectProp } from "@apathia/apathia.hooks";
+import { style, tw, css, apply } from "@apathia/apathia.twind";
 function useCheckbox(userProps, ctx) {
   const { disabled, modelValue, trueValue, falseValue, value, inputEl } = userProps;
   const isArrayCheckbox = computed(() => Array.isArray(modelValue.value));
@@ -101,55 +101,7 @@ const _sfc_main = defineComponent({
       userProps,
       ctx
     );
-    const styles = {
-      wrapper: style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm`,
-      disabledWrapper: style`text-fill-accent cursor-not-allowed`,
-      checkbox: style`relative inline-block p-0 whitespace-nowrap outline-none align-middle`,
-      inner: tw(
-        style`relative block w-4 h-4 top-0 left-0 bg-fill-white border border-fill-accent rounded outline-none`,
-        css`
-          transition: all 0.3s;
-          &::after {
-            content: '';
-            display: table;
-            position: absolute;
-            width: 5px;
-            height: 9px;
-            top: 1px;
-            left: 5px;
-            border: 2px solid #fff;
-            border-top: 0;
-            border-left: 0;
-            transform: rotate(45deg) scale(0);
-            transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6);
-          }
-        `
-      ),
-      checkedBlueBorder: style`bg-brand-primary border-brand-primary`,
-      checkedAfter: tw(css`
-        &::after {
-          transform: rotate(45deg) scale(1);
-          transition: all 0.15s cubic-bezier(0.12, 0.4, 0.29, 1.46);
-        }
-      `),
-      indeterAfter: tw(css`
-        &::after {
-          transform: rotate(90deg) scale(1);
-          border-bottom: 0;
-        }
-      `),
-      disabledInner: tw(
-        style`bg-fill-gray border-fill-accent cursor-not-allowed outline-none`,
-        css`
-          &::after {
-            ${apply`border-fill-accent`}
-          }
-        `
-      ),
-      ring: style`focus:ring-2 focus:ring-brand-primary`,
-      input: style`hidden`,
-      contentWrap: style`mx-1`
-    };
+    const styles = getCheckboxStyles();
     return {
       inputEl,
       isChecked,
@@ -158,6 +110,55 @@ const _sfc_main = defineComponent({
       styles
     };
   }
+});
+const getCheckboxStyles = () => ({
+  wrapper: style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm`,
+  disabledWrapper: style`text-fill-accent cursor-not-allowed`,
+  checkbox: style`relative inline-block p-0 whitespace-nowrap outline-none align-middle`,
+  inner: tw(
+    style`relative block w-4 h-4 top-0 left-0 bg-fill-white border border-fill-accent rounded outline-none`,
+    css`
+        transition: all 0.3s;
+        &::after {
+          content: '';
+          display: table;
+          position: absolute;
+          width: 5px;
+          height: 9px;
+          top: 1px;
+          left: 5px;
+          border: 2px solid #fff;
+          border-top: 0;
+          border-left: 0;
+          transform: rotate(45deg) scale(0);
+          transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6);
+        }
+      `
+  ),
+  checkedBlueBorder: style`bg-brand-primary border-brand-primary`,
+  checkedAfter: tw(css`
+      &::after {
+        transform: rotate(45deg) scale(1);
+        transition: all 0.15s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+      }
+    `),
+  indeterAfter: tw(css`
+      &::after {
+        transform: rotate(90deg) scale(1);
+        border-bottom: 0;
+      }
+    `),
+  disabledInner: tw(
+    style`bg-fill-gray border-fill-accent cursor-not-allowed outline-none`,
+    css`
+        &::after {
+          ${apply`border-fill-accent`}
+        }
+      `
+  ),
+  ring: style`focus:ring-2 focus:ring-brand-primary`,
+  input: style`hidden`,
+  contentWrap: style`mx-1`
 });
 const _hoisted_1 = ["checked", "disabled", "value"];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {

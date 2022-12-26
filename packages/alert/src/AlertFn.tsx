@@ -1,9 +1,6 @@
 import { TransitionGroup, defineComponent, ref, PropType, h } from 'vue'
-// @ts-ignore
 import { style, tw } from '@apathia/apathia.twind'
-// @ts-ignore
 import { RenderFn } from '@apathia/apathia.custom-render'
-// @ts-ignore
 import { mountComponent } from '@apathia/apathia.shared'
 import BaseAlert from './Alert'
 

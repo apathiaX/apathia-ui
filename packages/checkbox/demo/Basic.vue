@@ -3,8 +3,18 @@
   <Checkbox v-model="base2"> 选项二 </Checkbox>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-const base1 = ref(true)
-const base2 = ref(true)
+<script>
+import { defineComponent, ref } from 'vue'
+
+export default defineComponent({
+  setup() {
+    const base1 = ref(true)
+    const base2 = ref(true)
+
+    return {
+      base1,
+      base2
+    }
+  }
+})
 </script>

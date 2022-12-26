@@ -6,6 +6,7 @@ import {
   ref,
   nextTick,
   Fragment,
+  Ref,
 } from 'vue'
 import { mountComponent, mountContainerDom } from '@apathia/apathia.shared'
 import type { RenderFn } from '@apathia/apathia.custom-render'
@@ -71,7 +72,7 @@ const PopperContainer = defineComponent({
   },
 })
 
-const popperList = ref<PopperListProps[]>([])
+const popperList = ref<PopperListProps[]>([]) as Ref<PopperListProps[]>
 
 const getID = () => `${Math.random()}`
 const removePopper = (id: string) => {

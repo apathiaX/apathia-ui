@@ -22,15 +22,26 @@
   </div>
 </template>
 
-<script setup>
-import { reactive, ref } from 'vue'
-const form = reactive({
-  name: '',
-  phone: '',
-  gender: 0
+<script>
+import { defineComponent, reactive, ref } from 'vue'
+
+export default defineComponent({
+  setup() {
+    const form = reactive({
+      name: '',
+      phone: '',
+      gender: 0
+    })
+    const align = ref('left')
+    const changeAlign = (item) => {
+      align.value = item
+    }
+
+    return {
+      form,
+      align,
+      changeAlign
+    }
+  }
 })
-const align = ref('left')
-const changeAlign = (item) => {
-  align.value = item
-}
 </script>

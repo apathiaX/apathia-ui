@@ -1,6 +1,6 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("string-width"), require("vue"), require("@apathia/apathia.twind"), require("@apathia/apathia.hooks"), require("@apathia/apathia.icon")) : typeof define === "function" && define.amd ? define(["exports", "string-width", "vue", "@apathia/apathia.twind", "@apathia/apathia.hooks", "@apathia/apathia.icon"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.input = {}, global["string-width"], global.Vue, global.twind, global.hooks, global.icon));
-})(this, function(exports2, stringwidth, vue, apathia_twind, apathia_hooks, apathia_icon) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("string-width"), require("vue"), require("@apathia/apathia.hooks"), require("@apathia/apathia.twind"), require("@apathia/apathia.icon")) : typeof define === "function" && define.amd ? define(["exports", "string-width", "vue", "@apathia/apathia.hooks", "@apathia/apathia.twind", "@apathia/apathia.icon"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.input = {}, global["string-width"], global.Vue, global.hooks, global.twind, global.icon));
+})(this, function(exports2, stringwidth, vue, apathia_hooks, apathia_twind, apathia_icon) {
   "use strict";
   function _interopDefaultLegacy(e) {
     return e && typeof e === "object" && "default" in e ? e : { "default": e };
@@ -12,26 +12,6 @@
       target[key] = val;
     }
     return target;
-  };
-  const getStyles = () => {
-    const prependAndAppend = apathia_twind.apply`text(content-accent sm) px-2 inline-flex items-center bg-fill-gray`;
-    const commonIcon = apathia_twind.apply`absolute self-center text-fill-secondary`;
-    const interactiveIcon = apathia_twind.apply`${commonIcon}cursor-pointer hover:(text-fill-accent)`;
-    return {
-      inputContainer: apathia_twind.style`relative flex w-full h-8 border rounded border-line-accent bg-content-white shadow`,
-      inputWrapper: apathia_twind.style`relative flex rounded flex-grow-1 bg-content-white`,
-      input: apathia_twind.style`w-full h-full rounded block text-sm outline-none py-1.5 pl-2`,
-      withPrefix: apathia_twind.style`pl-9`,
-      disabled: apathia_twind.style(
-        "cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-neutral"
-      ),
-      active: apathia_twind.style`border-brand-primary`,
-      prepend: apathia_twind.tw`${prependAndAppend}${apathia_twind.apply`rounded-l border-r-0`}`,
-      clearableIcon: apathia_twind.tw`${interactiveIcon}${apathia_twind.apply`right-2`}`,
-      clearWithSuffix: apathia_twind.tw`${interactiveIcon}${apathia_twind.apply`right-8`}`,
-      append: apathia_twind.tw`${prependAndAppend}${apathia_twind.apply`rounded-r`}`,
-      suffixBtn: apathia_twind.tw`${interactiveIcon}${apathia_twind.apply`right-2`}`
-    };
   };
   const _sfc_main = vue.defineComponent({
     name: "Input",
@@ -142,6 +122,26 @@
       };
     }
   });
+  const getStyles = () => {
+    const prependAndAppend = apathia_twind.apply`text(content-accent sm) px-2 inline-flex items-center bg-fill-gray`;
+    const commonIcon = apathia_twind.apply`absolute self-center text-fill-secondary`;
+    const interactiveIcon = apathia_twind.apply`${commonIcon}cursor-pointer hover:(text-fill-accent)`;
+    return {
+      inputContainer: apathia_twind.style`relative flex w-full h-8 border rounded border-line-accent bg-content-white shadow`,
+      inputWrapper: apathia_twind.style`relative flex rounded flex-grow-1 bg-content-white`,
+      input: apathia_twind.style`w-full h-full rounded block text-sm outline-none py-1.5 pl-2`,
+      withPrefix: apathia_twind.style`pl-9`,
+      disabled: apathia_twind.style(
+        "cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-neutral"
+      ),
+      active: apathia_twind.style`border-brand-primary`,
+      prepend: apathia_twind.tw`${prependAndAppend}${apathia_twind.apply`rounded-l border-r-0`}`,
+      clearableIcon: apathia_twind.tw`${interactiveIcon}${apathia_twind.apply`right-2`}`,
+      clearWithSuffix: apathia_twind.tw`${interactiveIcon}${apathia_twind.apply`right-8`}`,
+      append: apathia_twind.tw`${prependAndAppend}${apathia_twind.apply`rounded-r`}`,
+      suffixBtn: apathia_twind.tw`${interactiveIcon}${apathia_twind.apply`right-2`}`
+    };
+  };
   const _hoisted_1 = ["type", "disabled"];
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_Icon = vue.resolveComponent("Icon");
@@ -173,10 +173,6 @@
           class: [
             {
               [_ctx.styles.input]: true,
-              [_ctx.styles.withPrepend]: _ctx.withPrepend,
-              [_ctx.styles.withSuffix]: _ctx.search || _ctx.showClearIcon,
-              [_ctx.styles.withSuffixAndClear]: _ctx.search && _ctx.showClearIcon,
-              [_ctx.styles.withAppend]: _ctx.withAppend,
               [_ctx.styles.disabled]: !!_ctx.disableInput
             },
             _ctx.inputClass

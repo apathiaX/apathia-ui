@@ -6,12 +6,21 @@
   />
 </template>
 
-<script setup>
+<script>
 import { ref } from 'vue'
 
-const file1 = ref('')
+export default {
+  setup() {
+    const file1 = ref('')
 
-const resolveLocation = resp => {
-  return resp.data
+    const resolveLocation = resp => {
+      return resp.data
+    }
+
+    return {
+      file1,
+      resolveLocation
+    }
+  }
 }
 </script>

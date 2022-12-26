@@ -1,4 +1,6 @@
-export type ValueType = number | string | boolean | Record<string, any>
+import { Ref } from "vue"
+
+export type SelectValueType = number | string | boolean | Record<string, any>
 
 export enum Direction {
   UP = 'up',
@@ -6,7 +8,7 @@ export enum Direction {
 }
 
 export type Option = {
-  value: ValueType
+  value: SelectValueType
   label: string
   disabled: boolean
 }
@@ -14,7 +16,7 @@ export type Option = {
 export type SelectState = {
   label: string
   remote: boolean
-  value: ValueType
+  value: SelectValueType
   valueKey: string
   filterStr: string
   optionIds: number[]
@@ -28,8 +30,17 @@ export type SelectState = {
 export type OptionRegister = (
   disabled: boolean,
   uid: number,
-  value: ValueType,
+  value: SelectValueType,
   label: string,
 ) => void
 
 export type OptionRemover = (uid: number) => void
+
+export interface UserProps {
+  modelValue: Ref<SelectValueType>
+  filterable: Ref<boolean>
+  valueKey: Ref<string>
+  disabled: Ref<boolean | undefined>
+  emptyText: Ref<string>
+  placeholder: Ref<string>
+}
