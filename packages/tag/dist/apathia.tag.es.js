@@ -81,7 +81,6 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _hoisted_1 = /* @__PURE__ */ createTextVNode("+");
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "Tags",
   props: {
@@ -196,7 +195,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             }, {
               default: withCtx(() => [
                 renderSlot(_ctx.$slots, "create", {}, () => [
-                  _hoisted_1
+                  createTextVNode("+")
                 ])
               ]),
               _: 3

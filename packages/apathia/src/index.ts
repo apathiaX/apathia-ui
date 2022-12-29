@@ -32,7 +32,3 @@ export * from '@apathia/apathia.transfer'
 export * from '@apathia/apathia.scroll-container'
 export * from '@apathia/apathia.textarea'
 export * from '@apathia/apathia.tabs'
-
-// import { setupApathiaTwindTheme } from '@apathia/apathia.twind'
-
-// setupApathiaTwindTheme()

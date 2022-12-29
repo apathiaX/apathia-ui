@@ -4,18 +4,15 @@
   "use strict";
   const _hoisted_1 = ["src", "alt"];
   const _hoisted_2 = ["onClick"];
-  const _hoisted_3 = /* @__PURE__ */ vue.createTextVNode("\xA0\u590D\u5236\u5730\u5740");
-  const _hoisted_4 = /* @__PURE__ */ vue.createTextVNode(" \xA0\xA0 ");
-  const _hoisted_5 = /* @__PURE__ */ vue.createElementVNode("path", { d: "M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 000 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z" }, null, -1);
+  const _hoisted_3 = /* @__PURE__ */ vue.createElementVNode("path", { d: "M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 000 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z" }, null, -1);
+  const _hoisted_4 = [
+    _hoisted_3
+  ];
+  const _hoisted_5 = /* @__PURE__ */ vue.createElementVNode("p", null, "\u52A0\u8F7D\u5931\u8D25", -1);
   const _hoisted_6 = [
     _hoisted_5
   ];
-  const _hoisted_7 = /* @__PURE__ */ vue.createTextVNode(" \u9884\u89C8 ");
-  const _hoisted_8 = /* @__PURE__ */ vue.createElementVNode("p", null, "\u52A0\u8F7D\u5931\u8D25", -1);
-  const _hoisted_9 = [
-    _hoisted_8
-  ];
-  const _hoisted_10 = ["src", "alt", "onMousedown", "onMousemove", "onMouseup"];
+  const _hoisted_7 = ["src", "alt", "onMousedown", "onMousemove", "onMouseup"];
   const _sfc_main = /* @__PURE__ */ vue.defineComponent({
     __name: "Image",
     props: {
@@ -208,9 +205,9 @@ to {
                   name: ["fa", "copy"],
                   class: vue.normalizeClass(styles.maskIcon)
                 }, null, 8, ["class"]),
-                _hoisted_3
+                vue.createTextVNode("\xA0\u590D\u5236\u5730\u5740")
               ], 10, _hoisted_2),
-              _hoisted_4,
+              vue.createTextVNode(" \xA0\xA0 "),
               vue.createElementVNode("span", {
                 class: vue.normalizeClass(styles.hoverEnlarge)
               }, [
@@ -221,8 +218,8 @@ to {
                   height: "1.2em",
                   viewBox: "64 64 896 896",
                   class: vue.normalizeClass(styles.maskIcon)
-                }, _hoisted_6, 2)),
-                _hoisted_7
+                }, _hoisted_4, 2)),
+                vue.createTextVNode(" \u9884\u89C8 ")
               ], 2)
             ], 2)) : vue.createCommentVNode("", true)
           ], 2),
@@ -230,7 +227,7 @@ to {
             vue.createElementVNode("div", {
               class: vue.normalizeClass(styles.error),
               style: vue.normalizeStyle(vue.unref(imgErrorStyle))
-            }, _hoisted_9, 6)
+            }, _hoisted_6, 6)
           ]) : vue.createCommentVNode("", true),
           (vue.openBlock(), vue.createBlock(vue.Teleport, { to: "body" }, [
             vue.createVNode(vue.Transition, vue.normalizeProps(vue.guardReactiveProps(styles.transitionClass)), {
@@ -291,7 +288,7 @@ to {
                         onMousemove: vue.withModifiers(handleMouseMove, ["prevent"]),
                         onMouseup: vue.withModifiers(handleMouseUp, ["prevent"]),
                         onClick: _cache[1] || (_cache[1] = (e) => e.stopPropagation())
-                      }, null, 42, _hoisted_10)
+                      }, null, 42, _hoisted_7)
                     ], 6)
                   ], 2)
                 ], 34)) : vue.createCommentVNode("", true)

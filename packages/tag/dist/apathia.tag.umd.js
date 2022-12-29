@@ -80,7 +80,6 @@
       };
     }
   });
-  const _hoisted_1 = /* @__PURE__ */ vue.createTextVNode("+");
   const _sfc_main = /* @__PURE__ */ vue.defineComponent({
     __name: "Tags",
     props: {
@@ -195,7 +194,7 @@
               }, {
                 default: vue.withCtx(() => [
                   vue.renderSlot(_ctx.$slots, "create", {}, () => [
-                    _hoisted_1
+                    vue.createTextVNode("+")
                   ])
                 ]),
                 _: 3

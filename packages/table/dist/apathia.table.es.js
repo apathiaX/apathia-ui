@@ -499,7 +499,7 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
       }),
       style: normalizeStyle(_ctx.rowStyles),
       onClick: _cache[0] || (_cache[0] = ($event) => _ctx.clickRow($event, _ctx.rowIndex)),
-      onMouseUp: _cache[1] || (_cache[1] = (...args) => _ctx.handleRowMouseUp && _ctx.handleRowMouseUp(...args))
+      "on:mouseUp": _cache[1] || (_cache[1] = (...args) => _ctx.handleRowMouseUp && _ctx.handleRowMouseUp(...args))
     }, [
       (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.cols, (col, colIndex) => {
         return openBlock(), createElementBlock("td", mergeProps({

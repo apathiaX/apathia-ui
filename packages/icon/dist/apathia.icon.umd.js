@@ -1,29 +1,37 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@fortawesome/vue-fontawesome"), require("@fortawesome/fontawesome-svg-core"), require("@fortawesome/free-solid-svg-icons"), require("@fortawesome/free-regular-svg-icons")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@fortawesome/vue-fontawesome", "@fortawesome/fontawesome-svg-core", "@fortawesome/free-solid-svg-icons", "@fortawesome/free-regular-svg-icons"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.icon = {}, global.Vue, global["@fortawesome/vue-fontawesome"], global["@fortawesome/fontawesome-svg-core"], global["@fortawesome/free-solid-svg-icons"], global["@fortawesome/free-regular-svg-icons"]));
-})(this, function(exports2, vue, vueFontawesome, fontawesomeSvgCore, freeSolidSvgIcons, freeRegularSvgIcons) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.shared")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.shared"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.icon = {}, global.Vue, global.shared));
+})(this, function(exports2, vue, apathia_shared) {
   "use strict";
-  fontawesomeSvgCore.library.add(freeSolidSvgIcons.faUserSecret, freeSolidSvgIcons.faInfoCircle, freeSolidSvgIcons.faExclamationTriangle, freeSolidSvgIcons.faExclamation, freeRegularSvgIcons.faQuestionCircle, freeSolidSvgIcons.faCheck, freeSolidSvgIcons.faTimes, freeSolidSvgIcons.faChevronCircleDown, freeSolidSvgIcons.faChevronCircleLeft, freeSolidSvgIcons.faChevronCircleRight, freeSolidSvgIcons.faChevronCircleUp, freeSolidSvgIcons.faSearch, freeSolidSvgIcons.faSpinner, freeSolidSvgIcons.faPlus, freeSolidSvgIcons.faMinus, freeSolidSvgIcons.faSortAmountDown, freeSolidSvgIcons.faSortAmountUp, freeSolidSvgIcons.faChevronDown, freeSolidSvgIcons.faChevronUp, freeSolidSvgIcons.faAngleDoubleLeft, freeSolidSvgIcons.faAngleDoubleRight, freeSolidSvgIcons.faAngleLeft, freeSolidSvgIcons.faAngleRight, freeSolidSvgIcons.faArrowDown, freeSolidSvgIcons.faCaretRight, freeSolidSvgIcons.faEye, freeSolidSvgIcons.faRedoAlt, freeSolidSvgIcons.faUndoAlt, freeSolidSvgIcons.faCopy);
-  var Icon = vue.defineComponent({
+  var Icon_vue_vue_type_style_index_0_lang = "";
+  const __default__ = vue.defineComponent({
     name: "Icon",
-    components: {
-      FontAwesomeIcon: vueFontawesome.FontAwesomeIcon
-    },
+    inheritAttrs: false
+  });
+  const _sfc_main = /* @__PURE__ */ vue.defineComponent({
+    ...__default__,
     props: {
-      name: {
-        type: Array,
-        default: () => []
-      }
+      color: null,
+      size: null
     },
-    setup(props, {
-      attrs
-    }) {
-      const key = vue.computed(() => props.name[props.name.length - 1]);
-      return () => vue.h(vueFontawesome.FontAwesomeIcon, Object.assign(Object.assign({}, attrs), {
-        icon: props.name,
-        key: key.value
-      }));
+    setup(__props) {
+      const props = __props;
+      const styles = () => {
+        if (!props.color && !props.size)
+          return {};
+        return {
+          fontSize: props.size ? apathia_shared.isString(props.size) ? props.size : `${props.size}px` : void 0,
+          color: props.color || void 0
+        };
+      };
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("i", vue.mergeProps({
+          style: styles()
+        }, _ctx.$attrs), [
+          vue.renderSlot(_ctx.$slots, "default")
+        ], 16);
+      };
     }
   });
-  exports2.Icon = Icon;
+  exports2.Icon = _sfc_main;
   Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
 });

@@ -1,28 +1,33 @@
-import { defineComponent, computed, h } from "vue";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUserSecret, faInfoCircle, faExclamationTriangle, faExclamation, faCheck, faTimes, faChevronCircleDown, faChevronCircleLeft, faChevronCircleRight, faChevronCircleUp, faSearch, faSpinner, faPlus, faMinus, faSortAmountDown, faSortAmountUp, faChevronDown, faChevronUp, faAngleDoubleLeft, faAngleDoubleRight, faAngleLeft, faAngleRight, faArrowDown, faCaretRight, faEye, faRedoAlt, faUndoAlt, faCopy } from "@fortawesome/free-solid-svg-icons";
-import { faQuestionCircle } from "@fortawesome/free-regular-svg-icons";
-library.add(faUserSecret, faInfoCircle, faExclamationTriangle, faExclamation, faQuestionCircle, faCheck, faTimes, faChevronCircleDown, faChevronCircleLeft, faChevronCircleRight, faChevronCircleUp, faSearch, faSpinner, faPlus, faMinus, faSortAmountDown, faSortAmountUp, faChevronDown, faChevronUp, faAngleDoubleLeft, faAngleDoubleRight, faAngleLeft, faAngleRight, faArrowDown, faCaretRight, faEye, faRedoAlt, faUndoAlt, faCopy);
-var Icon = defineComponent({
+import { defineComponent, openBlock, createElementBlock, mergeProps, renderSlot } from "vue";
+import { isString } from "@apathia/apathia.shared";
+var Icon_vue_vue_type_style_index_0_lang = "";
+const __default__ = defineComponent({
   name: "Icon",
-  components: {
-    FontAwesomeIcon
-  },
+  inheritAttrs: false
+});
+const _sfc_main = /* @__PURE__ */ defineComponent({
+  ...__default__,
   props: {
-    name: {
-      type: Array,
-      default: () => []
-    }
+    color: null,
+    size: null
   },
-  setup(props, {
-    attrs
-  }) {
-    const key = computed(() => props.name[props.name.length - 1]);
-    return () => h(FontAwesomeIcon, Object.assign(Object.assign({}, attrs), {
-      icon: props.name,
-      key: key.value
-    }));
+  setup(__props) {
+    const props = __props;
+    const styles = () => {
+      if (!props.color && !props.size)
+        return {};
+      return {
+        fontSize: props.size ? isString(props.size) ? props.size : `${props.size}px` : void 0,
+        color: props.color || void 0
+      };
+    };
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("i", mergeProps({
+        style: styles()
+      }, _ctx.$attrs), [
+        renderSlot(_ctx.$slots, "default")
+      ], 16);
+    };
   }
 });
-export { Icon };
+export { _sfc_main as Icon };

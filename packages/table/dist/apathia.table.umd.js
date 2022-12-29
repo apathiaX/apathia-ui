@@ -494,7 +494,7 @@
         }),
         style: vue.normalizeStyle(_ctx.rowStyles),
         onClick: _cache[0] || (_cache[0] = ($event) => _ctx.clickRow($event, _ctx.rowIndex)),
-        onMouseUp: _cache[1] || (_cache[1] = (...args) => _ctx.handleRowMouseUp && _ctx.handleRowMouseUp(...args))
+        "on:mouseUp": _cache[1] || (_cache[1] = (...args) => _ctx.handleRowMouseUp && _ctx.handleRowMouseUp(...args))
       }, [
         (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(_ctx.cols, (col, colIndex) => {
           return vue.openBlock(), vue.createElementBlock("td", vue.mergeProps({

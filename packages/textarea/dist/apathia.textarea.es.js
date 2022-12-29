@@ -2,7 +2,6 @@ import { defineComponent, useAttrs, toRef, computed, openBlock, createElementBlo
 import { useInjectProp } from "@apathia/apathia.hooks";
 import { style } from "@apathia/apathia.twind";
 const _hoisted_1 = ["disabled"];
-const _hoisted_2 = /* @__PURE__ */ createTextVNode(" 11111 ");
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "Textarea",
   props: {
@@ -46,7 +45,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         }, unref(attrs)), null, 16, _hoisted_1), [
           [vModelText, unref(inputValue)]
         ]),
-        _hoisted_2
+        createTextVNode(" 11111 ")
       ], 64);
     };
   }

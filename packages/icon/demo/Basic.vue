@@ -1,5 +1,7 @@
 <template>
-  <Icon :name="['fa', 'copy']"/> <br/>
-  <Icon :name="['fa', 'info-circle']"/> <br/>
-  <Icon :name="['fa', 'eye']"/>
+  <Icon :size="30">
+    <ap-Coordinate />
+  </Icon>
+  <br/>
+  <ap-failed/>
 </template>

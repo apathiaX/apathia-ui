@@ -3,7 +3,6 @@
 })(this, function(exports2, vue, apathia_hooks, apathia_twind) {
   "use strict";
   const _hoisted_1 = ["disabled"];
-  const _hoisted_2 = /* @__PURE__ */ vue.createTextVNode(" 11111 ");
   const _sfc_main = /* @__PURE__ */ vue.defineComponent({
     __name: "Textarea",
     props: {
@@ -47,7 +46,7 @@
           }, vue.unref(attrs)), null, 16, _hoisted_1), [
             [vue.vModelText, vue.unref(inputValue)]
           ]),
-          _hoisted_2
+          vue.createTextVNode(" 11111 ")
         ], 64);
       };
     }

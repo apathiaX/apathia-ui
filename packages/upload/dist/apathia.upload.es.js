@@ -1,4 +1,4 @@
-import { ref, defineComponent, inject, watch, computed, resolveComponent, openBlock, createElementBlock, Fragment, createElementVNode, mergeProps, renderSlot, normalizeClass, createVNode, createBlock, createCommentVNode, normalizeStyle, withCtx, createTextVNode, toDisplayString } from "vue";
+import { ref, defineComponent, inject, watch, computed, resolveComponent, openBlock, createElementBlock, Fragment, createElementVNode, mergeProps, renderSlot, normalizeClass, createVNode, createTextVNode, createBlock, createCommentVNode, normalizeStyle, withCtx, toDisplayString } from "vue";
 import { style, css } from "@apathia/apathia.twind";
 import { toast } from "@apathia/apathia.alert";
 import { BaseButton } from "@apathia/apathia.button";
@@ -349,8 +349,7 @@ const getStyles = () => ({
   `}`
 });
 const _hoisted_1 = ["draggable"];
-const _hoisted_2 = /* @__PURE__ */ createTextVNode(" \u5C06\u6587\u4EF6\u62D6\u5165\u6B64\u5904\u6216\u8005 ");
-const _hoisted_3 = ["multiple", "accept"];
+const _hoisted_2 = ["multiple", "accept"];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_Icon = resolveComponent("Icon");
   const _component_Input = resolveComponent("Input");
@@ -374,7 +373,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
               name: ["fa", "arrow-down"]
             }, null, 8, ["class"]),
             createElementVNode("p", null, [
-              _hoisted_2,
+              createTextVNode(" \u5C06\u6587\u4EF6\u62D6\u5165\u6B64\u5904\u6216\u8005 "),
               createElementVNode("span", {
                 class: normalizeClass(_ctx.styles.clickText)
               }, "\u70B9\u51FB\u9009\u62E9", 2)
@@ -416,7 +415,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       accept: _ctx.accept,
       style: { "display": "none" },
       onChange: _cache[2] || (_cache[2] = (...args) => _ctx.handleFileChange && _ctx.handleFileChange(...args))
-    }, null, 40, _hoisted_3)
+    }, null, 40, _hoisted_2)
   ], 64);
 }
 var Upload = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
