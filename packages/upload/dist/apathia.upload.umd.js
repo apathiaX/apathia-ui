@@ -164,9 +164,7 @@
           if (!value)
             return;
           if (Array.isArray(value) && !multiple) {
-            console.warn(
-              "[Upload] value should not be an array if multiple is false"
-            );
+            console.warn("[Upload] value should not be an array if multiple is false");
             emit("update:valid", false);
           } else if (!Array.isArray(value) && multiple) {
             console.warn("[Upload] value should be an array if multiple is true");
@@ -189,15 +187,11 @@
         const isBeyoundLimit = props.multiple ? props.modelValue.length >= props.limit : false;
         return props.disabled || formDisabled.value || isBeyoundLimit;
       });
-      const { draging } = useDragDrop(
-        containerRef,
-        disableUpload,
-        (files) => {
-          if (files) {
-            uploadFiles(files);
-          }
+      const { draging } = useDragDrop(containerRef, disableUpload, (files) => {
+        if (files) {
+          uploadFiles(files);
         }
-      );
+      });
       const containerClasses = vue.computed(() => ({
         [styles.trigger]: !props.draggable
       }));
@@ -347,6 +341,7 @@
   const _hoisted_1 = ["draggable"];
   const _hoisted_2 = ["multiple", "accept"];
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_UploadFilled = vue.resolveComponent("UploadFilled");
     const _component_Icon = vue.resolveComponent("Icon");
     const _component_Input = vue.resolveComponent("Input");
     const _component_BaseButton = vue.resolveComponent("BaseButton");
@@ -364,10 +359,12 @@
             vue.createElementVNode("div", {
               class: vue.normalizeClass(_ctx.dragContainerClasses)
             }, [
-              vue.createVNode(_component_Icon, {
-                class: vue.normalizeClass(_ctx.styles.fileIcon),
-                name: ["fa", "arrow-down"]
-              }, null, 8, ["class"]),
+              vue.createVNode(_component_Icon, { size: 50 }, {
+                default: vue.withCtx(() => [
+                  vue.createVNode(_component_UploadFilled)
+                ]),
+                _: 1
+              }),
               vue.createElementVNode("p", null, [
                 vue.createTextVNode(" \u5C06\u6587\u4EF6\u62D6\u5165\u6B64\u5904\u6216\u8005 "),
                 vue.createElementVNode("span", {

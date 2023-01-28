@@ -1,5 +1,45 @@
 # @apathia/apathia
 
+## 1.1.2
+
+### Patch Changes
+
+- fix: icon migrate
+- Updated dependencies
+  - @apathia/apathia.cascader@0.1.1
+  - @apathia/apathia.collapse@1.1.1
+  - @apathia/apathia.transfer@0.1.1
+  - @apathia/apathia.sidenav@0.1.1
+  - @apathia/apathia.select@1.1.1
+  - @apathia/apathia.upload@1.1.1
+  - @apathia/apathia.alert@1.1.1
+  - @apathia/apathia.image@0.1.1
+  - @apathia/apathia.input@1.1.1
+  - @apathia/apathia.table@1.1.1
+  - @apathia/apathia.affix@0.1.1
+  - @apathia/apathia.button@1.1.1
+  - @apathia/apathia.checkbox@1.1.1
+  - @apathia/apathia.confirm@1.1.1
+  - @apathia/apathia.custom-render@1.1.1
+  - @apathia/apathia.datepicker@0.1.1
+  - @apathia/apathia.dropdown@0.1.1
+  - @apathia/apathia.form@1.1.1
+  - @apathia/apathia.hooks@1.1.1
+  - @apathia/apathia.icon@1.1.2
+  - @apathia/apathia.loading@1.1.1
+  - @apathia/apathia.modal@1.1.1
+  - @apathia/apathia.navbar@0.1.1
+  - @apathia/apathia.pagination@1.1.1
+  - @apathia/apathia.popper@0.1.1
+  - @apathia/apathia.radio@1.1.1
+  - @apathia/apathia.scroll-container@0.1.1
+  - @apathia/apathia.slider@0.1.1
+  - @apathia/apathia.switch@0.1.1
+  - @apathia/apathia.tabs@0.1.1
+  - @apathia/apathia.tag@0.1.1
+  - @apathia/apathia.textarea@0.1.1
+  - @apathia/apathia.twind@1.1.2
+
 ## 1.1.1
 
 ### Patch Changes

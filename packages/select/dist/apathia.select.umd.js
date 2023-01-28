@@ -814,6 +814,7 @@
     disabled: apathia_twind.style`text-content-secondary bg-info-forbid cursor-not-allowed`
   });
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_Check = vue.resolveComponent("Check");
     const _component_Icon = vue.resolveComponent("Icon");
     return vue.openBlock(), vue.createElementBlock("li", vue.mergeProps({ ..._ctx.getRootProps() }, {
       role: "option",
@@ -831,9 +832,13 @@
       ], 2),
       _ctx.isSelected ? (vue.openBlock(), vue.createBlock(_component_Icon, {
         key: 0,
-        name: ["fa", "check"],
         class: vue.normalizeClass([_ctx.styles.checkMark, _ctx.isFocused ? _ctx.styles.focusMark : ""])
-      }, null, 8, ["class"])) : vue.createCommentVNode("", true)
+      }, {
+        default: vue.withCtx(() => [
+          vue.createVNode(_component_Check)
+        ]),
+        _: 1
+      }, 8, ["class"])) : vue.createCommentVNode("", true)
     ], 16);
   }
   var Option = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);

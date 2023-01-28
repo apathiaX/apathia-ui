@@ -40,12 +40,14 @@
     }
   });
   const getStyles$3 = () => ({
-    arrowWrap: apathia_twind.style`inline-block pl-px`,
+    arrowWrap: apathia_twind.style`inline-block pl-px align-middle`,
     arrow: apathia_twind.style`text-content-neutral cursor-pointer`,
     arrowIcon: apathia_twind.style`h-3.5 w-3.5 align-middle`,
     active: apathia_twind.style`text-content-accent`
   });
   function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_SortUp = vue.resolveComponent("SortUp");
+    const _component_SortDown = vue.resolveComponent("SortDown");
     const _component_Icon = vue.resolveComponent("Icon");
     return vue.openBlock(), vue.createElementBlock("span", {
       class: vue.normalizeClass(_ctx.styles.arrowWrap)
@@ -57,12 +59,12 @@
         }),
         onClick: _cache[0] || (_cache[0] = (...args) => _ctx.sortChange && _ctx.sortChange(...args))
       }, [
-        vue.createVNode(_component_Icon, {
-          name: [
-            "fa",
-            _ctx.sort.order === "asc" ? "sort-amount-up" : "sort-amount-down"
-          ]
-        }, null, 8, ["name"])
+        vue.createVNode(_component_Icon, { size: 14 }, {
+          default: vue.withCtx(() => [
+            _ctx.sort.order === "asc" ? (vue.openBlock(), vue.createBlock(_component_SortUp, { key: 0 })) : (vue.openBlock(), vue.createBlock(_component_SortDown, { key: 1 }))
+          ]),
+          _: 1
+        })
       ], 2)
     ], 2);
   }
@@ -482,6 +484,8 @@
   const _hoisted_4$1 = ["colspan"];
   function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_Checkbox = vue.resolveComponent("Checkbox");
+    const _component_Minus = vue.resolveComponent("Minus");
+    const _component_Plus = vue.resolveComponent("Plus");
     const _component_Icon = vue.resolveComponent("Icon");
     const _component_BaseButton = vue.resolveComponent("BaseButton");
     const _component_CustomRender = vue.resolveComponent("CustomRender");
@@ -508,9 +512,13 @@
                 disabled: col.disabledWhen ? !!col.disabledWhen({ row: _ctx.row, rowIndex: _ctx.rowIndex }) : false
               }, null, 8, ["model-value", "disabled"])) : col.type === "expand" && _ctx.expandable ? (vue.openBlock(), vue.createBlock(_component_Icon, {
                 key: 2,
-                name: ["fa", _ctx.expandActive ? "minus" : "plus"],
                 onClick: _ctx.toggleExpand
-              }, null, 8, ["name", "onClick"])) : vue.createCommentVNode("", true)
+              }, {
+                default: vue.withCtx(() => [
+                  _ctx.expandActive ? (vue.openBlock(), vue.createBlock(_component_Minus, { key: 0 })) : (vue.openBlock(), vue.createBlock(_component_Plus, { key: 1 }))
+                ]),
+                _: 1
+              }, 8, ["onClick"])) : vue.createCommentVNode("", true)
             ], 64)) : col && "field" in col ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_2$1, vue.toDisplayString(_ctx.get(_ctx.row, col.field, "")), 1)) : col && "buttons" in col ? (vue.openBlock(), vue.createElementBlock("div", {
               key: 2,
               class: vue.normalizeClass(_ctx.styles.cellBtnsWrap)

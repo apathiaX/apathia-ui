@@ -2,7 +2,7 @@ import { TransitionGroup, defineComponent, ref, PropType, h } from 'vue'
 import { style, tw } from '@apathia/apathia.twind'
 import { RenderFn } from '@apathia/apathia.custom-render'
 import { mountComponent } from '@apathia/apathia.shared'
-import BaseAlert from './Alert'
+import BaseAlert from './Alert.vue'
 
 export type AlertType = 'info' | 'warning' | 'danger' | 'success' | 'default'
 
@@ -11,7 +11,6 @@ interface AlertProps {
   duration?: number
   title?: string
   message?: string
-  iconClass?: string[]
   showIcon?: boolean
   showClose?: boolean
   render?: RenderFn<{ close?: (...args: any) => any }>

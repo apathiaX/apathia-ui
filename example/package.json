@@ -1,7 +1,7 @@
 {
   "name": "@apathia/apathia.example",
   "private": true,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -20,8 +20,8 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia": "workspace:^1.0.8",
-    "@apathia/apathia.twind": "workspace:^1.0.2",
+    "@apathia/apathia": "workspace:^1.1.2",
+    "@apathia/apathia.twind": "workspace:^1.1.2",
     "lodash-es": "^4.17.21",
     "twind": "^0.16.17",
     "unplugin-vue-define-options": "^0.12.8",

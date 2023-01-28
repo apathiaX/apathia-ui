@@ -1,5 +1,18 @@
 # @apathia/apathia.transfer
 
+## 0.1.1
+
+### Patch Changes
+
+- fix: icon migrate
+- Updated dependencies
+  - @apathia/apathia.input@1.1.1
+  - @apathia/apathia.button@1.1.1
+  - @apathia/apathia.checkbox@1.1.1
+  - @apathia/apathia.icon@1.1.2
+  - @apathia/apathia.scroll-container@0.1.1
+  - @apathia/apathia.twind@1.1.2
+
 ## 0.1.0
 
 ### Minor Changes

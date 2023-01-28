@@ -1,4 +1,4 @@
-import { ref, defineComponent, inject, watch, computed, resolveComponent, openBlock, createElementBlock, Fragment, createElementVNode, mergeProps, renderSlot, normalizeClass, createVNode, createTextVNode, createBlock, createCommentVNode, normalizeStyle, withCtx, toDisplayString } from "vue";
+import { ref, defineComponent, inject, watch, computed, resolveComponent, openBlock, createElementBlock, Fragment, createElementVNode, mergeProps, renderSlot, normalizeClass, createVNode, withCtx, createTextVNode, createBlock, createCommentVNode, normalizeStyle, toDisplayString } from "vue";
 import { style, css } from "@apathia/apathia.twind";
 import { toast } from "@apathia/apathia.alert";
 import { BaseButton } from "@apathia/apathia.button";
@@ -168,9 +168,7 @@ const _sfc_main = defineComponent({
         if (!value)
           return;
         if (Array.isArray(value) && !multiple) {
-          console.warn(
-            "[Upload] value should not be an array if multiple is false"
-          );
+          console.warn("[Upload] value should not be an array if multiple is false");
           emit("update:valid", false);
         } else if (!Array.isArray(value) && multiple) {
           console.warn("[Upload] value should be an array if multiple is true");
@@ -193,15 +191,11 @@ const _sfc_main = defineComponent({
       const isBeyoundLimit = props.multiple ? props.modelValue.length >= props.limit : false;
       return props.disabled || formDisabled.value || isBeyoundLimit;
     });
-    const { draging } = useDragDrop(
-      containerRef,
-      disableUpload,
-      (files) => {
-        if (files) {
-          uploadFiles(files);
-        }
+    const { draging } = useDragDrop(containerRef, disableUpload, (files) => {
+      if (files) {
+        uploadFiles(files);
       }
-    );
+    });
     const containerClasses = computed(() => ({
       [styles.trigger]: !props.draggable
     }));
@@ -351,6 +345,7 @@ const getStyles = () => ({
 const _hoisted_1 = ["draggable"];
 const _hoisted_2 = ["multiple", "accept"];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_UploadFilled = resolveComponent("UploadFilled");
   const _component_Icon = resolveComponent("Icon");
   const _component_Input = resolveComponent("Input");
   const _component_BaseButton = resolveComponent("BaseButton");
@@ -368,10 +363,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           createElementVNode("div", {
             class: normalizeClass(_ctx.dragContainerClasses)
           }, [
-            createVNode(_component_Icon, {
-              class: normalizeClass(_ctx.styles.fileIcon),
-              name: ["fa", "arrow-down"]
-            }, null, 8, ["class"]),
+            createVNode(_component_Icon, { size: 50 }, {
+              default: withCtx(() => [
+                createVNode(_component_UploadFilled)
+              ]),
+              _: 1
+            }),
             createElementVNode("p", null, [
               createTextVNode(" \u5C06\u6587\u4EF6\u62D6\u5165\u6B64\u5904\u6216\u8005 "),
               createElementVNode("span", {

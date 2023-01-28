@@ -7,7 +7,6 @@ export interface AlertProps {
   duration?: number
   title?: string
   message?: string
-  iconClass?: string[]
   showIcon?: boolean
   showClose?: boolean
   render?: RenderFn<{ close?: (...args: any) => any }>

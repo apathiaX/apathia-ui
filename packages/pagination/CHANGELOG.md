@@ -1,5 +1,14 @@
 # @apathia/apathia.pagination
 
+## 1.1.1
+
+### Patch Changes
+
+- fix: icon migrate
+- Updated dependencies
+  - @apathia/apathia.shared@1.1.1
+  - @apathia/apathia.twind@1.1.2
+
 ## 1.1.0
 
 ### Minor Changes

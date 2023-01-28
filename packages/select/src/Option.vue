@@ -14,18 +14,19 @@
     </span>
     <Icon
       v-if="isSelected"
-      :name="['fa', 'check']"
       :class="[styles.checkMark, isFocused ? styles.focusMark : '']"
-    />
+    >
+      <Check />
+    </Icon>
   </li>
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, toRefs, getCurrentInstance } from 'vue'
-import { noop } from '@apathia/apathia.shared'
-import { style } from '@apathia/apathia.twind'
-import { Icon } from '@apathia/apathia.icon'
-import { useOption } from './useOption'
+import { defineComponent, inject, toRefs, getCurrentInstance } from "vue";
+import { noop } from "@apathia/apathia.shared";
+import { style } from "@apathia/apathia.twind";
+import { Icon } from "@apathia/apathia.icon";
+import { useOption } from "./useOption";
 import {
   ChangeHandlerKey,
   FocusKey,
@@ -34,11 +35,12 @@ import {
   SelectStateKey,
   UnregisterKey,
   UpdateRegisterKey,
-} from './injectKeys'
-import { SelectState } from './types'
+} from "./injectKeys";
+import { SelectState } from "./types";
+import { Check } from "../../icon-svg/src";
 
 export default defineComponent({
-  name: 'Option',
+  name: "Option",
 
   components: {
     Icon,
@@ -56,19 +58,19 @@ export default defineComponent({
   },
 
   setup(props) {
-    const { value, disabled } = toRefs(props)
+    const { value, disabled } = toRefs(props);
 
-    const updateRegister = inject(UpdateRegisterKey, noop)
+    const updateRegister = inject(UpdateRegisterKey, noop);
     // ??
-    const selectState = inject(SelectStateKey, { indeed: false } as SelectState)
-    const changeHandler = inject(ChangeHandlerKey, noop)
-    const register = inject(RegisterKey, noop)
-    const unregister = inject(UnregisterKey, noop)
-    const focus = inject(FocusKey, noop)
-    const isSameValue = inject(SameValueCompareKey, () => false)
+    const selectState = inject(SelectStateKey, { indeed: false } as SelectState);
+    const changeHandler = inject(ChangeHandlerKey, noop);
+    const register = inject(RegisterKey, noop);
+    const unregister = inject(UnregisterKey, noop);
+    const focus = inject(FocusKey, noop);
+    const isSameValue = inject(SameValueCompareKey, () => false);
 
-    const compoData = getCurrentInstance()
-    const compoId = compoData ? compoData.uid : 0
+    const compoData = getCurrentInstance();
+    const compoId = compoData ? compoData.uid : 0;
 
     const userProps = {
       value,
@@ -81,12 +83,11 @@ export default defineComponent({
       isSameValue,
       focus,
       compoId,
-    }
+    };
 
-    const { getRootProps, isSelected, isFocused, isHidden } =
-      useOption(userProps)
+    const { getRootProps, isSelected, isFocused, isHidden } = useOption(userProps);
 
-    const styles = getOptionStyles()
+    const styles = getOptionStyles();
 
     return {
       updateRegister,
@@ -98,23 +99,23 @@ export default defineComponent({
       isHidden,
       isFocused,
       styles,
-    }
+    };
   },
   created() {
     if (!this.selectState.indeed) {
       // select
-      console.warn('<Option> 应该在 <Select> 内使用')
+      console.warn("<Option> 应该在 <Select> 内使用");
     }
   },
-})
+});
 
 const getOptionStyles = () => ({
-    wrapper: style`block text-content-primary cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
-    selected: style`font-bold text-brand-primary`,
-    focused: style`text-brand-primary bg-fill-gray`,
-    text: style`overflow-hidden overflow-ellipsis whitespace-nowrap`,
-    checkMark: style`absolute right-4 text-brand-primary`,
-    focusMark: style`text-fill-white`,
-    disabled: style`text-content-secondary bg-info-forbid cursor-not-allowed`,
-})
+  wrapper: style`block text-content-primary cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
+  selected: style`font-bold text-brand-primary`,
+  focused: style`text-brand-primary bg-fill-gray`,
+  text: style`overflow-hidden overflow-ellipsis whitespace-nowrap`,
+  checkMark: style`absolute right-4 text-brand-primary`,
+  focusMark: style`text-fill-white`,
+  disabled: style`text-content-secondary bg-info-forbid cursor-not-allowed`,
+});
 </script>

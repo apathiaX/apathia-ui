@@ -1,19 +1,153 @@
-import { defineComponent, ref, computed, shallowReactive, openBlock, createElementBlock, Fragment, createElementVNode, normalizeClass, unref, normalizeStyle, withModifiers, createVNode, createTextVNode, createCommentVNode, renderSlot, createBlock, Teleport, Transition, normalizeProps, guardReactiveProps, withCtx } from "vue";
+import { openBlock, createElementBlock, createElementVNode, defineComponent, ref, computed, shallowReactive, Fragment, normalizeClass, unref, normalizeStyle, withModifiers, createVNode, withCtx, createCommentVNode, renderSlot, createBlock, Teleport, Transition, normalizeProps, guardReactiveProps } from "vue";
 import { keyframes, css, style, tw } from "@apathia/apathia.twind";
 import { Icon } from "@apathia/apathia.icon";
 import { toast } from "@apathia/apathia.alert";
 import { resizeImage } from "@apathia/apathia.shared";
+var _export_sfc = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target[key] = val;
+  }
+  return target;
+};
+const _sfc_main$7 = {
+  name: "Close"
+};
+const _hoisted_1$7 = {
+  viewBox: "0 0 1024 1024",
+  xmlns: "http://www.w3.org/2000/svg"
+};
+const _hoisted_2$7 = /* @__PURE__ */ createElementVNode("path", {
+  fill: "currentColor",
+  d: "M764.288 214.592 512 466.88 259.712 214.592a31.936 31.936 0 0 0-45.12 45.12L466.752 512 214.528 764.224a31.936 31.936 0 1 0 45.12 45.184L512 557.184l252.288 252.288a31.936 31.936 0 0 0 45.12-45.12L557.12 512.064l252.288-252.352a31.936 31.936 0 1 0-45.12-45.184z"
+}, null, -1);
+const _hoisted_3$7 = [
+  _hoisted_2$7
+];
+function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("svg", _hoisted_1$7, _hoisted_3$7);
+}
+var Close = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6]]);
+const _sfc_main$6 = {
+  name: "CopyDocument"
+};
+const _hoisted_1$6 = {
+  viewBox: "0 0 1024 1024",
+  xmlns: "http://www.w3.org/2000/svg"
+};
+const _hoisted_2$6 = /* @__PURE__ */ createElementVNode("path", {
+  fill: "currentColor",
+  d: "M768 832a128 128 0 0 1-128 128H192A128 128 0 0 1 64 832V384a128 128 0 0 1 128-128v64a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64h64z"
+}, null, -1);
+const _hoisted_3$6 = /* @__PURE__ */ createElementVNode("path", {
+  fill: "currentColor",
+  d: "M384 128a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64V192a64 64 0 0 0-64-64H384zm0-64h448a128 128 0 0 1 128 128v448a128 128 0 0 1-128 128H384a128 128 0 0 1-128-128V192A128 128 0 0 1 384 64z"
+}, null, -1);
+const _hoisted_4$1 = [
+  _hoisted_2$6,
+  _hoisted_3$6
+];
+function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("svg", _hoisted_1$6, _hoisted_4$1);
+}
+var CopyDocument = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5]]);
+const _sfc_main$5 = {
+  name: "Minus"
+};
+const _hoisted_1$5 = {
+  viewBox: "0 0 1024 1024",
+  xmlns: "http://www.w3.org/2000/svg"
+};
+const _hoisted_2$5 = /* @__PURE__ */ createElementVNode("path", {
+  fill: "currentColor",
+  d: "M128 544h768a32 32 0 1 0 0-64H128a32 32 0 0 0 0 64z"
+}, null, -1);
+const _hoisted_3$5 = [
+  _hoisted_2$5
+];
+function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("svg", _hoisted_1$5, _hoisted_3$5);
+}
+var Minus = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$4]]);
+const _sfc_main$4 = {
+  name: "Plus"
+};
+const _hoisted_1$4 = {
+  viewBox: "0 0 1024 1024",
+  xmlns: "http://www.w3.org/2000/svg"
+};
+const _hoisted_2$4 = /* @__PURE__ */ createElementVNode("path", {
+  fill: "currentColor",
+  d: "M480 480V128a32 32 0 0 1 64 0v352h352a32 32 0 1 1 0 64H544v352a32 32 0 1 1-64 0V544H128a32 32 0 0 1 0-64h352z"
+}, null, -1);
+const _hoisted_3$4 = [
+  _hoisted_2$4
+];
+function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("svg", _hoisted_1$4, _hoisted_3$4);
+}
+var Plus = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$3]]);
+const _sfc_main$3 = {
+  name: "RefreshLeft"
+};
+const _hoisted_1$3 = {
+  viewBox: "0 0 1024 1024",
+  xmlns: "http://www.w3.org/2000/svg"
+};
+const _hoisted_2$3 = /* @__PURE__ */ createElementVNode("path", {
+  fill: "currentColor",
+  d: "M289.088 296.704h92.992a32 32 0 0 1 0 64H232.96a32 32 0 0 1-32-32V179.712a32 32 0 0 1 64 0v50.56a384 384 0 0 1 643.84 282.88 384 384 0 0 1-383.936 384 384 384 0 0 1-384-384h64a320 320 0 1 0 640 0 320 320 0 0 0-555.712-216.448z"
+}, null, -1);
+const _hoisted_3$3 = [
+  _hoisted_2$3
+];
+function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("svg", _hoisted_1$3, _hoisted_3$3);
+}
+var RefreshLeft = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$2]]);
+const _sfc_main$2 = {
+  name: "RefreshRight"
+};
+const _hoisted_1$2 = {
+  viewBox: "0 0 1024 1024",
+  xmlns: "http://www.w3.org/2000/svg"
+};
+const _hoisted_2$2 = /* @__PURE__ */ createElementVNode("path", {
+  fill: "currentColor",
+  d: "M784.512 230.272v-50.56a32 32 0 1 1 64 0v149.056a32 32 0 0 1-32 32H667.52a32 32 0 1 1 0-64h92.992A320 320 0 1 0 524.8 833.152a320 320 0 0 0 320-320h64a384 384 0 0 1-384 384 384 384 0 0 1-384-384 384 384 0 0 1 643.712-282.88z"
+}, null, -1);
+const _hoisted_3$2 = [
+  _hoisted_2$2
+];
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("svg", _hoisted_1$2, _hoisted_3$2);
+}
+var RefreshRight = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1]]);
+const _sfc_main$1 = {
+  name: "View"
+};
+const _hoisted_1$1 = {
+  viewBox: "0 0 1024 1024",
+  xmlns: "http://www.w3.org/2000/svg"
+};
+const _hoisted_2$1 = /* @__PURE__ */ createElementVNode("path", {
+  fill: "currentColor",
+  d: "M512 160c320 0 512 352 512 352S832 864 512 864 0 512 0 512s192-352 512-352zm0 64c-225.28 0-384.128 208.064-436.8 288 52.608 79.872 211.456 288 436.8 288 225.28 0 384.128-208.064 436.8-288-52.608-79.872-211.456-288-436.8-288zm0 64a224 224 0 1 1 0 448 224 224 0 0 1 0-448zm0 64a160.192 160.192 0 0 0-160 160c0 88.192 71.744 160 160 160s160-71.808 160-160-71.744-160-160-160z"
+}, null, -1);
+const _hoisted_3$1 = [
+  _hoisted_2$1
+];
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("svg", _hoisted_1$1, _hoisted_3$1);
+}
+var View = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
 const _hoisted_1 = ["src", "alt"];
 const _hoisted_2 = ["onClick"];
-const _hoisted_3 = /* @__PURE__ */ createElementVNode("path", { d: "M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 000 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z" }, null, -1);
+const _hoisted_3 = /* @__PURE__ */ createElementVNode("p", null, "\u52A0\u8F7D\u5931\u8D25", -1);
 const _hoisted_4 = [
   _hoisted_3
 ];
-const _hoisted_5 = /* @__PURE__ */ createElementVNode("p", null, "\u52A0\u8F7D\u5931\u8D25", -1);
-const _hoisted_6 = [
-  _hoisted_5
-];
-const _hoisted_7 = ["src", "alt", "onMousedown", "onMousemove", "onMouseup"];
+const _hoisted_5 = ["src", "alt", "onMousedown", "onMousemove", "onMouseup"];
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "Image",
   props: {
@@ -43,10 +177,12 @@ to {
       mask: style`
       absolute inset-0 cursor-pointer
       bg-fill-primary bg-opacity-50 opacity-0 transition-all
-      text-content-white flex justify-center items-center text-center
+      text-content-white flex justify-center items-center text-center text-sm
       hover:opacity-100
     `,
-      maskIcon: style`inline-block fill-current`,
+      iconText: style`ml-1`,
+      iconGap: style`ml-4`,
+      maskIcon: style`inline-block fill-current text-xs`,
       transitionClass: {
         "leave-to-class": tw`opacity-0`
       },
@@ -203,24 +339,33 @@ to {
               onClick: withModifiers(handleClickCopyLocation, ["stop"])
             }, [
               createVNode(unref(Icon), {
-                name: ["fa", "copy"],
-                class: normalizeClass(styles.maskIcon)
-              }, null, 8, ["class"]),
-              createTextVNode("\xA0\u590D\u5236\u5730\u5740")
+                class: normalizeClass(styles.maskIcon),
+                size: 10
+              }, {
+                default: withCtx(() => [
+                  createVNode(unref(CopyDocument))
+                ]),
+                _: 1
+              }, 8, ["class"]),
+              createElementVNode("i", {
+                class: normalizeClass(styles.iconText)
+              }, "\u590D\u5236\u5730\u5740", 2)
             ], 10, _hoisted_2),
-            createTextVNode(" \xA0\xA0 "),
             createElementVNode("span", {
-              class: normalizeClass(styles.hoverEnlarge)
+              class: normalizeClass([styles.hoverEnlarge, styles.iconGap])
             }, [
-              (openBlock(), createElementBlock("svg", {
-                focusable: "false",
-                "data-icon": "eye",
-                width: "1.2em",
-                height: "1.2em",
-                viewBox: "64 64 896 896",
-                class: normalizeClass(styles.maskIcon)
-              }, _hoisted_4, 2)),
-              createTextVNode(" \u9884\u89C8 ")
+              createVNode(unref(Icon), {
+                class: normalizeClass(styles.maskIcon),
+                size: 10
+              }, {
+                default: withCtx(() => [
+                  createVNode(unref(View))
+                ]),
+                _: 1
+              }, 8, ["class"]),
+              createElementVNode("i", {
+                class: normalizeClass(styles.iconText)
+              }, "\u9884\u89C8", 2)
             ], 2)
           ], 2)) : createCommentVNode("", true)
         ], 2),
@@ -228,7 +373,7 @@ to {
           createElementVNode("div", {
             class: normalizeClass(styles.error),
             style: normalizeStyle(unref(imgErrorStyle))
-          }, _hoisted_6, 6)
+          }, _hoisted_4, 6)
         ]) : createCommentVNode("", true),
         (openBlock(), createBlock(Teleport, { to: "body" }, [
           createVNode(Transition, normalizeProps(guardReactiveProps(styles.transitionClass)), {
@@ -250,31 +395,56 @@ to {
                       class: normalizeClass(styles.optionIcons),
                       onClick: handleClickCloseMask
                     }, [
-                      createVNode(unref(Icon), { name: ["fa", "times"] })
+                      createVNode(unref(Icon), null, {
+                        default: withCtx(() => [
+                          createVNode(unref(Close))
+                        ]),
+                        _: 1
+                      })
                     ], 2),
                     createElementVNode("li", {
                       class: normalizeClass(styles.optionIcons),
                       onClick: handleClickZoomIn
                     }, [
-                      createVNode(unref(Icon), { name: ["fa", "plus"] })
+                      createVNode(unref(Icon), null, {
+                        default: withCtx(() => [
+                          createVNode(unref(Plus))
+                        ]),
+                        _: 1
+                      })
                     ], 2),
                     createElementVNode("li", {
                       class: normalizeClass(styles.optionIcons),
                       onClick: handleClickZoomOut
                     }, [
-                      createVNode(unref(Icon), { name: ["fa", "minus"] })
+                      createVNode(unref(Icon), null, {
+                        default: withCtx(() => [
+                          createVNode(unref(Minus))
+                        ]),
+                        _: 1
+                      })
                     ], 2),
                     createElementVNode("li", {
                       class: normalizeClass([styles.optionIcons, styles.optionIconsSize]),
                       onClick: handleClickTurnRight
                     }, [
-                      createVNode(unref(Icon), { name: ["fa", "redo-alt"] })
+                      createVNode(unref(Icon), null, {
+                        default: withCtx(() => [
+                          createVNode(unref(RefreshRight))
+                        ]),
+                        _: 1
+                      })
                     ], 2),
                     createElementVNode("li", {
                       class: normalizeClass([styles.optionIcons, styles.optionIconsSize]),
                       onClick: handleClickTurnLeft
                     }, [
-                      createVNode(unref(Icon), { name: ["fa", "undo-alt"] })
+                      createVNode(unref(Icon), null, {
+                        default: withCtx(() => [
+                          createVNode(unref(RefreshLeft))
+                        ]),
+                        _: 1
+                      })
                     ], 2)
                   ], 2),
                   createElementVNode("div", {
@@ -289,7 +459,7 @@ to {
                       onMousemove: withModifiers(handleMouseMove, ["prevent"]),
                       onMouseup: withModifiers(handleMouseUp, ["prevent"]),
                       onClick: _cache[1] || (_cache[1] = (e) => e.stopPropagation())
-                    }, null, 42, _hoisted_7)
+                    }, null, 42, _hoisted_5)
                   ], 6)
                 ], 2)
               ], 34)) : createCommentVNode("", true)

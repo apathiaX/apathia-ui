@@ -1,5 +1,5 @@
 import stringwidth from "string-width";
-import { defineComponent, ref, computed, toRef, nextTick, resolveComponent, openBlock, createElementBlock, normalizeClass, normalizeStyle, renderSlot, createCommentVNode, createElementVNode, withDirectives, mergeProps, vModelDynamic, createBlock, withModifiers } from "vue";
+import { defineComponent, ref, computed, toRef, nextTick, resolveComponent, openBlock, createElementBlock, normalizeClass, normalizeStyle, renderSlot, createCommentVNode, createElementVNode, withDirectives, mergeProps, vModelDynamic, createBlock, withModifiers, withCtx, createVNode } from "vue";
 import { useInjectProp, useAttrs } from "@apathia/apathia.hooks";
 import { apply, style, tw } from "@apathia/apathia.twind";
 import { Icon } from "@apathia/apathia.icon";
@@ -51,11 +51,7 @@ const _sfc_main = defineComponent({
     const activeVal = ref(false);
     const withPrepend = computed(() => ctx.slots.prepend !== void 0);
     const withAppend = computed(() => ctx.slots.append !== void 0);
-    const disableInput = useInjectProp(
-      "FormDisabled",
-      false,
-      toRef(props, "disabled")
-    );
+    const disableInput = useInjectProp("FormDisabled", false, toRef(props, "disabled"));
     const showClearIcon = computed(
       () => props.clearable && props.modelValue && !disableInput.value
     );
@@ -141,7 +137,9 @@ const getStyles = () => {
 };
 const _hoisted_1 = ["type", "disabled"];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_Close = resolveComponent("Close");
   const _component_Icon = resolveComponent("Icon");
+  const _component_Search = resolveComponent("Search");
   return openBlock(), createElementBlock("div", {
     class: normalizeClass([
       {
@@ -184,15 +182,23 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       _ctx.showClearIcon ? (openBlock(), createBlock(_component_Icon, {
         key: 0,
         class: normalizeClass([_ctx.styles.clearableIcon, _ctx.search ? _ctx.styles.clearWithSuffix : ""]),
-        name: ["fa", "times"],
         onClick: withModifiers(_ctx.clear, ["stop"])
-      }, null, 8, ["class", "onClick"])) : createCommentVNode("", true),
+      }, {
+        default: withCtx(() => [
+          createVNode(_component_Close)
+        ]),
+        _: 1
+      }, 8, ["class", "onClick"])) : createCommentVNode("", true),
       _ctx.search ? (openBlock(), createBlock(_component_Icon, {
         key: 1,
         class: normalizeClass(_ctx.styles.suffixBtn),
-        name: ["fa", "search"],
         onClick: _ctx.onSearch
-      }, null, 8, ["class", "onClick"])) : createCommentVNode("", true)
+      }, {
+        default: withCtx(() => [
+          createVNode(_component_Search)
+        ]),
+        _: 1
+      }, 8, ["class", "onClick"])) : createCommentVNode("", true)
     ], 2),
     _ctx.withAppend ? (openBlock(), createElementBlock("span", {
       key: 1,

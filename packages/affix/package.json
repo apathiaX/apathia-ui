@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.affix",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "affix",
   "author": "",
   "homepage": "",
@@ -33,6 +33,6 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.twind": "workspace:^1.1.0"
+    "@apathia/apathia.twind": "workspace:^1.1.2"
   }
 }

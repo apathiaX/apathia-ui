@@ -22,9 +22,10 @@
                 size="xs"
                 fill="red"
                 :class="styles.nodeRemove"
-                :name="['fa', 'times']"
                 @click.stop="removeOne(node)"
-              />
+              >
+                <Close />
+              </Icon>
             </span>
           </div>
         </template>
@@ -44,96 +45,97 @@
 
     <Icon
       v-if="clearable && nodes.length"
-      size="lg"
+      size="12"
       :class="styles.clearIcon"
-      :name="['fa', 'times']"
       @click.stop="clear"
-    />
+    >
+      <Close />
+    </Icon>
   </div>
 </template>
 
 <script setup lang="ts">
-import { withDefaults, ref } from 'vue'
-import { Icon } from '@apathia/apathia.icon'
-import { useScrollX, onClickOutside } from '@apathia/apathia.hooks'
-import { style, css } from '@apathia/apathia.twind'
-import type { Node } from './types'
-// import { getNodeStyles } from './styles'
+import { withDefaults, ref } from "vue";
+import { Icon } from "@apathia/apathia.icon";
+import { useScrollX, onClickOutside } from "@apathia/apathia.hooks";
+import { style, css } from "@apathia/apathia.twind";
+import type { Node } from "./types";
+import { Close } from "../../icon-svg/src";
 
-// defineOptions({
-//   name: 'Node',
-// })
+defineOptions({
+  name: "Node",
+});
 
 interface NodeProps {
-  nodes: Node[]
-  focus: boolean
-  showAllLevels: boolean
-  separator: string
-  placeholder: string
-  clearable: boolean
-  search: boolean
+  nodes: Node[];
+  focus: boolean;
+  showAllLevels: boolean;
+  separator: string;
+  placeholder: string;
+  clearable: boolean;
+  search: boolean;
 }
 
 const getNodeStyles = () => {
-    return {
-      container: style`w-full relative flex shadow h-8 border rounded border-line-accent bg-content-white text-sm items-center`,
-      wrap: style`h-full w-full overflow-hidden`,
-      active: style`border-brand-primary`,
-      nodes: style`w-full flex-1 flex-nowrap whitespace-nowrap py-btn-md-y px-1.5 overflow-x-scroll ${css`
-        height: calc(100% + 17px);
-      `}`,
-      search: style`flex-1 outline-none`,
-      tag: style`rounded inline-flex text-xs text-content-accent items-center py-1 pl-1.5 bg-fill-light h-5 mr-1 flex-shrink-0`,
-      iconWrap: style`h-4 w-4 inline-flex items-center justify-center rounded-full ml-1`,
-      nodeRemove: style`p-1.5 text-content-accent hover:(text-content-primary) cursor-pointer`,
-      clearIcon: style`absolute right-2 top-1/2 -translate-y-2/4 cursor-pointer ml-2 text-content-neutral hover:(text-content-primary)`,
-      placeholder: style`text-content-secondary`,
-    }
-}
+  return {
+    container: style`w-full relative flex shadow h-8 border rounded border-line-accent bg-content-white text-sm items-center`,
+    wrap: style`h-full w-full overflow-hidden`,
+    active: style`border-brand-primary`,
+    nodes: style`w-full flex-1 flex-nowrap whitespace-nowrap py-btn-md-y px-1.5 overflow-x-hidden ${css`
+      height: calc(100% + 17px);
+    `}`,
+    search: style`flex-1 outline-none`,
+    tag: style`rounded inline-flex text-xs text-content-accent items-center py-1 pl-1.5 bg-fill-light h-5 mr-1 flex-shrink-0`,
+    iconWrap: style`h-4 w-4 inline-flex items-center justify-center rounded-full ml-1`,
+    nodeRemove: style`p-1.5 text-content-accent hover:(text-content-primary) cursor-pointer`,
+    clearIcon: style`absolute right-2 top-1/2 -translate-y-2/4 cursor-pointer ml-2 text-content-neutral hover:(text-content-primary)`,
+    placeholder: style`text-content-secondary`,
+  };
+};
 
 const props = withDefaults(defineProps<NodeProps>(), {
   nodes: () => [],
   focus: false,
   showAllLevels: false,
-  separator: '/',
-  placeholder: '',
+  separator: "/",
+  placeholder: "",
   clearable: false,
   // TODO: search?
   search: false,
-})
+});
 
-const emit = defineEmits(['clear', 'remove', 'update:focus', 'search-change'])
+const emit = defineEmits(["clear", "remove", "update:focus", "search-change"]);
 
-const styles = getNodeStyles()
+const styles = getNodeStyles();
 
-const searchInput = ref<string>('')
+const searchInput = ref<string>("");
 const onSearchInput = (e: Event) => {
-  emit('search-change', (e.target as HTMLInputElement).value)
-  console.log(e)
-}
+  emit("search-change", (e.target as HTMLInputElement).value);
+  console.log(e);
+};
 
-const showSearch = ref<boolean>(false)
+const showSearch = ref<boolean>(false);
 const clear = () => {
-  emit('clear')
-}
+  emit("clear");
+};
 
 const removeOne = (node: Node) => {
-  emit('remove', node)
-}
+  emit("remove", node);
+};
 
 const handleClick = () => {
-  showSearch.value = true
-  emit('update:focus', !props.focus)
-}
+  showSearch.value = true;
+  emit("update:focus", !props.focus);
+};
 
-const tagContainerRef = ref<HTMLDivElement | null>(null)
+const tagContainerRef = ref<HTMLDivElement | null>(null);
 
 onClickOutside(tagContainerRef, () => {
-  showSearch.value = false
-  searchInput.value = ''
-  emit('search-change', '')
-  emit('update:focus', false)
-})
+  showSearch.value = false;
+  searchInput.value = "";
+  emit("search-change", "");
+  emit("update:focus", false);
+});
 
-const { contentRef } = useScrollX(false)
+const { contentRef } = useScrollX(false);
 </script>

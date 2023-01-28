@@ -119,8 +119,8 @@
       icon
     };
   }
-  const _hoisted_1 = { key: 0 };
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_ArrowRight = vue.resolveComponent("ArrowRight");
     const _component_Icon = vue.resolveComponent("Icon");
     const _component_CollapseTransition = vue.resolveComponent("CollapseTransition");
     return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
@@ -132,13 +132,19 @@
           class: vue.normalizeClass([_ctx.styles.headerClass, _ctx.disabled ? _ctx.styles.headerDisableClass : ""]),
           onClick: _cache[0] || (_cache[0] = (...args) => _ctx.handleClick && _ctx.handleClick(...args))
         }, [
-          _ctx.showArrow ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_1, [
+          _ctx.showArrow ? (vue.openBlock(), vue.createElementBlock("span", {
+            key: 0,
+            style: vue.normalizeStyle({ transform: `rotate(${_ctx.show ? 90 : 0}deg)` })
+          }, [
             vue.createVNode(_component_Icon, {
-              name: ["fa", "caret-right"],
-              class: vue.normalizeClass(_ctx.styles.icon),
-              style: vue.normalizeStyle({ transform: `rotate(${_ctx.show ? 90 : 0}deg)` })
-            }, null, 8, ["class", "style"])
-          ])) : vue.createCommentVNode("", true),
+              class: vue.normalizeClass(_ctx.styles.icon)
+            }, {
+              default: vue.withCtx(() => [
+                vue.createVNode(_component_ArrowRight)
+              ]),
+              _: 1
+            }, 8, ["class"])
+          ], 4)) : vue.createCommentVNode("", true),
           vue.renderSlot(_ctx.$slots, "header", {}, () => [
             vue.createElementVNode("div", null, vue.toDisplayString(_ctx.header), 1)
           ])

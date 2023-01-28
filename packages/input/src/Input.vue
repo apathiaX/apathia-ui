@@ -34,15 +34,13 @@
       <Icon
         v-if="showClearIcon"
         :class="[styles.clearableIcon, search ? styles.clearWithSuffix : '']"
-        :name="['fa', 'times']"
         @click.stop="clear"
-      />
-      <Icon
-        v-if="search"
-        :class="styles.suffixBtn"
-        :name="['fa', 'search']"
-        @click="onSearch"
-      />
+      >
+        <Close />
+      </Icon>
+      <Icon v-if="search" :class="styles.suffixBtn" @click="onSearch">
+        <Search />
+      </Icon>
     </div>
     <span v-if="withAppend" :class="styles.append">
       <slot name="append"></slot>
@@ -51,14 +49,15 @@
 </template>
 
 <script lang="ts">
-import stringwidth from 'string-width'
-import { computed, defineComponent, toRef, ref, nextTick } from 'vue'
-import { useAttrs, useInjectProp } from '@apathia/apathia.hooks'
-import { style, apply, tw } from '@apathia/apathia.twind'
-import { Icon } from '@apathia/apathia.icon'
+import stringwidth from "string-width";
+import { computed, defineComponent, toRef, ref, nextTick } from "vue";
+import { useAttrs, useInjectProp } from "@apathia/apathia.hooks";
+import { style, apply, tw } from "@apathia/apathia.twind";
+import { Icon } from "@apathia/apathia.icon";
+import { Close, Search } from "../../icon-svg/src";
 
 export default defineComponent({
-  name: 'Input',
+  name: "Input",
 
   components: {
     Icon,
@@ -69,15 +68,15 @@ export default defineComponent({
   props: {
     type: {
       type: String,
-      default: 'text',
+      default: "text",
     },
     modelValue: {
       type: [String, Number],
-      default: '',
+      default: "",
     },
     inputClass: {
       type: [String, Object],
-      default: '',
+      default: "",
     },
     search: {
       type: Boolean,
@@ -96,73 +95,69 @@ export default defineComponent({
     },
   },
 
-  emits: ['update:modelValue', 'input', 'search'],
+  emits: ["update:modelValue", "input", "search"],
 
   setup(props, ctx) {
-    const inputRef = ref<HTMLInputElement | null>(null)
-    const activeVal = ref<boolean>(false)
+    const inputRef = ref<HTMLInputElement | null>(null);
+    const activeVal = ref<boolean>(false);
 
-    const withPrepend = computed(() => ctx.slots.prepend !== undefined)
-    const withAppend = computed(() => ctx.slots.append !== undefined)
-    const disableInput = useInjectProp(
-      'FormDisabled',
-      false,
-      toRef(props, 'disabled'),
-    )
+    const withPrepend = computed(() => ctx.slots.prepend !== undefined);
+    const withAppend = computed(() => ctx.slots.append !== undefined);
+    const disableInput = useInjectProp("FormDisabled", false, toRef(props, "disabled"));
     const showClearIcon = computed(
-      () => props.clearable && props.modelValue && !disableInput.value,
-    )
+      () => props.clearable && props.modelValue && !disableInput.value
+    );
 
     // excludes style and class
-    const attrs = useAttrs()
+    const attrs = useAttrs();
 
     const inputVal = computed({
       get: () => props.modelValue as string,
       set: (val: string) => {
-        const strWidth = stringwidth(val)
+        const strWidth = stringwidth(val);
         if (props.maxwords !== undefined && strWidth > 2 * props.maxwords) {
           if (inputRef.value) {
-            inputRef.value.value = getStringByWords(val, props.maxwords * 2)
+            inputRef.value.value = getStringByWords(val, props.maxwords * 2);
           }
-          return
+          return;
         }
-        ctx.emit('update:modelValue', val)
+        ctx.emit("update:modelValue", val);
       },
-    })
+    });
     const handleInput = (e: Event) => {
-      ctx.emit('input', e)
-    }
+      ctx.emit("input", e);
+    };
 
     const getStringByWords = (str: string, width: number) => {
-      let totalCnt = 0
-      let res = ''
+      let totalCnt = 0;
+      let res = "";
       for (const char of str) {
-        totalCnt += stringwidth(char)
+        totalCnt += stringwidth(char);
         if (totalCnt > width) {
-          return res
+          return res;
         }
-        res += char
+        res += char;
       }
-      return res
-    }
+      return res;
+    };
 
     const onSearch = () => {
       if (inputRef.value) {
-        inputRef.value.focus()
+        inputRef.value.focus();
       }
-      ctx.emit('search', props.modelValue)
-    }
+      ctx.emit("search", props.modelValue);
+    };
     const clear = () => {
-      ctx.emit('update:modelValue', '')
+      ctx.emit("update:modelValue", "");
       nextTick(() => {
         if (inputRef.value) {
           // 手动出发输入事件
-          inputRef.value.dispatchEvent(new Event('input'))
+          inputRef.value.dispatchEvent(new Event("input"));
         }
-      })
-    }
+      });
+    };
 
-    const styles = getStyles()
+    const styles = getStyles();
 
     return {
       inputRef,
@@ -179,33 +174,33 @@ export default defineComponent({
       clear,
 
       styles,
-    }
+    };
   },
-})
+});
 
 const getStyles = () => {
-    const prependAndAppend = apply`text(content-accent sm) px-2 inline-flex items-center bg-fill-gray`
-    const commonIcon = apply`absolute self-center text-fill-secondary`
-    const interactiveIcon = apply`${commonIcon}cursor-pointer hover:(text-fill-accent)`
-  
-    return {
-      inputContainer: style`relative flex w-full h-8 border rounded border-line-accent bg-content-white shadow`,
-      inputWrapper: style`relative flex rounded flex-grow-1 bg-content-white`,
-      input: style`w-full h-full rounded block text-sm outline-none py-1.5 pl-2`,
-  
-      withPrefix: style`pl-9`,
-      disabled: style(
-        'cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-neutral',
-      ),
-      active: style`border-brand-primary`,
-  
-      prepend: tw`${prependAndAppend}${apply`rounded-l border-r-0`}`,
-  
-      clearableIcon: tw`${interactiveIcon}${apply`right-2`}`,
-      clearWithSuffix: tw`${interactiveIcon}${apply`right-8`}`,
-      append: tw`${prependAndAppend}${apply`rounded-r`}`,
-  
-      suffixBtn: tw`${interactiveIcon}${apply`right-2`}`,
-    }
-}
+  const prependAndAppend = apply`text(content-accent sm) px-2 inline-flex items-center bg-fill-gray`;
+  const commonIcon = apply`absolute self-center text-fill-secondary`;
+  const interactiveIcon = apply`${commonIcon}cursor-pointer hover:(text-fill-accent)`;
+
+  return {
+    inputContainer: style`relative flex w-full h-8 border rounded border-line-accent bg-content-white shadow`,
+    inputWrapper: style`relative flex rounded flex-grow-1 bg-content-white`,
+    input: style`w-full h-full rounded block text-sm outline-none py-1.5 pl-2`,
+
+    withPrefix: style`pl-9`,
+    disabled: style(
+      "cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-neutral"
+    ),
+    active: style`border-brand-primary`,
+
+    prepend: tw`${prependAndAppend}${apply`rounded-l border-r-0`}`,
+
+    clearableIcon: tw`${interactiveIcon}${apply`right-2`}`,
+    clearWithSuffix: tw`${interactiveIcon}${apply`right-8`}`,
+    append: tw`${prependAndAppend}${apply`rounded-r`}`,
+
+    suffixBtn: tw`${interactiveIcon}${apply`right-2`}`,
+  };
+};
 </script>

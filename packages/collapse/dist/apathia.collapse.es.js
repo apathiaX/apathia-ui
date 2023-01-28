@@ -1,4 +1,4 @@
-import { defineComponent, h, Transition, watch, resolveComponent, openBlock, createElementBlock, Fragment, renderSlot, createElementVNode, normalizeClass, createVNode, normalizeStyle, createCommentVNode, toDisplayString, withCtx, withDirectives, vShow } from "vue";
+import { defineComponent, h, Transition, watch, resolveComponent, openBlock, createElementBlock, Fragment, renderSlot, createElementVNode, normalizeClass, normalizeStyle, createVNode, withCtx, createCommentVNode, toDisplayString, withDirectives, vShow } from "vue";
 import { Icon } from "@apathia/apathia.icon";
 import { useToggle } from "@apathia/apathia.hooks";
 import { style } from "@apathia/apathia.twind";
@@ -120,8 +120,8 @@ function initStyle() {
     icon
   };
 }
-const _hoisted_1 = { key: 0 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_ArrowRight = resolveComponent("ArrowRight");
   const _component_Icon = resolveComponent("Icon");
   const _component_CollapseTransition = resolveComponent("CollapseTransition");
   return openBlock(), createElementBlock(Fragment, null, [
@@ -133,13 +133,19 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         class: normalizeClass([_ctx.styles.headerClass, _ctx.disabled ? _ctx.styles.headerDisableClass : ""]),
         onClick: _cache[0] || (_cache[0] = (...args) => _ctx.handleClick && _ctx.handleClick(...args))
       }, [
-        _ctx.showArrow ? (openBlock(), createElementBlock("span", _hoisted_1, [
+        _ctx.showArrow ? (openBlock(), createElementBlock("span", {
+          key: 0,
+          style: normalizeStyle({ transform: `rotate(${_ctx.show ? 90 : 0}deg)` })
+        }, [
           createVNode(_component_Icon, {
-            name: ["fa", "caret-right"],
-            class: normalizeClass(_ctx.styles.icon),
-            style: normalizeStyle({ transform: `rotate(${_ctx.show ? 90 : 0}deg)` })
-          }, null, 8, ["class", "style"])
-        ])) : createCommentVNode("", true),
+            class: normalizeClass(_ctx.styles.icon)
+          }, {
+            default: withCtx(() => [
+              createVNode(_component_ArrowRight)
+            ]),
+            _: 1
+          }, 8, ["class"])
+        ], 4)) : createCommentVNode("", true),
         renderSlot(_ctx.$slots, "header", {}, () => [
           createElementVNode("div", null, toDisplayString(_ctx.header), 1)
         ])

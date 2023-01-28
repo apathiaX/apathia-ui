@@ -1,4 +1,4 @@
-import { defineComponent, computed, resolveComponent, openBlock, createElementBlock, normalizeClass, createElementVNode, createVNode, inject, normalizeStyle, Fragment, renderList, createBlock, toDisplayString, createCommentVNode, ref, mergeProps, withCtx, createTextVNode, Transition, onMounted, onUpdated, watch, toRefs, provide, renderSlot, shallowRef, unref } from "vue";
+import { defineComponent, computed, resolveComponent, openBlock, createElementBlock, normalizeClass, createElementVNode, createVNode, withCtx, createBlock, inject, normalizeStyle, Fragment, renderList, toDisplayString, createCommentVNode, ref, mergeProps, createTextVNode, Transition, onMounted, onUpdated, watch, toRefs, provide, renderSlot, shallowRef, unref } from "vue";
 import { style, css, apply } from "@apathia/apathia.twind";
 import { Loading } from "@apathia/apathia.loading";
 import { CustomRender } from "@apathia/apathia.custom-render";
@@ -45,12 +45,14 @@ const _sfc_main$4 = defineComponent({
   }
 });
 const getStyles$3 = () => ({
-  arrowWrap: style`inline-block pl-px`,
+  arrowWrap: style`inline-block pl-px align-middle`,
   arrow: style`text-content-neutral cursor-pointer`,
   arrowIcon: style`h-3.5 w-3.5 align-middle`,
   active: style`text-content-accent`
 });
 function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_SortUp = resolveComponent("SortUp");
+  const _component_SortDown = resolveComponent("SortDown");
   const _component_Icon = resolveComponent("Icon");
   return openBlock(), createElementBlock("span", {
     class: normalizeClass(_ctx.styles.arrowWrap)
@@ -62,12 +64,12 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
       }),
       onClick: _cache[0] || (_cache[0] = (...args) => _ctx.sortChange && _ctx.sortChange(...args))
     }, [
-      createVNode(_component_Icon, {
-        name: [
-          "fa",
-          _ctx.sort.order === "asc" ? "sort-amount-up" : "sort-amount-down"
-        ]
-      }, null, 8, ["name"])
+      createVNode(_component_Icon, { size: 14 }, {
+        default: withCtx(() => [
+          _ctx.sort.order === "asc" ? (openBlock(), createBlock(_component_SortUp, { key: 0 })) : (openBlock(), createBlock(_component_SortDown, { key: 1 }))
+        ]),
+        _: 1
+      })
     ], 2)
   ], 2);
 }
@@ -487,6 +489,8 @@ const _hoisted_3$1 = { key: 0 };
 const _hoisted_4$1 = ["colspan"];
 function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_Checkbox = resolveComponent("Checkbox");
+  const _component_Minus = resolveComponent("Minus");
+  const _component_Plus = resolveComponent("Plus");
   const _component_Icon = resolveComponent("Icon");
   const _component_BaseButton = resolveComponent("BaseButton");
   const _component_CustomRender = resolveComponent("CustomRender");
@@ -513,9 +517,13 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
               disabled: col.disabledWhen ? !!col.disabledWhen({ row: _ctx.row, rowIndex: _ctx.rowIndex }) : false
             }, null, 8, ["model-value", "disabled"])) : col.type === "expand" && _ctx.expandable ? (openBlock(), createBlock(_component_Icon, {
               key: 2,
-              name: ["fa", _ctx.expandActive ? "minus" : "plus"],
               onClick: _ctx.toggleExpand
-            }, null, 8, ["name", "onClick"])) : createCommentVNode("", true)
+            }, {
+              default: withCtx(() => [
+                _ctx.expandActive ? (openBlock(), createBlock(_component_Minus, { key: 0 })) : (openBlock(), createBlock(_component_Plus, { key: 1 }))
+              ]),
+              _: 1
+            }, 8, ["onClick"])) : createCommentVNode("", true)
           ], 64)) : col && "field" in col ? (openBlock(), createElementBlock("span", _hoisted_2$1, toDisplayString(_ctx.get(_ctx.row, col.field, "")), 1)) : col && "buttons" in col ? (openBlock(), createElementBlock("div", {
             key: 2,
             class: normalizeClass(_ctx.styles.cellBtnsWrap)

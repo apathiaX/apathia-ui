@@ -21,19 +21,16 @@
         <Checkbox
           v-else-if="col.type === 'selection'"
           :model-value="!!selectedMap[row[rowKey]]"
-          :disabled="
-            col.disabledWhen ? !!col.disabledWhen({ row, rowIndex }) : false
-          "
+          :disabled="col.disabledWhen ? !!col.disabledWhen({ row, rowIndex }) : false"
         />
-        <Icon
-          v-else-if="col.type === 'expand' && expandable"
-          :name="['fa', expandActive ? 'minus' : 'plus']"
-          @click="toggleExpand"
-        />
+        <Icon v-else-if="col.type === 'expand' && expandable" @click="toggleExpand">
+          <Minus v-if="expandActive" />
+          <Plus v-else />
+        </Icon>
       </template>
 
       <span v-else-if="col && 'field' in col">
-        {{ get(row, col.field, '') }}
+        {{ get(row, col.field, "") }}
       </span>
 
       <div v-else-if="col && 'buttons' in col" :class="styles.cellBtnsWrap">
@@ -77,36 +74,33 @@
   >
     <tr v-if="expandable && expandActive">
       <td :colspan="columns.length">
-        <CustomRender
-          :render="expand.expandRowRender"
-          :row="row"
-          :row-index="rowIndex"
-        />
+        <CustomRender :render="expand.expandRowRender" :row="row" :row-index="rowIndex" />
       </td>
     </tr>
   </transition>
 </template>
 
 <script lang="tsx">
-import { defineComponent, PropType, inject, ref, computed } from 'vue'
-import { get } from 'lodash'
-import { css, style } from '@apathia/apathia.twind'
-import { CustomRender } from '@apathia/apathia.custom-render'
-import { Icon } from '@apathia/apathia.icon'
-import { BaseButton } from '@apathia/apathia.button'
-import { Checkbox } from '@apathia/apathia.checkbox'
+import { defineComponent, PropType, inject, ref, computed } from "vue";
+import { get } from "lodash";
+import { css, style } from "@apathia/apathia.twind";
+import { CustomRender } from "@apathia/apathia.custom-render";
+import { Icon } from "@apathia/apathia.icon";
+import { BaseButton } from "@apathia/apathia.button";
+import { Checkbox } from "@apathia/apathia.checkbox";
 import type {
   Column,
   DataItem,
   Expander,
   ClassNamesGenerator,
   StylesGenerator,
-} from './types'
-import { TableMultiSelectedHelper } from './useTableSelected'
-import { toStyleObject, toRealWidth } from './utils'
+} from "./types";
+import { TableMultiSelectedHelper } from "./useTableSelected";
+import { toStyleObject, toRealWidth } from "./utils";
+import { Minus, Plus } from "../../icon-svg";
 
 export default defineComponent({
-  name: 'TableRow',
+  name: "TableRow",
 
   components: {
     CustomRender,
@@ -137,38 +131,36 @@ export default defineComponent({
       >,
     },
     rowStyle: {
-      type: Function as PropType<
-        StylesGenerator<{ row: DataItem; rowIndex: number }>
-      >,
+      type: Function as PropType<StylesGenerator<{ row: DataItem; rowIndex: number }>>,
     },
 
     cellClassName: {
       type: Function as PropType<
         ClassNamesGenerator<{
-          row: DataItem
-          col: Column
-          colIndex: number
-          rowIndex: number
+          row: DataItem;
+          col: Column;
+          colIndex: number;
+          rowIndex: number;
         }>
       >,
     },
     cellStyle: {
       type: Function as PropType<
         StylesGenerator<{
-          row: DataItem
-          col: Column
-          colIndex: number
-          rowIndex: number
+          row: DataItem;
+          col: Column;
+          colIndex: number;
+          rowIndex: number;
         }>
       >,
     },
     cellSpan: {
       type: Function as PropType<
         (c: {
-          row: DataItem
-          col: Column
-          rowIndex: number
-          colIndex: number
+          row: DataItem;
+          col: Column;
+          rowIndex: number;
+          colIndex: number;
         }) => [number, number]
       >,
       default: () => [1, 1],
@@ -178,7 +170,7 @@ export default defineComponent({
     },
     rowKey: {
       type: String,
-      default: 'id',
+      default: "id",
     },
 
     rowIndex: {
@@ -196,62 +188,59 @@ export default defineComponent({
     },
   },
 
-  emits: ['row-click'],
+  emits: ["row-click"],
 
   setup(props, ctx) {
-    const styles = getStyles()
+    const styles = getStyles();
 
     const rowClasses =
-      props.rowClassName?.({ row: props.row, rowIndex: props.rowIndex }) || ''
+      props.rowClassName?.({ row: props.row, rowIndex: props.rowIndex }) || "";
     const rowStyles =
-      props.rowStyle?.({ row: props.row, rowIndex: props.rowIndex }) || ''
+      props.rowStyle?.({ row: props.row, rowIndex: props.rowIndex }) || "";
 
-    const { selectedMap } = inject(
-      'TableMultiSelected',
-    ) as TableMultiSelectedHelper
+    const { selectedMap } = inject("TableMultiSelected") as TableMultiSelectedHelper;
 
     const isRowActiveStyle = computed(
-      () =>
-        props.highlightCurrentRow && props.currentActiveRow === props.rowIndex,
-    )
+      () => props.highlightCurrentRow && props.currentActiveRow === props.rowIndex
+    );
 
     const expandable = computed(
       () =>
-        typeof props.expand.expandRowRender === 'function' &&
+        typeof props.expand.expandRowRender === "function" &&
         !!props.expand.rowExpandable?.({
           row: props.row,
           rowIndex: props.rowIndex,
-        }),
-    )
-    const expandActive = ref(false)
+        })
+    );
+    const expandActive = ref(false);
     const toggleExpand = () => {
-      expandActive.value = !expandActive.value
-    }
+      expandActive.value = !expandActive.value;
+    };
 
-    let cancelClick = false
+    let cancelClick = false;
     const clickRow = (e: Event, rowIndex: number) => {
-      if (cancelClick) return
+      if (cancelClick) return;
 
-      ctx.emit('row-click', e, rowIndex, props.row)
-    }
+      ctx.emit("row-click", e, rowIndex, props.row);
+    };
     const handleRowMouseUp = (e: Event) => {
-      const selection = window.getSelection()
+      const selection = window.getSelection();
       if (
         selection &&
-        selection.type === 'Range' &&
+        selection.type === "Range" &&
         selection.focusNode &&
         selection.anchorNode &&
         selection.anchorNode.nodeType !== Node.ELEMENT_NODE &&
         // 判断普通文字选择，Range 开始与结束应属于同一类 Node
         selection.anchorNode.nodeType === selection.focusNode.nodeType
       ) {
-        cancelClick = true
+        cancelClick = true;
 
-        e.stopPropagation()
+        e.stopPropagation();
       } else {
-        cancelClick = false
+        cancelClick = false;
       }
-    }
+    };
 
     const cols = computed(() =>
       props.columns
@@ -261,10 +250,10 @@ export default defineComponent({
             col,
             rowIndex: props.rowIndex,
             colIndex,
-          })
+          });
           if (colSpan === 0 || rowSpan === 0) {
             // 无需渲染
-            return null
+            return null;
           }
 
           const cellClassName =
@@ -273,7 +262,7 @@ export default defineComponent({
               col,
               rowIndex: props.rowIndex,
               colIndex,
-            }) || ''
+            }) || "";
 
           const cellStyles = {
             ...toStyleObject(
@@ -282,23 +271,23 @@ export default defineComponent({
                 col,
                 rowIndex: props.rowIndex,
                 colIndex,
-              }),
+              })
             ),
-            textAlign: col.align || 'center',
+            textAlign: col.align || "center",
             width: toRealWidth(col.width),
-          }
+          };
 
           const tdAttrs: Record<string, unknown> = {
             style: cellStyles,
-          }
-          if (colSpan !== 1) tdAttrs.colSpan = colSpan
-          if (rowSpan !== 1) tdAttrs.rowSpan = rowSpan
+          };
+          if (colSpan !== 1) tdAttrs.colSpan = colSpan;
+          if (rowSpan !== 1) tdAttrs.rowSpan = rowSpan;
 
           const tdClasses = {
             [styles.cell]: true,
             [styles.borderd]: props.border,
-            [styles.fixedColumnLeft]: col.fixed === 'left',
-            [styles.fixedColumnRight]: col.fixed === 'right',
+            [styles.fixedColumnLeft]: col.fixed === "left",
+            [styles.fixedColumnRight]: col.fixed === "right",
             [styles.activeRow]: isRowActiveStyle.value, // sticky 需要再次声明背景色
             [styles.stripedRow]: props.stripe && props.rowIndex % 2 === 1,
             [styles.whiteRow]: !(
@@ -306,31 +295,31 @@ export default defineComponent({
               (props.stripe && props.rowIndex % 2 === 1)
             ),
             [cellClassName]: true,
-          }
+          };
 
           return {
             ...col,
             tdClasses,
             tdAttrs,
-          }
+          };
         })
-        .filter(Boolean),
-    )
+        .filter(Boolean)
+    );
 
     const classNames2props = (str?: string) => {
       if (!str) {
         return {
           primary: true, // default
-        }
+        };
       }
       return str
-        .split(' ')
-        .filter(v => !!v)
+        .split(" ")
+        .filter((v) => !!v)
         .reduce<Record<string, boolean>>((acc, v) => {
-          acc[v] = true
-          return acc
-        }, {})
-    }
+          acc[v] = true;
+          return acc;
+        }, {});
+    };
 
     return {
       selectedMap,
@@ -350,17 +339,17 @@ export default defineComponent({
       // util
       get,
       classNames2props,
-    }
+    };
   },
-})
+});
 
 const getStyles = () => {
   const borderRight = css`
     border-right: 1px solid rgb(0 0 0 / 12%);
-  `
+  `;
   const borderLeft = css`
     border-left: 1px solid rgb(0 0 0 / 12%);
-  `
+  `;
 
   return {
     row: style`hover:(bg-fill-light) transition`,
@@ -383,6 +372,6 @@ const getStyles = () => {
 
     fadeEnd: style`opacity-0`,
     fadeActive: style`transition-all duration-100`,
-  }
-}
+  };
+};
 </script>

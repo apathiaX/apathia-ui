@@ -1,5 +1,11 @@
 # @apathia/apathia.twind
 
+## 1.1.2
+
+### Patch Changes
+
+- fix: icon migrate
+
 ## 1.1.1
 
 ### Patch Changes

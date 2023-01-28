@@ -1,5 +1,11 @@
 # @apathia/apathia.custom-render
 
+## 1.1.1
+
+### Patch Changes
+
+- fix: icon migrate
+
 ## 1.1.0
 
 ### Minor Changes

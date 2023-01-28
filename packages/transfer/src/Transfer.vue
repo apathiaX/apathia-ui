@@ -22,7 +22,9 @@
           :disabled="source.length === 0"
           @click="addAll"
         >
-          <Icon :name="['fa', 'angle-double-right']" />
+          <Icon>
+            <DArrowLeft />
+          </Icon>
         </BaseButton>
       </div>
       <div>
@@ -32,7 +34,9 @@
           :disabled="selectedSource.length === 0"
           @click="addSelected"
         >
-          <Icon :name="['fa', 'angle-right']" />
+          <Icon>
+            <ArrowRight />
+          </Icon>
         </BaseButton>
       </div>
       <div>
@@ -42,7 +46,9 @@
           :disabled="selectedTarget.length === 0"
           @click="removeSelected"
         >
-          <Icon :name="['fa', 'angle-left']" />
+          <Icon>
+            <ArrowLeft />
+          </Icon>
         </BaseButton>
       </div>
       <div>
@@ -52,7 +58,9 @@
           :disabled="target.length === 0"
           @click="removeAll"
         >
-          <Icon :name="['fa', 'angle-double-left']" />
+          <Icon>
+            <DArrowLeft />
+          </Icon>
         </BaseButton>
       </div>
     </div>
@@ -74,50 +82,50 @@
 </template>
 
 <script setup lang="ts">
-import { computed, withDefaults } from 'vue'
-import { Icon } from '@apathia/apathia.icon'
-import { BaseButton } from '@apathia/apathia.button'
-import useTransfer from './useTransfer'
-import Panel from './Panel.vue'
-import type { Key, DataItem, TargetOrder, Props } from './types'
-import { apply, tw } from '@apathia/apathia.twind'
+import { computed, withDefaults } from "vue";
+import { Icon } from "@apathia/apathia.icon";
+import { BaseButton } from "@apathia/apathia.button";
+import useTransfer from "./useTransfer";
+import Panel from "./Panel.vue";
+import type { Key, DataItem, TargetOrder, Props } from "./types";
+import { apply, tw } from "@apathia/apathia.twind";
+import { ArrowLeft, ArrowRight, DArrowLeft, DArrowRight } from "../../icon-svg/src";
 
 const getTranferStyles = () => ({
-    transfer: tw`${apply`flex`}`,
-    panel: tw`${apply`w-48`}`,
-    buttonWrapper: tw`${apply`self-center text-center mx-4`}`,
-    button: tw`${apply`w-12 my-0.5`}`,
-})
+  transfer: tw`${apply`flex`}`,
+  panel: tw`${apply`w-48`}`,
+  buttonWrapper: tw`${apply`self-center text-center mx-4`}`,
+  button: tw`${apply`w-12 my-0.5`}`,
+});
 
 interface TransferProps {
-  modelValue: Key[]
-  data: Array<Record<string, string | boolean | number>>
-  filterable?: boolean
-  filterPlaceholder?: string
-  filterMethod?: (word: string, option: DataItem) => boolean
-  targetOrder?: TargetOrder
-  titles?: [string, string]
-  propKeys?: Props
-  leftDefaultChecked?: Key[]
-  rightDefaultChecked?: Key[]
+  modelValue: Key[];
+  data: Array<Record<string, string | boolean | number>>;
+  filterable?: boolean;
+  filterPlaceholder?: string;
+  filterMethod?: (word: string, option: DataItem) => boolean;
+  targetOrder?: TargetOrder;
+  titles?: [string, string];
+  propKeys?: Props;
+  leftDefaultChecked?: Key[];
+  rightDefaultChecked?: Key[];
 }
 
 const props = withDefaults(defineProps<TransferProps>(), {
-  filterPlaceholder: '请输入搜索内容',
-  filterMethod: (word: string, option: DataItem) =>
-        option.label.indexOf(word) > -1,
-  targetOrder: 'original',
-  titles: () => ['列表1', '列表2'],
+  filterPlaceholder: "请输入搜索内容",
+  filterMethod: (word: string, option: DataItem) => option.label.indexOf(word) > -1,
+  targetOrder: "original",
+  titles: () => ["列表1", "列表2"],
   propKeys: () => ({
-    value: 'value',
-    label: 'label',
-    disabled: 'disabled',
+    value: "value",
+    label: "label",
+    disabled: "disabled",
   }),
   leftDefaultChecked: () => [],
-  rightDefaultChecked: () => []
-})
+  rightDefaultChecked: () => [],
+});
 
-const emit = defineEmits(['update:modelValue', 'select', 'remove'])
+const emit = defineEmits(["update:modelValue", "select", "remove"]);
 
 const userProps = computed(() => ({
   modelValue: props.modelValue,
@@ -130,7 +138,7 @@ const userProps = computed(() => ({
   propKeys: props.propKeys,
   leftDefaultChecked: props.leftDefaultChecked,
   rightDefaultChecked: props.rightDefaultChecked,
-}))
+}));
 
 const {
   selectedSource,
@@ -143,8 +151,7 @@ const {
   removeAll,
   addSelected,
   removeSelected,
-} = useTransfer(userProps, emit)
+} = useTransfer(userProps, emit);
 
-const styles = getTranferStyles()
+const styles = getTranferStyles();
 </script>
-

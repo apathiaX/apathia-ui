@@ -1,14 +1,14 @@
-import { defineComponent, onMounted, PropType } from 'vue'
+import { ComponentOptions, defineComponent, onMounted, PropType } from 'vue'
 import { Icon } from '@apathia/apathia.icon'
 import type { AlertType } from './AlertFn'
 import { RenderFn } from '@apathia/apathia.custom-render'
 import { style, apply, tw } from '@apathia/apathia.twind'
-// import { initAlertStyle } from './styles'
+import { CirclePlus, SuccessFilled } from '../../icon-svg/src'
 
-const iconClassMap: Record<AlertType, [string, string]> = {
+const iconClassMap: Record<AlertType, ComponentOptions | string> = {
   info: ['fa', 'info-circle'],
   warning: ['fa', 'exclamation-triangle'],
-  success: ['fa', 'check'],
+  success: SuccessFilled,
   danger: ['fa', 'exclamation'],
   default: ['fa', 'info-circle'],
 }
@@ -123,9 +123,9 @@ export default defineComponent({
     const iconClass =
       props.iconClass.length > 0 ? props.iconClass : iconClassMap[props.type]
     const renderIcon =
-      props.showIcon && iconClass?.length ? (
+      props.showIcon ? (
         <div class={iconWrap}>
-          <Icon name={iconClass} />
+          {iconClassMap[props.type]}
         </div>
       ) : null
     const renderDelIcon =
@@ -147,6 +147,7 @@ export default defineComponent({
 
     return () => (
       <div class={layout} onMouseenter={clearTimer} onMouseleave={resetTimer}>
+        <Icon><CirclePlus /></Icon>
         {render}
       </div>
     )

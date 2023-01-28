@@ -2,6 +2,31 @@
   typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.twind"), require("@apathia/apathia.scroll-container"), require("@apathia/apathia.hooks"), require("@apathia/apathia.icon")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.twind", "@apathia/apathia.scroll-container", "@apathia/apathia.hooks", "@apathia/apathia.icon"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.sidenav = {}, global.Vue, global.twind, global["scroll-container"], global.hooks, global.icon));
 })(this, function(exports2, vue, apathia_twind, apathia_scrollContainer, apathia_hooks, apathia_icon) {
   "use strict";
+  var _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key2, val] of props) {
+      target[key2] = val;
+    }
+    return target;
+  };
+  const _sfc_main$4v = {
+    name: "ArrowDown"
+  };
+  const _hoisted_1$4v = {
+    viewBox: "0 0 1024 1024",
+    xmlns: "http://www.w3.org/2000/svg"
+  };
+  const _hoisted_2$4v = /* @__PURE__ */ vue.createElementVNode("path", {
+    fill: "currentColor",
+    d: "M831.872 340.864 512 652.672 192.128 340.864a30.592 30.592 0 0 0-42.752 0 29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728 30.592 30.592 0 0 0-42.752 0z"
+  }, null, -1);
+  const _hoisted_3$4u = [
+    _hoisted_2$4v
+  ];
+  function _sfc_render$4v(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$4v, _hoisted_3$4u);
+  }
+  var arrowDown = /* @__PURE__ */ _export_sfc(_sfc_main$4v, [["render", _sfc_render$4v]]);
   const _hoisted_1 = ["id"];
   const _hoisted_2 = { key: 0 };
   const _sfc_main$1 = /* @__PURE__ */ vue.defineComponent({
@@ -41,9 +66,7 @@
       const isActiveParent = vue.computed(
         () => props.node.children ? isParent(props.node.children, props.activeKey, props.keyField) : false
       );
-      const isActiveItem = vue.computed(
-        () => props.activeKey === props.node[props.keyField]
-      );
+      const isActiveItem = vue.computed(() => props.activeKey === props.node[props.keyField]);
       const [expand, toggleExpand, setExpand] = apathia_hooks.useToggle(!!isActiveParent.value);
       const expandClass = vue.computed(
         () => `${styles.sidenodeExpand} v-icon-chevron-down ${expand.value ? styles.sidenodeTurn : ""}`
@@ -87,9 +110,13 @@
                 [vue.vShow, !__props.mini]
               ]),
               vue.withDirectives(vue.createVNode(vue.unref(apathia_icon.Icon), {
-                name: ["fa", "chevron-down"],
                 class: vue.normalizeClass(vue.unref(expandClass))
-              }, null, 8, ["class"]), [
+              }, {
+                default: vue.withCtx(() => [
+                  vue.createVNode(vue.unref(arrowDown))
+                ]),
+                _: 1
+              }, 8, ["class"]), [
                 [vue.vShow, __props.node.children && !__props.mini]
               ])
             ], 10, _hoisted_1)

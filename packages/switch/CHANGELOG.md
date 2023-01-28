@@ -1,5 +1,15 @@
 # @apathia/apathia.switch
 
+## 0.1.1
+
+### Patch Changes
+
+- fix: icon migrate
+- Updated dependencies
+  - @apathia/apathia.custom-render@1.1.1
+  - @apathia/apathia.hooks@1.1.1
+  - @apathia/apathia.twind@1.1.2
+
 ## 0.1.0
 
 ### Minor Changes

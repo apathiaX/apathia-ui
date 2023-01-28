@@ -4,12 +4,10 @@
       :class="[styles.headerClass, disabled ? styles.headerDisableClass : '']"
       @click="handleClick"
     >
-      <span v-if="showArrow">
-        <Icon
-          :name="['fa', 'caret-right']"
-          :class="styles.icon"
-          :style="{ transform: `rotate(${show ? 90 : 0}deg)` }"
-        />
+      <span v-if="showArrow" :style="{ transform: `rotate(${show ? 90 : 0}deg)` }">
+        <Icon :class="styles.icon">
+          <ArrowRight />
+        </Icon>
       </span>
       <slot name="header">
         <div>{{ header }}</div>
@@ -24,14 +22,15 @@
 </template>
 
 <script lang="ts">
-import { watch, defineComponent, PropType } from 'vue'
-import { Icon } from '@apathia/apathia.icon'
-import { useToggle } from '@apathia/apathia.hooks'
-import { style } from '@apathia/apathia.twind'
-import CollapseTransition from './CollapseTransition'
+import { watch, defineComponent, PropType } from "vue";
+import { Icon } from "@apathia/apathia.icon";
+import { useToggle } from "@apathia/apathia.hooks";
+import { style } from "@apathia/apathia.twind";
+import CollapseTransition from "./CollapseTransition";
+import { ArrowRight } from "../../icon-svg/src";
 
 export default defineComponent({
-  name: 'Collapse',
+  name: "Collapse",
 
   components: {
     CollapseTransition,
@@ -49,7 +48,7 @@ export default defineComponent({
     },
     header: {
       type: String as PropType<string>,
-      default: 'header',
+      default: "header",
     },
     showArrow: {
       type: Boolean as PropType<boolean>,
@@ -62,40 +61,40 @@ export default defineComponent({
   },
 
   setup(props) {
-    const [show, toggleShow, setShow] = useToggle(props.expand)
-    const styles = initStyle()
+    const [show, toggleShow, setShow] = useToggle(props.expand);
+    const styles = initStyle();
 
     watch(
       () => props.expand,
-      (val: boolean) => setShow(val),
-    )
+      (val: boolean) => setShow(val)
+    );
 
     const handleClick = () => {
       if (!props.disabled) {
-        toggleShow()
+        toggleShow();
       }
-    }
+    };
 
     return {
       handleClick,
       show,
       toggleShow,
       styles,
-    }
+    };
   },
-})
+});
 
 function initStyle() {
-    const headerClass = style`flex items-center h-10 leading-10 bg-fill-light rounded cursor-pointer`
-    const rollClass = style`rotate-90 translate-y-0.5 duration-300`
-    const headerDisableClass = style`cursor-not-allowed`
-    const icon = style`mx-2 transition`
-  
-    return {
-      headerClass,
-      rollClass,
-      headerDisableClass,
-      icon,
-    }
+  const headerClass = style`flex items-center h-10 leading-10 bg-fill-light rounded cursor-pointer`;
+  const rollClass = style`rotate-90 translate-y-0.5 duration-300`;
+  const headerDisableClass = style`cursor-not-allowed`;
+  const icon = style`mx-2 transition`;
+
+  return {
+    headerClass,
+    rollClass,
+    headerDisableClass,
+    icon,
+  };
 }
 </script>

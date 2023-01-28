@@ -1,4 +1,4 @@
-import { ref, shallowReactive, reactive, computed, nextTick, watch, unref, onBeforeUnmount, defineComponent, toRefs, provide, resolveDirective, openBlock, createElementBlock, mergeProps, createElementVNode, normalizeClass, withModifiers, createCommentVNode, createBlock, Teleport, withDirectives, normalizeStyle, renderSlot, onMounted, inject, getCurrentInstance, resolveComponent } from "vue";
+import { ref, shallowReactive, reactive, computed, nextTick, watch, unref, onBeforeUnmount, defineComponent, toRefs, provide, resolveDirective, openBlock, createElementBlock, mergeProps, createElementVNode, normalizeClass, withModifiers, createCommentVNode, createBlock, Teleport, withDirectives, normalizeStyle, renderSlot, onMounted, inject, getCurrentInstance, resolveComponent, withCtx, createVNode } from "vue";
 import { useResizeObserver, onClickOutside, useInjectProp } from "@apathia/apathia.hooks";
 import { autoPos, noop } from "@apathia/apathia.shared";
 import { style } from "@apathia/apathia.twind";
@@ -816,6 +816,7 @@ const getOptionStyles = () => ({
   disabled: style`text-content-secondary bg-info-forbid cursor-not-allowed`
 });
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_Check = resolveComponent("Check");
   const _component_Icon = resolveComponent("Icon");
   return openBlock(), createElementBlock("li", mergeProps({ ..._ctx.getRootProps() }, {
     role: "option",
@@ -833,9 +834,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     ], 2),
     _ctx.isSelected ? (openBlock(), createBlock(_component_Icon, {
       key: 0,
-      name: ["fa", "check"],
       class: normalizeClass([_ctx.styles.checkMark, _ctx.isFocused ? _ctx.styles.focusMark : ""])
-    }, null, 8, ["class"])) : createCommentVNode("", true)
+    }, {
+      default: withCtx(() => [
+        createVNode(_component_Check)
+      ]),
+      _: 1
+    }, 8, ["class"])) : createCommentVNode("", true)
   ], 16);
 }
 var Option = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);

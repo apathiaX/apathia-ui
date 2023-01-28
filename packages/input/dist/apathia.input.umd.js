@@ -54,11 +54,7 @@
       const activeVal = vue.ref(false);
       const withPrepend = vue.computed(() => ctx.slots.prepend !== void 0);
       const withAppend = vue.computed(() => ctx.slots.append !== void 0);
-      const disableInput = apathia_hooks.useInjectProp(
-        "FormDisabled",
-        false,
-        vue.toRef(props, "disabled")
-      );
+      const disableInput = apathia_hooks.useInjectProp("FormDisabled", false, vue.toRef(props, "disabled"));
       const showClearIcon = vue.computed(
         () => props.clearable && props.modelValue && !disableInput.value
       );
@@ -144,7 +140,9 @@
   };
   const _hoisted_1 = ["type", "disabled"];
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_Close = vue.resolveComponent("Close");
     const _component_Icon = vue.resolveComponent("Icon");
+    const _component_Search = vue.resolveComponent("Search");
     return vue.openBlock(), vue.createElementBlock("div", {
       class: vue.normalizeClass([
         {
@@ -187,15 +185,23 @@
         _ctx.showClearIcon ? (vue.openBlock(), vue.createBlock(_component_Icon, {
           key: 0,
           class: vue.normalizeClass([_ctx.styles.clearableIcon, _ctx.search ? _ctx.styles.clearWithSuffix : ""]),
-          name: ["fa", "times"],
           onClick: vue.withModifiers(_ctx.clear, ["stop"])
-        }, null, 8, ["class", "onClick"])) : vue.createCommentVNode("", true),
+        }, {
+          default: vue.withCtx(() => [
+            vue.createVNode(_component_Close)
+          ]),
+          _: 1
+        }, 8, ["class", "onClick"])) : vue.createCommentVNode("", true),
         _ctx.search ? (vue.openBlock(), vue.createBlock(_component_Icon, {
           key: 1,
           class: vue.normalizeClass(_ctx.styles.suffixBtn),
-          name: ["fa", "search"],
           onClick: _ctx.onSearch
-        }, null, 8, ["class", "onClick"])) : vue.createCommentVNode("", true)
+        }, {
+          default: vue.withCtx(() => [
+            vue.createVNode(_component_Search)
+          ]),
+          _: 1
+        }, 8, ["class", "onClick"])) : vue.createCommentVNode("", true)
       ], 2),
       _ctx.withAppend ? (vue.openBlock(), vue.createElementBlock("span", {
         key: 1,
