@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.tabs",
-  "version": "0.1.1",
+  "version": "0.2.3",
   "description": "tabs",
   "author": "",
   "homepage": "",
@@ -33,7 +33,7 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.hooks": "workspace:^1.1.1",
-    "@apathia/apathia.twind": "workspace:^1.1.2"
+    "@apathia/apathia.hooks": "workspace:^1.2.3",
+    "@apathia/apathia.twind": "workspace:^1.2.3"
   }
 }

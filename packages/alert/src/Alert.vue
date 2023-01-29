@@ -10,11 +10,11 @@ import {
   SuccessFilled,
   WarningFilled,
   Notification,
-} from "../../icon-svg/src";
+} from "@apathia/apathia.icon-svg";
 
-defineOptions({
-  name: "Alert",
-});
+// defineOptions({
+//   name: "Alert",
+// });
 
 interface AlertProps {
   type?: AlertType;

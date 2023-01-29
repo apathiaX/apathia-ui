@@ -1,33 +1,9 @@
-import { openBlock, createElementBlock, createElementVNode, defineComponent, computed, watch, resolveComponent, renderSlot, unref, normalizeClass, withDirectives, toDisplayString, vShow, createVNode, withCtx, Fragment, renderList, createBlock, createCommentVNode, ref, onMounted, mergeProps } from "vue";
+import { defineComponent, computed, watch, resolveComponent, openBlock, createElementBlock, renderSlot, unref, createElementVNode, normalizeClass, withDirectives, toDisplayString, vShow, createVNode, withCtx, Fragment, renderList, createBlock, createCommentVNode, ref, onMounted, mergeProps } from "vue";
 import { style } from "@apathia/apathia.twind";
 import { ScrollContainer } from "@apathia/apathia.scroll-container";
 import { useToggle } from "@apathia/apathia.hooks";
 import { Icon } from "@apathia/apathia.icon";
-var _export_sfc = (sfc, props) => {
-  const target = sfc.__vccOpts || sfc;
-  for (const [key2, val] of props) {
-    target[key2] = val;
-  }
-  return target;
-};
-const _sfc_main$4v = {
-  name: "ArrowDown"
-};
-const _hoisted_1$4v = {
-  viewBox: "0 0 1024 1024",
-  xmlns: "http://www.w3.org/2000/svg"
-};
-const _hoisted_2$4v = /* @__PURE__ */ createElementVNode("path", {
-  fill: "currentColor",
-  d: "M831.872 340.864 512 652.672 192.128 340.864a30.592 30.592 0 0 0-42.752 0 29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728 30.592 30.592 0 0 0-42.752 0z"
-}, null, -1);
-const _hoisted_3$4u = [
-  _hoisted_2$4v
-];
-function _sfc_render$4v(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("svg", _hoisted_1$4v, _hoisted_3$4u);
-}
-var arrowDown = /* @__PURE__ */ _export_sfc(_sfc_main$4v, [["render", _sfc_render$4v]]);
+import { ArrowDown } from "@apathia/apathia.icon-svg";
 const _hoisted_1 = ["id"];
 const _hoisted_2 = { key: 0 };
 const _sfc_main$1 = /* @__PURE__ */ defineComponent({
@@ -114,7 +90,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
               class: normalizeClass(unref(expandClass))
             }, {
               default: withCtx(() => [
-                createVNode(unref(arrowDown))
+                createVNode(unref(ArrowDown))
               ]),
               _: 1
             }, 8, ["class"]), [

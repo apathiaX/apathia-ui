@@ -1,5 +1,64 @@
 # @apathia1/apathia.table
 
+## 1.2.3
+
+### Patch Changes
+
+- remove install
+- Updated dependencies
+  - @apathia/apathia.custom-render@1.2.3
+  - @apathia/apathia.checkbox@1.2.3
+  - @apathia/apathia.loading@1.2.3
+  - @apathia/apathia.button@1.2.3
+  - @apathia/apathia.hooks@1.2.3
+  - @apathia/apathia.twind@1.2.3
+  - @apathia/apathia.icon@1.2.3
+
+## 1.2.2
+
+### Patch Changes
+
+- test
+- Updated dependencies
+  - @apathia/apathia.custom-render@1.2.2
+  - @apathia/apathia.checkbox@1.2.2
+  - @apathia/apathia.loading@1.2.2
+  - @apathia/apathia.button@1.2.2
+  - @apathia/apathia.hooks@1.2.2
+  - @apathia/apathia.twind@1.2.2
+  - @apathia/apathia.icon@1.2.2
+
+## 1.2.1
+
+### Patch Changes
+
+- fix type file
+- Updated dependencies
+  - @apathia/apathia.custom-render@1.2.1
+  - @apathia/apathia.checkbox@1.2.1
+  - @apathia/apathia.loading@1.2.1
+  - @apathia/apathia.button@1.2.1
+  - @apathia/apathia.hooks@1.2.1
+  - @apathia/apathia.twind@1.2.1
+  - @apathia/apathia.icon@1.2.1
+
+## 1.2.0
+
+### Minor Changes
+
+- fix type
+
+### Patch Changes
+
+- Updated dependencies
+  - @apathia/apathia.button@1.2.0
+  - @apathia/apathia.checkbox@1.2.0
+  - @apathia/apathia.custom-render@1.2.0
+  - @apathia/apathia.hooks@1.2.0
+  - @apathia/apathia.icon@1.2.0
+  - @apathia/apathia.loading@1.2.0
+  - @apathia/apathia.twind@1.2.0
+
 ## 1.1.1
 
 ### Patch Changes

@@ -1,7 +1,7 @@
 import { Instance } from '@popperjs/core'
 import type { RenderCustom } from '@apathia/apathia.custom-render'
 
-type TriggerType = 'click' | 'hover' | 'focus' | 'manual'
+export type TriggerType = 'click' | 'hover' | 'focus' | 'manual'
 
 export const placement = [
   'top',

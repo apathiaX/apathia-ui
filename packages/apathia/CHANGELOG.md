@@ -1,5 +1,168 @@
 # @apathia/apathia
 
+## 1.2.3
+
+### Patch Changes
+
+- remove install
+- Updated dependencies
+  - @apathia/apathia.scroll-container@0.2.3
+  - @apathia/apathia.custom-render@1.2.3
+  - @apathia/apathia.datepicker@0.2.3
+  - @apathia/apathia.pagination@1.2.3
+  - @apathia/apathia.cascader@0.2.3
+  - @apathia/apathia.checkbox@1.2.3
+  - @apathia/apathia.collapse@1.2.3
+  - @apathia/apathia.dropdown@0.2.3
+  - @apathia/apathia.textarea@0.2.3
+  - @apathia/apathia.transfer@0.2.3
+  - @apathia/apathia.confirm@1.2.3
+  - @apathia/apathia.loading@1.2.3
+  - @apathia/apathia.sidenav@0.2.3
+  - @apathia/apathia.button@1.2.3
+  - @apathia/apathia.navbar@0.2.3
+  - @apathia/apathia.popper@0.2.3
+  - @apathia/apathia.select@1.2.3
+  - @apathia/apathia.slider@0.2.3
+  - @apathia/apathia.switch@0.2.3
+  - @apathia/apathia.upload@1.2.3
+  - @apathia/apathia.affix@0.2.3
+  - @apathia/apathia.alert@1.2.3
+  - @apathia/apathia.hooks@1.2.3
+  - @apathia/apathia.image@0.2.3
+  - @apathia/apathia.input@1.2.3
+  - @apathia/apathia.modal@1.2.3
+  - @apathia/apathia.radio@1.2.3
+  - @apathia/apathia.table@1.2.3
+  - @apathia/apathia.twind@1.2.3
+  - @apathia/apathia.form@1.2.3
+  - @apathia/apathia.icon@1.2.3
+  - @apathia/apathia.tabs@0.2.3
+  - @apathia/apathia.tag@0.2.3
+
+## 1.2.2
+
+### Patch Changes
+
+- test
+- Updated dependencies
+  - @apathia/apathia.scroll-container@0.2.2
+  - @apathia/apathia.custom-render@1.2.2
+  - @apathia/apathia.datepicker@0.2.2
+  - @apathia/apathia.pagination@1.2.2
+  - @apathia/apathia.cascader@0.2.2
+  - @apathia/apathia.checkbox@1.2.2
+  - @apathia/apathia.collapse@1.2.2
+  - @apathia/apathia.dropdown@0.2.2
+  - @apathia/apathia.textarea@0.2.2
+  - @apathia/apathia.transfer@0.2.2
+  - @apathia/apathia.confirm@1.2.2
+  - @apathia/apathia.loading@1.2.2
+  - @apathia/apathia.sidenav@0.2.2
+  - @apathia/apathia.button@1.2.2
+  - @apathia/apathia.navbar@0.2.2
+  - @apathia/apathia.popper@0.2.2
+  - @apathia/apathia.select@1.2.2
+  - @apathia/apathia.slider@0.2.2
+  - @apathia/apathia.switch@0.2.2
+  - @apathia/apathia.upload@1.2.2
+  - @apathia/apathia.affix@0.2.2
+  - @apathia/apathia.alert@1.2.2
+  - @apathia/apathia.hooks@1.2.2
+  - @apathia/apathia.image@0.2.2
+  - @apathia/apathia.input@1.2.2
+  - @apathia/apathia.modal@1.2.2
+  - @apathia/apathia.radio@1.2.2
+  - @apathia/apathia.table@1.2.2
+  - @apathia/apathia.twind@1.2.2
+  - @apathia/apathia.form@1.2.2
+  - @apathia/apathia.icon@1.2.2
+  - @apathia/apathia.tabs@0.2.2
+  - @apathia/apathia.tag@0.2.2
+
+## 1.2.1
+
+### Patch Changes
+
+- fix type file
+- Updated dependencies
+  - @apathia/apathia.scroll-container@0.2.1
+  - @apathia/apathia.custom-render@1.2.1
+  - @apathia/apathia.datepicker@0.2.1
+  - @apathia/apathia.pagination@1.2.1
+  - @apathia/apathia.cascader@0.2.1
+  - @apathia/apathia.checkbox@1.2.1
+  - @apathia/apathia.collapse@1.2.1
+  - @apathia/apathia.dropdown@0.2.1
+  - @apathia/apathia.textarea@0.2.1
+  - @apathia/apathia.transfer@0.2.1
+  - @apathia/apathia.confirm@1.2.1
+  - @apathia/apathia.loading@1.2.1
+  - @apathia/apathia.sidenav@0.2.1
+  - @apathia/apathia.button@1.2.1
+  - @apathia/apathia.navbar@0.2.1
+  - @apathia/apathia.popper@0.2.1
+  - @apathia/apathia.select@1.2.1
+  - @apathia/apathia.slider@0.2.1
+  - @apathia/apathia.switch@0.2.1
+  - @apathia/apathia.upload@1.2.1
+  - @apathia/apathia.affix@0.2.1
+  - @apathia/apathia.alert@1.2.1
+  - @apathia/apathia.hooks@1.2.1
+  - @apathia/apathia.image@0.2.1
+  - @apathia/apathia.input@1.2.1
+  - @apathia/apathia.modal@1.2.1
+  - @apathia/apathia.radio@1.2.1
+  - @apathia/apathia.table@1.2.1
+  - @apathia/apathia.twind@1.2.1
+  - @apathia/apathia.form@1.2.1
+  - @apathia/apathia.icon@1.2.1
+  - @apathia/apathia.tabs@0.2.1
+  - @apathia/apathia.tag@0.2.1
+
+## 1.2.0
+
+### Minor Changes
+
+- fix type
+
+### Patch Changes
+
+- Updated dependencies
+  - @apathia/apathia.affix@0.2.0
+  - @apathia/apathia.alert@1.2.0
+  - @apathia/apathia.button@1.2.0
+  - @apathia/apathia.cascader@0.2.0
+  - @apathia/apathia.checkbox@1.2.0
+  - @apathia/apathia.collapse@1.2.0
+  - @apathia/apathia.confirm@1.2.0
+  - @apathia/apathia.custom-render@1.2.0
+  - @apathia/apathia.datepicker@0.2.0
+  - @apathia/apathia.dropdown@0.2.0
+  - @apathia/apathia.form@1.2.0
+  - @apathia/apathia.hooks@1.2.0
+  - @apathia/apathia.icon@1.2.0
+  - @apathia/apathia.image@0.2.0
+  - @apathia/apathia.input@1.2.0
+  - @apathia/apathia.loading@1.2.0
+  - @apathia/apathia.modal@1.2.0
+  - @apathia/apathia.navbar@0.2.0
+  - @apathia/apathia.pagination@1.2.0
+  - @apathia/apathia.popper@0.2.0
+  - @apathia/apathia.radio@1.2.0
+  - @apathia/apathia.scroll-container@0.2.0
+  - @apathia/apathia.select@1.2.0
+  - @apathia/apathia.sidenav@0.2.0
+  - @apathia/apathia.slider@0.2.0
+  - @apathia/apathia.switch@0.2.0
+  - @apathia/apathia.table@1.2.0
+  - @apathia/apathia.tabs@0.2.0
+  - @apathia/apathia.tag@0.2.0
+  - @apathia/apathia.textarea@0.2.0
+  - @apathia/apathia.transfer@0.2.0
+  - @apathia/apathia.twind@1.2.0
+  - @apathia/apathia.upload@1.2.0
+
 ## 1.1.2
 
 ### Patch Changes

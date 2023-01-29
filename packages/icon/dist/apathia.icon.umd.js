@@ -3,12 +3,8 @@
 })(this, function(exports2, vue, apathia_shared) {
   "use strict";
   var Icon_vue_vue_type_style_index_0_lang = "";
-  const __default__ = vue.defineComponent({
-    name: "Icon",
-    inheritAttrs: false
-  });
   const _sfc_main = /* @__PURE__ */ vue.defineComponent({
-    ...__default__,
+    __name: "Icon",
     props: {
       color: null,
       size: null

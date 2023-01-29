@@ -1,5 +1,5 @@
 export declare const Triggers: readonly ["click", "hover"];
-export declare type TriggerType = typeof Triggers[number];
+export declare type Trigger = typeof Triggers[number];
 export declare type Node = {
     label: string;
     value: string | number;
@@ -22,7 +22,7 @@ export interface CascaderProps {
     changeOnSelect: boolean;
     separator: string;
     data: Array<Record<string, any>>;
-    trigger: TriggerType;
+    trigger: Trigger;
     fieldNames: Record<'label' | 'value' | 'children', string>;
     multiple: boolean;
     height?: string | number;

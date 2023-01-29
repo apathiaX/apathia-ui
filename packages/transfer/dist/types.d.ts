@@ -1,5 +1,5 @@
 export declare type Key = string | number;
-export declare type DataItem = {
+export declare type TransferDataItem = {
     value: Key;
     label: string;
     disabled: boolean;
@@ -17,7 +17,7 @@ export interface TransferProps {
     data: Array<Record<string, string | boolean | number>>;
     filterable?: boolean;
     filterPlaceholder?: string;
-    filterMethod?: (word: string, option: DataItem) => boolean;
+    filterMethod?: (word: string, option: TransferDataItem) => boolean;
     targetOrder?: TargetOrder;
     titles?: [string, string];
     propKeys?: Props;

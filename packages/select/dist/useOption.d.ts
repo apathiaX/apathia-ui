@@ -1,5 +1,5 @@
 import type { Ref, ComputedRef } from 'vue';
-import type { ValueType, SelectState, OptionRegister, OptionRemover } from './types';
+import type { SelectValueType as ValueType, SelectState, OptionRegister, OptionRemover } from './types';
 export declare function useOption(userProps: {
     value: Ref<number | string | boolean>;
     disabled: Ref<boolean>;

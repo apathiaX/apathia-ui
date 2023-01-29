@@ -1,9 +1,6 @@
 <template>
   <slot name="toggleHeader" :show="show" :toggle-show="toggleShow">
-    <div
-      :class="[styles.headerClass, disabled ? styles.headerDisableClass : '']"
-      @click="handleClick"
-    >
+    <div :class="[styles.headerClass, disabled ? styles.headerDisableClass : '']" @click="handleClick">
       <span v-if="showArrow" :style="{ transform: `rotate(${show ? 90 : 0}deg)` }">
         <Icon :class="styles.icon">
           <ArrowRight />
@@ -27,7 +24,7 @@ import { Icon } from "@apathia/apathia.icon";
 import { useToggle } from "@apathia/apathia.hooks";
 import { style } from "@apathia/apathia.twind";
 import CollapseTransition from "./CollapseTransition";
-import { ArrowRight } from "../../icon-svg/src";
+import { ArrowRight } from "@apathia/apathia.icon-svg";
 
 export default defineComponent({
   name: "Collapse",

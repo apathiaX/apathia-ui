@@ -1,5 +1,29 @@
 # @apathia/apathia.twind
 
+## 1.2.3
+
+### Patch Changes
+
+- remove install
+
+## 1.2.2
+
+### Patch Changes
+
+- test
+
+## 1.2.1
+
+### Patch Changes
+
+- fix type file
+
+## 1.2.0
+
+### Minor Changes
+
+- fix type
+
 ## 1.1.2
 
 ### Patch Changes

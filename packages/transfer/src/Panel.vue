@@ -1,52 +1,33 @@
 <template>
-    <div :class="styles.panel">
-      <div :class="styles.titleBar">
-        <Checkbox
-          v-model="checkAll"
-          :indeterminate="indeterminate"
-          @update:model-value="onCheckAllChange"
-        />
-        <span :class="styles.title">{{ title }}</span>
-        <!-- /> -->
-        <span :class="styles.counter"
-          >{{ checkedLength }} / {{ data.length }}</span
-        >
-      </div>
-      <div v-if="filterable" :class="styles.filter">
-        <Input
-          :model-value="searchWords"
-          :placeholder="filterPlaceholder"
-          suffix="v-icon-search"
-          @update:model-value="onSearchInput"
-        />
-      </div>
-      <div :class="styles.list">
-        <ScrollContainer :size="5" hide-horizontal>
-          <!-- TODO: transition? -->
-          <div>
-            <div
-              v-for="(item, index) in filterList"
-              :key="index"
-              :class="styles.item"
-            >
-              <Checkbox
-                :model-value="!!checked[item.value]"
-                :class="{
-                  [styles.checkbox]: true,
-                  [styles.disabledCheckbox]: item.disabled,
-                }"
-                :disabled="item.disabled"
-                @update:model-value="onItemCheckChange($event, item.value)"
-              >
-                <slot name="item" :option="item" :index="index">
-                  <span>{{ item.label }}</span>
-                </slot>
-              </Checkbox>
-            </div>
-          </div>
-        </ScrollContainer>
-      </div>
+  <div :class="styles.panel">
+    <div :class="styles.titleBar">
+      <Checkbox v-model="checkAll" :indeterminate="indeterminate" @update:model-value="onCheckAllChange" />
+      <span :class="styles.title">{{ title }}</span>
+      <!-- /> -->
+      <span :class="styles.counter">{{ checkedLength }} / {{ data.length }}</span>
     </div>
+    <div v-if="filterable" :class="styles.filter">
+      <Input :model-value="searchWords" :placeholder="filterPlaceholder" suffix="v-icon-search"
+        @update:model-value="onSearchInput" />
+    </div>
+    <div :class="styles.list">
+      <ScrollContainer :size="5" hide-horizontal>
+        <!-- TODO: transition? -->
+        <div>
+          <div v-for="(item, index) in filterList" :key="index" :class="styles.item">
+            <Checkbox :model-value="!!checked[item.value]" :class="{
+              [styles.checkbox]: true,
+              [styles.disabledCheckbox]: item.disabled,
+            }" :disabled="item.disabled" @update:model-value="onItemCheckChange($event, item.value)">
+              <slot name="item" :option="item" :index="index">
+                <span>{{ item.label }}</span>
+              </slot>
+            </Checkbox>
+          </div>
+        </div>
+      </ScrollContainer>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -55,19 +36,19 @@ import { debounce } from 'lodash-es'
 import { ScrollContainer } from '@apathia/apathia.scroll-container'
 import { Input } from '@apathia/apathia.input'
 import { Checkbox } from '@apathia/apathia.checkbox'
-import type { Key, DataItem, CheckedMap } from './types'
+import type { Key, TransferDataItem as DataItem, CheckedMap } from './types'
 import { apply, tw } from '@apathia/apathia.twind'
 
 const getPanelStyles = () => ({
-    panel: tw`${apply`border-line-accent border rounded`}`,
-    titleBar: tw`${apply`flex justify-between items-center bg-fill-light py-4 px-2 text-xs`}`,
-    title: tw`${apply`font-medium`}`,
-    counter: tw`${apply`w-14 text-right`}`,
-    filter: tw`${apply`m-2`}`,
-    list: tw`${apply`h-80`}`, // 2.5 * 8
-    item: tw`${apply`text-base p-2 hover:(bg-fill-light) transition-all duration-300 ease-in text-left`}`,
-    checkbox: tw`${apply`mr-2`}`,
-    disabledCheckbox: tw`${apply`cursor-not-allowed`}`,
+  panel: tw`${apply`border-line-accent border rounded`}`,
+  titleBar: tw`${apply`flex justify-between items-center bg-fill-light py-4 px-2 text-xs`}`,
+  title: tw`${apply`font-medium`}`,
+  counter: tw`${apply`w-14 text-right`}`,
+  filter: tw`${apply`m-2`}`,
+  list: tw`${apply`h-80`}`, // 2.5 * 8
+  item: tw`${apply`text-base p-2 hover:(bg-fill-light) transition-all duration-300 ease-in text-left`}`,
+  checkbox: tw`${apply`mr-2`}`,
+  disabledCheckbox: tw`${apply`cursor-not-allowed`}`,
 })
 
 interface PanelProps {
@@ -84,7 +65,7 @@ const props = withDefaults(defineProps<PanelProps>(), {
   filterPlaceholder: '请输入搜索内容',
   defaultChecked: () => [],
   filterMethod: (searchWords: string, option: DataItem) =>
-        option.label.includes(searchWords)
+    option.label.includes(searchWords)
 })
 
 const emit = defineEmits(['update:modelValue'])

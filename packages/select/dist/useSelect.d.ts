@@ -1,5 +1,6 @@
+/// <reference types="lodash" />
 import { Ref, SetupContext } from 'vue';
-import { ValueType, Option, UserProps } from './types';
+import { SelectValueType, Option, UserProps } from './types';
 export default function useSelect(userProps: UserProps, ctx: SetupContext): {
     getRootProps: () => {
         disabled: boolean;
@@ -26,20 +27,20 @@ export default function useSelect(userProps: UserProps, ctx: SetupContext): {
         ref: (el: HTMLElement) => void;
     };
     toggleDropdown: () => void;
-    register: (disabledOption: boolean, uid: number, value: ValueType, labelStr: string) => void;
+    register: (disabledOption: boolean, uid: number, value: SelectValueType, labelStr: string) => void;
     unregister: (uid: number) => void;
-    updateRegister: (disabledVal: boolean, uid: number, value: ValueType, labelStr: string) => void;
+    updateRegister: (disabledVal: boolean, uid: number, value: SelectValueType, labelStr: string) => void;
     focus: (uid: number, focusedEl?: HTMLElement | undefined) => void;
     clear: () => void;
-    isSameValue: (newVal: ValueType, oldVal: ValueType) => boolean;
+    isSameValue: (newVal: SelectValueType, oldVal: SelectValueType) => boolean;
     keyHandler: (event: KeyboardEvent) => void;
-    changeHandler: (value: ValueType, labelStr: string, isInnerChange?: boolean) => void;
+    changeHandler: (value: SelectValueType, labelStr: string, isInnerChange?: boolean) => void;
     filterHandler: import("lodash").DebouncedFunc<() => void>;
     filterStr: Ref<string>;
     selectState: {
         label: string;
         remote: boolean;
-        value: ValueType;
+        value: SelectValueType;
         valueKey: string;
         filterStr: string;
         optionIds: number[];

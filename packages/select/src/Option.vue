@@ -1,21 +1,14 @@
 <template>
-  <li
-    v-bind="{ ...getRootProps() }"
-    role="option"
-    :class="{
-      [styles.wrapper]: true,
-      [styles.disabled]: disabled,
-      [styles.selected]: isSelected,
-      [styles.focused]: isFocused,
-    }"
-  >
+  <li v-bind="{ ...getRootProps() }" role="option" :class="{
+    [styles.wrapper]: true,
+    [styles.disabled]: disabled,
+    [styles.selected]: isSelected,
+    [styles.focused]: isFocused,
+  }">
     <span :class="styles.text">
       <slot></slot>
     </span>
-    <Icon
-      v-if="isSelected"
-      :class="[styles.checkMark, isFocused ? styles.focusMark : '']"
-    >
+    <Icon v-if="isSelected" :class="[styles.checkMark, isFocused ? styles.focusMark : '']">
       <Check />
     </Icon>
   </li>
@@ -37,7 +30,7 @@ import {
   UpdateRegisterKey,
 } from "./injectKeys";
 import { SelectState } from "./types";
-import { Check } from "../../icon-svg/src";
+import { Check } from "@apathia/apathia.icon-svg";
 
 export default defineComponent({
   name: "Option",

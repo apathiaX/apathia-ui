@@ -1,12 +1,9 @@
 <template>
   <span :class="styles.arrowWrap">
-    <span
-      :class="{
-        [styles.arrow]: true,
-        [styles.active]: active,
-      }"
-      @click="sortChange"
-    >
+    <span :class="{
+      [styles.arrow]: true,
+      [styles.active]: active,
+    }" @click="sortChange">
       <Icon :size="14">
         <SortUp v-if="sort.order === 'asc'" />
         <SortDown v-else />
@@ -17,12 +14,10 @@
 
 <script lang="ts">
 import { defineComponent, computed, PropType } from "vue";
-// @ts-ignore
 import { style } from "@apathia/apathia.twind";
-// @ts-ignore
 import { Icon } from "@apathia/apathia.icon";
 import type { Sorter } from "./types";
-import { SortUp, SortDown } from "../../icon-svg/src";
+import { SortUp, SortDown } from "@apathia/apathia.icon-svg";
 
 export default defineComponent({
   name: "GridSorter",

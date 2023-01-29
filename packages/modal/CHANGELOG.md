@@ -1,5 +1,52 @@
 # @apathia/apathia.modal
 
+## 1.2.3
+
+### Patch Changes
+
+- remove install
+- Updated dependencies
+  - @apathia/apathia.custom-render@1.2.3
+  - @apathia/apathia.shared@1.2.3
+  - @apathia/apathia.hooks@1.2.3
+  - @apathia/apathia.twind@1.2.3
+
+## 1.2.2
+
+### Patch Changes
+
+- test
+- Updated dependencies
+  - @apathia/apathia.custom-render@1.2.2
+  - @apathia/apathia.shared@1.2.2
+  - @apathia/apathia.hooks@1.2.2
+  - @apathia/apathia.twind@1.2.2
+
+## 1.2.1
+
+### Patch Changes
+
+- fix type file
+- Updated dependencies
+  - @apathia/apathia.custom-render@1.2.1
+  - @apathia/apathia.shared@1.2.1
+  - @apathia/apathia.hooks@1.2.1
+  - @apathia/apathia.twind@1.2.1
+
+## 1.2.0
+
+### Minor Changes
+
+- fix type
+
+### Patch Changes
+
+- Updated dependencies
+  - @apathia/apathia.custom-render@1.2.0
+  - @apathia/apathia.hooks@1.2.0
+  - @apathia/apathia.shared@1.2.0
+  - @apathia/apathia.twind@1.2.0
+
 ## 1.1.1
 
 ### Patch Changes

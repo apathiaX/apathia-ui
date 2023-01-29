@@ -1,3 +1,4 @@
+/// <reference types="lodash" />
 import { PropType } from "vue";
 import type { Column, DataItem, Expander, ClassNamesGenerator, StylesGenerator } from "./types";
 declare const _default: import("vue").DefineComponent<{

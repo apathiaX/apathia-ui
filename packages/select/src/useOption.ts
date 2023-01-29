@@ -9,7 +9,7 @@ import {
 } from 'vue'
 import type { Ref, ComputedRef } from 'vue'
 import type {
-  ValueType,
+  SelectValueType as ValueType,
   SelectState,
   OptionRegister,
   OptionRemover,

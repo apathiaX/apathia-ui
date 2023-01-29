@@ -1,18 +1,8 @@
 <template>
   <li>
-    <slot
-      :mini="mini"
-      :activeParent="isActiveParent"
-      :expand="expand"
-      :activeItem="isActiveItem"
-      :onClick="clickHandler"
-      :node="node"
-    >
-      <div
-        :id="isActiveItem ? 'expandSideNode' : undefined"
-        :class="rowClass"
-        @click="clickHandler"
-      >
+    <slot :mini="mini" :activeParent="isActiveParent" :expand="expand" :activeItem="isActiveItem"
+      :onClick="clickHandler" :node="node">
+      <div :id="isActiveItem ? 'expandSideNode' : undefined" :class="rowClass" @click="clickHandler">
         <span v-show="!mini" :class="styles.sidenodeText">
           {{ node.text }}
         </span>
@@ -25,32 +15,18 @@
     <!-- <CollapseTransition v-if="node.children && !mini"> -->
     <div v-if="node.children && !mini">
       <ul v-show="expand" :class="styles.sidenodeChildren">
-        <SideNode
-          v-for="(item, index) in node.children"
-          :key="index"
-          :node="item"
-          :active-key="activeKey"
-          :select-handler="selectHandler"
-          :key-field="keyField"
-        >
-          <template
-            #default="{
-              mini: miniValue,
-              activeParent: activeParentValue,
-              expand: expandValue,
-              activeItem: activeItemValue,
-              onClick: handleClick,
-              node: nodeValue,
-            }"
-          >
-            <slot
-              :mini="miniValue"
-              :activeParent="activeParentValue"
-              :expand="expandValue"
-              :activeItem="activeItemValue"
-              :onClick="handleClick"
-              :node="nodeValue"
-            ></slot>
+        <SideNode v-for="(item, index) in node.children" :key="index" :node="item" :active-key="activeKey"
+          :select-handler="selectHandler" :key-field="keyField">
+          <template #default="{
+            mini: miniValue,
+            activeParent: activeParentValue,
+            expand: expandValue,
+            activeItem: activeItemValue,
+            onClick: handleClick,
+            node: nodeValue,
+          }">
+            <slot :mini="miniValue" :activeParent="activeParentValue" :expand="expandValue"
+              :activeItem="activeItemValue" :onClick="handleClick" :node="nodeValue"></slot>
           </template>
         </SideNode>
       </ul>
@@ -65,7 +41,7 @@ import { useToggle } from "@apathia/apathia.hooks";
 import { Icon } from "@apathia/apathia.icon";
 import { style } from "@apathia/apathia.twind";
 import type { SideNode as Node } from "./types";
-import { ArrowDown } from "../../icon-svg";
+import { ArrowDown } from "@apathia/apathia.icon-svg";
 
 interface SideNavProps {
   node?: Node;
@@ -92,7 +68,7 @@ const props = withDefaults(defineProps<SideNavProps>(), {
   node: () => ({}),
   mini: false,
   activeKey: "",
-  selectHandler: () => {},
+  selectHandler: () => { },
   keyField: "key",
 });
 
@@ -119,14 +95,12 @@ const isActiveItem = computed(() => props.activeKey === props.node[props.keyFiel
 const [expand, toggleExpand, setExpand] = useToggle(!!isActiveParent.value);
 const expandClass = computed(
   () =>
-    `${styles.sidenodeExpand} v-icon-chevron-down ${
-      expand.value ? styles.sidenodeTurn : ""
+    `${styles.sidenodeExpand} v-icon-chevron-down ${expand.value ? styles.sidenodeTurn : ""
     }`
 );
 const rowClass = computed(
   () =>
-    `${styles.sidenodeRowClass} ${
-      isActiveParent.value ? styles.sidenodeRowParentActive : ""
+    `${styles.sidenodeRowClass} ${isActiveParent.value ? styles.sidenodeRowParentActive : ""
     } ${props.activeKey === props.node[props.keyField] ? styles.sidenodeRowActive : ""}`
 );
 

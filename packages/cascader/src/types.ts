@@ -1,5 +1,5 @@
 export const Triggers = ['click', 'hover'] as const
-export type TriggerType = typeof Triggers[number]
+export type Trigger = typeof Triggers[number]
 
 export type Node = {
   label: string
@@ -29,7 +29,7 @@ export interface CascaderProps {
   changeOnSelect: boolean
   separator: string
   data: Array<Record<string, any>>
-  trigger: TriggerType
+  trigger: Trigger
   fieldNames: Record<'label' | 'value' | 'children', string>
   multiple: boolean
   height?: string | number

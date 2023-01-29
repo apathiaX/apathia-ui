@@ -1,12 +1,8 @@
 import { defineComponent, openBlock, createElementBlock, mergeProps, renderSlot } from "vue";
 import { isString } from "@apathia/apathia.shared";
 var Icon_vue_vue_type_style_index_0_lang = "";
-const __default__ = defineComponent({
-  name: "Icon",
-  inheritAttrs: false
-});
 const _sfc_main = /* @__PURE__ */ defineComponent({
-  ...__default__,
+  __name: "Icon",
   props: {
     color: null,
     size: null

@@ -6,6 +6,7 @@ import { ScrollContainer } from "@apathia/apathia.scroll-container";
 import { Input } from "@apathia/apathia.input";
 import { Checkbox } from "@apathia/apathia.checkbox";
 import { tw, apply } from "@apathia/apathia.twind";
+import { DArrowLeft, ArrowRight, ArrowLeft } from "@apathia/apathia.icon-svg";
 var useTransfer = (userProps, emit) => {
   const selectedSource = ref([]);
   const selectedTarget = ref([]);
@@ -70,7 +71,7 @@ var useTransfer = (userProps, emit) => {
     removeSelected
   };
 };
-const _sfc_main$4 = /* @__PURE__ */ defineComponent({
+const _sfc_main$1 = /* @__PURE__ */ defineComponent({
   __name: "Panel",
   props: {
     modelValue: null,
@@ -252,67 +253,6 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var _export_sfc = (sfc, props) => {
-  const target = sfc.__vccOpts || sfc;
-  for (const [key, val] of props) {
-    target[key] = val;
-  }
-  return target;
-};
-const _sfc_main$3 = {
-  name: "ArrowLeft"
-};
-const _hoisted_1$2 = {
-  viewBox: "0 0 1024 1024",
-  xmlns: "http://www.w3.org/2000/svg"
-};
-const _hoisted_2$2 = /* @__PURE__ */ createElementVNode("path", {
-  fill: "currentColor",
-  d: "M609.408 149.376 277.76 489.6a32 32 0 0 0 0 44.672l331.648 340.352a29.12 29.12 0 0 0 41.728 0 30.592 30.592 0 0 0 0-42.752L339.264 511.936l311.872-319.872a30.592 30.592 0 0 0 0-42.688 29.12 29.12 0 0 0-41.728 0z"
-}, null, -1);
-const _hoisted_3$2 = [
-  _hoisted_2$2
-];
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("svg", _hoisted_1$2, _hoisted_3$2);
-}
-var ArrowLeft = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$2]]);
-const _sfc_main$2 = {
-  name: "ArrowRight"
-};
-const _hoisted_1$1 = {
-  viewBox: "0 0 1024 1024",
-  xmlns: "http://www.w3.org/2000/svg"
-};
-const _hoisted_2$1 = /* @__PURE__ */ createElementVNode("path", {
-  fill: "currentColor",
-  d: "M340.864 149.312a30.592 30.592 0 0 0 0 42.752L652.736 512 340.864 831.872a30.592 30.592 0 0 0 0 42.752 29.12 29.12 0 0 0 41.728 0L714.24 534.336a32 32 0 0 0 0-44.672L382.592 149.376a29.12 29.12 0 0 0-41.728 0z"
-}, null, -1);
-const _hoisted_3$1 = [
-  _hoisted_2$1
-];
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("svg", _hoisted_1$1, _hoisted_3$1);
-}
-var ArrowRight = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1]]);
-const _sfc_main$1 = {
-  name: "DArrowLeft"
-};
-const _hoisted_1 = {
-  viewBox: "0 0 1024 1024",
-  xmlns: "http://www.w3.org/2000/svg"
-};
-const _hoisted_2 = /* @__PURE__ */ createElementVNode("path", {
-  fill: "currentColor",
-  d: "M529.408 149.376a29.12 29.12 0 0 1 41.728 0 30.592 30.592 0 0 1 0 42.688L259.264 511.936l311.872 319.936a30.592 30.592 0 0 1-.512 43.264 29.12 29.12 0 0 1-41.216-.512L197.76 534.272a32 32 0 0 1 0-44.672l331.648-340.224zm256 0a29.12 29.12 0 0 1 41.728 0 30.592 30.592 0 0 1 0 42.688L515.264 511.936l311.872 319.936a30.592 30.592 0 0 1-.512 43.264 29.12 29.12 0 0 1-41.216-.512L453.76 534.272a32 32 0 0 1 0-44.672l331.648-340.224z"
-}, null, -1);
-const _hoisted_3 = [
-  _hoisted_2
-];
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("svg", _hoisted_1, _hoisted_3);
-}
-var DArrowLeft = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "Transfer",
   props: {
@@ -367,7 +307,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       return openBlock(), createElementBlock("div", {
         class: normalizeClass(unref(styles).transfer)
       }, [
-        createVNode(_sfc_main$4, {
+        createVNode(_sfc_main$1, {
           modelValue: unref(selectedSource),
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => isRef(selectedSource) ? selectedSource.value = $event : null),
           class: normalizeClass(unref(styles).panel),
@@ -462,7 +402,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             }, 8, ["class", "disabled", "onClick"])
           ])
         ], 2),
-        createVNode(_sfc_main$4, {
+        createVNode(_sfc_main$1, {
           modelValue: unref(selectedTarget),
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => isRef(selectedTarget) ? selectedTarget.value = $event : null),
           class: normalizeClass(unref(styles).panel),

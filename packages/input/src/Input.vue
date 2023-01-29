@@ -1,41 +1,26 @@
 <template>
-  <div
-    :class="[
-      {
-        [styles.inputContainer]: true,
-        [styles.active]: activeVal,
-        [styles.disabled]: !!disableInput,
-      },
-      $attrs.class,
-    ]"
-    :style="attrs.style"
-  >
+  <div :class="[
+    {
+      [styles.inputContainer]: true,
+      [styles.active]: activeVal,
+      [styles.disabled]: !!disableInput,
+    },
+    $attrs.class,
+  ]" :style="attrs.style">
     <span v-if="withPrepend" :class="styles.prepend">
       <slot name="prepend"></slot>
     </span>
     <div :class="styles.inputWrapper">
-      <input
-        ref="inputRef"
-        v-model="inputVal"
-        v-bind="attrs"
-        :type="type"
-        :class="[
-          {
-            [styles.input]: true,
-            [styles.disabled]: !!disableInput,
-          },
-          inputClass,
-        ]"
-        :disabled="!!disableInput"
-        @input="handleInput"
-        @blur="() => (activeVal = false)"
-        @focus="() => (activeVal = true)"
-      />
-      <Icon
-        v-if="showClearIcon"
-        :class="[styles.clearableIcon, search ? styles.clearWithSuffix : '']"
-        @click.stop="clear"
-      >
+      <input ref="inputRef" v-model="inputVal" v-bind="attrs" :type="type" :class="[
+        {
+          [styles.input]: true,
+          [styles.disabled]: !!disableInput,
+        },
+        inputClass,
+      ]" :disabled="!!disableInput" @input="handleInput" @blur="() => (activeVal = false)"
+        @focus="() => (activeVal = true)" />
+      <Icon v-if="showClearIcon" :class="[styles.clearableIcon, search ? styles.clearWithSuffix : '']"
+        @click.stop="clear">
         <Close />
       </Icon>
       <Icon v-if="search" :class="styles.suffixBtn" @click="onSearch">
@@ -54,7 +39,7 @@ import { computed, defineComponent, toRef, ref, nextTick } from "vue";
 import { useAttrs, useInjectProp } from "@apathia/apathia.hooks";
 import { style, apply, tw } from "@apathia/apathia.twind";
 import { Icon } from "@apathia/apathia.icon";
-import { Close, Search } from "../../icon-svg/src";
+import { Close, Search } from "@apathia/apathia.icon-svg";
 
 export default defineComponent({
   name: "Input",

@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.input",
-  "version": "1.1.1",
+  "version": "1.2.3",
   "description": "input",
   "author": "",
   "homepage": "",
@@ -33,9 +33,10 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.hooks": "workspace:^1.1.1",
-    "@apathia/apathia.icon": "workspace:^1.1.2",
-    "@apathia/apathia.twind": "workspace:^1.1.2",
+    "@apathia/apathia.hooks": "workspace:^1.2.3",
+    "@apathia/apathia.icon": "workspace:^1.2.3",
+    "@apathia/apathia.icon-svg": "workspace:^0.1.3",
+    "@apathia/apathia.twind": "workspace:^1.2.3",
     "string-width": "4.2.3"
   }
 }

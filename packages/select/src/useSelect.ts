@@ -12,7 +12,7 @@ import {
   onBeforeUnmount,
 } from 'vue'
 import { onClickOutside, useResizeObserver } from '@apathia/apathia.hooks'
-import { ValueType, Direction, Option, UserProps } from './types'
+import { SelectValueType, Direction, Option, UserProps } from './types'
 
 export default function useSelect(userProps: UserProps, ctx: SetupContext) {
   const { disabled, modelValue, valueKey, filterable, emptyText, placeholder } =
@@ -94,7 +94,7 @@ export default function useSelect(userProps: UserProps, ctx: SetupContext) {
     }
   }
 
-  const isSameValue = (newVal: ValueType, oldVal: ValueType) => {
+  const isSameValue = (newVal: SelectValueType, oldVal: SelectValueType) => {
     if (newVal == null || oldVal == null) {
       // allow null
       return newVal === oldVal
@@ -112,7 +112,7 @@ export default function useSelect(userProps: UserProps, ctx: SetupContext) {
     active.value = !active.value
   }
 
-  const hasSelectValue = (value?: ValueType) => {
+  const hasSelectValue = (value?: SelectValueType) => {
     const optionMap = selectState.optionMap
     if (value === undefined) {
       return false
@@ -136,7 +136,7 @@ export default function useSelect(userProps: UserProps, ctx: SetupContext) {
   }
 
   const changeHandler = (
-    value: ValueType,
+    value: SelectValueType,
     labelStr: string,
     isInnerChange = false,
   ) => {
@@ -162,7 +162,7 @@ export default function useSelect(userProps: UserProps, ctx: SetupContext) {
   const updateRegister = (
     disabledVal: boolean,
     uid: number,
-    value: ValueType,
+    value: SelectValueType,
     labelStr: string,
   ) => {
     const state = selectState
@@ -318,7 +318,7 @@ export default function useSelect(userProps: UserProps, ctx: SetupContext) {
   const register = (
     disabledOption: boolean,
     uid: number,
-    value: ValueType,
+    value: SelectValueType,
     labelStr: string,
   ) => {
     const state = selectState

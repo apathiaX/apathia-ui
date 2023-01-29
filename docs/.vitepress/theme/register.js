@@ -14,7 +14,6 @@ export function registerComponents(app) {
 
   Object.keys(comp).forEach(name => {
     if (typeof comp[name] === 'object') {
-      console.log(name)
       app.component(name, comp[name]) // 注册 组件
     } else {
       app.config.globalProperties[name] = comp[name] // 注册  方法

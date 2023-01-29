@@ -1,54 +1,32 @@
 <template>
   <thead :class="styles.thead">
     <tr :class="headerRowClasses" :style="headerRowStyles">
-      <th
-        v-for="(col, index) in headerCols"
-        :key="index"
-        :class="{
-          [styles.th]: true,
-          [styles.fixed]: fixedHeader || col?.fixed,
-          [styles.fixedHeader]: fixedHeader,
-          [styles.fixedColumnLeft]: col?.fixed === 'left',
-          [styles.fixedColumnRight]: col?.fixed === 'right',
-          [styles.thBordered]: border,
-          [col?.thAttrs.class]: true,
-        }"
-        :colspan="col?.thAttrs.colspan"
-        :style="col?.thAttrs.style"
-        scope="col"
-      >
-        <Checkbox
-          v-if="col?.type === 'selection'"
-          :model-value="allSelected"
-          :indeterminate="indeterminate"
-          @update:modelValue="toggleAllSelected()"
-        />
+      <th v-for="(col, index) in headerCols" :key="index" :class="{
+        [styles.th]: true,
+        [styles.fixed]: fixedHeader || col?.fixed,
+        [styles.fixedHeader]: fixedHeader,
+        [styles.fixedColumnLeft]: col?.fixed === 'left',
+        [styles.fixedColumnRight]: col?.fixed === 'right',
+        [styles.thBordered]: border,
+        [col?.thAttrs.class]: true,
+      }" :colspan="col?.thAttrs.colspan" :style="col?.thAttrs.style" scope="col">
+        <Checkbox v-if="col?.type === 'selection'" :model-value="allSelected" :indeterminate="indeterminate"
+          @update:modelValue="toggleAllSelected()" />
         <template v-else-if="col?.title">
-          <CustomRender
-            v-if="typeof col.title === 'function'"
-            :render="col.title"
-          />
+          <CustomRender v-if="typeof col.title === 'function'" :render="col.title" />
           <span v-else>{{ col.title }}</span>
         </template>
 
-        <TableSorter
-          v-if="col?.sortable"
-          :sort="sort"
-          :prop="col?.prop || ''"
-          @sortChange="handleColumnSortChange"
-        />
+        <TableSorter v-if="col?.sortable" :sort="sort" :prop="col?.prop || ''" @sortChange="handleColumnSortChange" />
       </th>
     </tr>
   </thead>
 </template>
 
 <script lang="tsx">
-import { computed, defineComponent, PropType, inject, watch } from 'vue'
-// @ts-ignore
+import { computed, defineComponent, PropType, inject } from 'vue'
 import { style, css, apply } from '@apathia/apathia.twind'
-// @ts-ignore
 import { CustomRender } from '@apathia/apathia.custom-render'
-// @ts-ignore
 import { Checkbox } from '@apathia/apathia.checkbox'
 import TableSorter from './TableSorter.vue'
 import type {
@@ -152,10 +130,10 @@ export default defineComponent({
               fixed && props.fixedHeader
                 ? 30
                 : fixed && !props.fixedHeader
-                ? 20
-                : !fixed && props.fixedHeader
-                ? 10
-                : 0,
+                  ? 20
+                  : !fixed && props.fixedHeader
+                    ? 10
+                    : 0,
           }
 
           return {

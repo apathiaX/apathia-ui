@@ -1,24 +1,12 @@
 <template>
-  <div
-    ref="containerRef"
-    :class="styles.container"
-    :style="{
-      'max-height': fixedHeader ? `${height}px` : 'auto',
-    }"
-  >
+  <div ref="containerRef" :class="styles.container" :style="{
+    'max-height': fixedHeader ? `${height}px` : 'auto',
+  }">
     <table :class="styles.table" :style="tableStyle" v-bind="$attrs">
-      <TableHeader
-        v-if="showHeader"
-        :columns="realColumns"
-        :border="border"
-        :header-row-class-name="headerRowClassName"
-        :header-row-style="headerRowStyle"
-        :header-cell-class-name="headerCellClassName"
-        :header-cell-style="headerCellStyle"
-        :sort="sort"
-        :fixed-header="fixedHeader"
-        @sortChange="$emit('sort-change', $event)"
-      />
+      <TableHeader v-if="showHeader" :columns="realColumns" :border="border" :header-row-class-name="headerRowClassName"
+        :header-row-style="headerRowStyle" :header-cell-class-name="headerCellClassName"
+        :header-cell-style="headerCellStyle" :sort="sort" :fixed-header="fixedHeader"
+        @sortChange="$emit('sort-change', $event)" />
 
       <template v-if="data.length === 0 || loading">
         <tbody>
@@ -39,23 +27,10 @@
         </tbody>
       </template>
 
-      <TableBody
-        v-if="data.length && !loading && showData"
-        :columns="realColumns"
-        :data="data"
-        :border="border"
-        :stripe="stripe"
-        :row-class-name="rowClassName"
-        :row-style="rowStyle"
-        :cell-class-name="cellClassName"
-        :cell-style="cellStyle"
-        :cell-span="cellSpan"
-        :current="currentId"
-        :highlight-current-row="highlightCurrentRow"
-        :row-key="rowKey"
-        :expand="expand"
-        @currentChange="onCurrentChange"
-      />
+      <TableBody v-if="data.length && !loading && showData" :columns="realColumns" :data="data" :border="border"
+        :stripe="stripe" :row-class-name="rowClassName" :row-style="rowStyle" :cell-class-name="cellClassName"
+        :cell-style="cellStyle" :cell-span="cellSpan" :current="currentId" :highlight-current-row="highlightCurrentRow"
+        :row-key="rowKey" :expand="expand" @currentChange="onCurrentChange" />
     </table>
   </div>
 </template>
@@ -87,7 +62,6 @@ import type {
   DataItem,
 } from './types'
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export default defineComponent({
   name: 'Table',
 

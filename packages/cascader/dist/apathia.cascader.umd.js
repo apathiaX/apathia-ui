@@ -1,55 +1,9 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.hooks"), require("@apathia/apathia.checkbox"), require("@apathia/apathia.icon"), require("@apathia/apathia.shared"), require("@apathia/apathia.twind")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.hooks", "@apathia/apathia.checkbox", "@apathia/apathia.icon", "@apathia/apathia.shared", "@apathia/apathia.twind"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.cascader = {}, global.Vue, global.hooks, global.checkbox, global.icon, global.shared, global.twind));
-})(this, function(exports2, vue, apathia_hooks, apathia_checkbox, apathia_icon, apathia_shared, apathia_twind) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.hooks"), require("@apathia/apathia.checkbox"), require("@apathia/apathia.icon"), require("@apathia/apathia.shared"), require("@apathia/apathia.twind"), require("@apathia/apathia.icon-svg")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.hooks", "@apathia/apathia.checkbox", "@apathia/apathia.icon", "@apathia/apathia.shared", "@apathia/apathia.twind", "@apathia/apathia.icon-svg"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.cascader = {}, global.Vue, global.hooks, global.checkbox, global.icon, global.shared, global.twind, global["icon-svg"]));
+})(this, function(exports2, vue, apathia_hooks, apathia_checkbox, apathia_icon, apathia_shared, apathia_twind, apathia_iconSvg) {
   "use strict";
-  var _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
-  const _sfc_main$3 = {
-    name: "ArrowRight"
-  };
-  const _hoisted_1$2 = {
-    viewBox: "0 0 1024 1024",
-    xmlns: "http://www.w3.org/2000/svg"
-  };
-  const _hoisted_2$1 = /* @__PURE__ */ vue.createElementVNode("path", {
-    fill: "currentColor",
-    d: "M340.864 149.312a30.592 30.592 0 0 0 0 42.752L652.736 512 340.864 831.872a30.592 30.592 0 0 0 0 42.752 29.12 29.12 0 0 0 41.728 0L714.24 534.336a32 32 0 0 0 0-44.672L382.592 149.376a29.12 29.12 0 0 0-41.728 0z"
-  }, null, -1);
-  const _hoisted_3$1 = [
-    _hoisted_2$1
-  ];
-  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$2, _hoisted_3$1);
-  }
-  var ArrowRight = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$1]]);
-  const _sfc_main$2 = {
-    name: "Close"
-  };
-  const _hoisted_1$1 = {
-    viewBox: "0 0 1024 1024",
-    xmlns: "http://www.w3.org/2000/svg"
-  };
-  const _hoisted_2 = /* @__PURE__ */ vue.createElementVNode("path", {
-    fill: "currentColor",
-    d: "M764.288 214.592 512 466.88 259.712 214.592a31.936 31.936 0 0 0-45.12 45.12L466.752 512 214.528 764.224a31.936 31.936 0 1 0 45.12 45.184L512 557.184l252.288 252.288a31.936 31.936 0 0 0 45.12-45.12L557.12 512.064l252.288-252.352a31.936 31.936 0 1 0-45.12-45.184z"
-  }, null, -1);
-  const _hoisted_3 = [
-    _hoisted_2
-  ];
-  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$1, _hoisted_3);
-  }
-  var Close = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render]]);
-  const __default__$1 = vue.defineComponent({
-    name: "Node"
-  });
   const _sfc_main$1 = /* @__PURE__ */ vue.defineComponent({
-    ...__default__$1,
+    __name: "Nodes",
     props: {
       nodes: { default: () => [] },
       focus: { type: Boolean, default: false },
@@ -138,7 +92,7 @@
                       onClick: vue.withModifiers(($event) => removeOne(node), ["stop"])
                     }, {
                       default: vue.withCtx(() => [
-                        vue.createVNode(vue.unref(Close))
+                        vue.createVNode(vue.unref(apathia_iconSvg.Close))
                       ]),
                       _: 2
                     }, 1032, ["class", "onClick"])
@@ -166,7 +120,7 @@
             onClick: vue.withModifiers(clear, ["stop"])
           }, {
             default: vue.withCtx(() => [
-              vue.createVNode(vue.unref(Close))
+              vue.createVNode(vue.unref(apathia_iconSvg.Close))
             ]),
             _: 1
           }, 8, ["class", "onClick"])) : vue.createCommentVNode("", true)
@@ -175,12 +129,8 @@
     }
   });
   const _hoisted_1 = ["onClick", "onMouseenter"];
-  const __default__ = vue.defineComponent({
-    name: "Cascader",
-    inheritAttrs: false
-  });
   const _sfc_main = /* @__PURE__ */ vue.defineComponent({
-    ...__default__,
+    __name: "Cascader",
     props: {
       modelValue: null,
       placeholder: { default: "\u8BF7\u9009\u62E9" },
@@ -603,7 +553,7 @@
                               class: vue.normalizeClass(vue.unref(styles).icon)
                             }, {
                               default: vue.withCtx(() => [
-                                vue.createVNode(vue.unref(ArrowRight))
+                                vue.createVNode(vue.unref(apathia_iconSvg.ArrowRight))
                               ]),
                               _: 1
                             }, 8, ["class"])) : vue.createCommentVNode("", true)

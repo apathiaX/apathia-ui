@@ -1,10 +1,5 @@
 <template>
-  <div
-    v-bind="$attrs"
-    ref="containerRef"
-    :class="containerClasses"
-    :draggable="draggable"
-  >
+  <div v-bind="$attrs" ref="containerRef" :class="containerClasses" :draggable="draggable">
     <div v-if="draggable" @click="handleTriggerClick">
       <slot name="drag">
         <div :class="dragContainerClasses">
@@ -19,14 +14,8 @@
       </slot>
     </div>
     <template v-else>
-      <Input
-        v-if="!multiple && !noInput"
-        :model-value="modelValue"
-        :disabled="inputDisabled || disableUpload"
-        style="display: inline-block"
-        clearable
-        @update:modelValue="handleUrlInput"
-      />
+      <Input v-if="!multiple && !noInput" :model-value="modelValue" :disabled="inputDisabled || disableUpload"
+        style="display: inline-block" clearable @update:modelValue="handleUrlInput" />
       <div style="display: inline-block" @click="handleTriggerClick">
         <slot name="button">
           <BaseButton primary :disabled="disableUpload" :style="uploadButtonStyles">
@@ -36,14 +25,8 @@
       </div>
     </template>
   </div>
-  <input
-    ref="inputRef"
-    type="file"
-    :multiple="multiple"
-    :accept="accept"
-    style="display: none"
-    @change="handleFileChange"
-  />
+  <input ref="inputRef" type="file" :multiple="multiple" :accept="accept" style="display: none"
+    @change="handleFileChange" />
 </template>
 
 <script lang="ts">
@@ -56,7 +39,7 @@ import { Icon } from "@apathia/apathia.icon";
 import { promiseWrapper, request, MaybePromise } from "@apathia/apathia.shared";
 import { useDragDrop } from "./useDragDrop";
 import { sizeFormat } from "./utils";
-import { UploadFilled } from "../../icon-svg/src";
+import { UploadFilled } from "@apathia/apathia.icon-svg";
 
 export default defineComponent({
   name: "Upload",

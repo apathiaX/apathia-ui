@@ -1,4 +1,3 @@
-// @ts-nocheck
 export * from '@apathia/apathia.button'
 export * from '@apathia/apathia.twind'
 export * from '@apathia/apathia.form'

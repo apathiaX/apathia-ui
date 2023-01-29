@@ -13,15 +13,15 @@ interface IconProps {
     readonly size?: number | string
 }
 
-defineOptions({
-    name: 'Icon',
-    inheritAttrs: false
-})
+// defineOptions({
+//     name: 'Icon',
+//     inheritAttrs: false
+// })
 
 const props = defineProps<IconProps>()
 
 const styles = () => {
-    if(!props.color && !props.size) 
+    if (!props.color && !props.size)
         return {}
 
     return {

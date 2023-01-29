@@ -1,29 +1,19 @@
 <template>
-  <div
-    ref="tagContainerRef"
-    :class="{
-      [styles.container]: true,
-      [styles.active]: focus,
-    }"
-    @click="handleClick"
-  >
+  <div ref="tagContainerRef" :class="{
+    [styles.container]: true,
+    [styles.active]: focus,
+  }" @click="handleClick">
     <div :class="styles.wrap">
       <div ref="contentRef" :class="styles.nodes">
         <template v-if="nodes.length">
           <div v-for="node in nodes" :key="node.fullkey" :class="styles.tag">
             <span>{{
               showAllLevels
-                ? node.fullname.join(separator)
-                : node.fullname[node.fullname.length - 1]
+              ? node.fullname.join(separator)
+                          : node.fullname[node.fullname.length - 1]
             }}</span>
             <span :class="styles.iconWrap">
-              <Icon
-                :stroke-width="2"
-                size="xs"
-                fill="red"
-                :class="styles.nodeRemove"
-                @click.stop="removeOne(node)"
-              >
+              <Icon :stroke-width="2" size="xs" fill="red" :class="styles.nodeRemove" @click.stop="removeOne(node)">
                 <Close />
               </Icon>
             </span>
@@ -34,21 +24,11 @@
         </div>
       </div>
 
-      <input
-        v-show="search && showSearch"
-        ref="iptRef"
-        v-model="searchInput"
-        :class="styles.search"
-        @input="onSearchInput"
-      />
+      <input v-show="search && showSearch" ref="iptRef" v-model="searchInput" :class="styles.search"
+        @input="onSearchInput" />
     </div>
 
-    <Icon
-      v-if="clearable && nodes.length"
-      size="12"
-      :class="styles.clearIcon"
-      @click.stop="clear"
-    >
+    <Icon v-if="clearable && nodes.length" size="12" :class="styles.clearIcon" @click.stop="clear">
       <Close />
     </Icon>
   </div>
@@ -60,11 +40,11 @@ import { Icon } from "@apathia/apathia.icon";
 import { useScrollX, onClickOutside } from "@apathia/apathia.hooks";
 import { style, css } from "@apathia/apathia.twind";
 import type { Node } from "./types";
-import { Close } from "../../icon-svg/src";
+import { Close } from "@apathia/apathia.icon-svg";
 
-defineOptions({
-  name: "Node",
-});
+// defineOptions({
+//   name: "Node",
+// });
 
 interface NodeProps {
   nodes: Node[];

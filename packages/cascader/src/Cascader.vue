@@ -11,55 +11,25 @@
       @focus="open"
       @update:modelValue="onInput"
     /> -->
-    <Nodes
-      :focus="expand"
-      :nodes="nodes"
-      :show-all-levels="showAllLevels"
-      :separator="separator"
-      :placeholder="placeholder"
-      :clearable="clearable"
-      :search="search"
-      @search-change="handleSearchChange"
-      @update:focus="handleFocus"
-      @remove="removeNode"
-      @clear="clearAll"
-    />
+    <Nodes :focus="expand" :nodes="nodes" :show-all-levels="showAllLevels" :separator="separator"
+      :placeholder="placeholder" :clearable="clearable" :search="search" @search-change="handleSearchChange"
+      @update:focus="handleFocus" @remove="removeNode" @clear="clearAll" />
 
     <div :class="styles.dropdown">
       <div v-show="expand" v-auto-pos :class="styles.panelContainer" data-align="left">
-        <div
-          v-for="(list, index) in lists"
-          :key="index"
-          :class="styles.scrollWrap"
-          :style="{ height: customHeight }"
-        >
+        <div v-for="(list, index) in lists" :key="index" :class="styles.scrollWrap" :style="{ height: customHeight }">
           <div :class="styles.panel">
-            <div
-              v-for="node in list"
-              :key="node.value"
-              @click="onItemClick(node, index)"
-              @mouseenter="onItemMouseOver(node, index)"
-            >
-              <slot
-                :node="node"
-                :active="activePathMap[node.fullkey]"
-                :selected="selectedKeyMap[node.fullkey]"
-                :leaf="node.leaf"
-              >
-                <div
-                  :class="{
-                    [styles.node]: true,
-                    [styles.nodeDisabled]: node.disabled,
-                    [styles.nodeActive]: activePathMap[node.fullkey],
-                  }"
-                >
-                  <Checkbox
-                    v-if="multiple && (changeOnSelect || node.leaf)"
-                    :model-value="selectedKeyMap[node.fullkey]"
-                    :class="styles.checkbox"
-                    @update:model-value="checkChange($event, node)"
-                    @click.stop
-                  />
+            <div v-for="node in list" :key="node.value" @click="onItemClick(node, index)"
+              @mouseenter="onItemMouseOver(node, index)">
+              <slot :node="node" :active="activePathMap[node.fullkey]" :selected="selectedKeyMap[node.fullkey]"
+                :leaf="node.leaf">
+                <div :class="{
+                  [styles.node]: true,
+                  [styles.nodeDisabled]: node.disabled,
+                  [styles.nodeActive]: activePathMap[node.fullkey],
+                }">
+                  <Checkbox v-if="multiple && (changeOnSelect || node.leaf)" :model-value="selectedKeyMap[node.fullkey]"
+                    :class="styles.checkbox" @update:model-value="checkChange($event, node)" @click.stop />
                   {{ node.label }}
                   <Icon v-if="!node.leaf" :class="styles.icon">
                     <ArrowRight />
@@ -82,8 +52,8 @@ import { Icon } from "@apathia/apathia.icon";
 import { autoPos as vAutoPos } from "@apathia/apathia.shared";
 import { style, css } from "@apathia/apathia.twind";
 import Nodes from "./Nodes.vue";
-import { TriggerType, Node } from "./types";
-import { ArrowRight } from "../../icon-svg/src";
+import { Trigger as TriggerType, Node } from "./types";
+import { ArrowRight } from "@apathia/apathia.icon-svg";
 
 type ValueType = string | number | Array<string | number> | Array<Array<string | number>>;
 
@@ -121,10 +91,10 @@ const mergeArray = (oldArr: Node[], newArr: Node[]) => {
   return oldArr.concat(newItems);
 };
 
-defineOptions({
-  name: "Cascader",
-  inheritAttrs: false,
-});
+// defineOptions({
+//   name: "Cascader",
+//   inheritAttrs: false,
+// });
 
 const getCascaderStyles = () => ({
   dropdown: style`absolute z-dropdown`,
@@ -377,11 +347,11 @@ const activePathMap = computed(() => {
   // 当前正在操作，则操作线上所有的都是被激活的
   const currentKeyWayMap = currentKey.value
     ? allNodes.value.reduce<Record<string, boolean>>((map, node) => {
-        if (currentKey.value.indexOf(node.fullkey) === 0) {
-          map[node.fullkey] = true;
-        }
-        return map;
-      }, {})
+      if (currentKey.value.indexOf(node.fullkey) === 0) {
+        map[node.fullkey] = true;
+      }
+      return map;
+    }, {})
     : {};
 
   return {

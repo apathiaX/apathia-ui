@@ -1,79 +1,45 @@
 <template>
   <div :class="styles.transfer">
-    <Panel
-      v-model="selectedSource"
-      :class="styles.panel"
-      :data="source"
-      :filterable="filterable"
-      :filter-placeholder="filterPlaceholder"
-      :filter-method="filterMethod"
-      :title="titles[0]"
-      :default-checked="leftDefaultChecked"
-    >
+    <Panel v-model="selectedSource" :class="styles.panel" :data="source" :filterable="filterable"
+      :filter-placeholder="filterPlaceholder" :filter-method="filterMethod" :title="titles[0]"
+      :default-checked="leftDefaultChecked">
       <template #item="{ option, index }">
         <slot name="source-item" :option="option" :index="index"> </slot>
       </template>
     </Panel>
     <div :class="styles.buttonWrapper">
       <div>
-        <BaseButton
-          small
-          :class="styles.button"
-          :disabled="source.length === 0"
-          @click="addAll"
-        >
+        <BaseButton small :class="styles.button" :disabled="source.length === 0" @click="addAll">
           <Icon>
             <DArrowLeft />
           </Icon>
         </BaseButton>
       </div>
       <div>
-        <BaseButton
-          small
-          :class="styles.button"
-          :disabled="selectedSource.length === 0"
-          @click="addSelected"
-        >
+        <BaseButton small :class="styles.button" :disabled="selectedSource.length === 0" @click="addSelected">
           <Icon>
             <ArrowRight />
           </Icon>
         </BaseButton>
       </div>
       <div>
-        <BaseButton
-          small
-          :class="styles.button"
-          :disabled="selectedTarget.length === 0"
-          @click="removeSelected"
-        >
+        <BaseButton small :class="styles.button" :disabled="selectedTarget.length === 0" @click="removeSelected">
           <Icon>
             <ArrowLeft />
           </Icon>
         </BaseButton>
       </div>
       <div>
-        <BaseButton
-          small
-          :class="styles.button"
-          :disabled="target.length === 0"
-          @click="removeAll"
-        >
+        <BaseButton small :class="styles.button" :disabled="target.length === 0" @click="removeAll">
           <Icon>
             <DArrowLeft />
           </Icon>
         </BaseButton>
       </div>
     </div>
-    <Panel
-      v-model="selectedTarget"
-      :class="styles.panel"
-      :data="target"
-      :filterable="filterable"
-      :filter-placeholder="filterPlaceholder"
-      :filter-method="filterMethod"
-      :title="titles[1]"
-      :default-checked="rightDefaultChecked"
-    >
+    <Panel v-model="selectedTarget" :class="styles.panel" :data="target" :filterable="filterable"
+      :filter-placeholder="filterPlaceholder" :filter-method="filterMethod" :title="titles[1]"
+      :default-checked="rightDefaultChecked">
       <template #item="{ option, index }">
         <slot name="source-item" :option="option" :index="index"> </slot>
       </template>
@@ -87,9 +53,9 @@ import { Icon } from "@apathia/apathia.icon";
 import { BaseButton } from "@apathia/apathia.button";
 import useTransfer from "./useTransfer";
 import Panel from "./Panel.vue";
-import type { Key, DataItem, TargetOrder, Props } from "./types";
+import type { Key, TransferDataItem as DataItem, TargetOrder, Props } from "./types";
 import { apply, tw } from "@apathia/apathia.twind";
-import { ArrowLeft, ArrowRight, DArrowLeft, DArrowRight } from "../../icon-svg/src";
+import { ArrowLeft, ArrowRight, DArrowLeft, DArrowRight } from "@apathia/apathia.icon-svg";
 
 const getTranferStyles = () => ({
   transfer: tw`${apply`flex`}`,

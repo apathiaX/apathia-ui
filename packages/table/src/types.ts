@@ -116,7 +116,7 @@ export interface LegacyPager {
 
 export type ResponsePager = GoPager | LegacyPager
 
-export interface Pagination {
+interface Pagination {
   // 当前在第几页
   currentPage: number
   // 总共有多少页

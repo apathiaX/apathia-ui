@@ -1,5 +1,5 @@
 import type { InjectionKey } from 'vue';
-import { ValueType, SelectState, OptionRegister, OptionRemover } from './types';
+import { SelectValueType as ValueType, SelectState, OptionRegister, OptionRemover } from './types';
 export declare const RegisterKey: InjectionKey<OptionRegister>;
 export declare const UpdateRegisterKey: InjectionKey<OptionRegister>;
 export declare const UnregisterKey: InjectionKey<OptionRemover>;

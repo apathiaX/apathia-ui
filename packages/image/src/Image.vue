@@ -1,12 +1,6 @@
 <template>
   <div :class="[styles.imgWrap, { [styles.errorHidden]: isError }]">
-    <img
-      :src="previewImage"
-      :alt="alt"
-      :class="styles.img"
-      :style="imgStyle"
-      @error="handleError"
-    />
+    <img :src="previewImage" :alt="alt" :class="styles.img" :style="imgStyle" @error="handleError" />
     <!-- 蒙层 -->
     <div v-if="preview" :class="styles.mask" @click="handleClickOpenMash">
       <span :class="styles.hoverEnlarge" @click.stop="handleClickCopyLocation">
@@ -56,37 +50,23 @@
               </Icon>
             </li>
             <!-- 右转90度 -->
-            <li
-              :class="[styles.optionIcons, styles.optionIconsSize]"
-              @click="handleClickTurnRight"
-            >
+            <li :class="[styles.optionIcons, styles.optionIconsSize]" @click="handleClickTurnRight">
               <Icon>
                 <RefreshRight />
               </Icon>
             </li>
             <!-- 左转90度 -->
-            <li
-              :class="[styles.optionIcons, styles.optionIconsSize]"
-              @click="handleClickTurnLeft"
-            >
+            <li :class="[styles.optionIcons, styles.optionIconsSize]" @click="handleClickTurnLeft">
               <Icon>
                 <RefreshLeft />
               </Icon>
             </li>
           </ul>
-          <div
-            :class="styles.previewImgWrap"
-            :style="`transform: translate3d(${translate.x}px, ${translate.y}px, 0px) scale3d(${scaleTimes}, ${scaleTimes}, 1) rotate(${rotateAngle}deg)`"
-          >
-            <img
-              :src="src"
-              :alt="alt"
-              :class="styles.previewImg"
-              @mousedown.prevent="handleMouseDown"
-              @mousemove.prevent="handleMouseMove"
-              @mouseup.prevent="handleMouseUp"
-              @click="(e) => e.stopPropagation()"
-            />
+          <div :class="styles.previewImgWrap"
+            :style="`transform: translate3d(${translate.x}px, ${translate.y}px, 0px) scale3d(${scaleTimes}, ${scaleTimes}, 1) rotate(${rotateAngle}deg)`">
+            <img :src="src" :alt="alt" :class="styles.previewImg" @mousedown.prevent="handleMouseDown"
+              @mousemove.prevent="handleMouseMove" @mouseup.prevent="handleMouseUp"
+              @click="(e) => e.stopPropagation()" />
           </div>
         </div>
       </div>
@@ -108,7 +88,7 @@ import {
   RefreshLeft,
   RefreshRight,
   View,
-} from "../../icon-svg/src";
+} from "@apathia/apathia.icon-svg";
 
 // css
 const flash = keyframes`
@@ -180,10 +160,10 @@ const previewImage = computed(() => {
     props.width && props.height
       ? `${props.width}x${props.height}`
       : props.width
-      ? `${props.width}x0`
-      : props.height
-      ? `0x${props.height}`
-      : "160x100";
+        ? `${props.width}x0`
+        : props.height
+          ? `0x${props.height}`
+          : "160x100";
   const path = props.src.replace(/^https?:/, "");
 
   return resizeImage(path, suffix);
