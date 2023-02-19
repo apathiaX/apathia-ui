@@ -1,5 +1,71 @@
 # @apathia/apathia.cascader
 
+## 0.2.6
+
+### Patch Changes
+
+- add theme color
+- Updated dependencies
+  - @apathia/apathia.cascader@0.2.6
+  - @apathia/apathia.checkbox@1.2.6
+  - @apathia/apathia.collapse@1.2.6
+  - @apathia/apathia.icon-svg@0.1.6
+  - @apathia/apathia.transfer@0.2.6
+  - @apathia/apathia.sidenav@0.2.12
+  - @apathia/apathia.select@1.2.6
+  - @apathia/apathia.shared@1.2.6
+  - @apathia/apathia.upload@1.2.6
+  - @apathia/apathia.hooks@1.2.6
+  - @apathia/apathia.image@0.2.6
+  - @apathia/apathia.input@1.2.6
+  - @apathia/apathia.table@1.2.6
+  - @apathia/apathia.twind@1.2.6
+  - @apathia/apathia.icon@1.2.6
+
+## 0.2.5
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.cascader@0.2.5
+  - @apathia/apathia.checkbox@1.2.5
+  - @apathia/apathia.collapse@1.2.5
+  - @apathia/apathia.icon-svg@0.1.5
+  - @apathia/apathia.transfer@0.2.5
+  - @apathia/apathia.sidenav@0.2.11
+  - @apathia/apathia.select@1.2.5
+  - @apathia/apathia.shared@1.2.5
+  - @apathia/apathia.upload@1.2.5
+  - @apathia/apathia.hooks@1.2.5
+  - @apathia/apathia.image@0.2.5
+  - @apathia/apathia.input@1.2.5
+  - @apathia/apathia.table@1.2.5
+  - @apathia/apathia.twind@1.2.5
+  - @apathia/apathia.icon@1.2.5
+
+## 0.2.4
+
+### Patch Changes
+
+- fix affix
+- Updated dependencies
+  - @apathia/apathia.sidenav@0.2.10
+  - @apathia/apathia.cascader@0.2.4
+  - @apathia/apathia.checkbox@1.2.4
+  - @apathia/apathia.collapse@1.2.4
+  - @apathia/apathia.hooks@1.2.4
+  - @apathia/apathia.icon@1.2.4
+  - @apathia/apathia.icon-svg@0.1.4
+  - @apathia/apathia.image@0.2.4
+  - @apathia/apathia.input@1.2.4
+  - @apathia/apathia.select@1.2.4
+  - @apathia/apathia.shared@1.2.4
+  - @apathia/apathia.table@1.2.4
+  - @apathia/apathia.transfer@0.2.4
+  - @apathia/apathia.twind@1.2.4
+  - @apathia/apathia.upload@1.2.4
+
 ## 0.2.3
 
 ### Patch Changes

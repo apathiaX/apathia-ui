@@ -13,7 +13,7 @@ import * as comp from '../../packages/icon-svg/src'
 
 const app = createApp(App).component('Card', Card)
 
-for(const [key, component] of Object.entries(comp)){
+for (const [key, component] of Object.entries(comp)) {
   app.component(key, component)
 }
 

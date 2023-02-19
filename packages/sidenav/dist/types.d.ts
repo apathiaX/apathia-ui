@@ -1,13 +1,13 @@
 export declare type SideNode = {
     text?: string;
     icon?: string[];
-    children?: Node[];
+    children?: SideNode[];
     [k: string]: any;
 };
 export interface SideNavProps {
-    menuList?: Node[];
+    menuList?: SideNode[];
     activeKey?: string;
     mini?: boolean;
     search?: boolean;
-    keyField?: keyof Node;
+    keyField?: keyof SideNode;
 }

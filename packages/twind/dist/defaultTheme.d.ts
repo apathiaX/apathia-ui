@@ -7,6 +7,7 @@ export declare const defaultTheme: {
                 active: string;
                 forbid: string;
                 light: string;
+                fill: string;
             };
             content: {
                 primary: string;

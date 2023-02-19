@@ -1,5 +1,47 @@
 # @apathia1/apathia.table
 
+## 1.2.6
+
+### Patch Changes
+
+- add theme color
+- Updated dependencies
+  - @apathia/apathia.custom-render@1.2.6
+  - @apathia/apathia.checkbox@1.2.6
+  - @apathia/apathia.loading@1.2.6
+  - @apathia/apathia.button@1.2.6
+  - @apathia/apathia.hooks@1.2.6
+  - @apathia/apathia.twind@1.2.6
+  - @apathia/apathia.icon@1.2.6
+
+## 1.2.5
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.custom-render@1.2.5
+  - @apathia/apathia.checkbox@1.2.5
+  - @apathia/apathia.loading@1.2.5
+  - @apathia/apathia.button@1.2.5
+  - @apathia/apathia.hooks@1.2.5
+  - @apathia/apathia.twind@1.2.5
+  - @apathia/apathia.icon@1.2.5
+
+## 1.2.4
+
+### Patch Changes
+
+- fix affix
+- Updated dependencies
+  - @apathia/apathia.button@1.2.4
+  - @apathia/apathia.checkbox@1.2.4
+  - @apathia/apathia.custom-render@1.2.4
+  - @apathia/apathia.hooks@1.2.4
+  - @apathia/apathia.icon@1.2.4
+  - @apathia/apathia.loading@1.2.4
+  - @apathia/apathia.twind@1.2.4
+
 ## 1.2.3
 
 ### Patch Changes

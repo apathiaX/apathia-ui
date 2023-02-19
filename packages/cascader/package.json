@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.cascader",
-  "version": "0.2.3",
+  "version": "0.2.6",
   "description": "cascader",
   "author": "",
   "homepage": "",
@@ -27,26 +27,26 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "devDependencies": {
-    "vue": "^3.2.37"
+    "vue": "^3.2.45"
   },
   "peerDependencies": {
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.cascader": "workspace:^0.2.3",
-    "@apathia/apathia.checkbox": "workspace:^1.2.3",
-    "@apathia/apathia.collapse": "workspace:^1.2.3",
-    "@apathia/apathia.hooks": "workspace:^1.2.3",
-    "@apathia/apathia.icon": "workspace:^1.2.3",
-    "@apathia/apathia.icon-svg": "workspace:^0.1.3",
-    "@apathia/apathia.image": "workspace:^0.2.3",
-    "@apathia/apathia.input": "workspace:^1.2.3",
-    "@apathia/apathia.select": "workspace:^1.2.3",
-    "@apathia/apathia.shared": "workspace:^1.2.3",
-    "@apathia/apathia.sidenav": "workspace:^0.2.3",
-    "@apathia/apathia.table": "workspace:^1.2.3",
-    "@apathia/apathia.transfer": "workspace:^0.2.3",
-    "@apathia/apathia.twind": "workspace:^1.2.3",
-    "@apathia/apathia.upload": "workspace:^1.2.3"
+    "@apathia/apathia.cascader": "workspace:^0.2.6",
+    "@apathia/apathia.checkbox": "workspace:^1.2.6",
+    "@apathia/apathia.collapse": "workspace:^1.2.6",
+    "@apathia/apathia.hooks": "workspace:^1.2.6",
+    "@apathia/apathia.icon": "workspace:^1.2.6",
+    "@apathia/apathia.icon-svg": "workspace:^0.1.6",
+    "@apathia/apathia.image": "workspace:^0.2.6",
+    "@apathia/apathia.input": "workspace:^1.2.6",
+    "@apathia/apathia.select": "workspace:^1.2.6",
+    "@apathia/apathia.shared": "workspace:^1.2.6",
+    "@apathia/apathia.sidenav": "workspace:^0.2.12",
+    "@apathia/apathia.table": "workspace:^1.2.6",
+    "@apathia/apathia.transfer": "workspace:^0.2.6",
+    "@apathia/apathia.twind": "workspace:^1.2.6",
+    "@apathia/apathia.upload": "workspace:^1.2.6"
   }
 }

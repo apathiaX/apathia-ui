@@ -1,5 +1,38 @@
 # @apathia/apathia.tag
 
+## 0.2.6
+
+### Patch Changes
+
+- add theme color
+- Updated dependencies
+  - @apathia/apathia.button@1.2.6
+  - @apathia/apathia.hooks@1.2.6
+  - @apathia/apathia.input@1.2.6
+  - @apathia/apathia.twind@1.2.6
+
+## 0.2.5
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.button@1.2.5
+  - @apathia/apathia.hooks@1.2.5
+  - @apathia/apathia.input@1.2.5
+  - @apathia/apathia.twind@1.2.5
+
+## 0.2.4
+
+### Patch Changes
+
+- fix affix
+- Updated dependencies
+  - @apathia/apathia.button@1.2.4
+  - @apathia/apathia.hooks@1.2.4
+  - @apathia/apathia.input@1.2.4
+  - @apathia/apathia.twind@1.2.4
+
 ## 0.2.3
 
 ### Patch Changes

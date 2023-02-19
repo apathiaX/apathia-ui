@@ -1,5 +1,29 @@
 # @apathia/apathia.affix
 
+## 0.2.6
+
+### Patch Changes
+
+- add theme color
+- Updated dependencies
+  - @apathia/apathia.twind@1.2.6
+
+## 0.2.5
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.twind@1.2.5
+
+## 0.2.4
+
+### Patch Changes
+
+- fix affix
+- Updated dependencies
+  - @apathia/apathia.twind@1.2.4
+
 ## 0.2.3
 
 ### Patch Changes

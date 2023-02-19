@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.switch",
-  "version": "0.2.3",
+  "version": "0.2.6",
   "description": "switch",
   "author": "",
   "homepage": "",
@@ -27,14 +27,14 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "devDependencies": {
-    "vue": "^3.2.37"
+    "vue": "^3.2.45"
   },
   "peerDependencies": {
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.custom-render": "workspace:^1.2.3",
-    "@apathia/apathia.hooks": "workspace:^1.2.3",
-    "@apathia/apathia.twind": "workspace:^1.2.3"
+    "@apathia/apathia.custom-render": "workspace:^1.2.6",
+    "@apathia/apathia.hooks": "workspace:^1.2.6",
+    "@apathia/apathia.twind": "workspace:^1.2.6"
   }
 }

@@ -5,4 +5,13 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vueJsx()],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://www.blog.apathia.cn:8080',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  }
 })

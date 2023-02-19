@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.datepicker",
-  "version": "0.2.3",
+  "version": "0.2.6",
   "description": "datepicker",
   "author": "",
   "homepage": "",
@@ -27,15 +27,15 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "devDependencies": {
-    "vue": "^3.2.37"
+    "vue": "^3.2.45"
   },
   "peerDependencies": {
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.hooks": "workspace:^1.2.3",
-    "@apathia/apathia.input": "workspace:^1.2.3",
-    "@apathia/apathia.twind": "workspace:^1.2.3",
+    "@apathia/apathia.hooks": "workspace:^1.2.6",
+    "@apathia/apathia.input": "workspace:^1.2.6",
+    "@apathia/apathia.twind": "workspace:^1.2.6",
     "flatpickr": "^4.6.13"
   }
 }

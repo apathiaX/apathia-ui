@@ -1,7 +1,5 @@
 <template>
-  <BaseButton primary @click="hiddenVal = !hiddenVal"
-    >{{ hiddenVal ? 'Show' : 'Hidden' }} SideNav</BaseButton
-  >
+  <BaseButton primary @click="hiddenVal = !hiddenVal">{{ hiddenVal? 'Show': 'Hidden' }} SideNav</BaseButton>
   <div style="height: 50vh; display: flex">
     <SideNav :mini="hiddenVal" :menu-list="menu" key-field="path" />
     <div style="font-size: 24px; margin-left: 150px">Content</div>

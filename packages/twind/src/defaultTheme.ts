@@ -8,8 +8,8 @@ export const defaultTheme = {
         active: '#0090C4',
         forbid: 'rgba(0, 174, 236, 0.5)',
         light: '#EFFBFF',
+        fill: '#DBEAFE',
       },
-
       content: {
         primary: '#18191C',
         accent: '#61666D',
@@ -32,7 +32,6 @@ export const defaultTheme = {
         accent: '#E3E5E7',
         secondary: '#F1F2F3',
       },
-
       pink: {
         primary: '#FF6699',
         hover: '#FF70A3',

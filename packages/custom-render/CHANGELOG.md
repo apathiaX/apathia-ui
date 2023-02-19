@@ -1,5 +1,23 @@
 # @apathia/apathia.custom-render
 
+## 1.2.6
+
+### Patch Changes
+
+- add theme color
+
+## 1.2.5
+
+### Patch Changes
+
+- fix version
+
+## 1.2.4
+
+### Patch Changes
+
+- fix affix
+
 ## 1.2.3
 
 ### Patch Changes

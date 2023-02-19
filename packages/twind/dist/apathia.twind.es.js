@@ -14,7 +14,8 @@ const defaultTheme = {
         hover: "#24C1F9",
         active: "#0090C4",
         forbid: "rgba(0, 174, 236, 0.5)",
-        light: "#EFFBFF"
+        light: "#EFFBFF",
+        fill: "#DBEAFE"
       },
       content: {
         primary: "#18191C",

@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.transfer",
-  "version": "0.2.3",
+  "version": "0.2.6",
   "description": "transfer",
   "author": "",
   "homepage": "",
@@ -28,19 +28,19 @@
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.6",
-    "vue": "^3.2.37"
+    "vue": "^3.2.45"
   },
   "peerDependencies": {
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.button": "workspace:^1.2.3",
-    "@apathia/apathia.checkbox": "workspace:^1.2.3",
-    "@apathia/apathia.icon": "workspace:^1.2.3",
-    "@apathia/apathia.icon-svg": "workspace:^0.1.3",
-    "@apathia/apathia.input": "workspace:^1.2.3",
-    "@apathia/apathia.scroll-container": "workspace:^0.2.3",
-    "@apathia/apathia.twind": "workspace:^1.2.3",
+    "@apathia/apathia.button": "workspace:^1.2.6",
+    "@apathia/apathia.checkbox": "workspace:^1.2.6",
+    "@apathia/apathia.icon": "workspace:^1.2.6",
+    "@apathia/apathia.icon-svg": "workspace:^0.1.6",
+    "@apathia/apathia.input": "workspace:^1.2.6",
+    "@apathia/apathia.scroll-container": "workspace:^0.2.6",
+    "@apathia/apathia.twind": "workspace:^1.2.6",
     "lodash-es": "^4.17.21"
   }
 }

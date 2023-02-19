@@ -1,9 +1,5 @@
 <template>
-  <Upload
-    v-model="file1"
-    action="/upload/path"
-    :resolve-url="resolveLocation"
-  />
+  <Upload v-model="file1" action="/api/admin/articles/images" :headers="headers" :resolve-url="resolveLocation" />
 </template>
 
 <script>
@@ -18,6 +14,7 @@ export default {
     }
 
     return {
+      headers,
       file1,
       resolveLocation
     }

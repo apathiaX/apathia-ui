@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.image",
-  "version": "0.2.3",
+  "version": "0.2.6",
   "description": "image",
   "author": "",
   "homepage": "",
@@ -27,16 +27,16 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "devDependencies": {
-    "vue": "^3.2.37"
+    "vue": "^3.2.45"
   },
   "peerDependencies": {
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.alert": "workspace:^1.2.3",
-    "@apathia/apathia.icon": "workspace:^1.2.3",
-    "@apathia/apathia.icon-svg": "workspace:^0.1.3",
-    "@apathia/apathia.shared": "workspace:^1.2.3",
-    "@apathia/apathia.twind": "workspace:^1.2.3"
+    "@apathia/apathia.alert": "workspace:^1.2.6",
+    "@apathia/apathia.icon": "workspace:^1.2.6",
+    "@apathia/apathia.icon-svg": "workspace:^0.1.6",
+    "@apathia/apathia.shared": "workspace:^1.2.6",
+    "@apathia/apathia.twind": "workspace:^1.2.6"
   }
 }

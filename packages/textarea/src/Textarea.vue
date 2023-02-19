@@ -1,11 +1,5 @@
 <template>
-  <textarea
-    v-model="inputValue"
-    :disabled="!!disableInput"
-    :class="classes"
-    v-bind="attrs"
-  ></textarea>
-  11111
+  <textarea v-model="inputValue" :disabled="!!disableInput" :class="classes" v-bind="attrs"></textarea>
 </template>
 
 <script setup lang="ts">
@@ -14,8 +8,8 @@ import { useInjectProp } from '@apathia/apathia.hooks'
 import { style } from '@apathia/apathia.twind';
 
 const getStyles = () => ({
-    commonTextarea: style`block border border-line-accent rounded pt-2 px-2 text-sm outline-none focus:(bg-fill-white border-brand-primary)`,
-    fullWidth: style`w-full`,
+  commonTextarea: style`block border border-line-accent rounded pt-2 px-2 text-sm outline-none focus:(bg-fill-white border-brand-primary)`,
+  fullWidth: style`w-full`,
 })
 
 interface TextareaProps {

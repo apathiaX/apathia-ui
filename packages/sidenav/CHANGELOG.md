@@ -1,5 +1,77 @@
 # @apathia/apathia.sidenav
 
+## 0.2.12
+
+### Patch Changes
+
+- add theme color
+- Updated dependencies
+  - @apathia/apathia.scroll-container@0.2.6
+  - @apathia/apathia.icon-svg@0.1.6
+  - @apathia/apathia.hooks@1.2.6
+  - @apathia/apathia.twind@1.2.6
+  - @apathia/apathia.icon@1.2.6
+
+## 0.2.11
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.scroll-container@0.2.5
+  - @apathia/apathia.icon-svg@0.1.5
+  - @apathia/apathia.hooks@1.2.5
+  - @apathia/apathia.twind@1.2.5
+  - @apathia/apathia.icon@1.2.5
+
+## 0.2.10
+
+### Patch Changes
+
+- fix affix
+- Updated dependencies
+  - @apathia/apathia.hooks@1.2.4
+  - @apathia/apathia.icon@1.2.4
+  - @apathia/apathia.icon-svg@0.1.4
+  - @apathia/apathia.scroll-container@0.2.4
+  - @apathia/apathia.twind@1.2.4
+
+## 0.2.9
+
+### Patch Changes
+
+- fix textarea sidenav
+
+## 0.2.8
+
+### Patch Changes
+
+- fix: sidenav
+
+## 0.2.7
+
+### Patch Changes
+
+- test 3
+
+## 0.2.6
+
+### Patch Changes
+
+- test 2
+
+## 0.2.5
+
+### Patch Changes
+
+- test sidenav
+
+## 0.2.4
+
+### Patch Changes
+
+- fix: side nav
+
 ## 0.2.3
 
 ### Patch Changes

@@ -19,13 +19,13 @@
       function initStyle() {
         return {
           sidenodeIconClass: apathia_twind.style`w-4 h-4`,
-          sidenodeRowClass: apathia_twind.style`flex items-center cursor-pointer duration-300 px-3 py-6 h-8 overflow-hidden border-l-4 border-transparent hover:(bg-fill-primary)`,
-          sidenodeRowActive: apathia_twind.style`bg-fill-primary text-content-white border-brand-primary`,
+          sidenodeRowClass: apathia_twind.style`flex items-center cursor-pointer duration-300 px-3 py-6 h-8 overflow-hidden border-r-4 border-transparent hover:bg-brand-fill`,
+          sidenodeRowActive: apathia_twind.style`bg-brand-fill text-brand-primary border-brand-primary`,
           sidenodeRowParentActive: apathia_twind.style`text-brand-primary`,
           sidenodeTurn: apathia_twind.style`rotate-180 duration-300`,
           sidenodeExpand: apathia_twind.style`text-xs duration-300`,
-          sidenodeText: apathia_twind.style`flex-grow text-sm font-medium text-left pl-4 truncate`,
-          sidenodeChildren: apathia_twind.style`text-xs list-none`
+          sidenodeText: apathia_twind.style`flex-grow text-sm font-medium text-left truncate`,
+          sidenodeChildren: apathia_twind.style`text-xs bg-brand-light transition-all duration-500 list-none`
         };
       }
       function isParent(nodes, current, key) {
@@ -44,7 +44,7 @@
       const isActiveItem = vue.computed(() => props.activeKey === props.node[props.keyField]);
       const [expand, toggleExpand, setExpand] = apathia_hooks.useToggle(!!isActiveParent.value);
       const expandClass = vue.computed(
-        () => `${styles.sidenodeExpand} v-icon-chevron-down ${expand.value ? styles.sidenodeTurn : ""}`
+        () => `${styles.sidenodeExpand} ${styles.sidenodeIconClass} ${expand.value ? styles.sidenodeTurn : ""}`
       );
       const rowClass = vue.computed(
         () => `${styles.sidenodeRowClass} ${isActiveParent.value ? styles.sidenodeRowParentActive : ""} ${props.activeKey === props.node[props.keyField] ? styles.sidenodeRowActive : ""}`
@@ -209,9 +209,9 @@
     setup(__props, { emit }) {
       const props = __props;
       function initStyle() {
-        const baseSidenav = "block duration-100 text-content-secondary py-4 relative shadow";
+        const baseSidenav = "block duration-100 text-content-secondary py-4 relative";
         return {
-          sidenavClass: apathia_twind.style`${baseSidenav} w-52 min-h-full`,
+          sidenavClass: apathia_twind.style`${baseSidenav} min-h-full`,
           sidenavMiniClass: apathia_twind.style`${baseSidenav} w-12 min-h-full`,
           sidenavInputWrap: apathia_twind.style`px-4`,
           sidenavInput: apathia_twind.style`bg-fill-accent px-2 my-2 bg-opacity-30 h-9 outline-none text-content-accent rounded placeholder-content-neutral w-full focus:(bg-fill-gray text-content-primary)`

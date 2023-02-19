@@ -1,5 +1,23 @@
 # @apathia/apathia.icon-svg
 
+## 0.1.6
+
+### Patch Changes
+
+- add theme color
+
+## 0.1.5
+
+### Patch Changes
+
+- fix version
+
+## 0.1.4
+
+### Patch Changes
+
+- fix affix
+
 ## 0.1.3
 
 ### Patch Changes

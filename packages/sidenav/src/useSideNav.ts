@@ -30,7 +30,7 @@ export default function useSideNav(props: SideNavProps) {
 
   onMounted(() => {
     setTimeout(() => {
-      // TODO 听风优化虚拟滚动条
+      // TODO 优化虚拟滚动条
       scrollTop.value = scrollToExpand()
     }, 400)
   })
@@ -38,7 +38,9 @@ export default function useSideNav(props: SideNavProps) {
   function onInput(event: InputEvent) {
     const { value } = event.target as HTMLInputElement
     filteredMenu.value =
-      value === '' ? props.menuList as Node[] : filterMenu(filterKeyMap.value, value)
+      value === ''
+        ? (props.menuList as Node[])
+        : filterMenu(filterKeyMap.value, value)
   }
 
   function getSidenavInputProps() {

@@ -1,11 +1,6 @@
 <template>
   <div style="height: 50vh; display: flex">
-    <SideNav
-      :menu-list="menu"
-      :active-key="activeKey"
-      key-field="path"
-      @select="select"
-    />
+    <SideNav :menu-list="menu" :active-key="activeKey" key-field="path" @select="select" />
     <div>
       <div style="font-size: 24px; margin-left: 150px">Content</div>
       <div>current path: {{ activeKey }}</div>

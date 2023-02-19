@@ -1,4 +1,4 @@
-import { defineComponent, useAttrs, toRef, computed, openBlock, createElementBlock, Fragment, withDirectives, createElementVNode, mergeProps, isRef, unref, vModelText, createTextVNode } from "vue";
+import { defineComponent, useAttrs, toRef, computed, withDirectives, openBlock, createElementBlock, mergeProps, isRef, unref, vModelText } from "vue";
 import { useInjectProp } from "@apathia/apathia.hooks";
 import { style } from "@apathia/apathia.twind";
 const _hoisted_1 = ["disabled"];
@@ -37,16 +37,13 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       rows: attr.rows === void 0 ? "3" : attr.rows
     }));
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock(Fragment, null, [
-        withDirectives(createElementVNode("textarea", mergeProps({
-          "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => isRef(inputValue) ? inputValue.value = $event : null),
-          disabled: !!unref(disableInput),
-          class: unref(classes)
-        }, unref(attrs)), null, 16, _hoisted_1), [
-          [vModelText, unref(inputValue)]
-        ]),
-        createTextVNode(" 11111 ")
-      ], 64);
+      return withDirectives((openBlock(), createElementBlock("textarea", mergeProps({
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => isRef(inputValue) ? inputValue.value = $event : null),
+        disabled: !!unref(disableInput),
+        class: unref(classes)
+      }, unref(attrs)), null, 16, _hoisted_1)), [
+        [vModelText, unref(inputValue)]
+      ]);
     };
   }
 });

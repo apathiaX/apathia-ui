@@ -1,5 +1,174 @@
 # @apathia/apathia
 
+## 1.2.12
+
+### Patch Changes
+
+- add theme color
+- Updated dependencies
+  - @apathia/apathia.scroll-container@0.2.6
+  - @apathia/apathia.custom-render@1.2.6
+  - @apathia/apathia.datepicker@0.2.6
+  - @apathia/apathia.pagination@1.2.6
+  - @apathia/apathia.cascader@0.2.6
+  - @apathia/apathia.checkbox@1.2.6
+  - @apathia/apathia.collapse@1.2.6
+  - @apathia/apathia.dropdown@0.2.6
+  - @apathia/apathia.textarea@0.2.7
+  - @apathia/apathia.transfer@0.2.6
+  - @apathia/apathia.confirm@1.2.6
+  - @apathia/apathia.loading@1.2.6
+  - @apathia/apathia.sidenav@0.2.12
+  - @apathia/apathia.button@1.2.6
+  - @apathia/apathia.navbar@0.2.6
+  - @apathia/apathia.popper@0.2.6
+  - @apathia/apathia.select@1.2.6
+  - @apathia/apathia.slider@0.2.6
+  - @apathia/apathia.switch@0.2.6
+  - @apathia/apathia.upload@1.2.6
+  - @apathia/apathia.affix@0.2.6
+  - @apathia/apathia.alert@1.2.6
+  - @apathia/apathia.hooks@1.2.6
+  - @apathia/apathia.image@0.2.6
+  - @apathia/apathia.input@1.2.6
+  - @apathia/apathia.modal@1.2.6
+  - @apathia/apathia.radio@1.2.6
+  - @apathia/apathia.table@1.2.6
+  - @apathia/apathia.twind@1.2.6
+  - @apathia/apathia.form@1.2.6
+  - @apathia/apathia.icon@1.2.6
+  - @apathia/apathia.tabs@0.2.6
+  - @apathia/apathia.tag@0.2.6
+
+## 1.2.11
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.scroll-container@0.2.5
+  - @apathia/apathia.custom-render@1.2.5
+  - @apathia/apathia.datepicker@0.2.5
+  - @apathia/apathia.pagination@1.2.5
+  - @apathia/apathia.cascader@0.2.5
+  - @apathia/apathia.checkbox@1.2.5
+  - @apathia/apathia.collapse@1.2.5
+  - @apathia/apathia.dropdown@0.2.5
+  - @apathia/apathia.textarea@0.2.6
+  - @apathia/apathia.transfer@0.2.5
+  - @apathia/apathia.confirm@1.2.5
+  - @apathia/apathia.loading@1.2.5
+  - @apathia/apathia.sidenav@0.2.11
+  - @apathia/apathia.button@1.2.5
+  - @apathia/apathia.navbar@0.2.5
+  - @apathia/apathia.popper@0.2.5
+  - @apathia/apathia.select@1.2.5
+  - @apathia/apathia.slider@0.2.5
+  - @apathia/apathia.switch@0.2.5
+  - @apathia/apathia.upload@1.2.5
+  - @apathia/apathia.affix@0.2.5
+  - @apathia/apathia.alert@1.2.5
+  - @apathia/apathia.hooks@1.2.5
+  - @apathia/apathia.image@0.2.5
+  - @apathia/apathia.input@1.2.5
+  - @apathia/apathia.modal@1.2.5
+  - @apathia/apathia.radio@1.2.5
+  - @apathia/apathia.table@1.2.5
+  - @apathia/apathia.twind@1.2.5
+  - @apathia/apathia.form@1.2.5
+  - @apathia/apathia.icon@1.2.5
+  - @apathia/apathia.tabs@0.2.5
+  - @apathia/apathia.tag@0.2.5
+
+## 1.2.10
+
+### Patch Changes
+
+- fix affix
+- Updated dependencies
+  - @apathia/apathia.textarea@0.2.5
+  - @apathia/apathia.sidenav@0.2.10
+  - @apathia/apathia.affix@0.2.4
+  - @apathia/apathia.alert@1.2.4
+  - @apathia/apathia.button@1.2.4
+  - @apathia/apathia.cascader@0.2.4
+  - @apathia/apathia.checkbox@1.2.4
+  - @apathia/apathia.collapse@1.2.4
+  - @apathia/apathia.confirm@1.2.4
+  - @apathia/apathia.custom-render@1.2.4
+  - @apathia/apathia.datepicker@0.2.4
+  - @apathia/apathia.dropdown@0.2.4
+  - @apathia/apathia.form@1.2.4
+  - @apathia/apathia.hooks@1.2.4
+  - @apathia/apathia.icon@1.2.4
+  - @apathia/apathia.image@0.2.4
+  - @apathia/apathia.input@1.2.4
+  - @apathia/apathia.loading@1.2.4
+  - @apathia/apathia.modal@1.2.4
+  - @apathia/apathia.navbar@0.2.4
+  - @apathia/apathia.pagination@1.2.4
+  - @apathia/apathia.popper@0.2.4
+  - @apathia/apathia.radio@1.2.4
+  - @apathia/apathia.scroll-container@0.2.4
+  - @apathia/apathia.select@1.2.4
+  - @apathia/apathia.slider@0.2.4
+  - @apathia/apathia.switch@0.2.4
+  - @apathia/apathia.table@1.2.4
+  - @apathia/apathia.tabs@0.2.4
+  - @apathia/apathia.tag@0.2.4
+  - @apathia/apathia.transfer@0.2.4
+  - @apathia/apathia.twind@1.2.4
+  - @apathia/apathia.upload@1.2.4
+
+## 1.2.9
+
+### Patch Changes
+
+- fix textarea sidenav
+- Updated dependencies
+  - @apathia/apathia.textarea@0.2.4
+  - @apathia/apathia.sidenav@0.2.9
+
+## 1.2.8
+
+### Patch Changes
+
+- fix: sidenav
+- Updated dependencies
+  - @apathia/apathia.sidenav@0.2.8
+
+## 1.2.7
+
+### Patch Changes
+
+- test 3
+- Updated dependencies
+  - @apathia/apathia.sidenav@0.2.7
+
+## 1.2.6
+
+### Patch Changes
+
+- test 2
+- Updated dependencies
+  - @apathia/apathia.sidenav@0.2.6
+
+## 1.2.5
+
+### Patch Changes
+
+- test sidenav
+- Updated dependencies
+  - @apathia/apathia.sidenav@0.2.5
+
+## 1.2.4
+
+### Patch Changes
+
+- fix: side nav
+- Updated dependencies
+  - @apathia/apathia.sidenav@0.2.4
+
 ## 1.2.3
 
 ### Patch Changes

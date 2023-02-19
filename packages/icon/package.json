@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.icon",
-  "version": "1.2.3",
+  "version": "1.2.6",
   "description": "icon",
   "author": "",
   "homepage": "",
@@ -27,11 +27,11 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@apathia/apathia.shared": "workspace:^1.2.3"
+    "@apathia/apathia.shared": "workspace:^1.2.6"
   },
   "devDependencies": {
-    "typescript": "^4.2.4",
-    "vue": "^3.2.37"
+    "typescript": "^4.9.4",
+    "vue": "^3.2.45"
   },
   "peerDependencies": {
     "vue": "^3.2.37"

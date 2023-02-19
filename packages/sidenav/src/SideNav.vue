@@ -1,45 +1,23 @@
 <template>
   <ScrollContainer :size="7" v-bind="getScrollContainerProps()" auto-hide>
-    <ul
-      :class="showMini ? styles.sidenavMiniClass : styles.sidenavClass"
-      v-bind="{ ...getContainerProps() }"
-    >
+    <ul :class="showMini ? styles.sidenavMiniClass : styles.sidenavClass" v-bind="{ ...getContainerProps() }">
       <slot name="menuTop"></slot>
       <div v-show="search && !showMini" :class="styles.sidenavInputWrap">
-        <input
-          v-bind="{ ...getSidenavInputProps() }"
-          placeholder="search"
-          :class="styles.sidenavInput"
-        />
+        <input v-bind="{ ...getSidenavInputProps() }" placeholder="search" :class="styles.sidenavInput" />
       </div>
 
-      <SideNode
-        v-for="node in filteredMenu"
-        :key="node[activeKey]"
-        :node="node"
-        :active-key="activeKey"
-        :key-field="keyField"
-        :mini="showMini"
-        :select-handler="selectNode"
-      >
-        <template
-          #default="{
-            mini: miniValue,
-            activeParent: activeParentValue,
-            expand: expandValue,
-            activeItem: activeItemValue,
-            onClick: clickHandler,
-            node: nodeValue,
-          }"
-        >
-          <slot
-            :mini="miniValue"
-            :activeParent="activeParentValue"
-            :expand="expandValue"
-            :activeItem="activeItemValue"
-            :onClick="clickHandler"
-            :node="nodeValue"
-          ></slot>
+      <SideNode v-for="node in filteredMenu" :key="node[activeKey]" :node="node" :active-key="activeKey"
+        :key-field="keyField" :mini="showMini" :select-handler="selectNode">
+        <template #default="{
+          mini: miniValue,
+          activeParent: activeParentValue,
+          expand: expandValue,
+          activeItem: activeItemValue,
+          onClick: clickHandler,
+          node: nodeValue,
+        }">
+          <slot :mini="miniValue" :activeParent="activeParentValue" :expand="expandValue" :activeItem="activeItemValue"
+            :onClick="clickHandler" :node="nodeValue"></slot>
         </template>
       </SideNode>
 
@@ -58,9 +36,9 @@ import useSideNav from './useSideNav'
 
 function initStyle() {
   const baseSidenav =
-    'block duration-100 text-content-secondary py-4 relative shadow'
+    'block duration-100 text-content-secondary py-4 relative'
   return {
-    sidenavClass: style`${baseSidenav} w-52 min-h-full`,
+    sidenavClass: style`${baseSidenav} min-h-full`,
     sidenavMiniClass: style`${baseSidenav} w-12 min-h-full`,
     sidenavInputWrap: style`px-4`,
     sidenavInput: style`bg-fill-accent px-2 my-2 bg-opacity-30 h-9 outline-none text-content-accent rounded placeholder-content-neutral w-full focus:(bg-fill-gray text-content-primary)`,
@@ -68,7 +46,7 @@ function initStyle() {
 }
 
 interface SideNavProps {
-  menuList?:Array<Node>
+  menuList?: Array<Node>
   activeKey?: string
   mini?: boolean
   search?: boolean

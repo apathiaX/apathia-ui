@@ -38,16 +38,13 @@
         rows: attr.rows === void 0 ? "3" : attr.rows
       }));
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.withDirectives(vue.createElementVNode("textarea", vue.mergeProps({
-            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.isRef(inputValue) ? inputValue.value = $event : null),
-            disabled: !!vue.unref(disableInput),
-            class: vue.unref(classes)
-          }, vue.unref(attrs)), null, 16, _hoisted_1), [
-            [vue.vModelText, vue.unref(inputValue)]
-          ]),
-          vue.createTextVNode(" 11111 ")
-        ], 64);
+        return vue.withDirectives((vue.openBlock(), vue.createElementBlock("textarea", vue.mergeProps({
+          "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.isRef(inputValue) ? inputValue.value = $event : null),
+          disabled: !!vue.unref(disableInput),
+          class: vue.unref(classes)
+        }, vue.unref(attrs)), null, 16, _hoisted_1)), [
+          [vue.vModelText, vue.unref(inputValue)]
+        ]);
       };
     }
   });

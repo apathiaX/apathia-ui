@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.icon-svg",
-  "version": "0.1.3",
+  "version": "0.1.6",
   "description": "icon-svg",
   "author": "",
   "homepage": "",
@@ -27,7 +27,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "devDependencies": {
-    "vue": "^3.2.37"
+    "vue": "^3.2.45"
   },
   "peerDependencies": {
     "vue": "^3.2.37"
