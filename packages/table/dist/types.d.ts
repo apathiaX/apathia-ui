@@ -102,4 +102,21 @@ export interface LegacyPager {
     total_items: number;
 }
 export declare type ResponsePager = GoPager | LegacyPager;
+export interface PaginationItem {
+    currentPage: number;
+    totalItems: number;
+    pageSize: number;
+    totalPages: number;
+    maxLength: number;
+    keepMiddle: boolean;
+    directionBtns: boolean;
+    previousText: string;
+    nextText: string;
+    firstText: string;
+    lastText: string;
+    totalCount: boolean;
+    boundaryBtns: boolean;
+    totalTemplate: (total: number) => string;
+    jumpPage: boolean;
+}
 export {};

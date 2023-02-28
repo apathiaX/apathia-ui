@@ -14,8 +14,8 @@
   </li>
 </template>
 
-<script lang="ts">
-import { defineComponent, inject, toRefs, getCurrentInstance } from "vue";
+<script lang="ts" setup>
+import { withDefaults, inject, toRefs, getCurrentInstance } from "vue";
 import { noop } from "@apathia/apathia.shared";
 import { style } from "@apathia/apathia.twind";
 import { Icon } from "@apathia/apathia.icon";
@@ -32,77 +32,48 @@ import {
 import { SelectState } from "./types";
 import { Check } from "@apathia/apathia.icon-svg";
 
-export default defineComponent({
-  name: "Option",
+const props = withDefaults(defineProps<{
+  value: string | number | boolean | null
+  disabled?: boolean
+}>(), {
+  disabled: false
+})
 
-  components: {
-    Icon,
-  },
+const { value, disabled } = toRefs(props);
 
-  props: {
-    value: {
-      type: [String, Number, Boolean] || null,
-      required: true,
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-  },
+const updateRegister = inject(UpdateRegisterKey, noop);
+const selectState = inject(SelectStateKey, { indeed: false } as SelectState);
+const changeHandler = inject(ChangeHandlerKey, noop);
+const register = inject(RegisterKey, noop);
+const unregister = inject(UnregisterKey, noop);
+const focus = inject(FocusKey, noop);
+const isSameValue = inject(SameValueCompareKey, () => false);
 
-  setup(props) {
-    const { value, disabled } = toRefs(props);
+const compoData = getCurrentInstance();
+const compoId = compoData ? compoData.uid : 0;
 
-    const updateRegister = inject(UpdateRegisterKey, noop);
-    // ??
-    const selectState = inject(SelectStateKey, { indeed: false } as SelectState);
-    const changeHandler = inject(ChangeHandlerKey, noop);
-    const register = inject(RegisterKey, noop);
-    const unregister = inject(UnregisterKey, noop);
-    const focus = inject(FocusKey, noop);
-    const isSameValue = inject(SameValueCompareKey, () => false);
 
-    const compoData = getCurrentInstance();
-    const compoId = compoData ? compoData.uid : 0;
+if (!selectState.indeed) {
+  // select
+  console.warn("<Option> 应该在 <Select> 内使用");
+}
 
-    const userProps = {
-      value,
-      disabled,
-      register,
-      unregister,
-      updateRegister,
-      selectState,
-      changeHandler,
-      isSameValue,
-      focus,
-      compoId,
-    };
+const userProps = {
+  value,
+  disabled,
+  register,
+  unregister,
+  updateRegister,
+  selectState,
+  changeHandler,
+  isSameValue,
+  focus,
+  compoId,
+};
 
-    const { getRootProps, isSelected, isFocused, isHidden } = useOption(userProps);
+const { getRootProps, isSelected, isFocused, isHidden } = useOption(userProps as any);
 
-    const styles = getOptionStyles();
-
-    return {
-      updateRegister,
-      selectState,
-      isSameValue,
-      focus,
-      getRootProps,
-      isSelected,
-      isHidden,
-      isFocused,
-      styles,
-    };
-  },
-  created() {
-    if (!this.selectState.indeed) {
-      // select
-      console.warn("<Option> 应该在 <Select> 内使用");
-    }
-  },
-});
-
-const getOptionStyles = () => ({
+const styles = {
   wrapper: style`block text-content-primary cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
   selected: style`font-bold text-brand-primary`,
   focused: style`text-brand-primary bg-fill-gray`,
@@ -110,5 +81,5 @@ const getOptionStyles = () => ({
   checkMark: style`absolute right-4 text-brand-primary`,
   focusMark: style`text-fill-white`,
   disabled: style`text-content-secondary bg-info-forbid cursor-not-allowed`,
-});
+}
 </script>

@@ -1,5 +1,59 @@
 # @apathia/apathia
 
+## 1.2.15
+
+### Patch Changes
+
+- update homepage
+
+## 1.2.14
+
+### Patch Changes
+
+- fix: option
+- Updated dependencies
+  - @apathia/apathia.select@1.2.9
+
+## 1.2.13
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.scroll-container@0.2.7
+  - @apathia/apathia.pagination@1.2.7
+  - @apathia/apathia.checkbox@1.2.7
+  - @apathia/apathia.collapse@1.2.7
+  - @apathia/apathia.dropdown@0.2.7
+  - @apathia/apathia.textarea@0.2.8
+  - @apathia/apathia.transfer@0.2.8
+  - @apathia/apathia.confirm@1.2.7
+  - @apathia/apathia.sidenav@0.2.13
+  - @apathia/apathia.button@1.2.7
+  - @apathia/apathia.navbar@0.2.7
+  - @apathia/apathia.popper@0.2.7
+  - @apathia/apathia.select@1.2.8
+  - @apathia/apathia.slider@0.2.7
+  - @apathia/apathia.switch@0.2.7
+  - @apathia/apathia.upload@1.2.7
+  - @apathia/apathia.alert@1.2.7
+  - @apathia/apathia.image@0.2.7
+  - @apathia/apathia.input@1.2.7
+  - @apathia/apathia.modal@1.2.7
+  - @apathia/apathia.radio@1.2.7
+  - @apathia/apathia.table@1.2.9
+  - @apathia/apathia.form@1.2.7
+  - @apathia/apathia.icon@1.2.7
+  - @apathia/apathia.tabs@0.2.7
+  - @apathia/apathia.tag@0.2.7
+  - @apathia/apathia.affix@0.2.7
+  - @apathia/apathia.cascader@0.2.7
+  - @apathia/apathia.custom-render@1.2.7
+  - @apathia/apathia.datepicker@0.2.7
+  - @apathia/apathia.hooks@1.2.7
+  - @apathia/apathia.loading@1.2.7
+  - @apathia/apathia.twind@1.2.7
+
 ## 1.2.12
 
 ### Patch Changes

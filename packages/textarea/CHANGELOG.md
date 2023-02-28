@@ -1,5 +1,14 @@
 # @apathia/apathia.textarea
 
+## 0.2.8
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.hooks@1.2.7
+  - @apathia/apathia.twind@1.2.7
+
 ## 0.2.7
 
 ### Patch Changes

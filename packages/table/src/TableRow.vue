@@ -1,28 +1,15 @@
 <template>
-  <tr
-    :class="{
-      [styles.row]: true,
-      [rowClasses]: true,
-      [styles.stripedRow]: stripe && rowIndex % 2 === 1, // 奇数
-    }"
-    :style="rowStyles"
-    @click="clickRow($event, rowIndex)"
-    @mouseUp="handleRowMouseUp"
-  >
-    <td
-      v-for="(col, colIndex) in cols"
-      :key="colIndex"
-      :class="col?.tdClasses"
-      v-bind="col?.tdAttrs"
-    >
+  <tr :class="{
+    [styles.row]: true,
+    [rowClasses]: true,
+    [styles.stripedRow]: stripe && rowIndex % 2 === 1, // 奇数
+  }" :style="rowStyles" @click="clickRow($event, rowIndex)" @mouseUp="handleRowMouseUp">
+    <td v-for="(col, colIndex) in cols" :key="colIndex" :class="col?.tdClasses" v-bind="col?.tdAttrs">
       <template v-if="col && 'type' in col">
         <span v-if="col.type === 'index'">{{ rowIndex + 1 }}</span>
 
-        <Checkbox
-          v-else-if="col.type === 'selection'"
-          :model-value="!!selectedMap[row[rowKey]]"
-          :disabled="col.disabledWhen ? !!col.disabledWhen({ row, rowIndex }) : false"
-        />
+        <Checkbox v-else-if="col.type === 'selection'" :model-value="!!selectedMap[row[rowKey]]"
+          :disabled="col.disabledWhen ? !!col.disabledWhen({ row, rowIndex }) : false" />
         <Icon v-else-if="col.type === 'expand' && expandable" @click="toggleExpand">
           <Minus v-if="expandActive" />
           <Plus v-else />
@@ -34,44 +21,29 @@
       </span>
 
       <div v-else-if="col && 'buttons' in col" :class="styles.cellBtnsWrap">
-        <BaseButton
-          v-for="(button, buttonIndex) in col.buttons({
-            row,
-            rowIndex,
-            colIndex,
-          })"
-          :key="buttonIndex"
-          small
-          v-bind="classNames2props(button.className)"
-          @click="
-            button.onClick({
-              row,
-              rowIndex,
-              colIndex,
-            })
-          "
-        >
+        <BaseButton v-for="(button, buttonIndex) in col.buttons({
+          row,
+          rowIndex,
+          colIndex,
+        })" :key="buttonIndex" small v-bind="classNames2props(button.className)" @click="
+  button.onClick({
+    row,
+    rowIndex,
+    colIndex,
+  })
+">
           {{ button.text }}
         </BaseButton>
       </div>
 
-      <CustomRender
-        v-else-if="col && 'render' in col"
-        :render="col.render"
-        :row="row"
-        :col-index="colIndex"
-        :row-index="rowIndex"
-      />
+      <CustomRender v-else-if="col && 'render' in col" :render="col.render" :row="row" :col-index="colIndex"
+        :row-index="rowIndex" />
     </td>
   </tr>
 
   <!-- expand table row -->
-  <transition
-    :enter-from-class="styles.fadeEnd"
-    :enter-active-class="styles.fadeActive"
-    :leave-active-class="styles.fadeActive"
-    :leave-to-class="styles.fadeEnd"
-  >
+  <transition :enter-from-class="styles.fadeEnd" :enter-active-class="styles.fadeActive"
+    :leave-active-class="styles.fadeActive" :leave-to-class="styles.fadeEnd">
     <tr v-if="expandable && expandActive">
       <td :colspan="columns.length">
         <CustomRender :render="expand.expandRowRender" :row="row" :row-index="rowIndex" />
@@ -97,7 +69,7 @@ import type {
 } from "./types";
 import { TableMultiSelectedHelper } from "./useTableSelected";
 import { toStyleObject, toRealWidth } from "./utils";
-import { Minus, Plus } from "../../icon-svg";
+import { Minus, Plus } from '@apathia/apathia.icon-svg'
 
 export default defineComponent({
   name: "TableRow",

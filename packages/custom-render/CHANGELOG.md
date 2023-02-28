@@ -1,5 +1,11 @@
 # @apathia/apathia.custom-render
 
+## 1.2.7
+
+### Patch Changes
+
+- fix version
+
 ## 1.2.6
 
 ### Patch Changes

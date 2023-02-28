@@ -2,7 +2,7 @@
   typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.hooks"), require("@apathia/apathia.twind"), require("@apathia/apathia.shared")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.hooks", "@apathia/apathia.twind", "@apathia/apathia.shared"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.button = {}, global.Vue, global.hooks, global.twind, global.shared));
 })(this, function(exports2, vue, apathia_hooks, apathia_twind, apathia_shared) {
   "use strict";
-  function useButton$1(userProps, ctx) {
+  function useButton(userProps, ctx) {
     const { disabled } = userProps;
     const { onclick = apathia_shared.noop, ondblclick = apathia_shared.noop, onmousedown = apathia_shared.noop, onmouseup = apathia_shared.noop } = ctx.attrs;
     const getButtonProps = () => ({
@@ -56,7 +56,7 @@
         return tag && tag.value ? tag.value : "button";
       });
       const userProps = { disabled: disableButton };
-      const { getButtonProps } = useButton$1(userProps, ctx);
+      const { getButtonProps } = useButton(userProps, ctx);
       const styles = getButtonStyles();
       const btnClass = vue.computed(() => {
         const themeString = props.primary && "primary" || props.pink && "pink" || props.success && "success" || props.danger && "danger" || props.info && "info" || props.warning && "warning" || "primary";
@@ -157,20 +157,6 @@
     }, 16, ["class", "href"]);
   }
   var Button = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
-  function useButton(userProps, ctx) {
-    const { disabled } = userProps;
-    const { onclick = apathia_shared.noop, ondblclick = apathia_shared.noop, onmousedown = apathia_shared.noop, onmouseup = apathia_shared.noop } = ctx.attrs;
-    const getButtonProps = () => ({
-      disabled: !!disabled.value,
-      onclick: !disabled.value && apathia_shared.isFunction(onclick) ? onclick : apathia_shared.noop,
-      ondblclick: !disabled.value && apathia_shared.isFunction(ondblclick) ? ondblclick : apathia_shared.noop,
-      onmousedown: !disabled.value && apathia_shared.isFunction(onmousedown) ? onmousedown : apathia_shared.noop,
-      onmouseup: !disabled.value && apathia_shared.isFunction(onmouseup) ? onmouseup : apathia_shared.noop
-    });
-    return {
-      getButtonProps
-    };
-  }
   exports2.BaseButton = Button;
   exports2.useButton = useButton;
   Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });

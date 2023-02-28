@@ -303,7 +303,7 @@ function usePopper(option, emitOption) {
     close
   };
 }
-const placement$1 = [
+const placement = [
   "top",
   "top-start",
   "top-end",
@@ -354,7 +354,7 @@ const _sfc_main = defineComponent({
     },
     placement: {
       type: String,
-      validator: (value) => placement$1.indexOf(value) !== -1,
+      validator: (value) => placement.indexOf(value) !== -1,
       default: "top"
     },
     content: {
@@ -572,18 +572,4 @@ function usePoppertip() {
     popper: addPopper
   };
 }
-const placement = [
-  "top",
-  "top-start",
-  "top-end",
-  "bottom",
-  "bottom-start",
-  "bottom-end",
-  "left",
-  "left-start",
-  "left-end",
-  "right",
-  "right-start",
-  "right-end"
-];
 export { Popper, placement, usePoppertip };

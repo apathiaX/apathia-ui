@@ -1,5 +1,32 @@
 # @apathia1/apathia.table
 
+## 1.2.9
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.checkbox@1.2.7
+  - @apathia/apathia.icon-svg@0.1.7
+  - @apathia/apathia.button@1.2.7
+  - @apathia/apathia.icon@1.2.7
+  - @apathia/apathia.custom-render@1.2.7
+  - @apathia/apathia.hooks@1.2.7
+  - @apathia/apathia.loading@1.2.7
+  - @apathia/apathia.twind@1.2.7
+
+## 1.2.8
+
+### Patch Changes
+
+- fix type
+
+## 1.2.7
+
+### Patch Changes
+
+- fix: type
+
 ## 1.2.6
 
 ### Patch Changes

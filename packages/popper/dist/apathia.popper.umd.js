@@ -301,7 +301,7 @@
       close
     };
   }
-  const placement$1 = [
+  const placement = [
     "top",
     "top-start",
     "top-end",
@@ -352,7 +352,7 @@
       },
       placement: {
         type: String,
-        validator: (value) => placement$1.indexOf(value) !== -1,
+        validator: (value) => placement.indexOf(value) !== -1,
         default: "top"
       },
       content: {
@@ -570,20 +570,6 @@
       popper: addPopper
     };
   }
-  const placement = [
-    "top",
-    "top-start",
-    "top-end",
-    "bottom",
-    "bottom-start",
-    "bottom-end",
-    "left",
-    "left-start",
-    "left-end",
-    "right",
-    "right-start",
-    "right-end"
-  ];
   exports2.Popper = Popper;
   exports2.placement = placement;
   exports2.usePoppertip = usePoppertip;

@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.popper",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "popper",
   "author": "",
   "homepage": "",
@@ -33,10 +33,10 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.custom-render": "workspace:^1.2.6",
-    "@apathia/apathia.hooks": "workspace:^1.2.6",
-    "@apathia/apathia.shared": "workspace:^1.2.6",
-    "@apathia/apathia.twind": "workspace:^1.2.6",
+    "@apathia/apathia.custom-render": "workspace:^1.2.7",
+    "@apathia/apathia.hooks": "workspace:^1.2.7",
+    "@apathia/apathia.shared": "workspace:^1.2.7",
+    "@apathia/apathia.twind": "workspace:^1.2.7",
     "@popperjs/core": "^2.11.6"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.scroll-container",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "scroll-container",
   "author": "",
   "homepage": "",
@@ -35,8 +35,8 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.shared": "workspace:^1.2.6",
-    "@apathia/apathia.twind": "workspace:^1.2.6",
+    "@apathia/apathia.shared": "workspace:^1.2.7",
+    "@apathia/apathia.twind": "workspace:^1.2.7",
     "element-resize-detector": "^1.2.4",
     "lodash-es": "^4.17.21"
   }

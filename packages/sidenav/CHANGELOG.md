@@ -1,5 +1,17 @@
 # @apathia/apathia.sidenav
 
+## 0.2.13
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.scroll-container@0.2.7
+  - @apathia/apathia.icon-svg@0.1.7
+  - @apathia/apathia.icon@1.2.7
+  - @apathia/apathia.hooks@1.2.7
+  - @apathia/apathia.twind@1.2.7
+
 ## 0.2.12
 
 ### Patch Changes

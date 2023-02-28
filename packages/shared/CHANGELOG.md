@@ -1,5 +1,13 @@
 # @apathia/apathia.shared
 
+## 1.2.7
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.twind@1.2.7
+
 ## 1.2.6
 
 ### Patch Changes

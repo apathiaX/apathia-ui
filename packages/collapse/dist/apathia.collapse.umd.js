@@ -39,7 +39,7 @@
     el.style.transition = "";
     el.style.overflow = "";
   }
-  var CollapseTransition$1 = vue.defineComponent({
+  var CollapseTransition = vue.defineComponent({
     name: "CollapseTransition",
     props: {
       duration: {
@@ -62,7 +62,7 @@
   const _sfc_main = vue.defineComponent({
     name: "Collapse",
     components: {
-      CollapseTransition: CollapseTransition$1,
+      CollapseTransition,
       Icon: apathia_icon.Icon
     },
     props: {
@@ -163,19 +163,6 @@
     ], 64);
   }
   var Collapse = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
-  var CollapseTransition = vue.defineComponent({
-    name: "CollapseTransition",
-    props: {
-      duration: {
-        type: Number,
-        default: 400
-      }
-    },
-    setup(props, { slots }) {
-      const { getTransitionProps } = useTransition(props);
-      return () => vue.h(vue.Transition, getTransitionProps(), slots);
-    }
-  });
   exports2.Collapse = Collapse;
   exports2.CollapseTransition = CollapseTransition;
   Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });

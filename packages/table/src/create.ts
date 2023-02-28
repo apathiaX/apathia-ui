@@ -1,5 +1,5 @@
 import { shallowRef, ref, Ref, unref, computed } from 'vue'
-import { Column, ResponsePager, Pagination } from './types'
+import { Column, ResponsePager, PaginationItem as Pagination } from './types'
 
 export function createTable<T>(cols: Column[], shallowData = false) {
   // 列表项

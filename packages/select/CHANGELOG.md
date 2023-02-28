@@ -1,5 +1,29 @@
 # @apathia/apathia.select
 
+## 1.2.9
+
+### Patch Changes
+
+- fix: option
+
+## 1.2.8
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.icon-svg@0.1.7
+  - @apathia/apathia.shared@1.2.7
+  - @apathia/apathia.icon@1.2.7
+  - @apathia/apathia.hooks@1.2.7
+  - @apathia/apathia.twind@1.2.7
+
+## 1.2.7
+
+### Patch Changes
+
+- fix: option value
+
 ## 1.2.6
 
 ### Patch Changes

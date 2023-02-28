@@ -571,6 +571,7 @@ importers:
       '@apathia/apathia.custom-render': workspace:^1.2.6
       '@apathia/apathia.hooks': workspace:^1.2.6
       '@apathia/apathia.icon': workspace:^1.2.6
+      '@apathia/apathia.icon-svg': workspace:^0.1.6
       '@apathia/apathia.loading': workspace:^1.2.6
       '@apathia/apathia.twind': workspace:^1.2.6
       '@types/lodash': ^4.14.191
@@ -582,6 +583,7 @@ importers:
       '@apathia/apathia.custom-render': link:../custom-render
       '@apathia/apathia.hooks': link:../hooks
       '@apathia/apathia.icon': link:../icon
+      '@apathia/apathia.icon-svg': link:../icon-svg
       '@apathia/apathia.loading': link:../loading
       '@apathia/apathia.twind': link:../twind
       lodash: 4.17.21

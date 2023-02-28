@@ -1,9 +1,10 @@
-import { ref, shallowReactive, reactive, computed, nextTick, watch, unref, onBeforeUnmount, defineComponent, toRefs, provide, resolveDirective, openBlock, createElementBlock, mergeProps, createElementVNode, normalizeClass, withModifiers, createCommentVNode, createBlock, Teleport, withDirectives, normalizeStyle, renderSlot, onMounted, inject, getCurrentInstance, resolveComponent, withCtx, createVNode } from "vue";
+import { ref, shallowReactive, reactive, computed, nextTick, watch, unref, onBeforeUnmount, defineComponent, toRefs, provide, resolveDirective, openBlock, createElementBlock, mergeProps, createElementVNode, normalizeClass, withModifiers, createCommentVNode, createBlock, Teleport, withDirectives, normalizeStyle, renderSlot, onMounted, inject, getCurrentInstance, withCtx, createVNode } from "vue";
 import { useResizeObserver, onClickOutside, useInjectProp } from "@apathia/apathia.hooks";
 import { autoPos, noop } from "@apathia/apathia.shared";
 import { style } from "@apathia/apathia.twind";
 import { debounce } from "lodash";
 import { Icon } from "@apathia/apathia.icon";
+import { Check } from "@apathia/apathia.icon-svg";
 var Direction;
 (function(Direction2) {
   Direction2["UP"] = "up";
@@ -579,7 +580,7 @@ const _hoisted_3 = /* @__PURE__ */ createElementVNode("path", { d: "M14.53 4.53l
 const _hoisted_4 = [
   _hoisted_3
 ];
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _directive_auto_pos = resolveDirective("auto-pos");
   return openBlock(), createElementBlock("div", mergeProps({ ..._ctx.getRootProps() }, {
     class: {
@@ -650,7 +651,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     ]))
   ], 16);
 }
-var Select = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+var Select = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
 function useOption(userProps) {
   const isHidden = ref(false);
   const isSelected = ref(false);
@@ -748,22 +749,14 @@ function useOption(userProps) {
     isFocused
   };
 }
-const _sfc_main = defineComponent({
-  name: "Option",
-  components: {
-    Icon
-  },
+const _sfc_main = /* @__PURE__ */ defineComponent({
+  __name: "Option",
   props: {
-    value: {
-      type: [String, Number, Boolean],
-      required: true
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    }
+    value: { type: [String, Number, Boolean, null] },
+    disabled: { type: Boolean, default: false }
   },
-  setup(props) {
+  setup(__props) {
+    const props = __props;
     const { value, disabled } = toRefs(props);
     const updateRegister = inject(UpdateRegisterKey, noop);
     const selectState = inject(SelectStateKey, { indeed: false });
@@ -774,6 +767,9 @@ const _sfc_main = defineComponent({
     const isSameValue = inject(SameValueCompareKey, () => false);
     const compoData = getCurrentInstance();
     const compoId = compoData ? compoData.uid : 0;
+    if (!selectState.indeed) {
+      console.warn("<Option> \u5E94\u8BE5\u5728 <Select> \u5185\u4F7F\u7528");
+    }
     const userProps = {
       value,
       disabled,
@@ -787,61 +783,41 @@ const _sfc_main = defineComponent({
       compoId
     };
     const { getRootProps, isSelected, isFocused, isHidden } = useOption(userProps);
-    const styles = getOptionStyles();
-    return {
-      updateRegister,
-      selectState,
-      isSameValue,
-      focus,
-      getRootProps,
-      isSelected,
-      isHidden,
-      isFocused,
-      styles
+    const styles = {
+      wrapper: style`block text-content-primary cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
+      selected: style`font-bold text-brand-primary`,
+      focused: style`text-brand-primary bg-fill-gray`,
+      text: style`overflow-hidden overflow-ellipsis whitespace-nowrap`,
+      checkMark: style`absolute right-4 text-brand-primary`,
+      focusMark: style`text-fill-white`,
+      disabled: style`text-content-secondary bg-info-forbid cursor-not-allowed`
     };
-  },
-  created() {
-    if (!this.selectState.indeed) {
-      console.warn("<Option> \u5E94\u8BE5\u5728 <Select> \u5185\u4F7F\u7528");
-    }
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("li", mergeProps({ ...unref(getRootProps)() }, {
+        role: "option",
+        class: {
+          [styles.wrapper]: true,
+          [styles.disabled]: unref(disabled),
+          [styles.selected]: unref(isSelected),
+          [styles.focused]: unref(isFocused)
+        }
+      }), [
+        createElementVNode("span", {
+          class: normalizeClass(styles.text)
+        }, [
+          renderSlot(_ctx.$slots, "default")
+        ], 2),
+        unref(isSelected) ? (openBlock(), createBlock(unref(Icon), {
+          key: 0,
+          class: normalizeClass([styles.checkMark, unref(isFocused) ? styles.focusMark : ""])
+        }, {
+          default: withCtx(() => [
+            createVNode(unref(Check))
+          ]),
+          _: 1
+        }, 8, ["class"])) : createCommentVNode("", true)
+      ], 16);
+    };
   }
 });
-const getOptionStyles = () => ({
-  wrapper: style`block text-content-primary cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
-  selected: style`font-bold text-brand-primary`,
-  focused: style`text-brand-primary bg-fill-gray`,
-  text: style`overflow-hidden overflow-ellipsis whitespace-nowrap`,
-  checkMark: style`absolute right-4 text-brand-primary`,
-  focusMark: style`text-fill-white`,
-  disabled: style`text-content-secondary bg-info-forbid cursor-not-allowed`
-});
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_Check = resolveComponent("Check");
-  const _component_Icon = resolveComponent("Icon");
-  return openBlock(), createElementBlock("li", mergeProps({ ..._ctx.getRootProps() }, {
-    role: "option",
-    class: {
-      [_ctx.styles.wrapper]: true,
-      [_ctx.styles.disabled]: _ctx.disabled,
-      [_ctx.styles.selected]: _ctx.isSelected,
-      [_ctx.styles.focused]: _ctx.isFocused
-    }
-  }), [
-    createElementVNode("span", {
-      class: normalizeClass(_ctx.styles.text)
-    }, [
-      renderSlot(_ctx.$slots, "default")
-    ], 2),
-    _ctx.isSelected ? (openBlock(), createBlock(_component_Icon, {
-      key: 0,
-      class: normalizeClass([_ctx.styles.checkMark, _ctx.isFocused ? _ctx.styles.focusMark : ""])
-    }, {
-      default: withCtx(() => [
-        createVNode(_component_Check)
-      ]),
-      _: 1
-    }, 8, ["class"])) : createCommentVNode("", true)
-  ], 16);
-}
-var Option = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
-export { Direction, Option, Select };
+export { Direction, _sfc_main as Option, Select };

@@ -1,5 +1,11 @@
 # @apathia/apathia.icon-svg
 
+## 0.1.7
+
+### Patch Changes
+
+- fix version
+
 ## 0.1.6
 
 ### Patch Changes

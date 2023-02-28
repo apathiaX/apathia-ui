@@ -2,7 +2,7 @@ import { defineComponent, toRefs, computed, openBlock, createBlock, resolveDynam
 import { useInjectProp } from "@apathia/apathia.hooks";
 import { style, css } from "@apathia/apathia.twind";
 import { isFunction, noop } from "@apathia/apathia.shared";
-function useButton$1(userProps, ctx) {
+function useButton(userProps, ctx) {
   const { disabled } = userProps;
   const { onclick = noop, ondblclick = noop, onmousedown = noop, onmouseup = noop } = ctx.attrs;
   const getButtonProps = () => ({
@@ -56,7 +56,7 @@ const _sfc_main = defineComponent({
       return tag && tag.value ? tag.value : "button";
     });
     const userProps = { disabled: disableButton };
-    const { getButtonProps } = useButton$1(userProps, ctx);
+    const { getButtonProps } = useButton(userProps, ctx);
     const styles = getButtonStyles();
     const btnClass = computed(() => {
       const themeString = props.primary && "primary" || props.pink && "pink" || props.success && "success" || props.danger && "danger" || props.info && "info" || props.warning && "warning" || "primary";
@@ -157,18 +157,4 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 16, ["class", "href"]);
 }
 var Button = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
-function useButton(userProps, ctx) {
-  const { disabled } = userProps;
-  const { onclick = noop, ondblclick = noop, onmousedown = noop, onmouseup = noop } = ctx.attrs;
-  const getButtonProps = () => ({
-    disabled: !!disabled.value,
-    onclick: !disabled.value && isFunction(onclick) ? onclick : noop,
-    ondblclick: !disabled.value && isFunction(ondblclick) ? ondblclick : noop,
-    onmousedown: !disabled.value && isFunction(onmousedown) ? onmousedown : noop,
-    onmouseup: !disabled.value && isFunction(onmouseup) ? onmouseup : noop
-  });
-  return {
-    getButtonProps
-  };
-}
 export { Button as BaseButton, useButton };

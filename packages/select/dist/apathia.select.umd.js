@@ -1,6 +1,6 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.hooks"), require("@apathia/apathia.shared"), require("@apathia/apathia.twind"), require("lodash"), require("@apathia/apathia.icon")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.hooks", "@apathia/apathia.shared", "@apathia/apathia.twind", "lodash", "@apathia/apathia.icon"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.select = {}, global.Vue, global.hooks, global.shared, global.twind, global.lodash, global.icon));
-})(this, function(exports2, vue, apathia_hooks, apathia_shared, apathia_twind, lodash, apathia_icon) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.hooks"), require("@apathia/apathia.shared"), require("@apathia/apathia.twind"), require("lodash"), require("@apathia/apathia.icon"), require("@apathia/apathia.icon-svg")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.hooks", "@apathia/apathia.shared", "@apathia/apathia.twind", "lodash", "@apathia/apathia.icon", "@apathia/apathia.icon-svg"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.select = {}, global.Vue, global.hooks, global.shared, global.twind, global.lodash, global.icon, global["icon-svg"]));
+})(this, function(exports2, vue, apathia_hooks, apathia_shared, apathia_twind, lodash, apathia_icon, apathia_iconSvg) {
   "use strict";
   exports2.Direction = void 0;
   (function(Direction2) {
@@ -577,7 +577,7 @@
   const _hoisted_4 = [
     _hoisted_3
   ];
-  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     const _directive_auto_pos = vue.resolveDirective("auto-pos");
     return vue.openBlock(), vue.createElementBlock("div", vue.mergeProps({ ..._ctx.getRootProps() }, {
       class: {
@@ -648,7 +648,7 @@
       ]))
     ], 16);
   }
-  var Select = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+  var Select = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
   function useOption(userProps) {
     const isHidden = vue.ref(false);
     const isSelected = vue.ref(false);
@@ -746,22 +746,14 @@
       isFocused
     };
   }
-  const _sfc_main = vue.defineComponent({
-    name: "Option",
-    components: {
-      Icon: apathia_icon.Icon
-    },
+  const _sfc_main = /* @__PURE__ */ vue.defineComponent({
+    __name: "Option",
     props: {
-      value: {
-        type: [String, Number, Boolean],
-        required: true
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      }
+      value: { type: [String, Number, Boolean, null] },
+      disabled: { type: Boolean, default: false }
     },
-    setup(props) {
+    setup(__props) {
+      const props = __props;
       const { value, disabled } = vue.toRefs(props);
       const updateRegister = vue.inject(UpdateRegisterKey, apathia_shared.noop);
       const selectState = vue.inject(SelectStateKey, { indeed: false });
@@ -772,6 +764,9 @@
       const isSameValue = vue.inject(SameValueCompareKey, () => false);
       const compoData = vue.getCurrentInstance();
       const compoId = compoData ? compoData.uid : 0;
+      if (!selectState.indeed) {
+        console.warn("<Option> \u5E94\u8BE5\u5728 <Select> \u5185\u4F7F\u7528");
+      }
       const userProps = {
         value,
         disabled,
@@ -785,64 +780,44 @@
         compoId
       };
       const { getRootProps, isSelected, isFocused, isHidden } = useOption(userProps);
-      const styles = getOptionStyles();
-      return {
-        updateRegister,
-        selectState,
-        isSameValue,
-        focus,
-        getRootProps,
-        isSelected,
-        isHidden,
-        isFocused,
-        styles
+      const styles = {
+        wrapper: apathia_twind.style`block text-content-primary cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
+        selected: apathia_twind.style`font-bold text-brand-primary`,
+        focused: apathia_twind.style`text-brand-primary bg-fill-gray`,
+        text: apathia_twind.style`overflow-hidden overflow-ellipsis whitespace-nowrap`,
+        checkMark: apathia_twind.style`absolute right-4 text-brand-primary`,
+        focusMark: apathia_twind.style`text-fill-white`,
+        disabled: apathia_twind.style`text-content-secondary bg-info-forbid cursor-not-allowed`
       };
-    },
-    created() {
-      if (!this.selectState.indeed) {
-        console.warn("<Option> \u5E94\u8BE5\u5728 <Select> \u5185\u4F7F\u7528");
-      }
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("li", vue.mergeProps({ ...vue.unref(getRootProps)() }, {
+          role: "option",
+          class: {
+            [styles.wrapper]: true,
+            [styles.disabled]: vue.unref(disabled),
+            [styles.selected]: vue.unref(isSelected),
+            [styles.focused]: vue.unref(isFocused)
+          }
+        }), [
+          vue.createElementVNode("span", {
+            class: vue.normalizeClass(styles.text)
+          }, [
+            vue.renderSlot(_ctx.$slots, "default")
+          ], 2),
+          vue.unref(isSelected) ? (vue.openBlock(), vue.createBlock(vue.unref(apathia_icon.Icon), {
+            key: 0,
+            class: vue.normalizeClass([styles.checkMark, vue.unref(isFocused) ? styles.focusMark : ""])
+          }, {
+            default: vue.withCtx(() => [
+              vue.createVNode(vue.unref(apathia_iconSvg.Check))
+            ]),
+            _: 1
+          }, 8, ["class"])) : vue.createCommentVNode("", true)
+        ], 16);
+      };
     }
   });
-  const getOptionStyles = () => ({
-    wrapper: apathia_twind.style`block text-content-primary cursor-pointer select-none relative flex items-center py-2 pl-3 pr-9 truncate outline-none`,
-    selected: apathia_twind.style`font-bold text-brand-primary`,
-    focused: apathia_twind.style`text-brand-primary bg-fill-gray`,
-    text: apathia_twind.style`overflow-hidden overflow-ellipsis whitespace-nowrap`,
-    checkMark: apathia_twind.style`absolute right-4 text-brand-primary`,
-    focusMark: apathia_twind.style`text-fill-white`,
-    disabled: apathia_twind.style`text-content-secondary bg-info-forbid cursor-not-allowed`
-  });
-  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_Check = vue.resolveComponent("Check");
-    const _component_Icon = vue.resolveComponent("Icon");
-    return vue.openBlock(), vue.createElementBlock("li", vue.mergeProps({ ..._ctx.getRootProps() }, {
-      role: "option",
-      class: {
-        [_ctx.styles.wrapper]: true,
-        [_ctx.styles.disabled]: _ctx.disabled,
-        [_ctx.styles.selected]: _ctx.isSelected,
-        [_ctx.styles.focused]: _ctx.isFocused
-      }
-    }), [
-      vue.createElementVNode("span", {
-        class: vue.normalizeClass(_ctx.styles.text)
-      }, [
-        vue.renderSlot(_ctx.$slots, "default")
-      ], 2),
-      _ctx.isSelected ? (vue.openBlock(), vue.createBlock(_component_Icon, {
-        key: 0,
-        class: vue.normalizeClass([_ctx.styles.checkMark, _ctx.isFocused ? _ctx.styles.focusMark : ""])
-      }, {
-        default: vue.withCtx(() => [
-          vue.createVNode(_component_Check)
-        ]),
-        _: 1
-      }, 8, ["class"])) : vue.createCommentVNode("", true)
-    ], 16);
-  }
-  var Option = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
-  exports2.Option = Option;
+  exports2.Option = _sfc_main;
   exports2.Select = Select;
   Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
 });

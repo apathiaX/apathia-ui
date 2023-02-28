@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia.upload",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "upload",
   "author": "",
   "homepage": "",
@@ -33,14 +33,14 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia.alert": "workspace:^1.2.6",
-    "@apathia/apathia.button": "workspace:^1.2.6",
-    "@apathia/apathia.hooks": "workspace:^1.2.6",
-    "@apathia/apathia.icon": "workspace:^1.2.6",
-    "@apathia/apathia.icon-svg": "workspace:^0.1.6",
-    "@apathia/apathia.input": "workspace:^1.2.6",
-    "@apathia/apathia.shared": "workspace:^1.2.6",
-    "@apathia/apathia.twind": "workspace:^1.2.6",
+    "@apathia/apathia.alert": "workspace:^1.2.7",
+    "@apathia/apathia.button": "workspace:^1.2.7",
+    "@apathia/apathia.hooks": "workspace:^1.2.7",
+    "@apathia/apathia.icon": "workspace:^1.2.7",
+    "@apathia/apathia.icon-svg": "workspace:^0.1.7",
+    "@apathia/apathia.input": "workspace:^1.2.7",
+    "@apathia/apathia.shared": "workspace:^1.2.7",
+    "@apathia/apathia.twind": "workspace:^1.2.7",
     "lodash": "^4.17.21"
   }
 }

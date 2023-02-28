@@ -1,5 +1,14 @@
 # @apathia/apathia.radio
 
+## 1.2.7
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.hooks@1.2.7
+  - @apathia/apathia.twind@1.2.7
+
 ## 1.2.6
 
 ### Patch Changes

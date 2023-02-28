@@ -31,14 +31,6 @@
       });
     }
   }
-  function showScrollbar$1() {
-    if (typeof window === "undefined")
-      return;
-    if (modalStack.length === 0) {
-      document.body.style.overflow = "auto";
-      document.body.style.width = "auto";
-    }
-  }
   function hideScrollbar() {
     if (typeof window === "undefined")
       return;
@@ -183,7 +175,7 @@
         modalRef,
         widthStyle,
         close,
-        showScrollbar: showScrollbar$1,
+        showScrollbar,
         isTemplate
       };
     }

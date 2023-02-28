@@ -1,5 +1,4 @@
 import type { CSSProperties } from 'vue'
-// @ts-ignore
 import type { RenderCustom, RenderFn } from '@apathia/apathia.custom-render'
 
 export type DataItem = Record<string, unknown> & {
@@ -116,7 +115,7 @@ export interface LegacyPager {
 
 export type ResponsePager = GoPager | LegacyPager
 
-interface Pagination {
+export interface PaginationItem {
   // 当前在第几页
   currentPage: number
   // 总共有多少页

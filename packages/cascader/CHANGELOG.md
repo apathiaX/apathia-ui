@@ -1,5 +1,27 @@
 # @apathia/apathia.cascader
 
+## 0.2.7
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.checkbox@1.2.7
+  - @apathia/apathia.collapse@1.2.7
+  - @apathia/apathia.icon-svg@0.1.7
+  - @apathia/apathia.transfer@0.2.8
+  - @apathia/apathia.sidenav@0.2.13
+  - @apathia/apathia.select@1.2.8
+  - @apathia/apathia.shared@1.2.7
+  - @apathia/apathia.upload@1.2.7
+  - @apathia/apathia.image@0.2.7
+  - @apathia/apathia.input@1.2.7
+  - @apathia/apathia.table@1.2.9
+  - @apathia/apathia.icon@1.2.7
+  - @apathia/apathia.cascader@0.2.7
+  - @apathia/apathia.hooks@1.2.7
+  - @apathia/apathia.twind@1.2.7
+
 ## 0.2.6
 
 ### Patch Changes

@@ -1,5 +1,25 @@
 # @apathia/apathia.transfer
 
+## 0.2.8
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.scroll-container@0.2.7
+  - @apathia/apathia.checkbox@1.2.7
+  - @apathia/apathia.icon-svg@0.1.7
+  - @apathia/apathia.button@1.2.7
+  - @apathia/apathia.input@1.2.7
+  - @apathia/apathia.icon@1.2.7
+  - @apathia/apathia.twind@1.2.7
+
+## 0.2.7
+
+### Patch Changes
+
+- fix: type
+
 ## 0.2.6
 
 ### Patch Changes

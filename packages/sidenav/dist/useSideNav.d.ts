@@ -16,7 +16,7 @@ export default function useSideNav(props: SideNavProps): {
         [x: string]: any;
         text?: string | undefined;
         icon?: string[] | undefined;
-        children?: globalThis.Node[] | undefined;
+        children?: any[] | undefined;
     }[]>;
     showMini: import("vue").ComputedRef<boolean>;
 };

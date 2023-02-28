@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue'
 import type { ComputedRef, SetupContext } from 'vue'
-import type { DataItem, Props, Key, TargetOrder } from './types'
+import type { TransferDataItem as DataItem, Props, Key, TargetOrder } from './types'
 
 // interface TransferProps {
 //   modelValue: Key[]

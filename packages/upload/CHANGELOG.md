@@ -1,5 +1,20 @@
 # @apathia/apathia.upload
 
+## 1.2.7
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.icon-svg@0.1.7
+  - @apathia/apathia.button@1.2.7
+  - @apathia/apathia.shared@1.2.7
+  - @apathia/apathia.alert@1.2.7
+  - @apathia/apathia.input@1.2.7
+  - @apathia/apathia.icon@1.2.7
+  - @apathia/apathia.hooks@1.2.7
+  - @apathia/apathia.twind@1.2.7
+
 ## 1.2.6
 
 ### Patch Changes

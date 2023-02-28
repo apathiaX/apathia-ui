@@ -1,5 +1,16 @@
 # @apathia/apathia.tag
 
+## 0.2.7
+
+### Patch Changes
+
+- fix version
+- Updated dependencies
+  - @apathia/apathia.button@1.2.7
+  - @apathia/apathia.input@1.2.7
+  - @apathia/apathia.hooks@1.2.7
+  - @apathia/apathia.twind@1.2.7
+
 ## 0.2.6
 
 ### Patch Changes
