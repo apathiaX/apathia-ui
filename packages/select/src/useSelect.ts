@@ -14,7 +14,7 @@ import {
 import { onClickOutside, useResizeObserver } from '@apathia/apathia.hooks'
 import { SelectValueType, Direction, Option, UserProps } from './types'
 
-export default function useSelect(userProps: UserProps, ctx: SetupContext) {
+export default function useSelect(userProps: UserProps, emit: any) {
   const { disabled, modelValue, valueKey, filterable, emptyText, placeholder } =
     userProps
 
@@ -148,13 +148,13 @@ export default function useSelect(userProps: UserProps, ctx: SetupContext) {
     state.innerChange = isInnerChange === true
     resetFilterStr()
     if (value !== modelValue.value) {
-      ctx.emit('update:modelValue', value)
+      emit('update:modelValue', value)
 
-      ctx.emit('input', value, label)
-      ctx.emit('change', value, label)
+      emit('input', value, label)
+      emit('change', value, label)
       // 只有内部Option选择之后才会触发'native-change'事件（参考原生select的 change事件），区分于input事件
       if (isInnerChange) {
-        ctx.emit('native-change', value, label)
+        emit('native-change', value, label)
       }
     }
   }
@@ -363,7 +363,7 @@ export default function useSelect(userProps: UserProps, ctx: SetupContext) {
       active.value = true
       nextTick(() => {
         selectState.filterStr = filterStr.value
-        ctx.emit('query-change', filterStr.value)
+        emit('query-change', filterStr.value)
       })
     }
   }, 200)
@@ -406,7 +406,7 @@ export default function useSelect(userProps: UserProps, ctx: SetupContext) {
       }
       filterStr.value = ''
       if (isRemote.value) {
-        ctx.emit('query-change', filterStr.value)
+        emit('query-change', filterStr.value)
       }
     } else {
       resetFilterStr()

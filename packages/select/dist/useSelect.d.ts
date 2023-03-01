@@ -1,7 +1,7 @@
 /// <reference types="lodash" />
-import { Ref, SetupContext } from 'vue';
+import { Ref } from 'vue';
 import { SelectValueType, Option, UserProps } from './types';
-export default function useSelect(userProps: UserProps, ctx: SetupContext): {
+export default function useSelect(userProps: UserProps, emit: any): {
     getRootProps: () => {
         disabled: boolean;
         ref: (el: HTMLElement) => void;

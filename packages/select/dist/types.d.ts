@@ -1,5 +1,5 @@
 import { Ref } from "vue";
-export declare type SelectValueType = number | string | boolean | Record<string, any>;
+export declare type SelectValueType = number | string | boolean | Record<string, any> | null;
 export declare enum Direction {
     UP = "up",
     DOWN = "down"

@@ -1,5 +1,21 @@
 # @apathia/apathia
 
+## 1.2.17
+
+### Patch Changes
+
+- fix select modelValue
+- Updated dependencies
+  - @apathia/apathia.select@1.2.11
+
+## 1.2.16
+
+### Patch Changes
+
+- fix select version
+- Updated dependencies
+  - @apathia/apathia.select@1.2.10
+
 ## 1.2.15
 
 ### Patch Changes

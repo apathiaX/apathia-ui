@@ -7,7 +7,7 @@
     Direction2["UP"] = "up";
     Direction2["DOWN"] = "down";
   })(exports2.Direction || (exports2.Direction = {}));
-  function useSelect(userProps, ctx) {
+  function useSelect(userProps, emit) {
     const { disabled, modelValue, valueKey, filterable, emptyText, placeholder } = userProps;
     const rootEl = vue.ref(null);
     const inputEl = vue.ref(null);
@@ -111,11 +111,11 @@
       state.innerChange = isInnerChange === true;
       resetFilterStr();
       if (value !== modelValue.value) {
-        ctx.emit("update:modelValue", value);
-        ctx.emit("input", value, label);
-        ctx.emit("change", value, label);
+        emit("update:modelValue", value);
+        emit("input", value, label);
+        emit("change", value, label);
         if (isInnerChange) {
-          ctx.emit("native-change", value, label);
+          emit("native-change", value, label);
         }
       }
     };
@@ -289,7 +289,7 @@
         active.value = true;
         vue.nextTick(() => {
           selectState.filterStr = filterStr.value;
-          ctx.emit("query-change", filterStr.value);
+          emit("query-change", filterStr.value);
         });
       }
     }, 200);
@@ -325,7 +325,7 @@
         }
         filterStr.value = "";
         if (isRemote.value) {
-          ctx.emit("query-change", filterStr.value);
+          emit("query-change", filterStr.value);
         }
       } else {
         resetFilterStr();
@@ -412,59 +412,31 @@
   const ChangeHandlerKey = Symbol("changeHandler");
   const FocusKey = Symbol("focus");
   const SameValueCompareKey = Symbol("sameValueCompare");
-  var _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
-  const _sfc_main$1 = vue.defineComponent({
-    name: "Select",
-    directives: {
-      autoPos: apathia_shared.autoPos
-    },
+  const _hoisted_1 = /* @__PURE__ */ vue.createElementVNode("path", {
+    "fill-rule": "evenodd",
+    d: "M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z",
+    "clip-rule": "evenodd"
+  }, null, -1);
+  const _hoisted_2 = [
+    _hoisted_1
+  ];
+  const _hoisted_3 = /* @__PURE__ */ vue.createElementVNode("path", { d: "M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z" }, null, -1);
+  const _hoisted_4 = [
+    _hoisted_3
+  ];
+  const _sfc_main$1 = /* @__PURE__ */ vue.defineComponent({
+    __name: "Select",
     props: {
-      modelValue: {
-        type: [String, Number, Boolean, Object],
-        required: true
-      },
-      valueKey: {
-        type: String,
-        default: "value"
-      },
-      placeholder: {
-        type: String,
-        default: "\u8BF7\u9009\u62E9\u2026"
-      },
-      filterable: {
-        type: Boolean,
-        default: false
-      },
-      clearable: {
-        type: Boolean,
-        default: false
-      },
-      emptyText: {
-        type: String,
-        default: ""
-      },
-      disabled: {
-        type: Boolean,
-        default: void 0
-      },
-      maxHeight: {
-        type: [Number, String],
-        default: 235
-      },
-      isLoading: {
-        type: Boolean,
-        default: false
-      },
-      placement: {
-        type: String,
-        default: ""
-      }
+      modelValue: null,
+      valueKey: { default: "value" },
+      placeholder: { default: "\u8BF7\u9009\u62E9..." },
+      filterable: { type: Boolean, default: false },
+      clearable: { type: Boolean, default: false },
+      emptyText: { default: "\u6682\u65E0\u6570\u636E" },
+      disabled: { type: Boolean, default: void 0 },
+      maxHeight: { default: 235 },
+      isLoading: { type: Boolean, default: false },
+      placement: { default: "" }
     },
     emits: [
       "update:modelValue",
@@ -473,7 +445,8 @@
       "native-change",
       "query-change"
     ],
-    setup(props, ctx) {
+    setup(__props, { emit: emits }) {
+      const props = __props;
       const {
         disabled,
         modelValue,
@@ -512,7 +485,7 @@
         getInputProps,
         getDropdownProps,
         rootEl
-      } = useSelect(userProps, ctx);
+      } = useSelect(userProps, emits);
       vue.provide(UpdateRegisterKey, updateRegister);
       vue.provide(RegisterKey, register);
       vue.provide(UnregisterKey, unregister);
@@ -520,135 +493,101 @@
       vue.provide(ChangeHandlerKey, changeHandler);
       vue.provide(FocusKey, focus);
       vue.provide(SameValueCompareKey, isSameValue);
-      const styles = getSelectStyles();
-      return {
-        filterStr,
-        updateRegister,
-        selectState,
-        changeHandler,
-        register,
-        unregister,
-        focus,
-        clear,
-        isSameValue,
-        active,
-        isEmpty,
-        inputFocused,
-        isNoResult,
-        isRemote,
-        disableSelect,
-        getRootProps,
-        getInputProps,
-        getDropdownProps,
-        styles,
-        rootEl
+      const styles = {
+        selectWrapper: apathia_twind.style`flex relative border rounded border-line-accent bg-content-white shadow h-8`,
+        disabled: apathia_twind.style(
+          "cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-secondary"
+        ),
+        active: apathia_twind.style("border-brand-primary"),
+        inputSelected: apathia_twind.style`flex-1 rounded text-sm py-1.5 pl-2 outline-none cursor-pointer`,
+        focused: apathia_twind.style("select-none"),
+        arrow: apathia_twind.style(
+          "absolute inset-y-0 right-0 flex items-center pr-2 pl-1.5 py-btn-sm-y pointer-events-none h-8 w-8 text-content-secondary"
+        ),
+        clearableIcon: apathia_twind.style(
+          "hidden absolute w-3.5 h-3.5 rounded-full top-2.5 right-7 items-center bg-fill-secondary text-content-white cursor-pointer hover:bg-fill-accent"
+        ),
+        clearable: apathia_twind.style("block"),
+        dropdownContainer: apathia_twind.style`z-dropdown block h-0 absolute mt-1 border border-line-accent rounded bg-content-white shadow opacity-0 transition duration-200 overflow-y-hidden`,
+        dropdownContainerShow: apathia_twind.style`h-auto opacity-100`,
+        optionList: apathia_twind.style`max-h-56 text-base overflow-auto focus:outline-none sm:text-sm`,
+        tips: apathia_twind.style("ml-3 py-2 text-fill-secondary text-left mr-2")
+      };
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", vue.mergeProps({ ...vue.unref(getRootProps)() }, {
+          class: {
+            [styles.selectWrapper]: true,
+            [styles.disabled]: vue.unref(disableSelect),
+            [styles.active]: vue.unref(active)
+          }
+        }), [
+          vue.createElementVNode("input", vue.mergeProps({ ...vue.unref(getInputProps)() }, {
+            class: { [styles.inputSelected]: true, [styles.focused]: vue.unref(inputFocused) }
+          }), null, 16),
+          (vue.openBlock(), vue.createElementBlock("svg", {
+            class: vue.normalizeClass({ [styles.arrow]: true }),
+            xmlns: "http://www.w3.org/2000/svg",
+            viewBox: "0 0 20 20",
+            fill: "currentColor",
+            "aria-hidden": "true"
+          }, _hoisted_2, 2)),
+          __props.clearable ? (vue.openBlock(), vue.createElementBlock("svg", {
+            key: 0,
+            class: vue.normalizeClass({
+              [styles.clearableIcon]: true,
+              [styles.clearable]: __props.clearable && vue.unref(filterStr)
+            }),
+            xmlns: "http://www.w3.org/2000/svg",
+            viewBox: "-3 -3 24 24",
+            fill: "currentColor",
+            onClick: _cache[0] || (_cache[0] = vue.withModifiers(
+              (...args) => vue.unref(clear) && vue.unref(clear)(...args),
+              ["stop"]
+            ))
+          }, _hoisted_4, 2)) : vue.createCommentVNode("", true),
+          (vue.openBlock(), vue.createBlock(vue.Teleport, { to: "body" }, [
+            vue.withDirectives((vue.openBlock(), vue.createElementBlock("div", vue.mergeProps({ ...vue.unref(getDropdownProps)() }, {
+              class: {
+                [styles.dropdownContainer]: true,
+                [styles.dropdownContainerShow]: vue.unref(active)
+              }
+            }), [
+              !vue.unref(isRemote) || !__props.isLoading ? (vue.openBlock(), vue.createElementBlock("ul", {
+                key: 0,
+                class: vue.normalizeClass({ [styles.optionList]: true }),
+                role: "listbox",
+                style: vue.normalizeStyle({ maxHeight: vue.unref(maxHeight) + "px" })
+              }, [
+                vue.renderSlot(_ctx.$slots, "default"),
+                __props.isLoading ? vue.renderSlot(_ctx.$slots, "loading", { key: 0 }, () => [
+                  vue.createElementVNode("p", {
+                    class: vue.normalizeClass({ [styles.tips]: true })
+                  }, "\u52A0\u8F7D\u4E2D...", 2)
+                ]) : vue.createCommentVNode("", true),
+                !__props.isLoading && vue.unref(isEmpty) ? vue.renderSlot(_ctx.$slots, "empty", { key: 1 }, () => [
+                  vue.createElementVNode("p", {
+                    class: vue.normalizeClass({ [styles.tips]: true })
+                  }, "\u6CA1\u6709\u9009\u9879\u6570\u636E", 2)
+                ]) : vue.createCommentVNode("", true),
+                !__props.isLoading && !vue.unref(isEmpty) && vue.unref(isNoResult) ? vue.renderSlot(_ctx.$slots, "no-result", { key: 2 }, () => [
+                  vue.createElementVNode("p", {
+                    class: vue.normalizeClass({ [styles.tips]: true })
+                  }, "\u6CA1\u6709\u641C\u7D22\u7ED3\u679C", 2)
+                ]) : vue.createCommentVNode("", true)
+              ], 6)) : vue.createCommentVNode("", true)
+            ], 16)), [
+              [
+                vue.unref(apathia_shared.autoPos),
+                vue.unref(rootEl),
+                void 0,
+                { root: true }
+              ]
+            ])
+          ]))
+        ], 16);
       };
     }
   });
-  const getSelectStyles = () => ({
-    selectWrapper: apathia_twind.style`flex relative border rounded border-line-accent bg-content-white shadow h-8`,
-    disabled: apathia_twind.style(
-      "cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-secondary"
-    ),
-    active: apathia_twind.style("border-brand-primary"),
-    inputSelected: apathia_twind.style`flex-1 rounded text-sm py-1.5 pl-2 outline-none cursor-pointer`,
-    focused: apathia_twind.style("select-none"),
-    arrow: apathia_twind.style(
-      "absolute inset-y-0 right-0 flex items-center pr-2 pl-1.5 py-btn-sm-y pointer-events-none h-8 w-8 text-content-secondary"
-    ),
-    clearableIcon: apathia_twind.style(
-      "hidden absolute w-3.5 h-3.5 rounded-full top-2.5 right-7 items-center bg-fill-secondary text-content-white cursor-pointer hover:bg-fill-accent"
-    ),
-    clearable: apathia_twind.style("block"),
-    dropdownContainer: apathia_twind.style`z-dropdown block h-0 absolute mt-1 border border-line-accent rounded bg-content-white shadow opacity-0 transition duration-200 overflow-y-hidden`,
-    dropdownContainerShow: apathia_twind.style`h-auto opacity-100`,
-    optionList: apathia_twind.style`max-h-56 text-base overflow-auto focus:outline-none sm:text-sm`,
-    tips: apathia_twind.style("ml-3 py-2 text-fill-secondary text-left mr-2")
-  });
-  const _hoisted_1 = /* @__PURE__ */ vue.createElementVNode("path", {
-    "fill-rule": "evenodd",
-    d: "M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z",
-    "clip-rule": "evenodd"
-  }, null, -1);
-  const _hoisted_2 = [
-    _hoisted_1
-  ];
-  const _hoisted_3 = /* @__PURE__ */ vue.createElementVNode("path", { d: "M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z" }, null, -1);
-  const _hoisted_4 = [
-    _hoisted_3
-  ];
-  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-    const _directive_auto_pos = vue.resolveDirective("auto-pos");
-    return vue.openBlock(), vue.createElementBlock("div", vue.mergeProps({ ..._ctx.getRootProps() }, {
-      class: {
-        [_ctx.styles.selectWrapper]: true,
-        [_ctx.styles.disabled]: _ctx.disableSelect,
-        [_ctx.styles.active]: _ctx.active
-      }
-    }), [
-      vue.createElementVNode("input", vue.mergeProps({ ..._ctx.getInputProps() }, {
-        class: { [_ctx.styles.inputSelected]: true, [_ctx.styles.focused]: _ctx.inputFocused }
-      }), null, 16),
-      (vue.openBlock(), vue.createElementBlock("svg", {
-        class: vue.normalizeClass({ [_ctx.styles.arrow]: true }),
-        xmlns: "http://www.w3.org/2000/svg",
-        viewBox: "0 0 20 20",
-        fill: "currentColor",
-        "aria-hidden": "true"
-      }, _hoisted_2, 2)),
-      _ctx.clearable ? (vue.openBlock(), vue.createElementBlock("svg", {
-        key: 0,
-        class: vue.normalizeClass({
-          [_ctx.styles.clearableIcon]: true,
-          [_ctx.styles.clearable]: _ctx.clearable && _ctx.filterStr
-        }),
-        xmlns: "http://www.w3.org/2000/svg",
-        viewBox: "-3 -3 24 24",
-        fill: "currentColor",
-        onClick: _cache[0] || (_cache[0] = vue.withModifiers((...args) => _ctx.clear && _ctx.clear(...args), ["stop"]))
-      }, _hoisted_4, 2)) : vue.createCommentVNode("", true),
-      (vue.openBlock(), vue.createBlock(vue.Teleport, { to: "body" }, [
-        vue.withDirectives((vue.openBlock(), vue.createElementBlock("div", vue.mergeProps({ ..._ctx.getDropdownProps() }, {
-          class: {
-            [_ctx.styles.dropdownContainer]: true,
-            [_ctx.styles.dropdownContainerShow]: _ctx.active
-          }
-        }), [
-          !_ctx.isRemote || !_ctx.isLoading ? (vue.openBlock(), vue.createElementBlock("ul", {
-            key: 0,
-            class: vue.normalizeClass({ [_ctx.styles.optionList]: true }),
-            role: "listbox",
-            style: vue.normalizeStyle({ maxHeight: _ctx.maxHeight + "px" })
-          }, [
-            vue.renderSlot(_ctx.$slots, "default"),
-            _ctx.isLoading ? vue.renderSlot(_ctx.$slots, "loading", { key: 0 }, () => [
-              vue.createElementVNode("p", {
-                class: vue.normalizeClass({ [_ctx.styles.tips]: true })
-              }, "\u52A0\u8F7D\u4E2D...", 2)
-            ]) : vue.createCommentVNode("", true),
-            !_ctx.isLoading && _ctx.isEmpty ? vue.renderSlot(_ctx.$slots, "empty", { key: 1 }, () => [
-              vue.createElementVNode("p", {
-                class: vue.normalizeClass({ [_ctx.styles.tips]: true })
-              }, "\u6CA1\u6709\u9009\u9879\u6570\u636E", 2)
-            ]) : vue.createCommentVNode("", true),
-            !_ctx.isLoading && !_ctx.isEmpty && _ctx.isNoResult ? vue.renderSlot(_ctx.$slots, "no-result", { key: 2 }, () => [
-              vue.createElementVNode("p", {
-                class: vue.normalizeClass({ [_ctx.styles.tips]: true })
-              }, "\u6CA1\u6709\u641C\u7D22\u7ED3\u679C", 2)
-            ]) : vue.createCommentVNode("", true)
-          ], 6)) : vue.createCommentVNode("", true)
-        ], 16)), [
-          [
-            _directive_auto_pos,
-            _ctx.rootEl,
-            void 0,
-            { root: true }
-          ]
-        ])
-      ]))
-    ], 16);
-  }
-  var Select = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
   function useOption(userProps) {
     const isHidden = vue.ref(false);
     const isSelected = vue.ref(false);
@@ -818,6 +757,6 @@
     }
   });
   exports2.Option = _sfc_main;
-  exports2.Select = Select;
+  exports2.Select = _sfc_main$1;
   Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
 });
