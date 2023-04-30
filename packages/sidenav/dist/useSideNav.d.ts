@@ -1,5 +1,6 @@
-import type { SideNavProps } from './types';
-export default function useSideNav(props: SideNavProps): {
+import { Ref, ComputedRef } from 'vue';
+import type { SideNode as Node, SideNavProps } from './types';
+export default function useSideNav(props: SideNavProps, emit: (event: 'select' | 'minChange', ...args: any[]) => void): {
     getContainerProps: () => {
         onMouseenter: () => void;
         onMouseleave: () => void;
@@ -7,16 +8,6 @@ export default function useSideNav(props: SideNavProps): {
     getSidenavInputProps: () => {
         onInput: (event: InputEvent) => void;
     };
-    getScrollContainerProps: () => {
-        scrollTop: number;
-    } | {
-        scrollTop?: undefined;
-    };
-    filteredMenu: import("vue").Ref<{
-        [x: string]: any;
-        text?: string | undefined;
-        icon?: string[] | undefined;
-        children?: any[] | undefined;
-    }[]>;
-    showMini: import("vue").ComputedRef<boolean>;
+    filteredMenu: Ref<Node[]>;
+    showMini: ComputedRef<boolean>;
 };

@@ -1,5 +1,35 @@
 # @apathia/apathia.sidenav
 
+## 0.2.18
+
+### Patch Changes
+
+- fix small icon
+
+## 0.2.17
+
+### Patch Changes
+
+- fix size
+
+## 0.2.16
+
+### Patch Changes
+
+- fix icons
+
+## 0.2.15
+
+### Patch Changes
+
+- fix icon
+
+## 0.2.14
+
+### Patch Changes
+
+- fix scorll
+
 ## 0.2.13
 
 ### Patch Changes

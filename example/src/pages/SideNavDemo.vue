@@ -1,8 +1,10 @@
 <template>
-    <button @click="mini = !mini">mini</button>
+    <!-- <button style="position: fixed; top: 0" @click="mini = !mini">mini</button> -->
     <div style="height: 50vh; display: flex; position: absolute; top: 0">
-        <SideNav :menu-list="menuList" :mini="mini" :active-key="activeKey" key-field="path" search @select="select" />
-        content
+        <SideNav :menu-list="menuList" :mini="mini" :active-key="activeKey" key-field="path" search @select="select"
+            @minChange="fn" />
+
+        <div @click="mini = !mini">mini</div>
     </div>
 
     <div style="height: 50vh; display: flex; position: absolute; bottom: 0">
@@ -39,10 +41,11 @@ export default {
         select(node) {
             this.activeKey = node.path
         },
+        fn(minState) {
+            console.log(minState)
+        }
     },
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

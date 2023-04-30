@@ -1,6 +1,7 @@
+import { Component } from 'vue';
 export declare type SideNode = {
     text?: string;
-    icon?: string[];
+    icon?: Component;
     children?: SideNode[];
     [k: string]: any;
 };

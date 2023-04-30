@@ -1,8 +1,11 @@
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch, shallowRef } from 'vue'
 import { useToggle } from '@apathia/apathia.hooks'
-import type { SideNode as Node, SideNavProps } from './types'
+import type { SideNode as Node, SideNavProps, ISideNavReturn } from './types'
 
-export default function useSideNav(props: SideNavProps) {
+export default function useSideNav(
+  props: SideNavProps,
+  emit: (event: 'select' | 'minChange', ...args: any[]) => void,
+): ISideNavReturn {
   const filteredMenu = ref<Node[]>([])
   const scrollTop = ref(0)
   const filterKeyMap = computed(() => createKeyMap(props.menuList as Node[]))
@@ -60,10 +63,17 @@ export default function useSideNav(props: SideNavProps) {
     }
   }
 
+  watch(
+    () => showMini.value,
+    () => {
+      emit('minChange', showMini.value)
+    },
+  )
+
   return {
     getContainerProps,
     getSidenavInputProps,
-    getScrollContainerProps,
+    // getScrollContainerProps,
     filteredMenu,
     showMini,
   }

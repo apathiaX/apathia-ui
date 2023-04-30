@@ -1,5 +1,11 @@
 # @apathia/apathia.shared
 
+## 1.2.8
+
+### Patch Changes
+
+- fix scorll
+
 ## 1.2.7
 
 ### Patch Changes

@@ -1,5 +1,45 @@
 # @apathia/apathia
 
+## 1.2.22
+
+### Patch Changes
+
+- fix small icon
+- Updated dependencies
+  - @apathia/apathia.sidenav@0.2.18
+
+## 1.2.21
+
+### Patch Changes
+
+- fix size
+- Updated dependencies
+  - @apathia/apathia.sidenav@0.2.17
+
+## 1.2.20
+
+### Patch Changes
+
+- fix icons
+- Updated dependencies
+  - @apathia/apathia.sidenav@0.2.16
+
+## 1.2.19
+
+### Patch Changes
+
+- fix icon
+- Updated dependencies
+  - @apathia/apathia.sidenav@0.2.15
+
+## 1.2.18
+
+### Patch Changes
+
+- fix scorll
+- Updated dependencies
+  - @apathia/apathia.sidenav@0.2.14
+
 ## 1.2.17
 
 ### Patch Changes

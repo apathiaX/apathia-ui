@@ -1,6 +1,5 @@
-import { defineComponent, computed, watch, resolveComponent, openBlock, createElementBlock, renderSlot, unref, createElementVNode, normalizeClass, withDirectives, toDisplayString, vShow, createVNode, withCtx, Fragment, renderList, createBlock, createCommentVNode, ref, onMounted, mergeProps } from "vue";
+import { defineComponent, computed, watch, resolveComponent, openBlock, createElementBlock, renderSlot, unref, createElementVNode, normalizeClass, createBlock, resolveDynamicComponent, createCommentVNode, withDirectives, toDisplayString, vShow, createVNode, withCtx, Fragment, renderList, ref, onMounted, mergeProps } from "vue";
 import { style } from "@apathia/apathia.twind";
-import { ScrollContainer } from "@apathia/apathia.scroll-container";
 import { useToggle } from "@apathia/apathia.hooks";
 import { Icon } from "@apathia/apathia.icon";
 import { ArrowDown } from "@apathia/apathia.icon-svg";
@@ -27,6 +26,8 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
         sidenodeTurn: style`rotate-180 duration-300`,
         sidenodeExpand: style`text-xs duration-300`,
         sidenodeText: style`flex-grow text-sm font-medium text-left truncate`,
+        sidenodeIcon: style`w-8 h-4 px-2`,
+        sidenodeIconMini: style`px-0`,
         sidenodeChildren: style`text-xs bg-brand-light transition-all duration-500 list-none`
       };
     }
@@ -45,9 +46,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     );
     const isActiveItem = computed(() => props.activeKey === props.node[props.keyField]);
     const [expand, toggleExpand, setExpand] = useToggle(!!isActiveParent.value);
-    const expandClass = computed(
-      () => `${styles.sidenodeExpand} ${styles.sidenodeIconClass} ${expand.value ? styles.sidenodeTurn : ""}`
-    );
+    const iconClass = computed(() => `${styles.sidenodeIcon} ${props.mini ? styles.sidenodeIconMini : ""}`);
     const rowClass = computed(
       () => `${styles.sidenodeRowClass} ${isActiveParent.value ? styles.sidenodeRowParentActive : ""} ${props.activeKey === props.node[props.keyField] ? styles.sidenodeRowActive : ""}`
     );
@@ -66,6 +65,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
       }
     };
     return (_ctx, _cache) => {
+      const _component_ArrowUp = resolveComponent("ArrowUp");
       const _component_SideNode = resolveComponent("SideNode", true);
       return openBlock(), createElementBlock("li", null, [
         renderSlot(_ctx.$slots, "default", {
@@ -81,16 +81,23 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
             class: normalizeClass(unref(rowClass)),
             onClick: clickHandler
           }, [
+            createElementVNode("span", {
+              class: normalizeClass(__props.node.icon ? unref(iconClass) : "")
+            }, [
+              renderSlot(_ctx.$slots, "icon", {}, () => [
+                __props.node.icon ? (openBlock(), createBlock(resolveDynamicComponent(__props.node.icon), { key: 0 })) : createCommentVNode("", true)
+              ])
+            ], 2),
             withDirectives(createElementVNode("span", {
               class: normalizeClass(unref(styles).sidenodeText)
             }, toDisplayString(__props.node.text), 3), [
               [vShow, !__props.mini]
             ]),
             withDirectives(createVNode(unref(Icon), {
-              class: normalizeClass(unref(expandClass))
+              class: normalizeClass(unref(styles).sidenodeIconClass)
             }, {
               default: withCtx(() => [
-                createVNode(unref(ArrowDown))
+                unref(expand) ? (openBlock(), createBlock(unref(ArrowDown), { key: 0 })) : (openBlock(), createBlock(_component_ArrowUp, { key: 1 }))
               ]),
               _: 1
             }, 8, ["class"]), [
@@ -138,7 +145,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-function useSideNav(props) {
+function useSideNav(props, emit) {
   const filteredMenu = ref([]);
   const scrollTop = ref(0);
   const filterKeyMap = computed(() => createKeyMap(props.menuList));
@@ -169,19 +176,18 @@ function useSideNav(props) {
       onInput
     };
   }
-  function getScrollContainerProps() {
-    return scrollTop.value ? { scrollTop: scrollTop.value } : {};
-  }
   function getContainerProps() {
     return {
       onMouseenter: toggleHover,
       onMouseleave: toggleHover
     };
   }
+  watch(() => showMini.value, () => {
+    emit("minChange", showMini.value);
+  });
   return {
     getContainerProps,
     getSidenavInputProps,
-    getScrollContainerProps,
     filteredMenu,
     showMini
   };
@@ -207,7 +213,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     search: { type: Boolean, default: false },
     keyField: { default: "key" }
   },
-  emits: ["select"],
+  emits: ["select", "minChange"],
   setup(__props, { emit }) {
     const props = __props;
     function initStyle() {
@@ -223,62 +229,56 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       getContainerProps,
       getSidenavInputProps,
       filteredMenu,
-      showMini,
-      getScrollContainerProps
-    } = useSideNav(props);
+      showMini
+    } = useSideNav(props, emit);
     const styles = initStyle();
     const selectNode = (node) => emit("select", node);
     return (_ctx, _cache) => {
-      return openBlock(), createBlock(unref(ScrollContainer), mergeProps({ size: 7 }, unref(getScrollContainerProps)(), { "auto-hide": "" }), {
-        default: withCtx(() => [
-          createElementVNode("ul", mergeProps({
-            class: unref(showMini) ? unref(styles).sidenavMiniClass : unref(styles).sidenavClass
-          }, { ...unref(getContainerProps)() }), [
-            renderSlot(_ctx.$slots, "menuTop"),
-            withDirectives(createElementVNode("div", {
-              class: normalizeClass(unref(styles).sidenavInputWrap)
-            }, [
-              createElementVNode("input", mergeProps({ ...unref(getSidenavInputProps)() }, {
-                placeholder: "search",
-                class: unref(styles).sidenavInput
-              }), null, 16)
-            ], 2), [
-              [vShow, __props.search && !unref(showMini)]
-            ]),
-            (openBlock(true), createElementBlock(Fragment, null, renderList(unref(filteredMenu), (node) => {
-              return openBlock(), createBlock(_sfc_main$1, {
-                key: node[__props.activeKey],
-                node,
-                "active-key": __props.activeKey,
-                "key-field": __props.keyField,
-                mini: unref(showMini),
-                "select-handler": selectNode
-              }, {
-                default: withCtx(({
-                  mini: miniValue,
-                  activeParent: activeParentValue,
-                  expand: expandValue,
-                  activeItem: activeItemValue,
-                  onClick: clickHandler,
-                  node: nodeValue
-                }) => [
-                  renderSlot(_ctx.$slots, "default", {
-                    mini: miniValue,
-                    activeParent: activeParentValue,
-                    expand: expandValue,
-                    activeItem: activeItemValue,
-                    onClick: clickHandler,
-                    node: nodeValue
-                  })
-                ]),
-                _: 2
-              }, 1032, ["node", "active-key", "key-field", "mini"]);
-            }), 128)),
-            renderSlot(_ctx.$slots, "menuBottom")
-          ], 16)
+      return openBlock(), createElementBlock("ul", mergeProps({
+        class: unref(showMini) ? unref(styles).sidenavMiniClass : unref(styles).sidenavClass
+      }, { ...unref(getContainerProps)() }), [
+        renderSlot(_ctx.$slots, "menuTop"),
+        withDirectives(createElementVNode("div", {
+          class: normalizeClass(unref(styles).sidenavInputWrap)
+        }, [
+          createElementVNode("input", mergeProps({ ...unref(getSidenavInputProps)() }, {
+            placeholder: "search",
+            class: unref(styles).sidenavInput
+          }), null, 16)
+        ], 2), [
+          [vShow, __props.search && !unref(showMini)]
         ]),
-        _: 3
-      }, 16);
+        (openBlock(true), createElementBlock(Fragment, null, renderList(unref(filteredMenu), (node) => {
+          return openBlock(), createBlock(_sfc_main$1, {
+            key: node[__props.activeKey],
+            node,
+            "active-key": __props.activeKey,
+            "key-field": __props.keyField,
+            mini: unref(showMini),
+            "select-handler": selectNode
+          }, {
+            default: withCtx(({
+              mini: miniValue,
+              activeParent: activeParentValue,
+              expand: expandValue,
+              activeItem: activeItemValue,
+              onClick: clickHandler,
+              node: nodeValue
+            }) => [
+              renderSlot(_ctx.$slots, "default", {
+                mini: miniValue,
+                activeParent: activeParentValue,
+                expand: expandValue,
+                activeItem: activeItemValue,
+                onClick: clickHandler,
+                node: nodeValue
+              })
+            ]),
+            _: 2
+          }, 1032, ["node", "active-key", "key-field", "mini"]);
+        }), 128)),
+        renderSlot(_ctx.$slots, "menuBottom")
+      ], 16);
     };
   }
 });

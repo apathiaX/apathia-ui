@@ -1,6 +1,6 @@
 (function(global, factory) {
-  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.twind"), require("@apathia/apathia.scroll-container"), require("@apathia/apathia.hooks"), require("@apathia/apathia.icon"), require("@apathia/apathia.icon-svg")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.twind", "@apathia/apathia.scroll-container", "@apathia/apathia.hooks", "@apathia/apathia.icon", "@apathia/apathia.icon-svg"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.sidenav = {}, global.Vue, global.twind, global["scroll-container"], global.hooks, global.icon, global["icon-svg"]));
-})(this, function(exports2, vue, apathia_twind, apathia_scrollContainer, apathia_hooks, apathia_icon, apathia_iconSvg) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require("vue"), require("@apathia/apathia.twind"), require("@apathia/apathia.hooks"), require("@apathia/apathia.icon"), require("@apathia/apathia.icon-svg")) : typeof define === "function" && define.amd ? define(["exports", "vue", "@apathia/apathia.twind", "@apathia/apathia.hooks", "@apathia/apathia.icon", "@apathia/apathia.icon-svg"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.sidenav = {}, global.Vue, global.twind, global.hooks, global.icon, global["icon-svg"]));
+})(this, function(exports2, vue, apathia_twind, apathia_hooks, apathia_icon, apathia_iconSvg) {
   "use strict";
   const _hoisted_1 = ["id"];
   const _hoisted_2 = { key: 0 };
@@ -25,6 +25,8 @@
           sidenodeTurn: apathia_twind.style`rotate-180 duration-300`,
           sidenodeExpand: apathia_twind.style`text-xs duration-300`,
           sidenodeText: apathia_twind.style`flex-grow text-sm font-medium text-left truncate`,
+          sidenodeIcon: apathia_twind.style`w-8 h-4 px-2`,
+          sidenodeIconMini: apathia_twind.style`px-0`,
           sidenodeChildren: apathia_twind.style`text-xs bg-brand-light transition-all duration-500 list-none`
         };
       }
@@ -43,9 +45,7 @@
       );
       const isActiveItem = vue.computed(() => props.activeKey === props.node[props.keyField]);
       const [expand, toggleExpand, setExpand] = apathia_hooks.useToggle(!!isActiveParent.value);
-      const expandClass = vue.computed(
-        () => `${styles.sidenodeExpand} ${styles.sidenodeIconClass} ${expand.value ? styles.sidenodeTurn : ""}`
-      );
+      const iconClass = vue.computed(() => `${styles.sidenodeIcon} ${props.mini ? styles.sidenodeIconMini : ""}`);
       const rowClass = vue.computed(
         () => `${styles.sidenodeRowClass} ${isActiveParent.value ? styles.sidenodeRowParentActive : ""} ${props.activeKey === props.node[props.keyField] ? styles.sidenodeRowActive : ""}`
       );
@@ -64,6 +64,7 @@
         }
       };
       return (_ctx, _cache) => {
+        const _component_ArrowUp = vue.resolveComponent("ArrowUp");
         const _component_SideNode = vue.resolveComponent("SideNode", true);
         return vue.openBlock(), vue.createElementBlock("li", null, [
           vue.renderSlot(_ctx.$slots, "default", {
@@ -79,16 +80,23 @@
               class: vue.normalizeClass(vue.unref(rowClass)),
               onClick: clickHandler
             }, [
+              vue.createElementVNode("span", {
+                class: vue.normalizeClass(__props.node.icon ? vue.unref(iconClass) : "")
+              }, [
+                vue.renderSlot(_ctx.$slots, "icon", {}, () => [
+                  __props.node.icon ? (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(__props.node.icon), { key: 0 })) : vue.createCommentVNode("", true)
+                ])
+              ], 2),
               vue.withDirectives(vue.createElementVNode("span", {
                 class: vue.normalizeClass(vue.unref(styles).sidenodeText)
               }, vue.toDisplayString(__props.node.text), 3), [
                 [vue.vShow, !__props.mini]
               ]),
               vue.withDirectives(vue.createVNode(vue.unref(apathia_icon.Icon), {
-                class: vue.normalizeClass(vue.unref(expandClass))
+                class: vue.normalizeClass(vue.unref(styles).sidenodeIconClass)
               }, {
                 default: vue.withCtx(() => [
-                  vue.createVNode(vue.unref(apathia_iconSvg.ArrowDown))
+                  vue.unref(expand) ? (vue.openBlock(), vue.createBlock(vue.unref(apathia_iconSvg.ArrowDown), { key: 0 })) : (vue.openBlock(), vue.createBlock(_component_ArrowUp, { key: 1 }))
                 ]),
                 _: 1
               }, 8, ["class"]), [
@@ -136,7 +144,7 @@
       };
     }
   });
-  function useSideNav(props) {
+  function useSideNav(props, emit) {
     const filteredMenu = vue.ref([]);
     const scrollTop = vue.ref(0);
     const filterKeyMap = vue.computed(() => createKeyMap(props.menuList));
@@ -167,19 +175,18 @@
         onInput
       };
     }
-    function getScrollContainerProps() {
-      return scrollTop.value ? { scrollTop: scrollTop.value } : {};
-    }
     function getContainerProps() {
       return {
         onMouseenter: toggleHover,
         onMouseleave: toggleHover
       };
     }
+    vue.watch(() => showMini.value, () => {
+      emit("minChange", showMini.value);
+    });
     return {
       getContainerProps,
       getSidenavInputProps,
-      getScrollContainerProps,
       filteredMenu,
       showMini
     };
@@ -205,7 +212,7 @@
       search: { type: Boolean, default: false },
       keyField: { default: "key" }
     },
-    emits: ["select"],
+    emits: ["select", "minChange"],
     setup(__props, { emit }) {
       const props = __props;
       function initStyle() {
@@ -221,62 +228,56 @@
         getContainerProps,
         getSidenavInputProps,
         filteredMenu,
-        showMini,
-        getScrollContainerProps
-      } = useSideNav(props);
+        showMini
+      } = useSideNav(props, emit);
       const styles = initStyle();
       const selectNode = (node) => emit("select", node);
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createBlock(vue.unref(apathia_scrollContainer.ScrollContainer), vue.mergeProps({ size: 7 }, vue.unref(getScrollContainerProps)(), { "auto-hide": "" }), {
-          default: vue.withCtx(() => [
-            vue.createElementVNode("ul", vue.mergeProps({
-              class: vue.unref(showMini) ? vue.unref(styles).sidenavMiniClass : vue.unref(styles).sidenavClass
-            }, { ...vue.unref(getContainerProps)() }), [
-              vue.renderSlot(_ctx.$slots, "menuTop"),
-              vue.withDirectives(vue.createElementVNode("div", {
-                class: vue.normalizeClass(vue.unref(styles).sidenavInputWrap)
-              }, [
-                vue.createElementVNode("input", vue.mergeProps({ ...vue.unref(getSidenavInputProps)() }, {
-                  placeholder: "search",
-                  class: vue.unref(styles).sidenavInput
-                }), null, 16)
-              ], 2), [
-                [vue.vShow, __props.search && !vue.unref(showMini)]
-              ]),
-              (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(filteredMenu), (node) => {
-                return vue.openBlock(), vue.createBlock(_sfc_main$1, {
-                  key: node[__props.activeKey],
-                  node,
-                  "active-key": __props.activeKey,
-                  "key-field": __props.keyField,
-                  mini: vue.unref(showMini),
-                  "select-handler": selectNode
-                }, {
-                  default: vue.withCtx(({
-                    mini: miniValue,
-                    activeParent: activeParentValue,
-                    expand: expandValue,
-                    activeItem: activeItemValue,
-                    onClick: clickHandler,
-                    node: nodeValue
-                  }) => [
-                    vue.renderSlot(_ctx.$slots, "default", {
-                      mini: miniValue,
-                      activeParent: activeParentValue,
-                      expand: expandValue,
-                      activeItem: activeItemValue,
-                      onClick: clickHandler,
-                      node: nodeValue
-                    })
-                  ]),
-                  _: 2
-                }, 1032, ["node", "active-key", "key-field", "mini"]);
-              }), 128)),
-              vue.renderSlot(_ctx.$slots, "menuBottom")
-            ], 16)
+        return vue.openBlock(), vue.createElementBlock("ul", vue.mergeProps({
+          class: vue.unref(showMini) ? vue.unref(styles).sidenavMiniClass : vue.unref(styles).sidenavClass
+        }, { ...vue.unref(getContainerProps)() }), [
+          vue.renderSlot(_ctx.$slots, "menuTop"),
+          vue.withDirectives(vue.createElementVNode("div", {
+            class: vue.normalizeClass(vue.unref(styles).sidenavInputWrap)
+          }, [
+            vue.createElementVNode("input", vue.mergeProps({ ...vue.unref(getSidenavInputProps)() }, {
+              placeholder: "search",
+              class: vue.unref(styles).sidenavInput
+            }), null, 16)
+          ], 2), [
+            [vue.vShow, __props.search && !vue.unref(showMini)]
           ]),
-          _: 3
-        }, 16);
+          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(filteredMenu), (node) => {
+            return vue.openBlock(), vue.createBlock(_sfc_main$1, {
+              key: node[__props.activeKey],
+              node,
+              "active-key": __props.activeKey,
+              "key-field": __props.keyField,
+              mini: vue.unref(showMini),
+              "select-handler": selectNode
+            }, {
+              default: vue.withCtx(({
+                mini: miniValue,
+                activeParent: activeParentValue,
+                expand: expandValue,
+                activeItem: activeItemValue,
+                onClick: clickHandler,
+                node: nodeValue
+              }) => [
+                vue.renderSlot(_ctx.$slots, "default", {
+                  mini: miniValue,
+                  activeParent: activeParentValue,
+                  expand: expandValue,
+                  activeItem: activeItemValue,
+                  onClick: clickHandler,
+                  node: nodeValue
+                })
+              ]),
+              _: 2
+            }, 1032, ["node", "active-key", "key-field", "mini"]);
+          }), 128)),
+          vue.renderSlot(_ctx.$slots, "menuBottom")
+        ], 16);
       };
     }
   });

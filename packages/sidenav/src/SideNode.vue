@@ -3,11 +3,19 @@
     <slot :mini="mini" :activeParent="isActiveParent" :expand="expand" :activeItem="isActiveItem" :onClick="clickHandler"
       :node="node">
       <div :id="isActiveItem ? 'expandSideNode' : undefined" :class="rowClass" @click="clickHandler">
+        <span :class="node.icon ? iconClass : ''">
+          <slot name="icon">
+            <template v-if="node.icon">
+              <component :is="node.icon" />
+            </template>
+          </slot>
+        </span>
         <span v-show="!mini" :class="styles.sidenodeText">
           {{ node.text }}
         </span>
-        <Icon v-show="node.children && !mini" :class="expandClass">
-          <ArrowDown />
+        <Icon v-show="node.children && !mini" :class="styles.sidenodeIconClass">
+          <ArrowDown v-if="expand" />
+          <ArrowUp v-else />
         </Icon>
       </div>
     </slot>
@@ -17,13 +25,13 @@
         <SideNode v-for="(item, index) in node.children" :key="index" :node="item" :active-key="activeKey"
           :select-handler="selectHandler" :key-field="keyField">
           <template #default="{
-            mini: miniValue,
-            activeParent: activeParentValue,
-            expand: expandValue,
-            activeItem: activeItemValue,
-            onClick: handleClick,
-            node: nodeValue,
-          }">
+              mini: miniValue,
+              activeParent: activeParentValue,
+              expand: expandValue,
+              activeItem: activeItemValue,
+              onClick: handleClick,
+              node: nodeValue,
+            }">
             <slot :mini="miniValue" :activeParent="activeParentValue" :expand="expandValue" :activeItem="activeItemValue"
               :onClick="handleClick" :node="nodeValue"></slot>
           </template>
@@ -34,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch, withDefaults } from "vue";
+import { computed, shallowRef, watch, withDefaults } from "vue";
 import { useToggle } from "@apathia/apathia.hooks";
 import { Icon } from "@apathia/apathia.icon";
 import { style } from "@apathia/apathia.twind";
@@ -59,6 +67,8 @@ function initStyle() {
     sidenodeTurn: style`rotate-180 duration-300`,
     sidenodeExpand: style`text-xs duration-300`,
     sidenodeText: style`flex-grow text-sm font-medium text-left truncate`,
+    sidenodeIcon: style`w-8 h-4 px-2`,
+    sidenodeIconMini: style`px-0`,
     sidenodeChildren: style`text-xs bg-brand-light transition-all duration-500 list-none`,
   };
 }
@@ -66,9 +76,9 @@ function initStyle() {
 const props = withDefaults(defineProps<SideNavProps>(), {
   node: () => ({}),
   mini: false,
-  activeKey: '',
+  activeKey: "",
   selectHandler: () => { },
-  keyField: 'key',
+  keyField: "key",
 });
 
 function isParent(nodes: Node[], current: string, key: keyof Node) {
@@ -92,11 +102,12 @@ const isActiveParent = computed(() =>
 );
 const isActiveItem = computed(() => props.activeKey === props.node[props.keyField]);
 const [expand, toggleExpand, setExpand] = useToggle(!!isActiveParent.value);
-const expandClass = computed(
-  () =>
-    `${styles.sidenodeExpand} ${styles.sidenodeIconClass} ${expand.value ? styles.sidenodeTurn : ""
-    }`
-);
+// const expandClass = computed(
+//   () =>
+//     `${styles.sidenodeExpand} ${styles.sidenodeIconClass} ${expand.value ? styles.sidenodeTurn : ""
+//     }`
+// );
+const iconClass = computed(() => `${styles.sidenodeIcon} ${props.mini ? styles.sidenodeIconMini : ""}`)
 const rowClass = computed(
   () =>
     `${styles.sidenodeRowClass} ${isActiveParent.value ? styles.sidenodeRowParentActive : ""

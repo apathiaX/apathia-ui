@@ -20,7 +20,8 @@
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia": "workspace:^1.2.10",
+    "@apathia/apathia": "workspace:^1.2.22",
+    "@apathia/apathia.icon-svg": "workspace:^0.1.7",
     "@apathia/apathia.twind": "workspace:^1.2.4",
     "lodash-es": "^4.17.21",
     "twind": "^0.16.19",

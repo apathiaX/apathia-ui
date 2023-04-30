@@ -1,6 +1,6 @@
 {
   "name": "@apathia/apathia",
-  "version": "1.2.17",
+  "version": "1.2.22",
   "description": "apathia",
   "author": "xzc01",
   "homepage": "http://www.ui.apathia.cn/",
@@ -63,7 +63,7 @@
     "@apathia/apathia.radio": "workspace:^1.2.7",
     "@apathia/apathia.scroll-container": "workspace:^0.2.7",
     "@apathia/apathia.select": "workspace:^1.2.11",
-    "@apathia/apathia.sidenav": "workspace:^0.2.13",
+    "@apathia/apathia.sidenav": "workspace:^0.2.18",
     "@apathia/apathia.slider": "workspace:^0.2.7",
     "@apathia/apathia.switch": "workspace:^0.2.7",
     "@apathia/apathia.table": "workspace:^1.2.9",
