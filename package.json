@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "pnpm -r --filter !@apathia/apathia.example --filter @apathia/apathia* exec vite build -c ../../build/vite.build.js",
-    "clear": "rimraf 'packages/*/{lib,node_modules}' && rimraf node_modules",
+    "clear": "rimraf 'packages/*/dist' && rimraf 'packages/*/{lib,node_modules}' && rimraf node_modules",
     "createNew": "node scripts/create.js",
     "changeset": "changeset",
     "version-packages": "changeset version",

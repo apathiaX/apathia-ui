@@ -1,7 +1,7 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "editor.formatOnSave": true,
+    "source.fixAll": "explicit",
+    "editor.formatOnSave": "explicit"
   },
   "editor.formatOnSave": true,
   "vue3snippets.enable-compile-vue-file-on-did-save-code": false
