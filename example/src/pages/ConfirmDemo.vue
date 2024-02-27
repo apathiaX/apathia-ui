@@ -1,15 +1,15 @@
 <template>
   <div>
     <Card title="基础用法">
-      <Confirm />
+      <ap-confirm />
     </Card>
 
     <Card title="其他用法">
-      <Confirm />
+      <ap-confirm />
     </Card>
   </div>
 </template>
 
 <script setup>
-import { Confirm } from '@apathia/apathia'
+import { ApConfirm } from 'apathia-ui'
 </script>

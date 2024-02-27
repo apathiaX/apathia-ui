@@ -8,7 +8,7 @@ Pagination 组件 用于展示分页
 
 :::demo
 
-<<< @/../packages/pagination/demo/Basic.vue
+<<< @/demos/pagination/Basic.vue
 
 :::
 

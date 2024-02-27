@@ -1,16 +1,15 @@
 <template>
   <div>
     <Card title="基础用法">
-      <Pagination />
+      <ap-pagination />
     </Card>
 
     <Card title="其他用法">
-      <Pagination />
+      <ap-pagination />
     </Card>
   </div>
 </template>
 
 <script setup>
-import { Pagination } from '@apathia/apathia'
+import { ApPagination } from 'apathia-ui'
 </script>
-

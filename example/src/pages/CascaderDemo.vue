@@ -1,92 +1,92 @@
 <template>
-  <Cascader
+  <ap-cascader
     v-model="path1"
     :data="options"
     trigger="click"
     clearable
     :change-on-select="false"
   >
-  </Cascader>
+  </ap-cascader>
   <p>{{ path1 }}</p>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { Cascader } from "@apathia/apathia";
-const path1 = ref([]);
+import { ref } from 'vue'
+import { ApCascader } from 'apathia-ui'
+const path1 = ref([])
 const options = [
   {
-    value: "zhejiang",
-    label: "Zhejiang",
+    value: 'zhejiang',
+    label: 'Zhejiang',
     children: [
       {
-        value: "hangzhou",
-        label: "Hangzhou",
+        value: 'hangzhou',
+        label: 'Hangzhou',
         // disabled: true,
         children: [
           {
-            value: "xihu",
-            label: "West Lake",
+            value: 'xihu',
+            label: 'West Lake',
           },
         ],
       },
     ],
   },
   {
-    value: "jiangsu",
-    label: "Jiangsu",
+    value: 'jiangsu',
+    label: 'Jiangsu',
     children: [
       {
-        value: "nanjing",
-        label: "Nanjing",
+        value: 'nanjing',
+        label: 'Nanjing',
         children: [
           {
-            value: "zhonghuamen",
-            label: "Zhong Hua Men",
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
           },
           {
-            value: "fuzimiao",
-            label: "夫子庙",
+            value: 'fuzimiao',
+            label: '夫子庙',
           },
         ],
       },
     ],
   },
   {
-    value: "hubei",
-    label: "湖北",
+    value: 'hubei',
+    label: '湖北',
     children: [
       {
-        value: "wuhan",
-        label: "武汉",
+        value: 'wuhan',
+        label: '武汉',
         children: [
           {
-            value: "wuchang",
-            label: "武昌",
+            value: 'wuchang',
+            label: '武昌',
           },
           {
-            value: "hankou",
-            label: "汉口",
+            value: 'hankou',
+            label: '汉口',
           },
         ],
       },
     ],
   },
   {
-    value: "shanghai",
-    label: "shanghai",
+    value: 'shanghai',
+    label: 'shanghai',
   },
   {
-    value: "sichuan",
-    label: "四川",
+    value: 'sichuan',
+    label: '四川',
   },
   {
-    value: "guizhou",
-    label: "贵州",
+    value: 'guizhou',
+    label: '贵州',
   },
   {
-    value: "hainan",
-    label: "海南",
+    value: 'hainan',
+    label: '海南',
   },
-];
+]
 </script>

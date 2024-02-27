@@ -3,17 +3,17 @@
     <button @click="resetTime">reset time</button>
     <p @click="resetTime()">{{ time }}</p>
     <Card title="基础用法">
-      <Datepicker v-model="time" />
+      <ap-datepicker v-model="time" />
       <p>{{ form }}</p>
-      <DatepickerGroup
-        v-model:start-time="form.stime"
-        v-model:end-time="form.etime"
+      <ap-datepicker-group
+        v-model:start-time="form.startTime"
+        v-model:end-time="form.endTime"
         date-format="Y-m-d H:i:S"
       />
     </Card>
 
     <Card title="其他用法">
-      <DatepickerGroup
+      <ap-datepicker-group
         v-model:start-time="form.start_time"
         v-model:end-time="form.end_time"
         :start-date-options="{
@@ -27,34 +27,20 @@
   </div>
 </template>
 
-<script>
-import { Datepicker, DatepickerGroup } from '@apathia/apathia'
+<script setup>
+import { ApDatepicker, ApDatepickerGroup } from 'apathia-ui'
 
-export default {
-  components: {
-    Datepicker,
-    DatepickerGroup,
-  },
-
-  data() {
-    return {
-      form: {
-        stime: '2021-06-16 02:45:50',
-        etime: '',
-        start_time: 0,
-        end_time: 0,
-      },
-      time: '',
-    }
-  },
-
-  methods: {
-    resetTime() {
-      this.form.start_time = 0
-      this.form.stime = ''
-      this.form.end_time = 0
-      this.form.etime = ''
-    },
-  },
+const from = ref({
+  startTime: '2021-06-16 02:45:50',
+  endTime: '',
+  start_time: 0,
+  end_time: 0,
+})
+const time = ref('')
+const resetTime = () => {
+  this.form.start_time = 0
+  this.form.startTime = ''
+  this.form.end_time = 0
+  this.form.endTime = ''
 }
 </script>

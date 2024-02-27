@@ -1,36 +1,36 @@
 <template>
   <div>
     <Card title="基础用法">
-      <Checkbox v-model="base"> Checkbox </Checkbox>
+      <ap-checkbox v-model="base"> ap-checkbox </ap-checkbox>
     </Card>
     <Card title="没有任何子节点">
       <div class="box">
-        <Checkbox v-model="base" />
+        <ap-checkbox v-model="base" />
       </div>
     </Card>
     <Card title="disabled">
-      <Checkbox v-model="disabled"> disabled:{{ disabled }} </Checkbox>
-      <Checkbox v-model="base" :disabled="disabled"> disabled </Checkbox>
+      <ap-checkbox v-model="disabled"> disabled:{{ disabled }} </ap-checkbox>
+      <ap-checkbox v-model="base" :disabled="disabled"> disabled </ap-checkbox>
     </Card>
     <Card title="indeterminate">
-      <Checkbox v-model="indeterminate">
+      <ap-checkbox v-model="indeterminate">
         indeterminate:{{ indeterminate }}
-      </Checkbox>
+      </ap-checkbox>
       <p>base{{ base }}</p>
-      <Checkbox v-model="base" :indeterminate="indeterminate">
+      <ap-checkbox v-model="base" :indeterminate="indeterminate">
         indeterminate
-      </Checkbox>
-      <Checkbox
+      </ap-checkbox>
+      <ap-checkbox
         v-model="base"
         :disabled="disabled"
         :indeterminate="indeterminate"
       >
         disabled
-      </Checkbox>
+      </ap-checkbox>
     </Card>
     <Card title="array">
-      <Checkbox v-model="ary" value="hello">hello</Checkbox>
-      <Checkbox v-model="ary" value="world">world</Checkbox>
+      <ap-checkbox v-model="ary" value="hello">hello</ap-checkbox>
+      <ap-checkbox v-model="ary" value="world">world</ap-checkbox>
       <p>{{ ary }}</p>
     </Card>
   </div>
@@ -38,7 +38,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Checkbox } from '@apathia/apathia'
+import { ApCheckbox } from 'apathia-ui'
 
 const base = ref(false)
 const disabled = ref(true)

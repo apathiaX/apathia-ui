@@ -10,7 +10,7 @@
 
 :::demo
 
-<<< @/../packages/alert/demo/Basic.vue
+<<< @/demos/alert/Basic.vue
 
 :::
 
@@ -22,7 +22,7 @@
 :::
 
 ::: demo
-<<< @/../packages/alert/demo/Types.vue
+<<< @/demos/alert/Types.vue
 :::
 
 ## 可关闭的提醒
@@ -33,7 +33,15 @@
 :::
 
 ::: demo
-<<< @/../packages/alert/demo/Close.vue
+<<< @/demos/alert/Close.vue
+:::
+
+## 自定义渲染内容
+
+通过配置`render`参数可以自定义渲染的内容
+
+::: demo
+<<< @/demos/alert/Custom.vue
 :::
 
 ## 全局方法

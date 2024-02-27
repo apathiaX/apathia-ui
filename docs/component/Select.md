@@ -8,7 +8,7 @@
 
 :::demo
 
-<<< @/../packages/select/demo/Basic.vue
+<<< @/demos/select/Basic.vue
 
 :::
 
@@ -18,7 +18,7 @@
 
 :::demo
 
-<<< @/../packages/select/demo/FullDisabled.vue
+<<< @/demos/select/FullDisabled.vue
 
 :::
 
@@ -28,7 +28,7 @@
 
 :::demo
 
-<<< @/../packages/select/demo/SideDisabled.vue
+<<< @/demos/select/SideDisabled.vue
 
 :::
 
@@ -39,7 +39,7 @@
 
 :::demo
 
-<<< @/../packages/select/demo/Clear.vue
+<<< @/demos/select/Clear.vue
 
 :::
 
@@ -51,7 +51,7 @@
 
 :::demo
 
-<<< @/../packages/select/demo/Slot.vue
+<<< @/demos/select/Slot.vue
 
 :::
 
@@ -72,7 +72,7 @@
 
 :::demo
 
-<<< @/../packages/select/demo/Filterable.vue
+<<< @/demos/select/Filterable.vue
 
 :::
 

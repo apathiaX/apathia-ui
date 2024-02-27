@@ -1,6 +1,6 @@
 # useEventListener
 
-更加方便优雅的使用 addEvenetListener
+更加方便优雅的使用 addEventListener
 ::: tip
 useEventListener 应在 setup 内使用,这样才会在组件卸载时自动销毁监听。否则不会自动销毁。
 :::
@@ -10,15 +10,16 @@ useEventListener 应在 setup 内使用,这样才会在组件卸载时自动销�
 > useEventListener(target, event, listener, options)
 
 > useEventListener(event, listener, options) 不传 target 为 window
-> ::: demo
-> <<< @/../packages/hooks/demo/useEventListener/Basic.vue
-> :::
+
+::: demo
+<<< @/demos/useEventListener/Basic.vue
+:::
 
 ## 监听键盘事件
 
 ::: demo
 
-<<< @/../packages/hooks/demo/useEventListener/Onkeyboard.vue
+<<< @/demos/useEventListener/OnKeyboard.vue
 
 :::
 target

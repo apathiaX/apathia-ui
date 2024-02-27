@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.web.json",
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": false,
+    "emitDeclarationOnly": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "isolatedModules": true,
+    "outDir": "dist/types",
+    "declarationDir": "dist/types",
+    "tsBuildInfoFile": "./dist/types/.apathia-ui.tsbuildinfo"
+  },
+}

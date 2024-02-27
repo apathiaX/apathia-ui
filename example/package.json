@@ -1,5 +1,5 @@
 {
-  "name": "@apathia/apathia.example",
+  "name": "@apathia/example",
   "private": true,
   "version": "0.0.3",
   "type": "module",
@@ -9,23 +9,20 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^3.2.0",
-    "@vitejs/plugin-vue-jsx": "^2.1.1",
-    "@vue/compiler-sfc": "^3.2.45",
+    "@vitejs/plugin-vue": "^5.0.3",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "@vue/compiler-sfc": "^3.4.15",
     "typescript": "^4.9.4",
-    "vite": "^3.2.5",
+    "vite": "^5.0.12",
     "vue-tsc": "^0.38.9"
   },
   "peerDependencies": {
     "vue": "^3.2.37"
   },
   "dependencies": {
-    "@apathia/apathia": "workspace:^1.2.22",
-    "@apathia/apathia.icon-svg": "workspace:^0.1.7",
-    "@apathia/apathia.twind": "workspace:^1.2.4",
+    "apathia-ui": "workspace:^1.3.0",
     "lodash-es": "^4.17.21",
     "twind": "^0.16.19",
-    "unplugin-vue-define-options": "^0.12.8",
-    "vue": "^3.2.45"
+    "vue": "^3.4.15"
   }
 }

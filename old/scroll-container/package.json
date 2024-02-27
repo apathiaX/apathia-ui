@@ -1,0 +1,43 @@
+{
+  "name": "@apathia/apathia.scroll-container",
+  "version": "0.2.7",
+  "description": "scroll-container",
+  "author": "",
+  "homepage": "",
+  "main": "dist/apathia.scroll-container.umd.js",
+  "module": "dist/apathia.scroll-container.es.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "export": {
+    "import": "dist/apathia.scroll-container.es.js",
+    "require": "dist/apathia.scroll-container.umd.js"
+  },
+  "sideEffects": false,
+  "directories": {
+    "lib": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/element-resize-detector": "^1.1.3",
+    "@types/lodash-es": "^4.17.6",
+    "vue": "^3.3.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.37"
+  },
+  "dependencies": {
+    "@apathia/apathia.shared": "workspace:^1.2.7",
+    "@apathia/apathia.twind": "workspace:^1.2.7",
+    "element-resize-detector": "^1.2.4",
+    "lodash-es": "^4.17.21"
+  }
+}

@@ -5,7 +5,6 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import ts2 from 'rollup-plugin-typescript2'
-// import DefineOptions from 'unplugin-vue-define-options/vite'
 
 // @apathia/apathia.button => button
 // @apathia/apathia => apathia
@@ -20,7 +19,6 @@ const resolveGlobal = id => {
   // 进行名字的替换，可以直接引入使用
   return id.indexOf('@apathia/apathia') > -1 ? resolveBareName(id) : id
 }
-
 // console.log('param', process.env.PNPM_PACKAGE_NAME)
 // process.env.PNPM_PACKAGE_NAME: 项目的名称
 const pkgName = resolveBareName(process.env.PNPM_PACKAGE_NAME)
@@ -36,7 +34,6 @@ const deps = Object.keys(dependencies)
 
 export default defineConfig({
   plugins: [
-    // DefineOptions(),
     vue(),
     vueJsx(),
     {

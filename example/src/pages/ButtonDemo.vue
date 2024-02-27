@@ -1,16 +1,16 @@
 <template>
   <div>
     <Card title="基础用法">
-      <BaseButton primary round>aaa</BaseButton>
+      <ap-button primary round>aaa</ap-button>
     </Card>
 
     <Card title="其他用法">
-      <BaseButton success circle>b</BaseButton>
+      <ap-button success circle>b</ap-button>
     </Card>
-    <BaseButton large primary>cc</BaseButton>
+    <ap-button large primary>cc</ap-button>
   </div>
 </template>
 
 <script setup>
-import { BaseButton } from '@apathia/apathia'
+import { ApButton } from 'apathia-ui'
 </script>

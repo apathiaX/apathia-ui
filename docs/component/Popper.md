@@ -11,7 +11,7 @@
 
 :::demo
 
-<<< @/../packages/popper/demo/Basic.vue
+<<< @/demos/popper/Basic.vue
 
 :::
 
@@ -22,14 +22,14 @@
 更多使用方法参考 `https://popper.js.org/docs/v2/constructors/`
 
 ```js
-import { usePoppertip } from '@apathia/apathia'
+import { usePoppertip } from 'apathia-ui'
 app.use(usePoppertip)
 ```
 
 :::
 :::demo
 
-<<< @/../packages/popper/demo/Functional.vue
+<<< @/demos/popper/Functional.vue
 :::
 
 ## 自定义内容
@@ -38,7 +38,7 @@ app.use(usePoppertip)
 
 :::demo
 
-<<< @/../packages/popper/demo/Custom.vue
+<<< @/demos/popper/Custom.vue
 
 :::
 
@@ -48,7 +48,7 @@ app.use(usePoppertip)
 
 :::demo
 
-<<< @/../packages/popper/demo/Dark.vue
+<<< @/demos/popper/Dark.vue
 
 :::
 
@@ -58,7 +58,7 @@ app.use(usePoppertip)
 
 :::demo
 
-<<< @/../packages/popper/demo/Manual.vue
+<<< @/demos/popper/Manual.vue
 
 :::
 
@@ -71,7 +71,7 @@ transition-class 中可以包括： enter-active-class, leave-active-class, ente
 
 :::demo
 
-<<< @/../packages/popper/demo/Transition.vue
+<<< @/demos/popper/Transition.vue
 
 :::
 

@@ -15,7 +15,7 @@
 
 :::demo
 
-<<< @/../packages/cascader/demo/Basic.vue
+<<< @/demos/cascader/Basic.vue
 
 :::
 
@@ -25,7 +25,7 @@
 
 :::demo
 
-<<< @/../packages/cascader/demo/Default.vue
+<<< @/demos/cascader/Default.vue
 
 :::
 
@@ -34,12 +34,12 @@
 传入`emit-path: false`可以 emit 单个值
 
 ::: tip
-默认`v-model` 返回的值是一个数组，可以通过 `emit-path: false`来输出单个值。这种情况下，需要使用者保证`optons`每个值的唯一性。
+默认`v-model` 返回的值是一个数组，可以通过 `emit-path: false`来输出单个值。这种情况下，需要使用者保证`options`每个值的唯一性。
 :::
 
 :::demo
 
-<<< @/../packages/cascader/demo/Emit.vue
+<<< @/demos/cascader/Emit.vue
 
 :::
 
@@ -51,7 +51,7 @@
 
 ::: demo
 
-<<< @/../packages/cascader/demo/Disabled.vue
+<<< @/demos/cascader/Disabled.vue
 
 :::
 
@@ -62,7 +62,7 @@
 使用 `trigger` 指定感触发方式
 :::demo
 
-<<< @/../packages/cascader/demo/Trigger.vue
+<<< @/demos/cascader/Trigger.vue
 
 :::
 
@@ -72,7 +72,7 @@
 
 :::demo
 
-<<< @/../packages/cascader/demo/Select.vue
+<<< @/demos/cascader/Select.vue
 
 :::
 
@@ -86,24 +86,24 @@
 
 :::demo
 
-<<< @/../packages/cascader/demo/Slot.vue
+<<< @/demos/cascader/Slot.vue
 
 :::
 
-<!-- ## 搜索
+## 搜索
 
 ::: demo
 
-<<< @/../packages/cascader/demo/Search.vue
+<<< @/demos/cascader/Search.vue
 
-::: -->
+:::
 
 ## Props
 
 | 参数           | 类型                | 是否必传 | 说明                                                                                                                                                 | 默认值   |
 | -------------- | ------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | modelValue     | array/string/number | 是       | emitPath = true, 为数组，否则为 string/number                                                                                                        | -        |
-| placehoder     | string              | 否       | input 的 placeholder                                                                                                                                 | '请选择' |
+| placeholder    | string              | 否       | input 的 placeholder                                                                                                                                 | '请选择' |
 | emitPath       | boolean             | 否       | 是否将值的路径都 emit 出去                                                                                                                           | true     |
 | multiple       | boolean             | 否       | 是否支持多选                                                                                                                                         | false    |
 | disabled       | boolean             | 否       | 禁用                                                                                                                                                 | false    |

@@ -1,50 +1,67 @@
 <template>
-    <!-- <button style="position: fixed; top: 0" @click="mini = !mini">mini</button> -->
-    <div style="height: 50vh; display: flex; position: absolute; top: 0">
-        <SideNav :menu-list="menuList" :mini="mini" :active-key="activeKey" key-field="path" search @select="select"
-            @minChange="fn" />
+  <!-- <button style="position: fixed; top: 0" @click="mini = !mini">mini</button> -->
+  <div style="height: 50vh; display: flex">
+    <SideNav
+      :menu-list="menuList"
+      :mini="mini"
+      :active-key="activeKey"
+      key-field="path"
+      search
+      @select="select"
+      @minChange="fn"
+    />
 
-        <div @click="mini = !mini">mini</div>
-    </div>
+    <div @click="mini = !mini">mini</div>
+  </div>
 
-    <div style="height: 50vh; display: flex; position: absolute; bottom: 0">
-        <SideNav :menu-list="menuList" :mini="mini" :active-key="activeKey" search @select="select">
-            <template #default="{ isActiveItem, expand, onClick, node }">
-                <div :id="isActiveItem ? 'expandSideNode' : undefined" class="rowClass" @click="onClick">
-                    <span v-show="!mini">{{ node.text }}</span>
-                    <span v-show="node.children && !mini">{{ expand }}</span>
-                </div>
-            </template>
+  <div style="height: 50vh; display: flex">
+    <SideNav
+      :menu-list="menuList"
+      :mini="mini"
+      :active-key="activeKey"
+      search
+      @select="select"
+    >
+      <template #default="{ isActiveItem, expand, onClick, node }">
+        <div
+          :id="isActiveItem ? 'expandSideNode' : undefined"
+          class="rowClass"
+          @click="onClick"
+        >
+          <span v-show="!mini">{{ node.text }}</span>
+          <span v-show="node.children && !mini">{{ expand }}</span>
+        </div>
+      </template>
 
-            <template #menuBottom>
-                <div>hello</div>
-            </template>
-        </SideNav>
-        content
-    </div>
+      <template #menuBottom>
+        <div>hello</div>
+      </template>
+    </SideNav>
+    content
+  </div>
 </template>
 
 <script>
-import { SideNav } from '@apathia/apathia'
+import { ApSideNav as SideNav } from 'apathia-ui'
 import { routerMenu as menuList } from '../menu'
 
 export default {
-    components: { SideNav },
-    data() {
-        return {
-            mini: false,
-            menuList,
-            activeKey: '',
-        }
+  components: { SideNav },
+  data() {
+    return {
+      mini: false,
+      menuList,
+      activeKey: '',
+    }
+  },
+  methods: {
+    select(node) {
+      this.activeKey = node.path
     },
-    methods: {
-        select(node) {
-            this.activeKey = node.path
-        },
-        fn(minState) {
-            console.log(minState)
-        }
+    fn(minState) {
+      console.log(minState)
     },
+  },
 }
 </script>
 

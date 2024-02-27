@@ -13,14 +13,14 @@
     </Card>
 
     <Card title="使用as指定组件">
-      <CustomRender :as="BaseButton" small primary> 点击 </CustomRender>
+      <CustomRender :as="ApButton" small primary> 点击 </CustomRender>
     </Card>
   </div>
 </template>
 
 <script setup>
 import { h } from 'vue'
-import { BaseButton, CustomRender } from '@apathia/apathia'
+import { ApButton, CustomRender } from 'apathia-ui'
 
 const titleRender = ({ m, n }) =>
   h('h1', {}, `content render with render function ${m}${n}`)

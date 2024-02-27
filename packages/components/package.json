@@ -1,0 +1,15 @@
+{
+  "name": "@apathia/components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "module": "index.ts",
+  "author": "apathia",
+  "license": "ISC",
+  "peerDependencies": {
+    "vue": "^3.3.0"
+  },
+  "devDependencies": {
+    "vue": "^3.3.0"
+  }
+}

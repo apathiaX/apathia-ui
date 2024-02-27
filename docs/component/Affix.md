@@ -7,32 +7,35 @@ Affix 组件 用于将内容固定页面的位置，不随着页面滚动而改�
 ## 基础用法
 
 固定顶部
-:::demo
 
-<<< @/../packages/affix/demo/Basic.vue
+::: demo
+
+<<< @/demos/affix/Basic.vue
 
 :::
 
 ## 偏移
 
 固定在顶部指定位置
-:::demo
+::: demo
 
-<<< @/../packages/affix/demo/Top.vue
+<<< @/demos/affix/Top.vue
 
 :::
 
 ## 状态改变时的回调
 
-:::demo
-<<< @/../packages/affix/demo/events.vue
+::: demo
+
+<<< @/demos/affix/events.vue
+
 :::
 
 ## 固定底部
 
-:::demo
+::: demo
 
-<<< @/../packages/affix/demo/Bottom.vue
+<<< @/demos/affix/Bottom.vue
 
 :::
 

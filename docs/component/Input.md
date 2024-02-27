@@ -6,7 +6,7 @@
 
 :::demo
 
-<<< @/../packages/input/demo/Basic.vue
+<<< @/demos/input/Basic.vue
 
 :::
 
@@ -16,7 +16,7 @@
 
 :::demo
 
-<<< @/../packages/input/demo/Disabled.vue
+<<< @/demos/input/Disabled.vue
 
 :::
 
@@ -26,7 +26,7 @@
 
 :::demo
 
-<<< @/../packages/input/demo/Search.vue
+<<< @/demos/input/Search.vue
 
 :::
 
@@ -36,7 +36,7 @@
 
 :::demo
 
-<<< @/../packages/input/demo/Clearable.vue
+<<< @/demos/input/Clearable.vue
 
 :::
 
@@ -47,18 +47,19 @@
 可通过 slot 来指定在 Input 中分发的前置或者后置的内容。
 :::demo
 
-<<< @/../packages/input/demo/Prepend.vue
+<<< @/demos/input/Prepend.vue
 
 :::
 
 ## 最大输入长度
 
-使用 maxwords 属性, 来控制输入内容的最大字数。
+使用 maxWords 属性, 来控制输入内容的最大字数。
 
 > "字符数"使用 JavaScript 字符串长度来衡量。
-> :::demo
 
-<<< @/../packages/input/demo/MaxLength.vue
+:::demo
+
+<<< @/demos/input/MaxLength.vue
 
 :::
 
@@ -72,7 +73,7 @@
 | search     |                          是否搜索                          |       boolean |  false |
 | clearable  |                      是否显示清除按钮                      |       boolean |  false |
 | disabled   |                            禁用                            |       boolean |  false |
-| maxwords   | 最长的字长数，一个英文等于 0.5 字长，一个中文等于 1 个字长 |        number |     无 |
+| maxWords   | 最长的字长数，一个英文等于 0.5 字长，一个中文等于 1 个字长 |        number |     无 |
 
 ## Input 插槽
 

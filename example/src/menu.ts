@@ -1,5 +1,4 @@
-import { Avatar } from '@apathia/apathia.icon-svg'
-import { shallowRef } from 'vue'
+import { Avatar } from '@apathia/icons-vue'
 export const routerMenu = [
   {
     text: '文章管理',

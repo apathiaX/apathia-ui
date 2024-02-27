@@ -2,90 +2,84 @@
   <div>
     支持 esc 按键关闭 | 点击蒙层关闭(默认关闭)
     <Card title="函数式调用">
-      <BaseButton @click="open()">open</BaseButton>
+      <ap-button @click="open()">open</ap-button>
     </Card>
 
     <Card title="模板调用">
-      <BaseButton @click="show = !show">模板调用</BaseButton>
-      <Modal
+      <ap-button @click="show = !show">模板调用</ap-button>
+      <ap-modal
         v-model="show"
         title="模板调用"
         sub-title="测试模板调用"
         mask-closable
         @close="close"
       >
-        <BaseButton @click="remove">点我关闭</BaseButton>
-      </Modal>
+        <ap-button @click="remove">点我关闭</ap-button>
+      </ap-modal>
     </Card>
 
     <Card title="自定义宽度">
-      <Input v-model="width" />
-      <BaseButton @click="() => open({ width: +width })">自定义宽度</BaseButton>
+      <ap-input v-model="width" />
+      <ap-button @click="() => open({ width: +width })">自定义宽度</ap-button>
     </Card>
 
     <Card title="自定义顶部距离">
-      <Input v-model="top" />
-      <BaseButton @click="() => open({ top: +top })">自定义顶部距离</BaseButton>
+      <ap-input v-model="top" />
+      <ap-button @click="() => open({ top: +top })">自定义顶部距离</ap-button>
     </Card>
     <Card title="不显示close按钮">
-      <BaseButton @click="() => open({ showClose: false })">
+      <ap-button @click="() => open({ showClose: false })">
         不显示close按钮(可用 esc 关闭 | 或者自己画按钮关闭)
-      </BaseButton>
+      </ap-button>
     </Card>
 
     <Card title="多层嵌套">
-      <BaseButton @click="show1 = !show1">open第一层</BaseButton>
-      <Modal v-model="show1">
-        <BaseButton @click="show2 = !show2">open第二层</BaseButton>
-        <Modal v-model="show2" :width="500" :top="150">
+      <ap-button @click="show1 = !show1">open第一层</ap-button>
+      <ap-modal v-model="show1">
+        <ap-button @click="show2 = !show2">open第二层</ap-button>
+        <ap-modal v-model="show2" :width="500" :top="150">
           第二层
-          <BaseButton @click="remove">点我关闭</BaseButton>
-        </Modal>
-      </Modal>
+          <ap-button @click="remove">点我关闭</ap-button>
+        </ap-modal>
+      </ap-modal>
     </Card>
     <Card title="不允许 esc 关闭">
-      <BaseButton @click="() => open({ keyboard: false })"
-        >不允许 esc 关闭</BaseButton
+      <ap-button @click="() => open({ keyboard: false })"
+        >不允许 esc 关闭</ap-button
       >
     </Card>
     <Card title="允许点击蒙层关闭">
-      <BaseButton @click="() => open({ maskClosable: true })">
+      <ap-button @click="() => open({ maskClosable: true })">
         允许点击蒙层关闭
-      </BaseButton>
+      </ap-button>
     </Card>
     <Card title="接管关闭">
-      <BaseButton @click="() => open({ beforeClose, maskClosable: true })">
+      <ap-button @click="() => open({ beforeClose, maskClosable: true })">
         接管关闭(会阻断 x 号, esc, 点击蒙层, 不会阻断手动改变
         model(针对模板用法))
-      </BaseButton>
+      </ap-button>
     </Card>
     <Card title="二次确认">
       <div :class="tw`flex`">
-        <span>title</span><Input v-model="title" /> <span>content</span
-        ><Input v-model="content" /> <span>confirmText</span
-        ><Input v-model="confirmText" /> <span>cancelText</span
-        ><Input v-model="cancelText" /> <span>btnPosition</span
-        ><Input v-model="btnPosition" />
+        <span>title</span><ap-input v-model="title" /> <span>content</span
+        ><ap-input v-model="content" /> <span>confirmText</span
+        ><ap-input v-model="confirmText" /> <span>cancelText</span
+        ><ap-input v-model="cancelText" /> <span>btnPosition</span
+        ><ap-input v-model="btnPosition" />
       </div>
-      <BaseButton @click="openConfirm">二次确认</BaseButton>
+      <ap-button @click="openConfirm">二次确认</ap-button>
     </Card>
     <Card title="二次确认 renderContent">
-      <BaseButton @click="openRenderConfirm">二次确认</BaseButton>
+      <ap-button @click="openRenderConfirm">二次确认</ap-button>
     </Card>
     <Card title="二次确认 renderFooter">
-      <BaseButton @click="openRenderConfirm2">二次确认</BaseButton>
+      <ap-button @click="openRenderConfirm2">二次确认</ap-button>
     </Card>
   </div>
 </template>
 
 <script setup>
-import {
-  Modal,
-  Input,
-  useConfirm,
-  useModal,
-  BaseButton,
-} from '@apathia/apathia'
+import { ApModal, ApInput, useConfirm, useModal, ApButton } from 'apathia-ui'
 import { ref, h } from 'vue'
 const { modal, remove } = useModal()
 const { confirm } = useConfirm()
@@ -132,7 +126,7 @@ function openConfirm() {
 function openRenderConfirm() {
   confirm({
     title: 'renderContent',
-    render: () => h(Input),
+    render: () => h(ApInput),
     width: 600,
   })
     .then(() => {

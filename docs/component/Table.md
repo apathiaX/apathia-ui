@@ -11,7 +11,7 @@
 
 :::demo
 
-<<< @/../packages/table/demo/Basic.vue
+<<< @/demos/table/Basic.vue
 
 :::
 
@@ -22,7 +22,7 @@
 `stripe `属性可以创建带斑马纹的表格。 如果` true`, 表格将会带有斑马纹。
 
 ::: demo
-<<< @/../packages/table/demo/Stripe.vue
+<<< @/demos/table/Stripe.vue
 :::
 
 ## 带边框表格
@@ -30,7 +30,7 @@
 默认情况下，`Table `组件是不具有竖直方向的边框的,可以使用`border`属性，把该属性设置为`true`即可启用。
 
 ::: demo
-<<< @/../packages/table/demo/Border.vue
+<<< @/demos/table/Border.vue
 :::
 
 ## 自定义表格的样式
@@ -43,7 +43,7 @@
 
 :::demo
 
-<<< @/../packages/table/demo/CustomStyle.vue
+<<< @/demos/table/CustomStyle.vue
 
 :::
 
@@ -55,7 +55,7 @@
 <br/>
 文档样式暂时固定样式显示有点问题，待修复！！！（实际使用没有问题）
 :::demo
-<<< @/../packages/table/demo/FixHeader.vue
+<<< @/demos/table/FixHeader.vue
 :::
 
 ## 固定列
@@ -69,7 +69,7 @@
 
 :::demo
 
-<<< @/../packages/table/demo/Fixed.vue
+<<< @/demos/table/Fixed.vue
 
 :::
 
@@ -83,7 +83,7 @@
 
 :::demo
 
-<<< @/../packages/table/demo/CellSpan.vue
+<<< @/demos/table/CellSpan.vue
 
 :::
 
@@ -94,7 +94,7 @@
 
 :::demo
 
-<<< @/../packages/table/demo/Hide.vue
+<<< @/demos/table/Hide.vue
 
 :::
 
@@ -106,7 +106,7 @@
 
 :::demo
 
-<<< @/../packages/table/demo/Highlight.vue
+<<< @/demos/table/Highlight.vue
 
 :::
 
@@ -118,7 +118,7 @@ columns 中可以定义 一个 type: 'selection' 的多选列，在 Table 上可
 
 :::demo
 
-<<< @/../packages/table/demo/Selection.vue
+<<< @/demos/table/Selection.vue
 
 :::
 
@@ -130,7 +130,7 @@ columns 中可以定义 一个 type: 'selection' 的多选列，在 Table 上可
 
 :::demo
 
-<<< @/../packages/table/demo/Sort.vue
+<<< @/demos/table/Sort.vue
 
 :::
 
@@ -142,7 +142,7 @@ columns 中可以定义 一个 type: 'selection' 的多选列，在 Table 上可
 
 :::demo
 
-<<< @/../packages/table/demo/CustomRender.vue
+<<< @/demos/table/CustomRender.vue
 
 :::
 
@@ -155,7 +155,7 @@ columns 中可以定义 一个 type: 'selection' 的多选列，在 Table 上可
 
 :::demo
 
-<<< @/../packages/table/demo/Expand.vue
+<<< @/demos/table/Expand.vue
 
 :::
 
@@ -167,7 +167,7 @@ columns 中可以定义 一个 type: 'selection' 的多选列，在 Table 上可
 :::
 
 ::: demo
-<<< @/../packages/table/demo/CreateTable.vue
+<<< @/demos/table/CreateTable.vue
 :::
 
 ## Table Props

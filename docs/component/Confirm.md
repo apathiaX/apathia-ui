@@ -7,8 +7,8 @@
 ::: tip 用法
 使用需要全局注册使用 `modalInstall` 方法
 
-```js
-import { modalInstall } from '@apathia/apathia'
+```ts
+import { modalInstall } from 'apathia-ui'
 app.use(modalInstall)
 ```
 
@@ -16,7 +16,7 @@ app.use(modalInstall)
 :::
 :::demo
 
-<<< @/../packages/confirm/demo/Basic.vue
+<<< @/demos/confirm/Basic.vue
 
 :::
 
@@ -24,7 +24,7 @@ app.use(modalInstall)
 
 可以通过`renderFooter`的方式来实现自定义 footer
 ::: demo
-<<< @/../packages/confirm/demo/Custom.vue
+<<< @/demos/confirm/Custom.vue
 :::
 
 ## Confirm Props

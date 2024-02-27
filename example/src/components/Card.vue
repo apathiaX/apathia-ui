@@ -6,8 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-// @ts-ignore
-import { tw, apply } from '@apathia/apathia'
+import { tw, apply } from 'apathia-ui'
 
 interface Props {
   title?: string

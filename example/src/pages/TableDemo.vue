@@ -91,9 +91,15 @@
 
 <script lang="jsx">
 import { ref, reactive } from 'vue'
-import { cloneDeep } from 'lodash'
-import { tw, apply, BaseButton } from '@apathia/apathia'
-import { createTable, useToggle, Table } from '@apathia/apathia'
+import { cloneDeep } from 'lodash-es'
+import {
+  tw,
+  apply,
+  ApButton as BaseButton,
+  createTable,
+  useToggle,
+  ApTable as Table,
+} from 'apathia-ui'
 
 const normalColumns = [
   {

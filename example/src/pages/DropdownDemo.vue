@@ -1,14 +1,14 @@
 <template>
-  <Dropdown label="请点击">
+  <ap-dropdown label="请点击">
     <template #dropdown>
-      <DropdownItem>熊熊勇闯异世界</DropdownItem>
-      <DropdownItem>熊熊勇闯异世界</DropdownItem>
-      <DropdownItem>熊熊勇闯异世界</DropdownItem>
-      <DropdownItem>熊熊勇闯异世界</DropdownItem>
+      <ap-dropdown-item>熊熊勇闯异世界</ap-dropdown-item>
+      <ap-dropdown-item>熊熊勇闯异世界</ap-dropdown-item>
+      <ap-dropdown-item>熊熊勇闯异世界</ap-dropdown-item>
+      <ap-dropdown-item>熊熊勇闯异世界</ap-dropdown-item>
     </template>
-  </Dropdown>
+  </ap-dropdown>
 </template>
 
 <script setup>
-import { Dropdown, DropdownItem } from '@apathia/apathia'
+import { ApDropdown, ApDropdownItem } from 'apathia-ui'
 </script>

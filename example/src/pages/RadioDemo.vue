@@ -32,7 +32,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Radio, RadioGroup } from '@apathia/apathia'
+import { ApRadio as Radio, ApRadioGroup as RadioGroup } from 'apathia-ui'
 
 const count = ref(0)
 const count2 = ref(0)

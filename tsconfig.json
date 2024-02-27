@@ -1,22 +1,8 @@
 {
-  "compilerOptions": {
-    "target": "ES6",
-    "module": "ESNext",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "allowJs": true,
-    "jsx": "preserve",
-    "strict": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "noEmit": true,
-    "forceConsistentCasingInFileNames": true,
-    // "types": ["unplugin-vue-define-options/macros-global" /* ... */]
-  },
-  "include": [
-    "packages/**/*",
-    "types",
-  ],
-  "exclude": ["dist", "node_modules"]
+  "files":[],
+  "references": [ {
+    "path": "./tsconfig.web.json",
+  }, {
+    "path": "./tsconfig.example.json"
+  }]
 }

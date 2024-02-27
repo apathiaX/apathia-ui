@@ -9,7 +9,7 @@
 通过 `v-model` 绑定选中的值，默认是百分比进度
 :::demo
 
-<<< @/../packages/slider/demo/Basic.vue
+<<< @/demos/slider/Basic.vue
 
 :::
 
@@ -19,7 +19,7 @@
 
 :::demo
 
-<<< @/../packages/slider/demo/Vertical.vue
+<<< @/demos/slider/Vertical.vue
 
 :::
 
@@ -29,7 +29,7 @@
 
 :::demo
 
-<<< @/../packages/slider/demo/Step.vue
+<<< @/demos/slider/Step.vue
 
 :::
 
@@ -39,17 +39,17 @@
 
 :::demo
 
-<<< @/../packages/slider/demo/Range.vue
+<<< @/demos/slider/Range.vue
 
 :::
 
 ## 设置部分值的样式
 
-通过 `marks` 可以设置slider上点的样式
+通过 `marks` 可以设置 slider 上点的样式
 
 :::demo
 
-<<< @/../packages/slider/demo/Marks.vue
+<<< @/demos/slider/Marks.vue
 
 :::
 
@@ -59,29 +59,29 @@
 
 :::demo
 
-<<< @/../packages/slider/demo/Format.vue
+<<< @/demos/slider/Format.vue
 
 :::
 
 ## Props
 
-| 参数 |  类型   | 是否必传 |   说明       | 默认值 |
-| ---- | ------ | ----- | ------------- | ----- |
-| modelValue | number | 是 | 当前的值 | - |
-| disabled | boolean | 否 | 使用禁用 | false |
-| min | number | 否 | 起点值 | 0 |
-| max | number | 否 | 终点值 | 100 |
-| step | number | 否 | 步长 | 1 |
-| showSteps | boolean | 否 | 是否展示每一步的小圆点 | false |
-| showTooltip | boolean | 否 | 是否展示tooltip | true |
-| formatTooltip | function | 否 | 函数，用来设置tooltip里的内容， 接收当前的值为参数 | (cur) => cur |
-| valueRange | array | 否 | 可供选择的值范围，[min,max], 如果缺省的话则min则是整个slider的min, max则是整个slider的max | - |
-| marks | object | 否 | 设置每个点的值和样式，键是数值，值是一个包含label和style的对象 | - |
-| vertical | boolean | 否 | 是否垂直 | false |
-| height | number | 否 | 高度，slider的高度，在vertical = true的时候生效 | - |
+| 参数          | 类型     | 是否必传 | 说明                                                                                               | 默认值       |
+| ------------- | -------- | -------- | -------------------------------------------------------------------------------------------------- | ------------ |
+| modelValue    | number   | 是       | 当前的值                                                                                           | -            |
+| disabled      | boolean  | 否       | 使用禁用                                                                                           | false        |
+| min           | number   | 否       | 起点值                                                                                             | 0            |
+| max           | number   | 否       | 终点值                                                                                             | 100          |
+| step          | number   | 否       | 步长                                                                                               | 1            |
+| showSteps     | boolean  | 否       | 是否展示每一步的小圆点                                                                             | false        |
+| showTooltip   | boolean  | 否       | 是否展示 tooltip                                                                                   | true         |
+| formatTooltip | function | 否       | 函数，用来设置 tooltip 里的内容， 接收当前的值为参数                                               | (cur) => cur |
+| valueRange    | array    | 否       | 可供选择的值范围，[min,max], 如果缺省的话则 min 则是整个 slider 的 min, max 则是整个 slider 的 max | -            |
+| marks         | object   | 否       | 设置每个点的值和样式，键是数值，值是一个包含 label 和 style 的对象                                 | -            |
+| vertical      | boolean  | 否       | 是否垂直                                                                                           | false        |
+| height        | number   | 否       | 高度，slider 的高度，在 vertical = true 的时候生效                                                 | -            |
 
 ## Events
 
-| 事件名称 |  说明   | 回调参数 |
-| ---- | ------ | ----- |
-| update:modelValue | 当slider的值改变时触发 | 新的值 |
+| 事件名称          | 说明                     | 回调参数 |
+| ----------------- | ------------------------ | -------- |
+| update:modelValue | 当 slider 的值改变时触发 | 新的值   |

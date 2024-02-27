@@ -11,7 +11,7 @@
 默认是日期时间选择框
 :::demo
 
-<<< @/../packages/datepicker/demo/Basic.vue
+<<< @/demos/datepicker/Basic.vue
 
 :::
 
@@ -20,7 +20,7 @@
 日期时间选择框,绑定值为秒级时间戳
 :::demo
 
-<<< @/../packages/datepicker/demo/Timestamp.vue
+<<< @/demos/datepicker/Timestamp.vue
 
 :::
 
@@ -29,7 +29,7 @@
 通过 dateFormat 控制日期格式
 :::demo
 
-<<< @/../packages/datepicker/demo/DateFormat.vue
+<<< @/demos/datepicker/DateFormat.vue
 
 :::
 
@@ -38,7 +38,7 @@
 通过 dateFormat 控制日期格式
 :::demo
 
-<<< @/../packages/datepicker/demo/DateFormatTime.vue
+<<< @/demos/datepicker/DateFormatTime.vue
 
 :::
 
@@ -47,7 +47,7 @@
 设置最大值和最小值
 :::demo
 
-<<< @/../packages/datepicker/demo/MaxMin.vue
+<<< @/demos/datepicker/MaxMin.vue
 
 :::
 
@@ -76,7 +76,7 @@
 默认也是日期时间选择框
 :::demo
 
-<<< @/../packages/datepicker/demo/group/Basic.vue
+<<< @/demos/datepicker/group/Basic.vue
 
 :::
 
@@ -85,7 +85,7 @@
 时间戳用法同上
 :::demo
 
-<<< @/../packages/datepicker/demo/group/Timestamp.vue
+<<< @/demos/datepicker/group/Timestamp.vue
 
 :::
 

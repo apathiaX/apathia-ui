@@ -1,0 +1,52 @@
+{
+  "name": "@apathia/apathia.cascader",
+  "version": "0.2.7",
+  "description": "cascader",
+  "author": "",
+  "homepage": "",
+  "main": "dist/apathia.cascader.umd.js",
+  "module": "dist/apathia.cascader.es.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "export": {
+    "import": "dist/apathia.cascader.es.js",
+    "require": "dist/apathia.cascader.umd.js"
+  },
+  "sideEffects": false,
+  "directories": {
+    "lib": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "devDependencies": {
+    "vue": "^3.3.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.37"
+  },
+  "dependencies": {
+    "@apathia/apathia.cascader": "workspace:^0.2.7",
+    "@apathia/apathia.checkbox": "workspace:^1.2.7",
+    "@apathia/apathia.collapse": "workspace:^1.2.7",
+    "@apathia/apathia.hooks": "workspace:^1.2.7",
+    "@apathia/apathia.icon": "workspace:^1.2.7",
+    "@apathia/apathia.icon-svg": "workspace:^0.1.7",
+    "@apathia/apathia.image": "workspace:^0.2.7",
+    "@apathia/apathia.input": "workspace:^1.2.7",
+    "@apathia/apathia.select": "workspace:^1.2.8",
+    "@apathia/apathia.shared": "workspace:^1.2.7",
+    "@apathia/apathia.sidenav": "workspace:^0.2.13",
+    "@apathia/apathia.table": "workspace:^1.2.9",
+    "@apathia/apathia.transfer": "workspace:^0.2.8",
+    "@apathia/apathia.twind": "workspace:^1.2.7",
+    "@apathia/apathia.upload": "workspace:^1.2.7"
+  }
+}

@@ -8,7 +8,7 @@
 
 :::demo
 
-<<< @/../packages/switch/demo/Basic.vue
+<<< @/demos/switch/Basic.vue
 
 :::
 
@@ -18,7 +18,7 @@
 
 :::demo
 
-<<< @/../packages/switch/demo/Disabled.vue
+<<< @/demos/switch/Disabled.vue
 
 :::
 
@@ -28,7 +28,7 @@
 
 :::demo
 
-<<< @/../packages/switch/demo/Loading.vue
+<<< @/demos/switch/Loading.vue
 
 :::
 
@@ -38,7 +38,7 @@
 
 :::demo
 
-<<< @/../packages/switch/demo/Size.vue
+<<< @/demos/switch/Size.vue
 
 :::
 
@@ -51,30 +51,29 @@
 
 :::demo
 
-<<< @/../packages/switch/demo/Custom.vue
+<<< @/demos/switch/Custom.vue
 
 :::
 
 ## Props
 
-| prop      |         说明         |     类型 | 默认值 |
-| --------- | :-----------------: | --------: | -----: |
-| v-model      | 控制开关值 |  String, Number, Boolean | false |
-| trueValue      | 打开时modelValue值为啥 |  String, Number, Boolean | true |
-| falseValue      | 关闭时modelValue值为啥 |  String, Number, Boolean | false |
-| inactiveText      | 关闭时文本 展示在右侧 |  String | 无 |
-| activeText      | 打开时文本 展示在左侧 |  String | 无 |
-| disabled      | 是否启用禁用开关 |  Boolean | false |
-| size      | 控制大小 |  String (large,small) | 无 |
-| loading      | 是否开启加载开关 |  Boolean | false |
-
+| prop         |           说明           |                    类型 | 默认值 |
+| ------------ | :----------------------: | ----------------------: | -----: |
+| v-model      |        控制开关值        | String, Number, Boolean |  false |
+| trueValue    | 打开时 modelValue 值为啥 | String, Number, Boolean |   true |
+| falseValue   | 关闭时 modelValue 值为啥 | String, Number, Boolean |  false |
+| inactiveText |  关闭时文本 展示在右侧   |                  String |     无 |
+| activeText   |  打开时文本 展示在左侧   |                  String |     无 |
+| disabled     |     是否启用禁用开关     |                 Boolean |  false |
+| size         |         控制大小         |    String (large,small) |     无 |
+| loading      |     是否开启加载开关     |                 Boolean |  false |
 
 ## Slots
 
-| 插槽名称 |  说明   | 参数 |
-| ---- | ------ | ----- |
-| active | 值为 trueValue 时的显示内容| - |
-| inactive | 值为 falseValue 时的显示内容 | -|
+| 插槽名称 | 说明                         | 参数 |
+| -------- | ---------------------------- | ---- |
+| active   | 值为 trueValue 时的显示内容  | -    |
+| inactive | 值为 falseValue 时的显示内容 | -    |
 
 ## Events
 

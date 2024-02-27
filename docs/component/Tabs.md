@@ -12,7 +12,7 @@ tabs 仅仅处理一层标签的情况。若有二级标签可使用 navbar 组�
 
 :::demo
 
-<<< @/../packages/tabs/demo/Basic.vue
+<<< @/demos/tabs/Basic.vue
 
 :::
 
@@ -22,18 +22,18 @@ tabs 仅仅处理一层标签的情况。若有二级标签可使用 navbar 组�
 
 :::demo
 
-<<< @/../packages/tabs/demo/Custom.vue
+<<< @/demos/tabs/Custom.vue
 
 :::
 
 ## Props
 
-| prop       |       说明       |    类型 | 默认值 |
-| ---------- | :--------------: | ------: | -----: |
-| modelValue |      绑定值      |  string,number |   无 |
-| list |  tab 的配置  |  string[], number[], any[] |     无 |
-| underline     |     是否是下划线样式     | boolean |  false |
-| showLabel  | 显示label的方法 | function |  (tab) => tab |
+| prop       |       说明        |                      类型 |       默认值 |
+| ---------- | :---------------: | ------------------------: | -----------: |
+| modelValue |      绑定值       |             string,number |           无 |
+| list       |    tab 的配置     | string[], number[], any[] |           无 |
+| underline  | 是否是下划线样式  |                   boolean |        false |
+| showLabel  | 显示 label 的方法 |                  function | (tab) => tab |
 
 ## Events
 

@@ -1,0 +1,52 @@
+:root {
+  --demo-block-border: var(--vp-c-divider);
+  --demo-block-control: #d3dce6;
+  --demo-block-control-bg: var(--vp-c-bg);
+  --demo-block-control-bg-hover: #f9fafc;
+  --demo-block-description-bg: var(--vp-c-bg);
+}
+
+html.dark {
+  --demo-block-control: #8b9eb0;
+  --demo-block-control-bg-hover: var(--vp-c-bg);
+  --demo-block-description-bg: var(--vp-code-bg-color);
+}
+
+/* icon-caret */
+.icon-caret-down {
+  width: 16px;
+  height: 100%;
+  position: relative;
+}
+
+.icon-caret-down::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-top: 7.5px solid;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -2.5px;
+  margin-left: -6px;
+}
+
+.icon-caret-up {
+  width: 16px;
+  height: 100%;
+  position: relative;
+}
+
+.icon-caret-up::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-bottom: 7px solid;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -8.5px;
+  margin-left: -6px;
+}

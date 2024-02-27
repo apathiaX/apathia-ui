@@ -9,7 +9,7 @@
 单独使用可以表示两种状态之间的切换
 :::demo
 
-<<< @/../packages/checkbox/demo//Basic.vue
+<<< @/demos/checkbox/Basic.vue
 
 :::
 
@@ -18,7 +18,7 @@
 适用于多个勾选框绑定到同一个数组的情景，通过是否勾选来表示这一组选项中选中的项。
 :::demo
 
-<<< @/../packages/checkbox/demo/Multiple.vue
+<<< @/demos/checkbox/Multiple.vue
 
 :::
 
@@ -27,9 +27,10 @@
 多选框不可用状态。
 
 > 设置 `disabled` 属性即可。
-> ::: demo
-> <<< @/../packages/checkbox/demo/Disable.vue
-> :::
+
+::: demo
+<<< @/demos/checkbox/Disable.vue
+:::
 
 ## 中间状态
 
@@ -38,9 +39,10 @@
 `indeterminate` 属性和 `modelValue` 的值是不关联的，且该属性只用来展示样式所用，一般用于表示全选的状态.<br/>
 全选的中间状态是只要选中一个就会出现中间态，全部选中中间态失效。中间态即为示例中 横杠 的样式
 :::
+
 :::demo
 
-<<< @/../packages/checkbox/demo/Interminate.vue
+<<< @/demos/checkbox/Intermediate.vue
 
 :::
 
@@ -49,7 +51,7 @@
 :::
 | | 选中 | 取消（空白） | 中间态 | 无效（填满） |
 | ---- | ------ | ----- | ------------- | ----- |
-| interminate | false | false | true | true |
+| intermediate | false | false | true | true |
 | modelValue | true | false | false | true |
 
 ## Checkbox Props

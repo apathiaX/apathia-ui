@@ -12,7 +12,7 @@ Navbar 暂仅支持两层，不支持三层。
 
 :::demo
 
-<<< @/../packages/navbar/demo/Basic.vue
+<<< @/demos/navbar/Basic.vue
 
 :::
 
@@ -22,7 +22,7 @@ Navbar 暂仅支持两层，不支持三层。
 
 :::demo
 
-<<< @/../packages/navbar/demo/Underline.vue
+<<< @/demos/navbar/Underline.vue
 
 :::
 
@@ -32,7 +32,7 @@ Navbar 暂仅支持两层，不支持三层。
 
 :::demo
 
-<<< @/../packages/navbar/demo/Trigger.vue
+<<< @/demos/navbar/Trigger.vue
 
 :::
 
@@ -42,7 +42,7 @@ Navbar 暂仅支持两层，不支持三层。
 
 :::demo
 
-<<< @/../packages/navbar/demo/Disabled.vue
+<<< @/demos/navbar/Disabled.vue
 
 :::
 
@@ -58,9 +58,9 @@ Navbar 暂仅支持两层，不支持三层。
 
 ## Slots
 
-| 名称      |       说明       | 接收参数
-| ---------| :--------------: |  :--------------:|
-| label  |    自定义展示    | nav ({label, value}) |
+| 名称  |    说明    |       接收参数       |
+| ----- | :--------: | :------------------: |
+| label | 自定义展示 | nav ({label, value}) |
 
 ## Events
 

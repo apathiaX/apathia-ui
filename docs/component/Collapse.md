@@ -7,7 +7,7 @@
 折叠组件的基础用法
 :::demo
 
-<<< @/../packages/collapse/demo/Basic.vue
+<<< @/demos/collapse/Basic.vue
 
 :::
 
@@ -17,7 +17,7 @@
 
 :::demo
 
-<<< @/../packages/collapse/demo/Duration.vue
+<<< @/demos/collapse/Duration.vue
 
 :::
 
@@ -26,7 +26,7 @@
 可以通过设置`disabled`属性来禁用
 :::demo
 
-<<< @/../packages/collapse/demo/Disabled.vue
+<<< @/demos/collapse/Disabled.vue
 
 :::
 
@@ -38,7 +38,7 @@
 :::
 :::demo
 
-<<< @/../packages/collapse/demo/Header.vue
+<<< @/demos/collapse/Header.vue
 
 :::
 
@@ -50,11 +50,11 @@
 :::
 :::demo
 
-<<< @/../packages/collapse/demo/Toggle.vue
+<<< @/demos/collapse/Toggle.vue
 
 :::
 
-## Collpase Props
+## Collapse Props
 
 | prop      |        说明         |    类型 |   默认值 |
 | --------- | :-----------------: | ------: | -------: |

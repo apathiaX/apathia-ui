@@ -6,7 +6,7 @@
 
 :::demo
 
-<<< @/../packages/form/demo/Basic.vue
+<<< @/demos/form/Basic.vue
 
 :::
 
@@ -15,9 +15,10 @@
 当垂直方向空间受限且表单较简单时，可以在一行内放置表单。
 
 > 通过设置 inline 属性,可以让表单域变为行内的表单域。
-> ::: demo
-> <<< @/../packages/form/demo/Inline.vue
-> :::
+
+::: demo
+<<< @/demos/form/Inline.vue
+:::
 
 ## 对齐方式
 
@@ -25,7 +26,7 @@
 
 通过设置 label-position 属性可以改变表单域标签的位置，可选值为 top、left， 当设为 top 时标签会置于表单域的顶部
 ::: demo
-<<< @/../packages/form/demo/Align.vue
+<<< @/demos/form/Align.vue
 :::
 
 ## props

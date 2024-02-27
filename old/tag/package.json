@@ -1,0 +1,43 @@
+{
+  "name": "@apathia/apathia.tag",
+  "version": "0.2.7",
+  "description": "tag",
+  "author": "",
+  "homepage": "",
+  "main": "dist/apathia.tag.umd.js",
+  "module": "dist/apathia.tag.es.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "export": {
+    "import": "dist/apathia.tag.es.js",
+    "require": "dist/apathia.tag.umd.js"
+  },
+  "sideEffects": false,
+  "directories": {
+    "lib": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.6",
+    "vue": "^3.3.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.37"
+  },
+  "dependencies": {
+    "@apathia/apathia.button": "workspace:^1.2.7",
+    "@apathia/apathia.hooks": "workspace:^1.2.7",
+    "@apathia/apathia.input": "workspace:^1.2.7",
+    "@apathia/apathia.twind": "workspace:^1.2.7",
+    "lodash-es": "^4.17.21"
+  }
+}

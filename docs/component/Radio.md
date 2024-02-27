@@ -9,7 +9,7 @@
 要使用`Radio`组件，只需要设置`v-model`绑定变量， 选中意味着变量的值为相应`Radio` `value` 属性的值， `label`可以是`String`、`Number `或 `Boolean`。
 :::demo
 
-<<< @/../packages/radio/demo/Basic.vue
+<<< @/demos/radio/Basic.vue
 
 :::
 
@@ -21,7 +21,7 @@ disabled 属性可以用来控制单选框的禁用状态。
 
 :::demo
 
-<<< @/../packages/radio/demo/Disabled.vue
+<<< @/demos/radio/Disabled.vue
 
 :::
 

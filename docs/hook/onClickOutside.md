@@ -5,15 +5,14 @@
 ## 基础用法
 
 ::: demo
-<<< @/../packages/hooks/demo/onClickOutside/Basic.vue
+<<< @/demos/hooks/onClickOutside/Basic.vue
 :::
 
 ## 参数
 
->`onClickOutside(target, handler, scope?)`返回一个停止监听的函数
+> `onClickOutside(target, handler, scope?)`返回一个停止监听的函数
 
-| 参数     |         说明         |     类型 | 默认值 |
-| --------- | :-----------------: | --------: | -----: |
-| target | 表示作用的元素，即哪个元素之外 | Ref<`HTMLElement`> HTMLElement | - |
-| handler | 事件处理函数 | EventListener | - |
-
+| 参数    |              说明              |                           类型 | 默认值 |
+| ------- | :----------------------------: | -----------------------------: | -----: |
+| target  | 表示作用的元素，即哪个元素之外 | Ref<`HTMLElement`> HTMLElement |      - |
+| handler |          事件处理函数          |                  EventListener |      - |

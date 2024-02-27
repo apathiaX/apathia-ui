@@ -1,0 +1,41 @@
+{
+  "name": "@apathia/apathia.navbar",
+  "version": "0.2.7",
+  "description": "navbar",
+  "author": "",
+  "homepage": "",
+  "main": "dist/apathia.navbar.umd.js",
+  "module": "dist/apathia.navbar.es.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "export": {
+    "import": "dist/apathia.navbar.es.js",
+    "require": "dist/apathia.navbar.umd.js"
+  },
+  "sideEffects": false,
+  "directories": {
+    "lib": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "devDependencies": {
+    "vue": "^3.3.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.37"
+  },
+  "dependencies": {
+    "@apathia/apathia.hooks": "workspace:^1.2.7",
+    "@apathia/apathia.popper": "workspace:^0.2.7",
+    "@apathia/apathia.shared": "workspace:^1.2.7",
+    "@apathia/apathia.twind": "workspace:^1.2.7"
+  }
+}

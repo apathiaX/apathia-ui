@@ -8,7 +8,7 @@
 
 :::demo
 
-<<< @/../packages/textarea/demo/Basic.vue
+<<< @/demos/textarea/Basic.vue
 
 :::
 
@@ -18,7 +18,7 @@
 
 :::demo
 
-<<< @/../packages/textarea/demo/RowCol.vue
+<<< @/demos/textarea/RowCol.vue
 
 :::
 
@@ -28,17 +28,17 @@
 
 :::demo
 
-<<< @/../packages/textarea/demo/Disabled.vue
+<<< @/demos/textarea/Disabled.vue
 
 :::
 
 ## Props
+
 ::: tip
-Textarea 的其他参数 同原生textarea
+Textarea 的其他参数 同原生 textarea
 :::
 
-| prop      |         说明         |     类型 | 默认值 |
-| --------- | :-----------------: | --------: | -----: |
-| v-model      | 输入内容控制 |  String, Number, Boolean | false |
-| disabled      | 是否启用禁用开关 |  Boolean | false |
-
+| prop     |       说明       |                    类型 | 默认值 |
+| -------- | :--------------: | ----------------------: | -----: |
+| v-model  |   输入内容控制   | String, Number, Boolean |  false |
+| disabled | 是否启用禁用开关 |                 Boolean |  false |

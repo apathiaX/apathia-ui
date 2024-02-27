@@ -1,23 +1,24 @@
 import { createApp } from 'vue'
-// @ts-ignore
 import {
-  setupApathiaTwindTheme,
-  Tailwind,
   toastInstall,
   modalInstall,
-} from '@apathia/apathia'
-import './style.css'
+  setupApathiaTwindTheme,
+  Apathia,
+} from 'apathia-ui'
+// import './style.css'
 import App from './App.vue'
 import Card from './components/Card.vue'
-import * as comp from '../../packages/icon-svg/src'
+import * as comp from '@apathia/icons-vue'
 
 const app = createApp(App).component('Card', Card)
+
+app.use(Apathia)
 
 for (const [key, component] of Object.entries(comp)) {
   app.component(key, component)
 }
 
-setupApathiaTwindTheme(({ twind, css, colors }: Tailwind) => {
+setupApathiaTwindTheme(({ twind, css, colors }) => {
   app.config.globalProperties.tw = twind.tw
   app.config.globalProperties.apply = css.apply
   app.config.globalProperties.css = css.css

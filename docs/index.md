@@ -2,12 +2,12 @@
 layout: home
 
 hero:
-  name: Apathia Component
+  name: Apathia UI Component
   text: 使用文档
   tagline: 基于vue3 + typescript + twind 的vue组件库
   image:
-    src: ./icon.png
-    alt: Apathia
+    src: ./logo.png
+    alt: ApathiaUI
   actions:
     - theme: brand
       text: 开始使用

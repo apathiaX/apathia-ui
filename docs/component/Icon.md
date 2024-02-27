@@ -44,7 +44,7 @@ for (const [key, component] of Object.entries(ApathiaIcons)) {
 :::
 
 ::: demo
-<<< @/../packages/icon/demo/Basic.vue
+<<< @/demos/icon/Basic.vue
 :::
 
 ## 自定义 svg
@@ -52,7 +52,7 @@ for (const [key, component] of Object.entries(ApathiaIcons)) {
 可以通过插槽传入自定义 svg 图标
 
 ::: demo
-<<< @/../packages/icon/demo/Custom.vue
+<<< @/demos/icon/Custom.vue
 :::
 
 ## 图标列表

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "paths": {
+      "apathia-ui": ["../packages/apathia-ui"],
+      "~/*": ["./.vitepress/vitepress/*"]
+    },
+    "types": ["../types/components"],
+    "jsx": "preserve"
+  },
+  "include": ["**/*", ".vitepress/**/*", "../types"],
+  "exclude": ["node_modules"]
+}

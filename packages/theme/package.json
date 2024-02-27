@@ -1,0 +1,14 @@
+{
+  "name": "@apathia/theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "author": "apathia",
+  "license": "ISC",
+  "peerDependencies": {
+    "vue": "^3.3.0"
+  },
+  "dependencies": {
+    "twind": "^0.16.19"
+  }
+}

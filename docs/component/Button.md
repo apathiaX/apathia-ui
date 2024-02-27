@@ -7,7 +7,7 @@
 使用 `primary` `success` `warining` `danger` `plain`、`round` 等字段来定义按钮的样式。
 :::demo
 
-<<< @/../packages/button/demo/Basic.vue
+<<< @/demos/button/Basic.vue
 
 :::
 
@@ -16,7 +16,7 @@
 没有边框和背景色的按钮
 :::demo
 
-<<< @/../packages/button/demo/Text.vue
+<<< @/demos/button/Text.vue
 
 :::
 
@@ -27,7 +27,7 @@
 使用`disabled`属性来控制按钮是否为禁用状态。 该属性接受一个`Boolean`类型的值。
 :::demo
 
-<<< @/../packages/button/demo/State.vue
+<<< @/demos/button/State.vue
 
 :::
 
@@ -38,7 +38,7 @@
 可使用`large`和`small`来设置按钮大小。
 :::demo
 
-<<< @/../packages/button/demo/Size.vue
+<<< @/demos/button/Size.vue
 
 :::
 
@@ -47,7 +47,15 @@
 可以通过制定 `href` 属性，将按钮设置为链接按钮，并跳转至指定链接
 :::demo
 
-<<< @/../packages/button/demo/Link.vue
+<<< @/demos/button/Link.vue
+
+:::
+
+## loading
+
+:::demo
+
+<<< @/demos/button/Loading.vue
 
 :::
 
@@ -56,7 +64,7 @@
 可以通过默认插槽的方式自定义按钮
 
 ::: demo
-<<< @/../packages/button/demo/Custom.vue
+<<< @/demos/button/Custom.vue
 :::
 
 ## Button Props

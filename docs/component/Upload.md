@@ -8,7 +8,7 @@
 
 :::demo
 
-<<< @/../packages/upload/demo/Basic.vue
+<<< @/demos/upload/Basic.vue
 
 :::
 
@@ -18,7 +18,7 @@
 
 :::demo
 
-<<< @/../packages/upload/demo/Multiple.vue
+<<< @/demos/upload/Multiple.vue
 
 :::
 
@@ -28,7 +28,7 @@
 
 :::demo
 
-<<< @/../packages/upload/demo/Draggable.vue
+<<< @/demos/upload/Draggable.vue
 
 :::
 
