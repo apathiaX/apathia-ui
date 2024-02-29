@@ -120,7 +120,7 @@
 import { ref, h } from 'vue'
 import { tw, apply } from 'twind'
 import { css } from 'twind/css'
-import { Popper, usePoppertip } from 'apathia-ui'
+import { ApPopper as Popper, usePoppertip } from 'apathia-ui'
 
 export default {
   components: {

@@ -1,10 +1,11 @@
-import type { Ref } from 'vue'
+import type { Component, Ref } from 'vue'
 
 export interface ButtonProps {
   tag?: string | object
   href?: string
-  icon?: boolean
+  icon?: Component
   loading?: boolean
+  loadingIcon?: Component
   primary?: boolean
   success?: boolean
   danger?: boolean
@@ -17,6 +18,7 @@ export interface ButtonProps {
   round?: boolean
   circle?: boolean
   disabled?: boolean
+  bg?: boolean
 }
 
 export interface ButtonUseProps {

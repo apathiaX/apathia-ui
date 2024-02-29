@@ -49,4 +49,3 @@ const getFromStyle = () => ({
 })
 const styles = getFromStyle()
 </script>
-./types

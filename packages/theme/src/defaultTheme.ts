@@ -1,92 +1,7 @@
-import { keyframes } from 'twind/css'
-
 // default theme set
 export const defaultTheme = {
   darkMode: 'class',
   theme: {
-    // extends: {
-    //   colors: {
-    //     primary: {
-    //       dark: {
-    //         default: '',
-    //         hover: '',
-    //         disabled: '',
-    //         active: '',
-    //       },
-    //       light: {
-    //         default: '#ebf3ff',
-    //         hover: '#f3edf9',
-    //         disabled: '#a6c4f7',
-    //         active: '#3e72ed',
-    //       },
-    //     },
-    //     info: {
-    //       light: {
-    //         default: '#888d92',
-    //         hover: '#a7abb0',
-    //         disabled: '#d8dbde',
-    //         active: '#6b7075',
-    //       },
-    //     },
-    //     success: {
-    //       light: {
-    //         default: '#3bb346',
-    //         hover: '#5ac262',
-    //         disabled: '#a4e0a7',
-    //         active: '#30953c',
-    //       },
-    //     },
-    //     danger: {
-    //       light: {
-    //         default: '#ff442b',
-    //         hover: '#ff684e',
-    //         disabled: '#ffb9a7',
-    //         active: '#d92616',
-    //       },
-    //     },
-    //     warning: {
-    //       light: {
-    //         default: '#fc8802',
-    //         hover: '#fda632',
-    //         disabled: '#fed998',
-    //         active: '#d26701',
-    //       },
-    //     },
-    //     border: {
-    //       light: {
-    //         default: '#d8dbde',
-    //         secondary: '#e6e8ea',
-    //         hover: '#a7abb0',
-    //         disabled: '#e6e8ea',
-    //       },
-    //     },
-    //     text: {
-    //       light: {
-    //         default: '#1c2023',
-    //         secondary: '#555b61',
-    //         regular: '#888d92',
-    //         placeholder: '#d8dbde',
-    //         disabled: '#d8dbde',
-    //       },
-    //     },
-    //     bg: {
-    //       light: {
-    //         default: '#e6e8ea',
-    //         secondary: '#f6f7f8',
-    //         hover: '#f3f4f5',
-    //         disabled: '#f6f7f8',
-    //       },
-    //     },
-    //     fill: {
-    //       light: {
-    //         default: '#f6f7f8',
-    //         secondary: '#ffffff',
-    //         hover: '#ffffff',
-    //         disabled: '#f6f7f8',
-    //       },
-    //     },
-    //   },
-    // },
     // extends 拓展主题，直接写是覆盖
     // colors: {
     //   brand: {
@@ -372,15 +287,6 @@ export const defaultTheme = {
       popper: '910',
       dropdown: '950',
       alert: '999',
-    },
-    keyframes: {
-      spin: {
-        '0%': { transform: 'rotate(0deg)' },
-        '100%': { transform: 'rotate(360deg)' },
-      },
-    },
-    animation: {
-      spin: 'spin 1s linear infinite',
     },
   },
 }

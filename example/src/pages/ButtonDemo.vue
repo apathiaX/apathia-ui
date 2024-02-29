@@ -7,7 +7,7 @@
     <Card title="其他用法">
       <ap-button success circle>b</ap-button>
     </Card>
-    <ap-button large primary>cc</ap-button>
+    <ap-button large primary loading>cc</ap-button>
   </div>
 </template>
 

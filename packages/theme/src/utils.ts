@@ -2,9 +2,10 @@ export const generateColor = (
   target: string,
   colorType: string,
   color: string,
+  important = false,
 ) => {
   const styleTemplate = (theme: 'light' | 'dark') =>
-    `${target}-${colorType}-${theme}-${color}`
+    `${target}-${colorType}-${theme}-${color}${important ? '!' : ''}`
   return `${styleTemplate('light')} dark:${styleTemplate('dark')}`
 }
 
