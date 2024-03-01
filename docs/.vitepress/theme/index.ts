@@ -1,6 +1,4 @@
-import '../plugin/style/index.css'
 import DefaultTheme from 'vitepress/theme'
-import './resetcss/normalize.css'
 import { registerComponents } from './register'
 import {
   Apathia,
@@ -10,6 +8,8 @@ import {
 } from 'apathia-ui'
 import './resetcss/color.css'
 import '../plugin/style/index.css'
+import 'vue-live/style.css'
+import '../plugin/style/editor.css'
 
 export default {
   ...DefaultTheme,

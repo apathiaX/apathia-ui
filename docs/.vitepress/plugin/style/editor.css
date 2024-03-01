@@ -1,0 +1,62 @@
+:root{
+  --editor-tag: #22863A;
+  --editor-punctuation: #24292E;
+  --editor-attr-name: #6F42C1;
+  --editor-attr-value: #032F62;
+  --editor-selector: #D73A49;
+  --editor-property: #005CC5;
+  --editor-keywords: #D73A49;
+  --editor-strong: #032F62;
+  --editor-operator: #D73A49;
+}
+html.dark {
+  --editor-tag: #85E89D;
+  --editor-punctuation: #E1E4E8;
+  --editor-attr-name: #B392F0;
+  --editor-attr-value: #9ECBFF;
+  --editor-selector: #FF7B72;
+  --editor-property: #79B8FF;
+  --editor-keywords: #F97583;
+  --editor-strong: #9ECBFF;
+  --editor-operator: #F97583;
+}
+
+.prism-editor-wrapper{
+  text-align: left;
+  line-height: var(--vp-code-line-height);
+  font-size: var(--vp-code-font-size);
+  padding: 16px 24px;
+  background-color: var(--vp-code-block-bg);
+  tab-size: 4;
+  font-family: var(--vp-font-family-mono);
+}
+.token.tag{
+  color: var(--editor-tag);
+}
+.token.punctuation {
+  color: var(--editor-punctuation);
+}
+.token.attr-name {
+  color: var(--editor-attr-name);
+}
+.token.style {
+  color: var(--editor-property);
+}
+.token.attr-value {
+  color: var(--editor-attr-value);
+}
+.token.selector{
+  color: var(--editor-selector)
+}
+.token.property {
+  color: var(--editor-property);
+}
+.token.script {
+  color: var(--editor-property);
+}
+.token.keyword {
+  color: var(--editor-keywords);
+}
+.token.operator {
+  color: var(--editor-operator);
+}

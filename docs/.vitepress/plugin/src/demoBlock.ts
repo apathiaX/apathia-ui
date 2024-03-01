@@ -6,8 +6,6 @@ import type Token from 'markdown-it/lib/token'
 import type Renderer from 'markdown-it/lib/renderer'
 import type { DemoBlockPluginOptions, MdToken } from '../types'
 import { createSfcRegexp, TAG_NAME_TEMPLATE } from '@mdit-vue/plugin-sfc'
-import { rootPath } from '../utils'
-import path from 'path'
 
 const updateContent = (tokens: MdToken) => {
   // 添加 <ClientOnly>
@@ -44,14 +42,11 @@ export const blockPlugin = (
         // const comp = await import(tokens[idx + 1].src[0])
         const content =
           tokens[idx + 1].type === 'fence' ? tokens[idx + 1].content : ''
-        return `<demo customClass="${
-          options.customClass
-        }" sourceCode="${removeClientOnly(
-          md.utils.escapeHtml(content),
-        )}" lang="${options?.lang || 'vue'}" path="${path.relative(
-          rootPath + '/components/Demo.vue',
-          tokens[idx + 1].src[0],
-        )}">${content ? `<!--vue-demo:${content}:vue-demo-->` : ''}`
+        return `<demo customClass="${options.customClass}" lang="${
+          options?.lang || 'vue'
+        }" code="${encodeURIComponent(content)}">${
+          content ? `<!--vue-demo:${content}:vue-demo-->` : ''
+        }`
       }
       return '</demo>'
     },
@@ -85,12 +80,7 @@ export const codePlugin = (md: MarkdownIt, options: DemoBlockPluginOptions) => {
           <div>${md.renderInline(description)}</div>
         </template>`
             : ''
-        }
-        <template #highlight>
-          <div class="language-${lang}">${
-        md.options.highlight?.(removeClientOnly(token.content), lang, '') || ''
-      }</div>
-        </template>`
+        }`
     }
     return defaultRender?.(tokens, idx, options, env, self) as string
   }
@@ -136,5 +126,4 @@ export const demoBlock = (
 ) => {
   md.use(blockPlugin, options)
   md.use(codePlugin, options)
-  // md.use(renderPlugin, options)
 }

@@ -7,8 +7,13 @@
       </template>
       加载中
     </ap-button>
+    <ap-button primary loading :loading-icon="Star"> </ap-button>
   </div>
 </template>
+
+<script lang="ts" setup>
+import { Star } from '@apathia/icons-vue'
+</script>
 
 <style scoped>
 .button-wrapper {
