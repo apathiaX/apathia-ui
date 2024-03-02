@@ -1,8 +1,21 @@
 import path from 'path'
 import fs from 'fs'
-import nameMap from './nameMap'
+import { sidebarMap, sidebarNameMap, componentList } from './nameMap'
 import { demoBlock as demoBlockPlugin } from './plugin'
 import { UserConfig, defineConfig } from 'vitepress'
+
+type Sidebar = SidebarItem[] | SidebarMulti
+
+interface SidebarMulti {
+  [path: string]: SidebarItem[]
+}
+
+type SidebarItem = {
+  text?: string
+  link?: string
+  items?: SidebarItem[]
+  collapsed?: boolean
+}
 
 const getIntroductionSidebar = () => {
   return [
@@ -23,27 +36,38 @@ const getIntroductionSidebar = () => {
   ]
 }
 
-const generatePathsFromDir = (dirPath, prefix) => {
+const generatePathsFromDir = (prefix: string) => {
+  return Object.keys(sidebarMap).reduce<Sidebar[]>((prev, currKey) => {
+    const currMap = sidebarMap[currKey]
+    if (!currMap) return prev
+    const currName = sidebarNameMap[currKey]
+    const currComp = Object.keys(currMap).map<SidebarItem>(name => ({
+      text: name + '' + currMap[name],
+      link: `${prefix}/${name}`,
+    }))
+    return prev.concat([
+      {
+        text: currName,
+        items: currComp,
+        collapsed: true,
+      },
+    ])
+  }, [])
+}
+
+const generateHooks = (dirPath: string, prefix: string) => {
   const mds = fs.readdirSync(dirPath)
   const items = mds
     .filter(md => md !== 'index.md')
     .map(md => {
-      const [name, ext] = md.split('.')
-      let fullName = name
-      if (nameMap[name]) {
-        fullName = name + ' ' + nameMap[name]
-      }
+      const [name, _] = md.split('.')
       return {
-        text: fullName,
+        text: name,
         link: `${prefix}/${name}`,
       }
     })
-  const text =
-    prefix.split('/')[1].slice(0, 1).toUpperCase() +
-    prefix.split('/')[1].slice(1)
   return [
     {
-      text,
       items,
       collapsible: true,
     },
@@ -98,20 +122,10 @@ const config: UserConfig = {
 
     sidebar: {
       '/introduction': getIntroductionSidebar(),
-      '/component': generatePathsFromDir(
-        path.resolve(__dirname, '../component'),
-        '/component',
-      ),
-      '/hook': generatePathsFromDir(
-        path.resolve(__dirname, '../hook'),
-        '/hook',
-      ),
+      '/component': generatePathsFromDir('/component'),
+      '/hook': generateHooks(path.resolve(__dirname, '../hook'), '/hook'),
       '/': getIntroductionSidebar(),
     },
-    // demos: demos,
-    // search: {
-    //   provider: 'local',
-    // },
   },
 }
 

@@ -5,7 +5,7 @@
 ## 基础用法
 
 ::: demo
-<<< @/demos/hooks/onClickOutside/Basic.vue
+<<< @/demos/onClickOutside/Basic.vue
 :::
 
 ## 参数
