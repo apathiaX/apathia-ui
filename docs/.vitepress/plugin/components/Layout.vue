@@ -121,7 +121,6 @@ const _scrollHandler = () => {
   const { top, bottom, left } = meta.value!.getBoundingClientRect()
   const innerHeight = window.innerHeight || document.body.clientHeight
   fixedControl.value = bottom > innerHeight && top + 44 <= innerHeight
-  console.log(fixedControl.value)
   control.value!.style.left = fixedControl.value ? `${left}px` : '0'
   const dv = fixedControl.value ? 1 : 2
   control.value!.style.width = `${demoBlock.value!.offsetWidth - dv}px`

@@ -1,33 +1,43 @@
 <template>
   <ap-button success @click="success">success</ap-button>
   <ap-button danger @click="danger">danger</ap-button>
-  <ap-button default @click="default1">default</ap-button>
+  <ap-button primary @click="primary">primary</ap-button>
   <ap-button info @click="info">info</ap-button>
   <ap-button warning @click="warning">warning</ap-button>
 </template>
 
 <script lang="ts" setup>
-import { getCurrentInstance } from 'vue'
-
-const { proxy } = getCurrentInstance() as any
+import { toast } from 'apathia-ui'
 const success = () => {
-  proxy.$toast({
+  toast({
     type: 'success',
-    title: 'title',
-    message: 'message',
+    message: 'this is a message, type is success',
+    effect: 'dark',
     showClose: true,
   })
 }
 const info = () => {
-  proxy.$toast.info('title', 'message', { showClose: true })
+  toast.info('this is a message, type is info', {
+    showClose: true,
+    effect: 'dark',
+  })
 }
 const warning = () => {
-  proxy.$toast.warning('title', 'message', { showClose: true })
+  toast.warning('this is a message, type is warning', {
+    showClose: true,
+    effect: 'dark',
+  })
 }
 const danger = () => {
-  proxy.$toast.danger('title', 'message', { showClose: true })
+  toast.danger('this is a message, type is danger', {
+    showClose: true,
+    effect: 'dark',
+  })
 }
-const default1 = () => {
-  proxy.$toast.default('title', 'message', { showClose: true })
+const primary = () => {
+  toast.primary('this is a message, type is primary', {
+    showClose: true,
+    effect: 'dark',
+  })
 }
 </script>

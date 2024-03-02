@@ -38,7 +38,13 @@ const demoCode = ref(
     .replace(/<\/ClientOnly>/g, ''),
 )
 
+let updateFlag = false
 const handleResetCode = () => {
-  demoCode.value = originCode + ' '
+  updateFlag = !updateFlag
+  if (updateFlag) {
+    demoCode.value = originCode + ' '
+  } else {
+    demoCode.value = originCode
+  }
 }
 </script>

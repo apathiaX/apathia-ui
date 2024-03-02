@@ -3,14 +3,13 @@
 </template>
 
 <script lang="tsx" setup>
-import { getCurrentInstance } from 'vue'
+import { toast } from 'apathia-ui'
 
-const { proxy } = getCurrentInstance() as any
 const openRender = () => {
-  proxy.$toast({
+  toast({
     type: 'success',
     duration: 0,
-    render: ({ close }) => <div onClick={close}>点我关闭</div>,
+    render: props => <div onClick={props!.close}>点我关闭</div>,
   })
 }
 </script>

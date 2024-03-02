@@ -19,13 +19,13 @@ const AlertContainer = defineComponent({
   setup(props, { emit }) {
     const remove = (index: string) => emit('remove', index)
 
-    const rootClass =
-      style`left-1/2 -translate-x-1/2 w-96 fixed z-alert top-1` + ' alert-open'
+    const rootClass = style`left-1/2 -translate-x-1/2 fixed z-alert top-1`
     const transitionGroupClass = {
       'enter-from-class': tw`opacity-0`,
       'leave-to-class': tw`opacity-0`,
-      'leave-active-class': tw`absolute w-full`,
     }
+
+    const wrapperClass = style`flex flex-col items-center`
 
     return () =>
       h(
@@ -36,7 +36,7 @@ const AlertContainer = defineComponent({
         [
           h(
             TransitionGroup,
-            { ...transitionGroupClass, tag: 'div' },
+            { ...transitionGroupClass, tag: 'div', class: wrapperClass },
             {
               default: () =>
                 props.alertList.map(option =>
@@ -63,7 +63,7 @@ const remove = (id: string) => {
 }
 const getID = () => `${Date.now()}`
 
-const AlertType = ['info', 'warning', 'danger', 'success', 'default'] as const
+const AlertType = ['info', 'warning', 'danger', 'success', 'primary'] as const
 
 interface BaseAlerter {
   (props: AlertProps): void
@@ -72,9 +72,8 @@ interface BaseAlerter {
 
 export type Alerter = {
   [K in (typeof AlertType)[number]]: (
-    title: string,
-    message?: string,
-    props?: Omit<AlertProps, 'type' | 'title' | 'message'>,
+    message: string,
+    props?: Omit<AlertProps, 'type' | 'message'>,
   ) => void
 } & BaseAlerter
 
@@ -96,15 +95,13 @@ const Alert = ((props: AlertProps) => {
 
 Alert.closeAll = () => (alertList.value = [])
 
-Alert.info = (title, message, props) =>
-  Alert({ type: 'info', title, message, ...props })
-Alert.warning = (title, message, props) =>
-  Alert({ type: 'warning', title, message, ...props })
-Alert.danger = (title, message, props) =>
-  Alert({ type: 'danger', title, message, ...props })
-Alert.success = (title, message, props) =>
-  Alert({ type: 'success', title, message, ...props })
-Alert.default = (title, message, props) =>
-  Alert({ type: 'default', title, message, ...props })
+Alert.info = (message, props) => Alert({ type: 'info', message, ...props })
+Alert.warning = (message, props) =>
+  Alert({ type: 'warning', message, ...props })
+Alert.danger = (message, props) => Alert({ type: 'danger', message, ...props })
+Alert.success = (message, props) =>
+  Alert({ type: 'success', message, ...props })
+Alert.primary = (message, props) =>
+  Alert({ type: 'primary', message, ...props })
 
 export default Alert

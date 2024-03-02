@@ -1,91 +1,40 @@
 <script setup lang="ts">
-import { defineComponent, onMounted, withDefaults } from 'vue'
-import type { AlertType } from './types'
-import { style, apply, tw } from '@apathia/theme'
-import { RenderFn, CustomRender } from '@apathia/shared'
+import { computed, onMounted, withDefaults } from 'vue'
+import type { AlertProps } from './types'
+import { CustomRender } from '@apathia/shared'
 import { ApIcon } from '@apathia/components/icon'
-import {
-  CircleCloseFilled,
-  InfoFilled,
-  SuccessFilled,
-  WarningFilled,
-  Notification,
-} from '@apathia/icons-vue'
+import { getAlertStyle, iconMap } from './alert'
 
 defineOptions({
   name: 'ApAlert',
 })
 
-interface AlertProps {
-  type?: AlertType
-  duration?: number
-  title?: string
-  message?: string
-  showIcon?: boolean
-  showClose?: boolean
-  render?: RenderFn<Record<'close', (...args: any) => any>>
-}
-
-const iconMap: Record<AlertType, ReturnType<typeof defineComponent>> = {
-  info: InfoFilled,
-  warning: WarningFilled,
-  success: SuccessFilled,
-  danger: CircleCloseFilled,
-  default: Notification,
-}
-
 const props = withDefaults(defineProps<AlertProps>(), {
-  type: 'default',
+  type: 'info',
   duration: 3000,
   title: '',
   message: '',
-  showIcon: true,
-  showClose: true,
+  effect: 'light',
+  showIcon: false,
+  showClose: false,
 })
 
 const emit = defineEmits(['close'])
 
-function initAlertStyle(type: AlertType) {
-  const Theme = {
-    info: {
-      layout: style`bg-fill-light text-fill-primary`,
-    },
-    danger: {
-      layout: style`bg-error-light text-error-primary`,
-    },
-    success: {
-      layout: style`bg-success-light text-success-primary`,
-    },
-    warning: {
-      layout: style`bg-warning-light text-warning-primary`,
-    },
-    default: {
-      layout: style`bg-brand-light text-brand-primary`,
-    },
-  }
+const {
+  layout,
+  iconWrap,
+  delIcon,
+  contentClass,
+  titleClass,
+  messageClass,
+  colorStyle,
+} = getAlertStyle()
 
-  const theme = Theme[type] || Theme.default
-  const layout = tw`${
-    theme.layout
-  } ${apply`p-2.5 rounded flex mt-2 duration-300`}`
-  const iconWrap = style`flex-shrink-0 w-4 mr-3 mt-0.5`
-  const delIcon = style`ml-2 cursor-pointer hover:(text-error-active)`
-  const contentClass = style`inline-block font-normal flex-grow break-all`
-  const titleClass = style`text-lg`
-  const messageClass = style`text-xs leading-normal`
-
-  return {
-    layout,
-    iconWrap,
-    delIcon,
-    contentClass,
-    titleClass,
-    messageClass,
-  }
-}
-
-const { layout, iconWrap, delIcon, contentClass, titleClass, messageClass } =
-  initAlertStyle(props.type)
+const layoutStyle = computed(() => {
+  const effect = props.effect || 'light'
+  return `${colorStyle[effect][props.type]} ${layout}`
+})
 let timer: any
 
 function close() {
@@ -106,11 +55,11 @@ onMounted(resetTimer)
 </script>
 
 <template>
-  <div :class="layout" @mouseenter="clearTimer" @mouseleave="resetTimer">
+  <div :class="layoutStyle" @mouseenter="clearTimer" @mouseleave="resetTimer">
     <template v-if="!render">
       <div v-if="showIcon" :class="iconWrap">
         <slot name="icon">
-          <ApIcon :size="20">
+          <ApIcon :size="title ? 24 : 16">
             <component :is="iconMap[type]" />
           </ApIcon>
         </slot>
@@ -123,7 +72,9 @@ onMounted(resetTimer)
           {{ message }}
         </p>
       </div>
-      <span v-if="showClose" :class="delIcon" @click="close"> ✕ </span>
+      <span v-if="showClose" :class="delIcon[effect]" @click="close">
+        <slot name="close">✕</slot>
+      </span>
     </template>
     <template v-else>
       <CustomRender :render="() => render && render({ close })" />
