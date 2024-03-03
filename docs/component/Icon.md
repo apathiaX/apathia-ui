@@ -10,13 +10,13 @@
 
 ```shell
 # NPM
-$ npm install @apathia/apathia.icon-svg
+$ npm install @apathia/icons-vue
 
 # YARN
-$ yarn add @apathia/apathia.icon-svg
+$ yarn add @apathia/icons-vue
 
 # pnpm
-$ pnpm install @apathia/apathia.icon-svg
+$ pnpm install @apathia/icons-vue
 ```
 
 ### 全局注册
@@ -26,7 +26,7 @@ $ pnpm install @apathia/apathia.icon-svg
 ```ts
 // main.ts
 
-import * as ApathiaIcons from '@apathia/apathia.icon-svg'
+import * as ApathiaIcons from '@apathia/icons-vue'
 
 const app = createApp(App)
 
@@ -39,7 +39,7 @@ for (const [key, component] of Object.entries(ApathiaIcons)) {
 
 可以单独使用 `icon-svg` 中的图标，也可以使用结合 `Icon` 组件进行属性设置
 
-::: danger WARNING
+::: danger 组件名称
 如果与其他组件发生命名冲突时可以通过设置别名解决
 :::
 

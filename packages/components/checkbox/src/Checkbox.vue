@@ -1,13 +1,13 @@
 <template>
   <label
-    :class="{ [styles.wrapper]: true, [styles.disabledWrapper]: disableInput }"
+    :class="{ [styles.wrapper]: true, [styles.disabledWrapper]: disabled }"
   >
     <span :class="{ [styles.checkbox]: true }">
       <input
         type="checkbox"
         :class="{ [styles.input]: true }"
         :checked="isChecked"
-        :disabled="disableInput"
+        :disabled="disabled"
         :value="trueValue"
         @click.stop="handleChange"
         @keydown.space="handleChange"
@@ -17,12 +17,11 @@
         ref="inputEl"
         :class="{
           [styles.inner]: true,
-          [styles.disabledInner]: disableInput,
-          [styles.checkedBlueBorder]:
-            !disableInput && (isChecked || intermediate),
+          [styles.disabledInner]: disabled,
+          [styles.checkedBlueBorder]: !disabled && (isChecked || intermediate),
           [styles.checkedAfter]: isChecked && !intermediate,
           [styles.intermediateAfter]: !isChecked && intermediate,
-          [styles.ring]: !disableInput,
+          [styles.ring]: !disabled,
         }"
         tabindex="-1"
       >
@@ -35,42 +34,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref, toRefs, Ref } from 'vue'
-import { useInjectProp } from '@apathia/shared'
 import useCheckbox from './useCheckbox'
 import { getCheckboxStyles } from './checkbox'
-import type { CheckboxUseProps, CheckboxEmits, CheckboxProps } from './types'
+import type { CheckboxEmits, CheckboxProps } from './types'
 
 defineOptions({
   name: 'ApCheckbox',
 })
 
-const props = defineProps<CheckboxProps>()
+const props = withDefaults(defineProps<CheckboxProps>(), {
+  trueValue: true,
+  falseValue: false,
+  disabled: false,
+})
 
 const emit = defineEmits<CheckboxEmits>()
 
-const inputEl = ref(null)
-const { modelValue, trueValue, falseValue, value, disabled } = toRefs(props)
-
-const disableInput = useInjectProp(
-  'FormDisabled',
-  false,
-  disabled,
-) as Ref<boolean>
-
-const userProps = {
-  modelValue,
-  trueValue,
-  falseValue,
-  value,
-  disabled: disableInput,
-  inputEl,
-}
-
-const { isChecked, handleChange } = useCheckbox(
-  userProps as CheckboxUseProps,
-  emit,
-)
+const { disabled, inputEl, isChecked, handleChange } = useCheckbox(props, emit)
 
 const styles = getCheckboxStyles()
 </script>

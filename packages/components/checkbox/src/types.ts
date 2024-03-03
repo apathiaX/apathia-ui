@@ -5,20 +5,11 @@ export interface CheckboxProps {
   modelValue: string | number | boolean | Array<unknown>
   trueValue?: string | number | boolean
   falseValue?: string | number | boolean
-  value?: string | number | undefined
+  value?: string | number
   intermediate?: boolean
 }
 
 export type CheckboxEmits = {
   'update:modelValue': [value: string | number | boolean | Array<unknown>]
   change: [value: string | number | boolean | Array<unknown>]
-}
-
-export interface CheckboxUseProps<T = string | number | boolean> {
-  disabled: Ref<boolean>
-  modelValue: Ref<T | Array<unknown>>
-  trueValue: Ref<T>
-  falseValue: Ref<T>
-  value: Ref<string | number | undefined>
-  inputEl: Ref<HTMLInputElement | null>
 }

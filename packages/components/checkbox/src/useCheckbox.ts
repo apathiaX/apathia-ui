@@ -1,28 +1,33 @@
-import { computed, ComputedRef, unref } from 'vue'
-import type { SetupContext } from 'vue'
-import type { CheckboxEmits, CheckboxUseProps } from './types'
+import { computed, ComputedRef, ref, unref } from 'vue'
+import type { Ref, SetupContext } from 'vue'
+import type { CheckboxEmits, CheckboxProps } from './types'
+import { useInjectProp } from '@apathia/shared'
 
 export default function useCheckbox(
-  userProps: CheckboxUseProps,
+  useProps: CheckboxProps,
   emit: SetupContext<CheckboxEmits>['emit'],
 ): {
+  inputEl: Ref<HTMLElement | null>
+  disabled: ComputedRef<boolean | undefined>
   isChecked: ComputedRef<boolean>
   handleChange: () => void
 } {
-  const { disabled, modelValue, trueValue, falseValue, value, inputEl } =
-    userProps
+  const propsDisabled = computed(() => useProps.disabled)
+  const disabled = useInjectProp('FormDisabled', false, propsDisabled)
 
-  const isArrayCheckbox = computed(() => Array.isArray(modelValue.value))
+  const inputEl = ref<HTMLElement | null>(null)
+
+  const isArrayCheckbox = computed(() => Array.isArray(useProps.modelValue))
   const arrayTrueValue = computed(() =>
-    typeof value.value !== 'undefined' ? value.value : trueValue.value,
+    typeof useProps.value !== 'undefined' ? useProps.value : useProps.trueValue,
   )
 
   const isChecked = computed(() => {
     if (isArrayCheckbox.value) {
-      const valArr = modelValue.value as Array<unknown>
+      const valArr = useProps.modelValue as Array<unknown>
       return valArr.indexOf(arrayTrueValue.value) > -1
     }
-    return trueValue.value === modelValue.value
+    return useProps.trueValue === useProps.modelValue
   })
 
   const handleChange = () => {
@@ -33,7 +38,7 @@ export default function useCheckbox(
     let newValue
     if (isArrayCheckbox.value) {
       // v-model 绑定数组
-      const valArr = modelValue.value as Array<unknown>
+      const valArr = useProps.modelValue as Array<unknown>
       const valueTrue = arrayTrueValue.value
 
       newValue = valArr.slice()
@@ -45,22 +50,24 @@ export default function useCheckbox(
       }
       // 单个 checkbox
     } else {
-      newValue = trueValue.value
+      newValue = useProps.trueValue
       if (isChecked.value) {
-        newValue = falseValue.value
+        newValue = useProps.falseValue
       }
     }
-    emit('update:modelValue', newValue)
+    emit('update:modelValue', newValue!)
 
     const input = inputEl && unref(inputEl)
     if (input) {
       input.focus()
     }
 
-    emit('change', newValue)
+    emit('change', newValue!)
   }
 
   return {
+    inputEl,
+    disabled,
     isChecked,
     handleChange,
   }

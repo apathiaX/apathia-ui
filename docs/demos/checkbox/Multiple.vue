@@ -1,23 +1,41 @@
 <template>
-  <p>你喜欢吃的水果:</p>
-  <div>
-    <span style="margin-right: 5px" v-for="item in likes" :key="item">{{
+  <div class="wrapper">
+    <div>当前选择的是:</div>
+    <span class="wrapper-item" v-for="item in likes" :key="item">{{
       map[item]
     }}</span>
   </div>
 
-  <ap-checkbox v-model="likes" value="apple">苹果🍎</ap-checkbox>
-  <ap-checkbox v-model="likes" value="banana">香蕉🍌</ap-checkbox>
-  <ap-checkbox v-model="likes" value="pear">梨🍐</ap-checkbox>
+  <div class="content">
+    <ap-checkbox v-model="likes" value="apple">选项一：🍎</ap-checkbox>
+    <ap-checkbox v-model="likes" value="banana">选项二：🍌</ap-checkbox>
+    <ap-checkbox v-model="likes" value="pear">选项三：🍐</ap-checkbox>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 
 const map = {
-  apple: '苹果🍎',
-  banana: '香蕉🍌',
-  pear: '梨🍐',
+  apple: '🍎',
+  banana: '🍌',
+  pear: '🍐',
 }
 const likes = ref([])
 </script>
+
+<style scoped>
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.wrapper-item {
+  margin-left: 10px;
+}
+.content {
+  display: flex;
+  gap: 10px;
+}
+</style>

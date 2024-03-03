@@ -1,11 +1,19 @@
-import { tw, css, apply, style } from '@apathia/theme'
+import { tw, css, apply, style, generateColor } from '@apathia/theme'
 
 export const getCheckboxStyles = () => ({
   wrapper: style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm`,
-  disabledWrapper: style`text-fill-accent cursor-not-allowed`,
+  disabledWrapper: style`${generateColor(
+    'text',
+    'text',
+    'disabled',
+  )} cursor-not-allowed`,
   checkbox: style`relative inline-block p-0 whitespace-nowrap outline-none align-middle`,
   inner: tw(
-    style`relative block w-4 h-4 top-0 left-0 bg-fill-white border border-fill-accent rounded outline-none`,
+    style`relative block w-4 h-4 top-0 left-0 bg-transparent border border-solid ${generateColor(
+      'border',
+      'border',
+      'default',
+    )} rounded outline-none`,
     css`
       transition: all 0.3s;
       &::after {
@@ -25,7 +33,11 @@ export const getCheckboxStyles = () => ({
     `,
   ),
 
-  checkedBlueBorder: style`bg-brand-primary border-brand-primary`,
+  checkedBlueBorder: style`${generateColor(
+    'bg',
+    'primary',
+    'default',
+  )} ${generateColor('border', 'primary', 'default')}`,
   // check mark
   checkedAfter: tw(css`
     &::after {
@@ -41,14 +53,27 @@ export const getCheckboxStyles = () => ({
     }
   `),
   disabledInner: tw(
-    style`bg-fill-gray border-fill-accent cursor-not-allowed outline-none`,
+    style`${generateColor('bg', 'bg', 'ground')} ${generateColor(
+      'border',
+      'border',
+      'disabled',
+    )} cursor-not-allowed outline-none`,
     css`
       &::after {
-        ${apply`border-fill-accent`}
+        ${generateColor('border', 'border', 'disabled')}
       }
     `,
   ),
-  ring: style`focus:ring-2 focus:ring-brand-primary`,
+  ring: style`focus:(ring-2 ${generateColor(
+    'ring',
+    'primary',
+    'default',
+  )} border-0 ${css`
+    &::after {
+      top: 2px;
+      left: 6px;
+    }
+  `})`,
   input: style`hidden`,
   contentWrap: style`mx-1`,
 })
