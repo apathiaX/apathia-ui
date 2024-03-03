@@ -66,17 +66,9 @@
 
 <script setup lang="ts">
 import { useRoute, useData } from 'vitepress'
-import {
-  ref,
-  computed,
-  watch,
-  onBeforeUnmount,
-  getCurrentInstance,
-  type ComponentInternalInstance,
-} from 'vue'
+import { ref, computed, watch, onBeforeUnmount } from 'vue'
+import { toast } from 'apathia-ui'
 import { useClipboard, useThrottleFn } from '@vueuse/core'
-
-const { proxy } = getCurrentInstance() as ComponentInternalInstance
 
 const demoProps = defineProps<{
   customClass: string
@@ -98,7 +90,8 @@ const control = ref<HTMLElement | null>(null)
 const demoBlock = ref<HTMLElement | null>(null)
 
 watch(isExpanded, val => {
-  meta.value!.style.height = val ? `${codeAreaHeight.value + 1}px` : '0'
+  // meta.value!.style.height = val ? `${codeAreaHeight.value + 1}px` : '0'
+  meta.value!.style.height = val ? `fit-content` : '0'
   if (!val) {
     fixedControl.value = false
     control.value!.style.left = '0'
@@ -178,13 +171,9 @@ const codeAreaHeight = computed(() => {
 const onCopy = async () => {
   try {
     copy(demoProps.code)
-    proxy!.$toast.success(locale.value['copy-success-text'], '', {
-      showClose: false,
-    })
+    toast.success(locale.value['copy-success-text'])
   } catch (err) {
-    proxy!.$toast.danger(locale.value['copy-failed-text'], '', {
-      showClose: false,
-    })
+    toast.danger(locale.value['copy-failed-text'])
   }
 }
 </script>

@@ -18,7 +18,7 @@ export default {
     registerComponents(ctx.app)
     setupApathiaTwindTheme(() => ({
       preflight: false,
-      important: true,
+      // important: true,
     }))
 
     ctx.app.use(toastInstall)

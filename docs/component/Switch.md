@@ -1,6 +1,6 @@
 # Switch
 
-开关
+两种互相对立的状态之间的切换
 
 ## 基础用法
 
@@ -59,7 +59,7 @@
 
 | prop         |           说明           |                    类型 | 默认值 |
 | ------------ | :----------------------: | ----------------------: | -----: |
-| v-model      |        控制开关值        | String, Number, Boolean |  false |
+| modelValue   |        控制开关值        | String, Number, Boolean |  false |
 | trueValue    | 打开时 modelValue 值为啥 | String, Number, Boolean |   true |
 | falseValue   | 关闭时 modelValue 值为啥 | String, Number, Boolean |  false |
 | inactiveText |  关闭时文本 展示在右侧   |                  String |     无 |
