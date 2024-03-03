@@ -208,7 +208,9 @@ const uploadFiles = async (files: FileList | null) => {
     // check file size
     if (props.filesize && processedFile.size > props.filesize) {
       const filesizeText = sizeFormat(props.filesize, 0)
-      toast.danger('错误', `文件大小不能超过${filesizeText}`)
+      toast.danger(`文件大小不能超过${filesizeText}`, {
+        title: '错误',
+      })
       return
     }
 

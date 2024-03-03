@@ -1,5 +1,3 @@
-import type { Ref } from 'vue'
-
 export interface CheckboxProps {
   disabled?: boolean
   modelValue: string | number | boolean | Array<unknown>

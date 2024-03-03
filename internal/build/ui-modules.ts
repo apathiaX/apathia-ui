@@ -1,4 +1,4 @@
-import { rollup } from 'rollup'
+import { rollup, Plugin } from 'rollup'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { nodeResolve } from '@rollup/plugin-node-resolve'

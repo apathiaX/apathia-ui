@@ -16,9 +16,9 @@ export default (
 
   const processedData = computed(() =>
     userProps.value.data.map(cur => ({
-      value: cur[userProps.value.propKeys.value] as Key,
-      label: cur[userProps.value.propKeys.label] as string,
-      disabled: cur[userProps.value.propKeys.disabled] as boolean,
+      value: cur[userProps.value.propKeys!.value] as Key,
+      label: cur[userProps.value.propKeys!.label] as string,
+      disabled: cur[userProps.value.propKeys!.disabled!] as boolean,
     })),
   )
   const valueMap = computed(() =>

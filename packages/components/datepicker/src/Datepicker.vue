@@ -194,6 +194,6 @@ watch(
 )
 </script>
 
-<style lang="scss">
+<!-- <style lang="scss">
 @import '../style/datepicker.scss';
-</style>
+</style> -->

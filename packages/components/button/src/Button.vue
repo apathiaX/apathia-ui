@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { ApIcon } from '@apathia/components'
+import { ApIcon } from '@apathia/components/icon'
 import useBaseButton from './useButton'
 import type { ButtonProps } from './types'
 

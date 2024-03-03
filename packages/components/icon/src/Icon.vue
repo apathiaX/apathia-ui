@@ -25,13 +25,15 @@ const styles = () => {
         : `${props.size}px`
       : undefined,
     color: props.color || undefined,
+    width: '1em',
+    height: '1em',
   }
 }
 </script>
 
-<style>
+<!-- <style>
 svg {
   height: 1em;
   width: 1em;
 }
-</style>
+</style> -->
