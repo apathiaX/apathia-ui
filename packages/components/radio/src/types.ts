@@ -1,7 +1,7 @@
-import type { Ref } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
 
 export interface RadioProp {
-  value?: number | string | boolean
+  value: number | string | boolean
   modelValue?: string | number | boolean
   disabled?: boolean
 }
@@ -21,11 +21,10 @@ export type RadioEmits = {
   change: [value: string | number | boolean]
 }
 
-export interface RadioUseProps {
-  disabled: Ref<boolean>
-  modelValue: Ref<string | number | boolean>
-  value: Ref<string | number | boolean>
-  groupState: Ref<GroupData> | null
-  changeHandler: (val: string | number | boolean) => void
+export interface RadioUseReturn {
   inputEl: Ref<HTMLInputElement | null>
+  isDisabled: ComputedRef<boolean>
+  isSelected: ComputedRef<boolean>
+  value: Ref<string | number | boolean>
+  handleChange: () => void
 }

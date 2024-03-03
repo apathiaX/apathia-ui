@@ -1,4 +1,4 @@
-import { tw, css, apply, style, generateColor } from '@apathia/theme'
+import { tw, css, style, generateColor } from '@apathia/theme'
 
 export const getCheckboxStyles = () => ({
   wrapper: style`inline-flex mr-2 p-0 list-none cursor-pointer items-center text-sm`,

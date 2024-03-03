@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, provide, toRefs } from 'vue'
+import { computed, provide } from 'vue'
 import { useInjectProp } from '@apathia/shared'
 import type { RadioEmits, RadioGroupProps } from './types'
 
@@ -20,11 +20,11 @@ const props = withDefaults(defineProps<RadioGroupProps>(), {
 
 const emit = defineEmits<RadioEmits>()
 
-const { modelValue, disabled } = toRefs(props)
+const disabled = computed(() => props.disabled)
 
 const isDisabled = useInjectProp('FormDisabled', false, disabled)
 const groupState = computed(() => ({
-  value: modelValue.value,
+  value: props.modelValue,
   disabled: isDisabled.value,
 }))
 
@@ -34,4 +34,3 @@ provide('changeHandler', (val: string | number | boolean) => {
   emit('change', val)
 })
 </script>
-./types

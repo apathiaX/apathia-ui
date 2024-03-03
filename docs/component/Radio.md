@@ -6,7 +6,8 @@
 
 单选框不应该有太多的可选项， 如果你有很多的可选项你应该使用选择框而不是单选框。
 
-要使用`Radio`组件，只需要设置`v-model`绑定变量， 选中意味着变量的值为相应`Radio` `value` 属性的值， `label`可以是`String`、`Number `或 `Boolean`。
+要使用`Radio`组件，只需要设置`v-model`绑定变量， 选中意味着变量的值为相应 Radio 的 `value` 属性值， `value`可以是`String`、`Number `或 `Boolean`。
+
 :::demo
 
 <<< @/demos/radio/Basic.vue
@@ -22,6 +23,16 @@ disabled 属性可以用来控制单选框的禁用状态。
 :::demo
 
 <<< @/demos/radio/Disabled.vue
+
+:::
+
+## 单选框组
+
+用于在多个互斥选项中进行选择的场景
+
+:::demo 通过 `ap-radio-group` 结合 `ap-radio`，为 `ap-radio-group` 绑定 `v-model` ，再为 `ap-radio` 设置 `value` 属性值。通过 `change` 事件进行响应。
+
+<<< @/demos/radio/Group.vue
 
 :::
 

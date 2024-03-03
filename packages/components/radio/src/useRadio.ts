@@ -1,43 +1,63 @@
-import { computed, isRef, Ref, unref } from 'vue'
-import type { SetupContext } from 'vue'
-import type { RadioEmits, RadioUseProps } from './types'
+import {
+  computed,
+  inject,
+  isRef,
+  ref,
+  Ref,
+  unref,
+  type SetupContext,
+} from 'vue'
+import { noop, useInjectProp } from '@apathia/shared'
+import type { GroupData, RadioEmits, RadioProp, RadioUseReturn } from './types'
 
-export default function (
-  userProps: RadioUseProps,
+export default function useRadio(
+  useProps: RadioProp,
   emit: SetupContext<RadioEmits>['emit'],
-): {
-  isSelected: Ref<boolean>
-  handleChange: () => void
-} {
-  const { disabled, modelValue, value, groupState, changeHandler, inputEl } =
-    userProps
+): RadioUseReturn {
+  const propsDisabled = computed(() => useProps.disabled)
+  const formDisabled = useInjectProp('FormDisabled', false, propsDisabled)
+  const groupState = inject<null | Ref<GroupData>>('groupState', null)
 
-  let isSelected
+  const disabled = computed(() => {
+    return (
+      formDisabled.value || (groupState && groupState.value.disabled) || false
+    )
+  })
 
-  if (isRef(groupState)) {
-    // 根据RadioGroup的值更新selected状态
-    isSelected = computed(() => unref(groupState).value === value.value)
-  } else {
-    // 根据自身的值更新selected状态
-    isSelected = computed(() => modelValue.value === value.value)
-  }
+  const inputEl = ref<HTMLInputElement | null>(null)
+
+  const changeHandler = inject<(val: string | number | boolean) => void>(
+    'changeHandler',
+    noop,
+  )
+
+  const isSelected = computed(() =>
+    isRef(groupState)
+      ? unref(groupState).value === useProps.value
+      : useProps.modelValue === useProps.value,
+  )
+
+  const radioValue = computed(() => useProps.value)
 
   const select = () => {
     if (disabled.value) {
       return
     }
 
-    emit('update:modelValue', value.value)
+    emit('update:modelValue', radioValue.value)
 
     const input = inputEl && unref(inputEl)
     input && input.focus()
 
-    emit('change', value.value)
-    changeHandler(value.value)
+    emit('change', radioValue.value)
+    changeHandler(radioValue.value)
   }
 
   return {
+    inputEl,
     isSelected,
+    isDisabled: disabled,
+    value: radioValue,
     handleChange: select,
   }
 }
