@@ -13,7 +13,7 @@
     <ap-form-item>
       <ap-input v-model="inputVal3">
         <template #prepend>
-          <ap-select v-model="selectVal1">
+          <ap-select v-model="selectVal1" style="margin: 0 -0.5rem">
             <ap-option value="">请选择</ap-option>
             <ap-option value="baidu">baidu</ap-option>
             <ap-option value="google">google</ap-option>
@@ -30,7 +30,7 @@
           <ap-icon> <Search /></ap-icon>
         </template>
         <template #append>
-          <ap-select v-model="selectVal2">
+          <ap-select v-model="selectVal2" style="margin: 0 -0.5rem">
             <ap-option value="">请选择</ap-option>
             <ap-option value="baidu">baidu</ap-option>
             <ap-option value="google">google</ap-option>

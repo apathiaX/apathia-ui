@@ -1,5 +1,5 @@
 <template>
-  <i :style="styles()" v-bind="$attrs">
+  <i :class="iconStyle" :style="styles()" v-bind="$attrs">
     <slot></slot>
   </i>
 </template>
@@ -7,6 +7,7 @@
 <script lang="ts" setup>
 import { isString } from '@apathia/shared'
 import type { IconProps } from './types'
+import { css, tw } from '@apathia/theme';
 
 defineOptions({
   name: 'ApIcon',
@@ -29,11 +30,6 @@ const styles = () => {
     height: '1em',
   }
 }
-</script>
 
-<!-- <style>
-svg {
-  height: 1em;
-  width: 1em;
-}
-</style> -->
+const iconStyle = tw(css`svg{ height: 1em; width: 1em; }`)
+</script>

@@ -27,7 +27,10 @@ type InferRef<T extends Ref> = T extends Ref<infer K>
 
 export const getComputedStyle = <T extends Record<string, MaybeRef<any>>>(
   refs: T,
-  func: (p: { [P in keyof T]: InferRef<T[P]> }) => Record<string, string>,
+  func: (p: { [P in keyof T]: InferRef<T[P]> }) => Record<
+    string,
+    string | string[]
+  >,
 ) => {
   return computed(() => {
     const unrefProps = Object.keys(refs).reduce((acc, key) => {

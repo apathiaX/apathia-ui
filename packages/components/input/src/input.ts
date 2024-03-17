@@ -1,27 +1,109 @@
-import { style, apply, tw } from '@apathia/theme'
+import { style, generateColor } from '@apathia/theme'
 
-export const getInputStyles = () => {
-  const prependAndAppend = apply`text(content-accent sm) px-2 inline-flex items-center bg-fill-gray`
-  const commonIcon = apply`absolute self-center text-fill-secondary`
-  const interactiveIcon = apply`${commonIcon}cursor-pointer hover:(text-fill-accent)`
+export const getInputStyles = ({
+  disabled,
+  active,
+  withPrepend,
+  withAppend,
+  size,
+}: {
+  disabled?: boolean
+  active: boolean
+  withPrepend: boolean
+  withAppend: boolean
+  size: 'sm' | 'md' | 'lg'
+}): {
+  container: string[]
+  input: string[]
+  wrapper: string[]
+  prepend: string[]
+  append: string[]
+  icon: string[]
+  textarea: string[]
+} => {
+  const prependAndAppend = style`${generateColor(
+    'text',
+    'text',
+    'regular',
+  )} inline-flex px-2 items-center ${generateColor('bg', 'bg', 'secondary')}`
+
+  const baseStyle = {
+    container: style`relative flex w-full`,
+    wrapper: style`relative flex flex-grow-1 py-1.5 px-2.5`,
+    input: style`w-full h-full block outline-none`,
+    'input-empty': style`rounded`,
+    'input-prepend': style`rounded-r`,
+    'input-append': style`rounded-l`,
+    'input-all': style`rounded-none`,
+    prepend: style`rounded-l text-center shadow-input-light-prepend dark:shadow-input-dark-prepend`,
+    append: style`rounded-r text-center shadow-input-light-append dark:shadow-input-dark-append`,
+    disabled: style`cursor-not-allowed`,
+    icon: style`flex items-center cursor-pointer gap-1`,
+  }
+
+  const sizeStyle = {
+    sm: style`h-6 text-xs px-2`,
+    md: style`h-8 text-sm px-2.5`,
+    lg: style`h-10 text-sm px-3`,
+  }
+
+  const color = {
+    container: style`${generateColor('text', 'text', 'regular')}`,
+    wrapper: style`shadow-input-light dark:shadow-input-dark hover:shadow-input-light-hover dark:hover:shadow-input-dark-hover ${generateColor(
+      'bg',
+      'bg',
+      'primary',
+    )}`,
+    active: style`shadow-input-active-light dark:shadow-input-active-dark bg-transparent`,
+    disabled: style`${generateColor(
+      'text',
+      'text',
+      'disabled',
+    )} ${generateColor(
+      'bg',
+      'bg',
+      'secondary',
+    )} shadow-input-light-disabled dark:shadow-input-dark-disabled`,
+  }
+
+  const containerStyle = [baseStyle.container, color.container, sizeStyle[size]]
+  const wrapperStyle = [baseStyle.wrapper]
+  const inputStyle = [baseStyle.input]
+  const textareaStyle = [
+    baseStyle.container,
+    baseStyle.wrapper,
+    color.container,
+    baseStyle['input-empty'],
+  ]
+  if (disabled) {
+    inputStyle.push(baseStyle.disabled)
+    wrapperStyle.push(color.disabled)
+    textareaStyle.push(color.disabled)
+  } else if (active) {
+    wrapperStyle.push(color.active)
+    textareaStyle.push(color.active)
+  } else {
+    wrapperStyle.push(color.wrapper)
+    textareaStyle.push(color.wrapper)
+  }
+
+  if (withPrepend && withAppend) {
+    wrapperStyle.push(baseStyle['input-all'])
+  } else if (withAppend && !withPrepend) {
+    wrapperStyle.push(baseStyle['input-append'])
+  } else if (withPrepend && !withAppend) {
+    wrapperStyle.push(baseStyle['input-prepend'])
+  } else {
+    wrapperStyle.push(baseStyle['input-empty'])
+  }
 
   return {
-    inputContainer: style`relative flex w-full h-8 border rounded border-line-accent bg-content-white shadow`,
-    inputWrapper: style`relative flex rounded flex-grow-1 bg-content-white`,
-    input: style`w-full h-full rounded block text-sm outline-none py-1.5 pl-2`,
-
-    withPrefix: style`pl-9`,
-    disabled: style(
-      'cursor-not-allowed pointer-events-none bg-info-forbid placeholder-content-secondary text-content-neutral',
-    ),
-    active: style`border-brand-primary`,
-
-    prepend: tw`${prependAndAppend}${apply`rounded-l border-r-0`}`,
-
-    clearableIcon: tw`${interactiveIcon}${apply`right-2`}`,
-    clearWithSuffix: tw`${interactiveIcon}${apply`right-8`}`,
-    append: tw`${prependAndAppend}${apply`rounded-r`}`,
-
-    suffixBtn: tw`${interactiveIcon}${apply`right-2`}`,
+    container: containerStyle,
+    wrapper: wrapperStyle,
+    input: inputStyle,
+    append: [prependAndAppend, baseStyle.append],
+    prepend: [prependAndAppend, baseStyle.prepend],
+    icon: [baseStyle.icon],
+    textarea: textareaStyle,
   }
 }

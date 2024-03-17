@@ -1,5 +1,5 @@
 <template>
-  <ap-input v-model="value" clearable />
+  <ap-input v-model="value" clearable placeholder="请输入"> </ap-input>
 </template>
 
 <script lang="ts" setup>

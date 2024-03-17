@@ -3,5 +3,5 @@
     <Coordinate />
   </ap-icon>
   <br />
-  <Failed />
+  <Failed style="width: 1em; font-size: 30px"/>
 </template>

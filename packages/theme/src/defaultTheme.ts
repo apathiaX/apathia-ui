@@ -198,7 +198,7 @@ export const defaultTheme = {
           top: '#1c2023',
         },
         dark: {
-          primary: '#14171a',
+          primary: '#141414',
           secondary: '#1c2023',
           ground: '#2e3238',
           top: '#f9f9f9',
@@ -224,7 +224,41 @@ export const defaultTheme = {
       xl: ['1.125rem', { lineHeight: '1.625rem' }], // 标题大 fontsize: 18px; line-height: 26px;
       '2xl': ['1.5rem', { lineHeight: '2.25rem' }], // 超大标题 fontsize: 24px; line-height: 36px;
     },
+    boxShadowColor: {
+      primary: {
+        dark: {
+          default: '#4d86f7',
+          hover: '#3e72ed',
+          disabled: '#3d66d1',
+          active: '#77a4f7',
+          fill: '#2c3f72',
+        },
+        light: {
+          default: '#3e72ed',
+          hover: '#4d86f7',
+          disabled: '#a6c4f7',
+          active: '#3260c9',
+          fill: '#ebf3ff',
+        },
+      },
+    },
     boxShadow: {
+      'input-light': '0 0 0 1px #dcdfe6 inset',
+      'input-dark': '0 0 0 1px #4C4D4F inset',
+      'input-active-light': '0 0 0 1px #409eff inset',
+      'input-active-dark': '0 0 0 1px #409eff inset',
+      'input-light-hover': '0 0 0 1px #c0c4cc inset',
+      'input-dark-hover': '0 0 0 1px #6C6E72 inset',
+      'input-light-disabled': '0 0 0 1px #e4e7ed inset',
+      'input-dark-disabled': '0 0 0 1px #414243 inset',
+      'input-light-append':
+        '0 1px 0 0 #dcdfe6 inset, 0 -1px 0 0 #dcdfe6 inset, -1px 0 0 0 #dcdfe6 inset',
+      'input-dark-append':
+        '0 1px 0 0 #4C4D4F inset, 0 -1px 0 0 #4C4D4F inset, -1px 0 0 0 #4C4D4F inset',
+      'input-light-prepend':
+        '1px 0 0 0 #dcdfe6 inset, 0 1px 0 0 #dcdfe6 inset, 0 -1px 0 0 #dcdfe6 inset',
+      'input-dark-prepend':
+        '1px 0 0 0 #4C4D4F inset, 0 1px 0 0 #4C4D4F inset, 0 -1px 0 0 #4C4D4F inset',
       sm: '0px 1px 2px rgba(0, 0, 0, 0.3);',
       DEFAULT:
         '0px 0px 2px rgba(0, 0, 0, 0.04), 0px 4px 10px rgba(0, 0, 0, 0.08)',

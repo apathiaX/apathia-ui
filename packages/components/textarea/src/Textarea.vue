@@ -64,4 +64,3 @@ const attrs = computed(
     } as TextareaHTMLAttributes),
 )
 </script>
-./types

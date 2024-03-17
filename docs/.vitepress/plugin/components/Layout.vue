@@ -314,6 +314,7 @@ html.dark .demo-block.hover {
   border-radius: 4px;
   border: 1px solid var(--vp-code-copy-code-border-color);
   cursor: pointer;
+  padding: 6px;
   color: var(--vp-code-lang-color);
   background-color: var(--vp-code-copy-code-bg);
   transition: border-color 0.25s, background-color 0.25s, opacity 0.25s;

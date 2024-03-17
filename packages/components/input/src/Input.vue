@@ -1,50 +1,62 @@
 <template>
+  <div v-if="type === 'textarea'">
+    <textarea
+      ref="inputRef"
+      :class="styles.textarea"
+      v-model="inputVal"
+      v-bind="attrs"
+      :disabled="!!disableInput"
+      :rows="rows"
+      @input="handleInput"
+      @blur="() => (activeVal = false)"
+      @focus="() => (activeVal = true)"
+    />
+  </div>
   <div
-    :class="[
-      {
-        [styles.inputContainer]: true,
-        [styles.active]: activeVal,
-        [styles.disabled]: !!disableInput,
-      },
-      $attrs.class,
-    ]"
-    :style="($attrs.style as StyleValue)"
+    v-else
+    :class="[...styles.container, attrs.class]"
+    :style="(attrs.style as StyleValue)"
   >
-    <span v-if="withPrepend" :class="styles.prepend">
+    <div v-if="withPrepend" :class="styles.prepend">
       <slot name="prepend"></slot>
-    </span>
-    <div :class="styles.inputWrapper">
+    </div>
+    <div :class="styles.wrapper">
+      <span v-if="prefixIcon || slots.prefix" :class="styles.icon">
+        <slot name="prefix">
+          <component :is="prefixIcon" />
+        </slot>
+      </span>
       <input
         ref="inputRef"
         v-model="inputVal"
         v-bind="attrs"
         :type="type"
-        :class="[
-          {
-            [styles.input]: true,
-            [styles.disabled]: !!disableInput,
-          },
-          inputClass,
-        ]"
+        :class="[...styles.input, inputClass]"
         :disabled="!!disableInput"
+        :placeholder="placeholder"
         @input="handleInput"
         @blur="() => (activeVal = false)"
         @focus="() => (activeVal = true)"
       />
-      <ApIcon
-        v-if="showClearIcon"
-        :class="[styles.clearableIcon, search ? styles.clearWithSuffix : '']"
-        @click.stop="clear"
-      >
-        <Close />
-      </ApIcon>
-      <ApIcon v-if="search" :class="styles.suffixBtn" @click="onSearch">
-        <Search />
-      </ApIcon>
+      <span :class="styles.icon">
+        <ApIcon
+          v-if="showClearIcon"
+          :class="[styles.clearableIcon, search ? styles.clearWithSuffix : '']"
+          @click.stop="clear"
+        >
+          <CloseIcon />
+        </ApIcon>
+        <ApIcon v-if="search" :class="styles.suffixBtn" @click="onSearch">
+          <SearchIcon />
+        </ApIcon>
+        <slot name="suffix">
+          <component v-if="suffixIcon" :is="suffixIcon" />
+        </slot>
+      </span>
     </div>
-    <span v-if="withAppend" :class="styles.append">
+    <div v-if="withAppend" :class="styles.append">
       <slot name="append"></slot>
-    </span>
+    </div>
   </div>
 </template>
 
@@ -61,7 +73,9 @@ import {
 } from 'vue'
 import { useInjectProp } from '@apathia/shared'
 import { ApIcon } from '@apathia/components/icon'
-import { Close, Search } from '@apathia/icons-vue'
+import { getComputedStyle } from '@apathia/theme'
+import CloseIcon from '../icons/CloseIcon.vue'
+import SearchIcon from '../icons/SearchIcon.vue'
 import { getInputStyles } from './input'
 import type { InputEmits, InputProps } from './types'
 
@@ -77,6 +91,9 @@ const props = withDefaults(defineProps<InputProps>(), {
   search: false,
   clearable: false,
   disabled: undefined,
+  placeholder: '',
+  size: 'md',
+  rows: 3,
 })
 
 const emit = defineEmits<InputEmits>()
@@ -97,20 +114,23 @@ const showClearIcon = computed(
   () => props.clearable && props.modelValue && !disableInput.value,
 )
 
-// excludes style and class
 const attrs = useAttrs()
 
 const inputVal = computed({
   get: () => props.modelValue as string,
   set: (val: string) => {
     const strWidth = stringwidth(val)
+    const value = props.formatter && props.parser ? props.parser(val) : val
     if (props.maxWords !== undefined && strWidth > 2 * props.maxWords) {
       if (inputRef.value) {
-        inputRef.value.value = getStringByWords(val, props.maxWords * 2)
+        const processedValue = getStringByWords(value, props.maxWords * 2)
+        inputRef.value.value = props.formatter
+          ? props.formatter(processedValue)
+          : processedValue
       }
       return
     }
-    emit('update:modelValue', val)
+    emit('update:modelValue', props.formatter ? props.formatter(value) : value)
   },
 })
 const handleInput = (e: Event) => {
@@ -146,5 +166,14 @@ const clear = () => {
   })
 }
 
-const styles = getInputStyles()
+const styles = getComputedStyle(
+  {
+    withAppend,
+    withPrepend,
+    disabled: disableInput,
+    active: activeVal,
+    size: props.size,
+  },
+  getInputStyles,
+)
 </script>
