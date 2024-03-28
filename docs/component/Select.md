@@ -4,7 +4,7 @@
 
 ## 基础用法
 
-适用广泛的基础单选 v-model 的值为当前被选中的 option 的 value 属性值
+适用广泛的基础单选 `v-model` 的值为当前被选中的 `option` 的 `value` 属性值
 
 :::demo
 
@@ -45,9 +45,9 @@
 
 ## 自定义选项
 
-自定义单个选项怎么被渲染
+自定义每个选项如何被渲染
 
-将自定义的 HTML 模板插入 option 的 slot 中
+将自定义的 `HTML` 模板插入 `option` 的 `slot` 中
 
 :::demo
 
@@ -59,15 +59,15 @@
 
 可以利用筛选功能快速查找选项
 
-为 select 添加 filterable 属性即可启用筛选功能。 默认情况下，Select 会找出所有 label 属性包含输入值的选项。
+为 `Select` 添加 `filterable` 属性即可启用筛选功能。 默认情况下，`Select` 会找出所有 `label` 属性包含输入值的选项。
 ::: info 自定义搜索
-如果希望使用其他的搜索逻辑，可以通过传入一个 query-change 来实现。 query-change 为一个 Function，它会在输入值发生变化时调用，参数为当前输入值。
+如果希望使用其他的搜索逻辑，可以通过传入一个 `query-change` 来实现。 query-change 为一个 Function，它会在输入值发生变化时调用，参数为当前输入值。
 :::
 ::: tip 远程查询
-如果需要远程查询，可以通过在 query-change 中请求远程数据
+如果需要远程查询，可以通过在 `query-change` 中请求远程数据
 :::
 ::: info 自定义搜索插槽
-可以通过 loading 、 no-result 、 empty 三个插槽来自定义三种情况的显示
+可以通过 `loading` 、 `no-result` 、 `empty` 三个插槽来自定义三种情况的显示
 :::
 
 :::demo
@@ -78,23 +78,25 @@
 
 ## Select Props
 
-| prop        |               说明               |                    类型 |  默认值 |
-| ----------- | :------------------------------: | ----------------------: | ------: |
-| v-model     |            控制选择值            | String, Number, Boolean |      无 |
-| valueKey    | 选择对象时 区分不同的关键 key 值 |                  String |   value |
-| placeholder |              提示值              |                  String | 请选择… |
-| filterable  | 是否启用查询（前端输入查询功能） |                 Boolean |   false |
-| clearable   |         是否启用清除按钮         |                 Boolean |   false |
-| emptyText   |       选项为空时展现的文本       |                  String |      '' |
-| disabled    |         是否启用禁用开关         |                 Boolean |   false |
-| maxHeight   |        下拉展示框最大高度        |          Number, String |     235 |
-| isLoading   |         是否开启加载状态         |                 Boolean |   false |
+| prop        |               说明               |                    类型 |   默认值 |
+| ----------- | :------------------------------: | ----------------------: | -------: |
+| modelValue  |            控制选择值            | String, Number, Boolean |       无 |
+| valueKey    | 选择对象时 区分不同的关键 key 值 |                  String |    value |
+| placeholder |              提示值              |                  String |  请选择… |
+| filterable  | 是否启用查询（前端输入查询功能） |                 Boolean |    false |
+| clearable   |         是否启用清除按钮         |                 Boolean |    false |
+| emptyText   |       选项为空时展现的文本       |                  String |       '' |
+| disabled    |         是否启用禁用开关         |                 Boolean |    false |
+| maxHeight   |        下拉展示框最大高度        |          Number, String |      235 |
+| isLoading   |         是否开启加载状态         |                 Boolean |    false |
+| placement   |           下拉框的位置           |                  String | 'bottom' |
+| size        |             组件大小             |        'sm', 'md', 'lg' |     'md' |
 
 ## Select 插槽
 
 | 插槽名    |      说明       | 子标签 |
 | --------- | :-------------: | -----: |
-| -         | Option 组件列表 | Option |
+| default   | Option 组件列表 | Option |
 | loading   |     加载中      |      - |
 | no-result |  查询没有结果   |      - |
 | empty     |  远程搜索为空   |      - |

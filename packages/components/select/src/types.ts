@@ -62,6 +62,7 @@ export interface SelectProps {
   maxHeight?: number | string
   isLoading?: boolean
   placement?: string
+  size?: 'sm' | 'md' | 'lg'
 }
 
 export type SelectEmits = {

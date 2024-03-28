@@ -1,15 +1,29 @@
 <template>
-  <ap-select v-model="selectVal">
-    <ap-option v-for="item in options" :key="item.value" :value="item.value">{{
-      item.label
-    }}</ap-option>
-  </ap-select>
+  <div class="container">
+    <ap-select v-model="selectLGVal" size="lg">
+      <ap-option v-for="item in options" :key="item.value" :value="item.value">
+        {{ item.label }}
+      </ap-option>
+    </ap-select>
+    <ap-select v-model="selectVal">
+      <ap-option v-for="item in options" :key="item.value" :value="item.value">
+        {{ item.label }}
+      </ap-option>
+    </ap-select>
+    <ap-select v-model="selectSMVal" size="sm">
+      <ap-option v-for="item in options" :key="item.value" :value="item.value">
+        {{ item.label }}
+      </ap-option>
+    </ap-select>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 
 const selectVal = ref('')
+const selectSMVal = ref('')
+const selectLGVal = ref('')
 const options = [
   {
     value: 'Option1',
@@ -33,3 +47,10 @@ const options = [
   },
 ]
 </script>
+
+<style scoped>
+.container {
+  display: flex;
+  gap: 20px;
+}
+</style>

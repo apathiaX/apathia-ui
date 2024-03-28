@@ -1,13 +1,15 @@
 <template>
-  <ap-select v-model="selectVal">
-    <ap-option
-      v-for="item in options"
-      :disabled="item.disabled"
-      :key="item.value"
-      :value="item.value"
-      >{{ item.label }}</ap-option
-    >
-  </ap-select>
+  <div class="container">
+    <ap-select v-model="selectVal">
+      <ap-option
+        v-for="item in options"
+        :disabled="item.disabled"
+        :key="item.value"
+        :value="item.value"
+        >{{ item.label }}</ap-option
+      >
+    </ap-select>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -38,3 +40,9 @@ const options = [
   },
 ]
 </script>
+
+<style>
+.container {
+  display: flex;
+}
+</style>

@@ -1,9 +1,13 @@
 <template>
-  <div>
-    <p>
-      你输入的是：
-      <span style="color: red">{{ showData }}</span>
-    </p>
+  <div class="container">
+    <div>
+      当前输入的筛选内容是：
+      <span>{{ showData }}</span>
+    </div>
+    <div>
+      当前选择的是：
+      <span>{{ selectVal }}</span>
+    </div>
     <ap-select v-model="selectVal" filterable @query-change="handleChange">
       <ap-option v-for="item in states" :value="item" :key="item">{{
         item
@@ -75,3 +79,11 @@ const handleChange = val => {
   showData.value = val
 }
 </script>
+
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+</style>

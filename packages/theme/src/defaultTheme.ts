@@ -217,6 +217,7 @@ export const defaultTheme = {
       transparent: 'transparent',
     },
     fontSize: {
+      ss: ['0.625rem', { lineHeight: '0.875rem' }], // 辅助文字 fontsize: 10px; line-height: 15px;
       xs: ['0.75rem', { lineHeight: '1.125rem' }], // 辅助文字 fontsize: 12px; line-height: 18px;
       sm: ['0.8125rem', { lineHeight: '1.25rem' }], // 正文 fontsize: 13px; line-height: 20px;
       base: ['0.875rem', { lineHeight: '1.375rem' }], // 正文大 fontsize: 14px; line-height: 22px;
