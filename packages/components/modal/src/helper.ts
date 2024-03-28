@@ -7,7 +7,7 @@ export function hideScrollbar() {
   if (html.scrollHeight - html.clientHeight > 0) {
     // 判断是否会出现滚动条
     document.body.style.overflow = 'hidden'
-    document.body.style.width = 'calc(100% - 15px)'
+    // document.body.style.width = 'calc(100% - 15px)'
   }
 }
 

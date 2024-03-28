@@ -4,26 +4,16 @@
 
 ## 基础用法
 
-> 弹出一个对话框
+弹出一个对话框，适合定制性更强的场景
 
-### template 用法（不推荐）
+需要设置 `model-value(v-model)` 属性，它接收 `Boolean`，当为 `true` 时显示 `Modal`。
 
-::: tip
-modal 模态窗组件推荐使用 function 方式.有益于逻辑抽离和后续维护。
-:::
+::: tip 推荐
+`modal` 模态窗组件推荐使用 `function` 方式，有益于逻辑抽离和后续维护。
 
-> 需要设置 model-value / v-model 属性，它接收 Boolean，当为 true 时显示 Modal。
-
-::: demo
-<<< @/demos/modal/Basic.vue
-:::
-
-### function 用法（推荐）
-
-::: tip
 使用 `function` 方式需要全局注册使用 `modalInstall` 方法
 
-```js
+```ts
 import { modalInstall } from 'apathia-ui'
 app.use(modalInstall)
 ```
@@ -31,14 +21,12 @@ app.use(modalInstall)
 :::
 
 ::: demo
-<<< @/demos/modal/BasicFn.vue
+<<< @/demos/modal/Basic.vue
 :::
 
 ## 自定义宽度
 
-可以通过 width 设置宽度
-
-### template 用法
+可以通过 `width` 自定义宽度
 
 :::demo
 
@@ -46,17 +34,9 @@ app.use(modalInstall)
 
 :::
 
-### function 用法
-
-:::demo
-
-<<< @/demos/modal/WidthFn.vue
-
-:::
-
 ## 关闭方式
 
-点击蒙层关闭 设置 maskClosable 或 'esc'关闭弹窗(默认)
+点击蒙层关闭 设置 `maskClosable` 或 `esc` 关闭弹窗(默认)
 
 :::demo
 
@@ -68,23 +48,17 @@ app.use(modalInstall)
 
 可以完全自定义 header 的头部
 
-### template 用法
-
 template 方式通过 `header` 插槽实现，同时返回关闭 modal 的函数 `close`
+
+function 方式通过 `renderHeader` 方法实现, 返回值为 `h` 函数 、`字符` 、`JSX` 等
 
 ::: demo
 <<< @/demos/modal/Custom.vue
 :::
 
-### function 用法
-
-function 方式通过 `renderHeader` 方法实现, 返回值为 h 函数 、字符 、JSX 等
-
-::: demo
-<<< @/demos/modal/CustomFn.vue
-:::
-
 ## 嵌套使用
+
+可以在一个对话框中再次打开一个对话框
 
 :::demo
 

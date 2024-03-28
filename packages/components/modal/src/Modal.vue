@@ -1,22 +1,25 @@
 <template>
   <template v-if="isTemplate">
     <Teleport to=".apathia-modal">
-      <Transition v-bind="transitionClass" @after-leave="showScrollbar">
-        <div v-if="modelValue" :class="durationClass">
-          <div ref="shadeRef" :class="shadeClass">
-            <div ref="modalRef" :style="widthStyle" :class="modalClass">
-              <div :class="modalHeaderClass">
+      <Transition
+        v-bind="styles.transitionClass[0]"
+        @after-leave="showScrollbar"
+      >
+        <div v-if="modelValue" :class="styles.duration">
+          <div ref="shadeRef" :class="styles.shade">
+            <div ref="modalRef" :style="widthStyle" :class="styles.modal">
+              <div :class="styles.header">
                 <slot name="header" :close="close">
                   <div>
-                    <p :class="titleClass">{{ title }}</p>
-                    <p v-if="subTitle" :class="subTitleClass">{{ subTitle }}</p>
+                    <p :class="styles.title">{{ title }}</p>
+                    <p v-if="subTitle" :class="styles.title">{{ subTitle }}</p>
                   </div>
-                  <span v-if="showClose" :class="delIconClass" @click="close"
+                  <span v-if="showClose" :class="styles.delIcon" @click="close"
                     >✕</span
                   >
                 </slot>
               </div>
-              <div :class="modalContentClass">
+              <div :class="styles.content">
                 <slot :close="close"></slot>
               </div>
             </div>
@@ -26,17 +29,25 @@
     </Teleport>
   </template>
   <template v-else>
-    <div v-show="modelValue" ref="shadeRef" :class="shadeClass">
-      <div ref="modalRef" :style="widthStyle" :class="modalClass">
-        <CustomRender v-if="renderHeader" :render="renderHeader" />
-        <div v-else :class="modalHeaderClass">
+    <div v-show="modelValue" ref="shadeRef" :class="styles.shade">
+      <div ref="modalRef" :style="widthStyle" :class="styles.modal">
+        <CustomRender
+          v-if="renderHeader"
+          :render="
+            () =>
+              isFunction(renderHeader) && renderHeader
+                ? renderHeader({ close })
+                : renderHeader
+          "
+        />
+        <div v-else :class="styles.header">
           <div>
-            <p :class="titleClass">{{ title }}</p>
-            <p v-if="subTitle" :class="subTitleClass">{{ subTitle }}</p>
+            <p :class="styles.title">{{ title }}</p>
+            <p v-if="subTitle" :class="styles.subTitle">{{ subTitle }}</p>
           </div>
-          <span v-if="showClose" :class="delIconClass" @click="close">✕</span>
+          <span v-if="showClose" :class="styles.delIcon" @click="close">✕</span>
         </div>
-        <div :class="modalContentClass">
+        <div :class="styles.content">
           <CustomRender :render="render" />
         </div>
       </div>
@@ -46,7 +57,7 @@
 
 <script lang="ts" setup>
 import { SetupContext, useSlots } from 'vue'
-import { CustomRender } from '@apathia/shared'
+import { CustomRender, isFunction } from '@apathia/shared'
 import { showScrollbar } from './helper'
 import { createModal } from './createModal'
 import { getModalStyle } from './modal'
@@ -79,15 +90,5 @@ const { shadeRef, modalRef, widthStyle, close, isTemplate } = createModal(
   { emit, slots },
 )
 
-const {
-  shadeClass,
-  modalClass,
-  modalHeaderClass,
-  delIconClass,
-  modalContentClass,
-  titleClass,
-  subTitleClass,
-  transitionClass,
-  durationClass,
-} = getModalStyle()
+const styles = getModalStyle()
 </script>

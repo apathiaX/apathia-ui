@@ -1,11 +1,11 @@
-import type { RenderCustom } from '@apathia/shared'
+import type { RenderFn } from '@apathia/shared'
 
 export type ModalProps<T extends Record<string, any> = Record<string, any>> = {
   modelValue?: boolean
   title?: string
   subTitle?: string
-  render?: RenderCustom
-  renderHeader?: RenderCustom<T>
+  render?: RenderFn | string
+  renderHeader?: RenderFn<{ close: () => void }> | string
   top?: number | string
   width?: number | string
   showClose?: boolean
