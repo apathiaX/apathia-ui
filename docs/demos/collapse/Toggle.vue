@@ -1,10 +1,16 @@
 <template>
   <ap-collapse>
     <template #toggleHeader="{ show, toggleShow }">
-      <div style="display: flex; justify-content: flex-end">
-        <ap-button secondary @click="toggleShow()"
-          >是否展开{{ show }}</ap-button
+      <div class="toggle-header" @click="toggleShow()">
+        <div>点击展开</div>
+        <ap-icon
+          :style="{
+            transform: `rotate(${show ? 90 : 0}deg)`,
+            transition: 'all 400ms',
+          }"
         >
+          <ArrowRight />
+        </ap-icon>
       </div>
     </template>
     <p>
@@ -12,3 +18,17 @@
     </p>
   </ap-collapse>
 </template>
+
+<style scoped>
+.toggle-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #ebeef5;
+  border-bottom: 1px solid #ebeef5;
+  padding: 10px 0;
+  cursor: pointer;
+  color: #303133;
+  font-size: 13px;
+}
+</style>
