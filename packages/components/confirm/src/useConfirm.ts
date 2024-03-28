@@ -1,5 +1,9 @@
 import { h } from 'vue'
-import { useModal, type ModalProps } from '@apathia/components/modal'
+import {
+  modal,
+  removeModal as remove,
+  type ModalProps,
+} from '@apathia/components/modal'
 import Confirm from './Confirm.vue'
 import { ConfirmProps } from './types'
 
@@ -12,8 +16,6 @@ const defaultOptions = {
 }
 
 export function useConfirm() {
-  const { modal, remove } = useModal<ConfirmProps>()
-
   function confirm(options: ConfirmProps & ModalProps) {
     const {
       render,

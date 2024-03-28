@@ -1,11 +1,8 @@
 <template>
-  <div>
-    <ap-button @click="showConfirm">自定义footer</ap-button>
-    {{ confirmVal }}
-  </div>
+  <ap-button @click="showConfirm">自定义footer</ap-button>
 </template>
 
-<script lang="tsx" setup>
+<script lang="ts" setup>
 import { h, ref } from 'vue'
 import { useConfirm } from 'apathia-ui'
 
@@ -16,7 +13,12 @@ function showConfirm() {
   confirm({
     title: '确认',
     render: '内容',
-    renderFooter: () => <div>自定义 footer</div>,
+    renderFooter: props =>
+      h(
+        'div',
+        { onClick: () => props?.cancel && props.cancel() },
+        '自定义 footer',
+      ),
   })
     .then(() => {
       confirmVal.value = '确认'
