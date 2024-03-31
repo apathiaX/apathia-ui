@@ -1,5 +1,5 @@
 <template>
-  <ap-popper :content="content">
+  <ap-popper :content="content" trigger="hover" :show-arrow="false">
     <ap-button plain>Click</ap-button>
   </ap-popper>
 </template>

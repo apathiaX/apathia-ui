@@ -1,5 +1,5 @@
 <template>
-  <ap-popper v-model="visible" placement="bottom" trigger="manual">
+  <ap-popper v-model="visible" placement="top" trigger="manual">
     <ap-button @click="handleManual" plain>Click</ap-button>
     <template #content>
       <div>Some Content</div>

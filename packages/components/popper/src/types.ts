@@ -1,7 +1,14 @@
 import { Instance } from '@popperjs/core'
 import type { RenderCustom, RenderFn } from '@apathia/shared'
+import type { ComponentPublicInstance, Ref } from 'vue'
+
+export type RefType = Ref<HTMLElement | null>
+
+export type ElementType = RefType | ComponentPublicInstance | HTMLElement
 
 export type TriggerType = 'click' | 'hover' | 'focus' | 'manual'
+
+export type PlacementType = 'top' | 'bottom' | 'left' | 'right'
 
 export const placement = [
   'top',
@@ -27,7 +34,7 @@ export interface PopperProps {
   skidding?: number
   trigger?: TriggerType
   dark?: boolean
-  placement?: Placement
+  placement?: PlacementType
   content?: string | number
   transitionClass?: object
   showArrow?: boolean
@@ -39,6 +46,26 @@ export interface PopperProps {
   render?: RenderCustom
   target?: HTMLElement
   delayClose?: number
+}
+
+export interface PopperOption {
+  placement: Placement
+  skidding: number
+  distance: number
+  trigger: string
+  delay: number
+  disabled: boolean
+  component?: ComponentPublicInstance
+  showArrow?: boolean
+  modelValue?: boolean
+  target?: HTMLElement | RefType
+  delayClose?: number
+}
+
+export interface EmitOption {
+  emitVisible: (val: boolean) => void
+  emitHide: (val: boolean, instance: PopperInstance | null) => void
+  emitShow: (val: boolean, instance: PopperInstance | null) => void
 }
 
 export type PopperEmits = {

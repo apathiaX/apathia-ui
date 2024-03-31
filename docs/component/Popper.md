@@ -18,12 +18,12 @@
 ### functional 用法
 
 ::: tip
-使用 `function` 方式需要全局注册使用 `usePoppertip` 方法 <br>
+使用 `function` 方式需要全局注册使用 `usePopperTip` 方法 <br>
 更多使用方法参考 `https://popper.js.org/docs/v2/constructors/`
 
 ```js
-import { usePoppertip } from 'apathia-ui'
-app.use(usePoppertip)
+import { usePopperTip } from 'apathia-ui'
+app.use(usePopperTip)
 ```
 
 :::

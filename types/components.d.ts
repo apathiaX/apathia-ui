@@ -23,6 +23,7 @@ declare module 'vue' {
     'ap-modal': typeof import('@apathia/components')['ApModal']
     'ap-navbar': typeof import('@apathia/components')['ApNavbar']
     'ap-pagination': typeof import('@apathia/components')['ApPagination']
+    'ap-popper': typeof import('@apathia/components')['ApPopper']
     'ap-radio': typeof import('@apathia/components')['ApRadio']
     'ap-radio-group': typeof import('@apathia/components')['ApRadioGroup']
     'ap-scroll-container': typeof import('@apathia/components')['ApScrollContainer']

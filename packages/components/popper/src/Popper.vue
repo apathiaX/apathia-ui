@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!target" v-bind="$attrs" ref="target" :class="styles.popper">
+  <div v-if="!target" v-bind="$attrs" ref="targetRef" :class="styles.popper">
     <slot></slot>
   </div>
   <transition
@@ -11,10 +11,10 @@
       v-if="hasMounted"
       v-show="visibility"
       ref="contentRef"
-      :class="`${styles.content} ${popperClass}`"
+      :class="[...styles.content, popperClass]"
     >
       <CustomRender :render="render" />
-      <div v-show="showArrow" ref="arrowRef" :class="styles.arrowBase"></div>
+      <div v-show="showArrow" ref="arrowRef" :class="styles.arrow"></div>
     </div>
   </transition>
   <teleport v-else to=".apathia-popper" :disabled="!appendToBody">
@@ -23,25 +23,24 @@
         v-if="hasMounted"
         v-show="visibility"
         ref="contentRef"
-        :class="`${styles.content} ${popperClass}`"
+        :class="[...styles.content, popperClass]"
       >
         <slot name="content">
           {{ content }}
         </slot>
-        <div v-if="showArrow" ref="arrowRef" :class="styles.arrowBase"></div>
+        <div v-if="showArrow" ref="arrowRef" :class="styles.arrow"></div>
       </div>
     </transition>
   </teleport>
 </template>
 
 <script lang="ts" setup>
-import { computed, watch } from 'vue'
 import { CustomRender } from '@apathia/shared'
 import { usePopper } from './usePopper'
 import type { PopperEmits, PopperProps } from './types'
-import { defaultArrowStyles } from './popper'
+import { defaultArrowStyles, getPopperStyle } from './popper'
 import { Instance as PopperInstance } from '@popperjs/core'
-import { tw } from '@apathia/theme'
+import { getComputedStyle } from '@apathia/theme'
 
 defineOptions({
   name: 'ApPopper',
@@ -68,63 +67,29 @@ const props = withDefaults(defineProps<PopperProps>(), {
 })
 
 const emit = defineEmits<PopperEmits>()
-const {
-  contentRef,
-  arrowRef,
-  target,
-  visibility,
-  getArrowStyle,
-  hasMounted,
-  show,
-  close,
-  update,
-} = usePopper(props, {
-  emitVisible: (val: boolean) => {
-    emit('update:modelValue', val)
-  },
-  emitHide: (val: boolean, instance: PopperInstance | null) => {
-    emit('hide', val, instance)
-  },
-  emitShow: (val: boolean, instance: PopperInstance | null) => {
-    emit('show', val, instance)
-  },
-})
+const { contentRef, arrowRef, targetRef, visibility, hasMounted, update } =
+  usePopper(props, {
+    emitVisible: (val: boolean) => {
+      emit('update:modelValue', val)
+    },
+    emitHide: (val: boolean, instance: PopperInstance | null) => {
+      emit('hide', val, instance)
+    },
+    emitShow: (val: boolean, instance: PopperInstance | null) => {
+      emit('show', val, instance)
+    },
+  })
 
 defineExpose({
   update,
 })
 
-if (
-  props.trigger === 'manual' ||
-  props.trigger === 'hover' ||
-  props.trigger === 'click'
-) {
-  watch(
-    () => props.modelValue,
-    val => {
-      if (val !== undefined && !props.disabled) {
-        if (val) {
-          show()
-        } else {
-          close()
-        }
-      }
-    },
-  )
-}
-
 const handleAfterHide = () => {
   emit('afterHide')
 }
 
-const getArrowStyles = (dark: boolean) => {
-  if (dark) {
-    return getArrowStyle('content-white', 'content-primary', 'content-primary')
-  }
-  return getArrowStyle('content-accent', 'fill-white', 'fill-light')
-}
-const styles = computed(() => ({
-  popper: tw`inline-block`,
-  ...getArrowStyles(props.dark),
-}))
+const styles = getComputedStyle(
+  { dark: props.dark, placement: props.placement },
+  getPopperStyle,
+)
 </script>

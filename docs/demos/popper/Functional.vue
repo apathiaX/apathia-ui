@@ -3,25 +3,23 @@
   <ap-button ref="popperRef">Target</ap-button>
 </template>
 
-<script lang="tsx" setup>
-import { ref } from 'vue'
-import { usePoppertip } from 'apathia-ui'
+<script lang="ts" setup>
+import { h, ref } from 'vue'
+import { usePopperTip } from 'apathia-ui'
 
-const { popper } = usePoppertip()
+const { popper } = usePopperTip()
 const popperRef = ref<HTMLElement | null>(null)
 
 const showPopper = () => {
   popper({
     target: popperRef.value,
-    render: () => (
-      <div>
-        <div>Function Title</div>
-        <div>Function Content</div>
-        <div>Function Content</div>
-        <div>Function Content</div>
-        <div>Function Content</div>
-      </div>
-    ),
+    render: () =>
+      h('div', [
+        h('div', 'Functional Title'),
+        h('div', 'Functional Content'),
+        h('div', 'Functional Content'),
+        h('div', 'Functional Content'),
+      ]),
   })
 }
 </script>

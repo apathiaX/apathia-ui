@@ -1,16 +1,7 @@
-import {
-  onMounted,
-  onUnmounted,
-  watch,
-  ref,
-  nextTick,
-  ComponentPublicInstance,
-  Ref,
-} from 'vue'
+import { onMounted, onUnmounted, watch, ref, nextTick } from 'vue'
 import {
   createPopper,
   Instance as PopperInstance,
-  Placement,
   StrictModifiers,
 } from '@popperjs/core'
 import {
@@ -18,27 +9,8 @@ import {
   useEventListener,
   mountContainerDom,
 } from '@apathia/shared'
-import { isRefType, getArrowStyle, isHTMLElement } from './util'
-import type { ElementType, RefType } from './util'
-
-export interface PopperOption {
-  placement: Placement
-  skidding: number
-  distance: number
-  trigger: string
-  delay: number
-  disabled: boolean
-  component?: ComponentPublicInstance
-  showArrow?: boolean
-  modelValue?: boolean
-  target?: HTMLElement | RefType
-  delayClose?: number
-}
-export interface EmitOption {
-  emitVisible: (val: boolean) => void
-  emitHide: (val: boolean, instance: PopperInstance | null) => void
-  emitShow: (val: boolean, instance: PopperInstance | null) => void
-}
+import { isRefType, isHTMLElement } from './util'
+import type { EmitOption, PopperOption, ElementType } from './types'
 
 export function usePopper(option: PopperOption, emitOption: EmitOption) {
   const contentRef = ref<HTMLElement | null>(null)
@@ -47,23 +19,25 @@ export function usePopper(option: PopperOption, emitOption: EmitOption) {
 
   mountContainerDom('popper')
 
-  let target: ElementType
+  let targetRef: ElementType
   if (option.component) {
-    target = option.component
+    targetRef = option.component
   } else if (option.target) {
-    target = option.target
+    targetRef = option.target
   } else {
-    target = ref<HTMLElement | null>(null) as Ref<HTMLElement | null>
+    targetRef = ref<HTMLElement | null>(null)
   }
 
   let instance: PopperInstance | null = null
 
   const getTarget = () => {
-    if (isHTMLElement(target)) {
-      return target
+    if (isHTMLElement(targetRef)) {
+      return targetRef
     }
 
-    return isRefType(target) ? target.value : (target.$el as HTMLElement)
+    return isRefType(targetRef)
+      ? targetRef.value
+      : (targetRef.$el as HTMLElement)
   }
 
   // 解决命名冲突
@@ -284,6 +258,19 @@ export function usePopper(option: PopperOption, emitOption: EmitOption) {
     stopArr = []
   }
 
+  watch(
+    () => option.modelValue,
+    val => {
+      if (val !== undefined && !option.disabled) {
+        if (val) {
+          show()
+        } else {
+          close()
+        }
+      }
+    },
+  )
+
   onMounted(() => {
     handleEvent()
     initPopper()
@@ -294,38 +281,16 @@ export function usePopper(option: PopperOption, emitOption: EmitOption) {
     detachEvent()
   })
 
-  const getContentProps = () => ({
-    ref: (el: HTMLElement) => {
-      contentRef.value = el
-    },
-  })
-  const getArrowProps = () => ({
-    ref: (el: HTMLElement) => {
-      arrowRef.value = el
-    },
-  })
-  const getTargetProps = () => ({
-    ref: (el: HTMLElement) => {
-      if (isRefType(target)) {
-        target.value = el
-      }
-    },
-  })
-
   return {
     contentRef,
     arrowRef,
-    target,
+    targetRef,
 
-    getContentProps,
-    getArrowProps,
-    getTargetProps,
     update,
-    instance: instance as PopperInstance | null,
+    instance,
     initPopper,
     detachPopper,
     visibility,
-    getArrowStyle,
     hasMounted,
     show,
     close,

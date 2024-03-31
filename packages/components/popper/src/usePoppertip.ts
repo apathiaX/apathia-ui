@@ -75,7 +75,7 @@ const handleUpdateModelValue = (val: boolean, id: string) => {
   popperList.value[index].props.modelValue = val
 }
 
-export function usePoppertip() {
+export function usePopperTip() {
   const appContext = getCurrentInstance()?.appContext
   mountContainerDom('popper')
   mountComponent(
