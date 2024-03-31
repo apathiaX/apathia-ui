@@ -1,5 +1,5 @@
 <template>
-  <div :class="[styles.imgWrap, { [styles.errorHidden]: isError }]">
+  <div :class="styles.wrapper">
     <img
       :src="previewImage"
       :alt="alt"
@@ -9,7 +9,7 @@
     />
     <!-- 蒙层 -->
     <div v-if="preview" :class="styles.mask" @click="handleClickOpenMash">
-      <span :class="styles.hoverEnlarge" @click.stop="handleClickCopyLocation">
+      <!-- <span :class="styles.hoverEnlarge" @click.stop="handleClickCopyLocation">
         <ApIcon :class="styles.maskIcon" :size="10">
           <CopyDocument />
         </ApIcon>
@@ -20,7 +20,7 @@
           <View />
         </ApIcon>
         <i :class="styles.iconText">预览</i>
-      </span>
+      </span> -->
     </div>
   </div>
 
@@ -33,51 +33,56 @@
 
   <!-- 预览 -->
   <Teleport to="body">
-    <Transition v-bind="styles.transitionClass">
+    <Transition v-bind="transitionClass">
       <div
         v-if="mask"
         :class="styles.duration"
         @mousewheel.passive="handleMouseWheel"
       >
         <div :class="styles.shadeClass" @click="handleClickCloseMask">
-          <ul :class="styles.options" @click="e => e.stopPropagation()">
-            <!-- 关闭 -->
-            <li :class="styles.optionIcons" @click="handleClickCloseMask">
-              <ApIcon>
-                <Close />
-              </ApIcon>
-            </li>
-            <!-- 放大 -->
-            <li :class="styles.optionIcons" @click="handleClickZoomIn">
-              <ApIcon>
-                <Plus />
-              </ApIcon>
-            </li>
-            <!-- 缩小 -->
-            <li :class="styles.optionIcons" @click="handleClickZoomOut">
-              <ApIcon>
-                <Minus />
-              </ApIcon>
-            </li>
-            <!-- 右转90度 -->
-            <li
-              :class="[styles.optionIcons, styles.optionIconsSize]"
-              @click="handleClickTurnRight"
+          <div :class="styles.options">
+            <ul
+              :class="styles.optionContainer"
+              @click="e => e.stopPropagation()"
             >
-              <ApIcon>
-                <RefreshRight />
-              </ApIcon>
-            </li>
-            <!-- 左转90度 -->
-            <li
-              :class="[styles.optionIcons, styles.optionIconsSize]"
-              @click="handleClickTurnLeft"
-            >
-              <ApIcon>
-                <RefreshLeft />
-              </ApIcon>
-            </li>
-          </ul>
+              <!-- 关闭 -->
+              <li :class="styles.optionIcons" @click="handleClickCloseMask">
+                <ApIcon>
+                  <Close />
+                </ApIcon>
+              </li>
+              <!-- 放大 -->
+              <li :class="styles.optionIcons" @click="handleClickZoomIn">
+                <ApIcon>
+                  <Plus />
+                </ApIcon>
+              </li>
+              <!-- 缩小 -->
+              <li :class="styles.optionIcons" @click="handleClickZoomOut">
+                <ApIcon>
+                  <Minus />
+                </ApIcon>
+              </li>
+              <!-- 右转90度 -->
+              <li
+                :class="[styles.optionIcons, styles.optionIconsSize]"
+                @click="handleClickTurnRight"
+              >
+                <ApIcon>
+                  <RefreshRight />
+                </ApIcon>
+              </li>
+              <!-- 左转90度 -->
+              <li
+                :class="[styles.optionIcons, styles.optionIconsSize]"
+                @click="handleClickTurnLeft"
+              >
+                <ApIcon>
+                  <RefreshLeft />
+                </ApIcon>
+              </li>
+            </ul>
+          </div>
           <div
             :class="styles.previewImgWrap"
             :style="`transform: translate3d(${translate.x}px, ${translate.y}px, 0px) scale3d(${scaleTimes}, ${scaleTimes}, 1) rotate(${rotateAngle}deg)`"
@@ -100,70 +105,20 @@
 
 <script setup lang="ts">
 import { computed, ref, shallowReactive, withDefaults } from 'vue'
-import { style, tw, css, keyframes } from '@apathia/theme'
 import { ApIcon } from '@apathia/components/icon'
-import { toast } from '@apathia/components/alert'
 import { resizeImage } from '@apathia/shared'
-import {
-  CopyDocument,
-  Close,
-  Plus,
-  Minus,
-  RefreshLeft,
-  RefreshRight,
-  View,
-} from '@apathia/icons-vue'
+import { getComputedStyle } from '@apathia/theme'
 import type { ImageProps } from './types'
+import { getImageStyle, getTransitionClass } from './image'
+import Close from '../icon/Close.vue'
+import Plus from '../icon/Plus.vue'
+import Minus from '../icon/Minus.vue'
+import RefreshLeft from '../icon/RefreshLeft.vue'
+import RefreshRight from '../icon/RefreshRight.vue'
 
 defineOptions({
   name: 'ApImage',
 })
-
-// css
-const flash = keyframes`
-from {
-  opacity: 0;
-}
-to {
-  opacity: 1;
-}
-`
-const flashCss = css({
-  animation: '0.5s ease',
-  animationName: flash,
-})
-
-const styles = {
-  imgWrap: style`relative inline-block`,
-  img: style`w-full h-auto align-middle bg-fill-gray`,
-  mask: style`
-      absolute inset-0 cursor-pointer
-      bg-fill-primary bg-opacity-50 opacity-0 transition-all
-      text-content-white flex justify-center items-center text-center text-sm
-      hover:opacity-100
-    `,
-  iconText: style`ml-1`,
-  iconGap: style`ml-4`,
-  maskIcon: style`inline-block fill-current text-xs`,
-  transitionClass: {
-    'leave-to-class': tw`opacity-0`,
-  },
-  duration: tw`duration-500`,
-  shadeClass: style`z-50 fixed inset-0 h-full bg-fill-gray bg-opacity-50 overflow-auto ${flashCss}`,
-  options: style`
-      m-0 p-0 absolute w-full
-      flex flex-row-reverse items-center
-      text-content-white bg-fill-white bg-opacity-10
-      pointer-events-auto z-10
-    `,
-  optionIcons: style`p-3 ml-4 text-xl cursor-pointer`,
-  optionIconsSize: style`text-lg`,
-  previewImgWrap: style`fixed inset-0 flex justify-center items-center`,
-  previewImg: style`max-w-full max-h-full cursor-grab select-none transition-all bg-fill-gray`,
-  error: style`flex justify-center items-center bg-fill-light text-fill-gray text-xs`,
-  errorHidden: style`hidden`,
-  hoverEnlarge: style`hover:text-lg transition-all`,
-}
 
 const props = withDefaults(defineProps<ImageProps>(), {
   alt: 'img',
@@ -174,9 +129,6 @@ const mask = ref(false) // 是否显示预览蒙层
 
 // 计算缩略图 url
 const previewImage = computed(() => {
-  // 非 bfs 图片
-  if (!props.src.includes('hdslb.com/bfs')) return props.src
-
   const suffix =
     props.width && props.height
       ? `${props.width}x${props.height}`
@@ -242,14 +194,14 @@ const clearOptions = () => {
 }
 
 // 复制图片地址
-const handleClickCopyLocation = () => {
-  const input = document.createElement('input')
-  document.body.appendChild(input)
-  input.setAttribute('value', props.src)
-  input.select()
-  if (document.execCommand('copy')) toast.success('复制图片地址成功')
-  document.body.removeChild(input)
-}
+// const handleClickCopyLocation = () => {
+//   const input = document.createElement('input')
+//   document.body.appendChild(input)
+//   input.setAttribute('value', props.src)
+//   input.select()
+//   if (document.execCommand('copy')) toast.success('复制图片地址成功')
+//   document.body.removeChild(input)
+// }
 
 // 蒙层
 const handleClickOpenMash = () => {
@@ -326,5 +278,7 @@ const handleMouseWheel = (e: WheelEvent) => {
     handleClickZoomOut()
   }
 }
+
+const styles = getComputedStyle({ isError: isError.value }, getImageStyle)
+const transitionClass = getTransitionClass()
 </script>
-./types
