@@ -11,14 +11,10 @@
 
 <script setup lang="ts">
 import { inject } from 'vue'
-import { style } from '@apathia/theme'
+import { getDropdownGroupStyle } from './dropdown'
 
 defineOptions({
   name: 'ApDropdownGroup',
-})
-
-const getDropdownGroupStyle = () => ({
-  container: style`py-1`,
 })
 
 const updateDivide = inject<(a: boolean) => void>('updateDivide')

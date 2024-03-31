@@ -4,7 +4,7 @@
     :trigger="trigger"
     :placement="placement"
     :show-arrow="false"
-    :popper-class="`${staticStyle.popper} ${divide ? staticStyle.divide : ''}`"
+    :popper-class="`${styles.popper} ${divide ? styles.divide : ''}`"
     :distance="5"
     :transition-class="transitionClass"
     :delay="delay"
@@ -13,45 +13,30 @@
     @hide="hide"
   >
     <slot>
-      <ApButton :class="staticStyle.baseButton">
+      <div :class="styles.baseButton">
         {{ label }}
-        <span
-          :class="`v-icon v-icon-chevron-down ${staticStyle.iconClass}`"
-        ></span>
-      </ApButton>
+        <ApIcon> <ArrowDown :class="styles.iconClass"></ArrowDown></ApIcon>
+      </div>
     </slot>
     <template #content>
-      <slot name="dropdown"></slot>
+      <div :class="styles.container">
+        <slot name="dropdown"></slot>
+      </div>
     </template>
   </ApPopper>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, withDefaults, provide } from 'vue'
-import { ApButton } from '@apathia/components/button'
+import { computed, ref, withDefaults, provide, type ComputedRef } from 'vue'
 import { ApPopper } from '@apathia/components/popper'
-import { style } from '@apathia/theme'
+import { ApIcon } from '@apathia/components/icon'
+import { getComputedStyle } from '@apathia/theme'
 import type { DropdownEmits, DropdownProps } from './types'
+import { getDropdownStyle, getTransitionClass } from './dropdown'
+import ArrowDown from '../icon/ArrowDown.vue'
 
 defineOptions({
   name: 'ApDropdown',
-})
-
-const getDropdownStyle = () => ({
-  transitionClass: {
-    'enter-from-class': style`transform opacity-0 scale-95`,
-    'enter-active-class': style`transition ease-out duration-100`,
-    'enter-to-class': style`transform opacity-100 scale-100`,
-    'leave-from-class': style`transform opacity-100 scale-100`,
-    'leave-active-class': style`transition ease-in duration-75`,
-    'leave-to-class': style`transform opacity-0 scale-95`,
-  },
-  staticStyle: {
-    popper: style`max-w-7xl rounded shadow-lg bg-fill-white`,
-    divide: style`divide-y divide-fill-light py-0`,
-    iconClass: style`text-xs`,
-    baseButton: style`m-0`,
-  },
 })
 
 const props = withDefaults(defineProps<DropdownProps>(), {
@@ -66,7 +51,7 @@ const props = withDefaults(defineProps<DropdownProps>(), {
 const emit = defineEmits<DropdownEmits>()
 
 const visible = ref<boolean>(false)
-const divide = ref<boolean>(false)
+const divide = ref<boolean>(true)
 
 const show = (state: boolean) => {
   emit('show', state)
@@ -88,5 +73,13 @@ provide('updateDivide', (v: boolean) => {
   divide.value = v
 })
 
-const { transitionClass, staticStyle } = getDropdownStyle()
+const styles = getComputedStyle({ divide }, getDropdownStyle) as ComputedRef<{
+  popper: string[]
+  divide: string[]
+  iconClass: string[]
+  baseButton: string[]
+  container: string[]
+}>
+
+const transitionClass = getTransitionClass()
 </script>

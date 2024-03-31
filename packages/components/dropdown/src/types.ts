@@ -1,5 +1,5 @@
 import { ComputedRef } from 'vue'
-import type { TriggerType, Placement } from '@apathia/components/popper'
+import type { TriggerType, PlacementType } from '@apathia/components/popper'
 
 export interface DropdownInstance {
   hideOnClick?: ComputedRef<boolean>
@@ -10,7 +10,7 @@ export interface DropdownProps {
   disabled?: boolean
   label?: string
   trigger?: TriggerType
-  placement?: Placement
+  placement?: PlacementType
   hideOnClick?: boolean
 }
 

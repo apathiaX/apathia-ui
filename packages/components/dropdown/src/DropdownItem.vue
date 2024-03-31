@@ -1,32 +1,19 @@
 <template>
-  <div
-    :class="{
-      [styles.menuItem]: true,
-      [styles.active]: !disabled && active,
-      [styles.disabled]: disabled,
-    }"
-    @click="clickCurItem"
-  >
+  <div :class="styles.item" @click="clickCurItem">
     <slot></slot>
   </div>
 </template>
 
 <script setup lang="ts">
 import { withDefaults, inject } from 'vue'
+import { getComputedStyle } from '@apathia/theme'
 import type { DropdownInstance, DropdownItemProps } from './types'
-import { style } from '@apathia/theme'
+import { getDropdownItemStyle } from './dropdown'
 
 defineOptions({
   name: 'ApDropdownItem',
 })
-
-const getDropdownItemStyle = () => ({
-  menuItem: style`block px-2 py-2 rounded text(sm content-primary) hover:bg-fill-light cursor-pointer`,
-  active: style`text-brand-active`,
-  disabled: style`text-content-neutral hover:bg-fill-white cursor-default pointer-events-none`,
-})
-
-withDefaults(defineProps<DropdownItemProps>(), {
+const props = withDefaults(defineProps<DropdownItemProps>(), {
   active: false,
   disabled: false,
 })
@@ -40,5 +27,8 @@ const clickCurItem = () => {
   }
 }
 
-const styles = getDropdownItemStyle()
+const styles = getComputedStyle(
+  { active: props.active, disabled: props.disabled },
+  getDropdownItemStyle,
+)
 </script>
