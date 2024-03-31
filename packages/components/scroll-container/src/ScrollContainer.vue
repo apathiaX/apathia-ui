@@ -53,9 +53,9 @@ import {
   withDefaults,
 } from 'vue'
 import { raf } from '@apathia/shared'
-import { style, apply, tw, css } from '@apathia/theme'
 import Scrollbar from './Scrollbar.vue'
 import type { ScrollContainerProps } from './types'
+import { getScrollContainerStyle } from './scroll'
 
 defineOptions({
   name: 'ApScrollContainer',
@@ -65,20 +65,6 @@ const SIDEBAR_SIDE_MAp = {
   thick: 20,
   normal: 15,
   thin: 10,
-}
-
-const getContainerStyles = () => {
-  const scrollbar = apply`absolute bottom-0 right-0`
-  return {
-    scrollContainer: style`relative h-full overflow-hidden${css`
-      &::-webkit-scrollbar {
-        -webkit-appearance: none;
-        width: 7px;
-      }
-    `}`,
-    scrollbarY: tw`${scrollbar}${apply`top-0`}`,
-    scrollbarX: tw`${scrollbar}${apply`left-0`}`,
-  }
 }
 
 const props = withDefaults(defineProps<ScrollContainerProps>(), {
@@ -355,6 +341,5 @@ defineExpose({
   scrollTo,
 })
 
-const styles = getContainerStyles()
+const styles = getScrollContainerStyle()
 </script>
-./types

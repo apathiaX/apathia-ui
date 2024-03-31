@@ -13,16 +13,11 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue'
 import { throttle } from 'lodash-es'
-import { style } from '@apathia/theme'
 import type { ScrollbarEmits, ScrollbarProps } from './types'
+import { getScrollBarStyle } from './scroll'
 
 defineOptions({
   name: 'ApScrollbar',
-})
-
-const getBarStyles = () => ({
-  track: style`transition-opacity group`,
-  slide: style`bg-fill-neutral group-hover:bg-fill-accent`,
 })
 
 const props = defineProps<ScrollbarProps>()
@@ -126,6 +121,5 @@ onMounted(() => {
   }
 })
 
-const styles = getBarStyles()
+const styles = getScrollBarStyle()
 </script>
-./types

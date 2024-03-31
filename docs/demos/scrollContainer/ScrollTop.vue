@@ -10,7 +10,7 @@
   </div>
   <p>
     scrollTop:
-    <ap-input v-model.number="scrollTop" />
+    <ap-input v-model.number="scrollTop" @update:modelValue="handleInput" />
   </p>
 </template>
 
@@ -18,4 +18,7 @@
 import { ref } from 'vue'
 
 const scrollTop = ref(0)
+const handleInput = (value: number | string) => {
+  if (!value) scrollTop.value = 0
+}
 </script>
