@@ -52,7 +52,6 @@
 
 <script lang="ts" setup>
 import { computed, inject, ref, watch } from 'vue'
-import { style, css } from '@apathia/theme'
 import { toast } from '@apathia/components/alert'
 import { ApButton } from '@apathia/components/button'
 import { ApInput } from '@apathia/components/input'
@@ -62,6 +61,7 @@ import { useDragDrop } from './useDragDrop'
 import { sizeFormat } from './utils'
 import { UploadFilled } from '@apathia/icons-vue'
 import type { UploadEmits, UploadProps } from './types'
+import { getUploadStyles } from './upload'
 
 defineOptions({
   name: 'ApUpload',
@@ -98,20 +98,7 @@ const inputVal = computed(() =>
 
 const emit = defineEmits<UploadEmits>()
 
-const getStyles = () => ({
-  trigger: style`flex items-start border-0`,
-  drag: style`group flex justify-center text-content-primary py-4 flex-col items-center bg-fill-light 
-    border(2 dashed line-accent) rounded cursor-pointer hover:(border-brand-primary text-content-accent)
-    ${css({ 'min-height': '4rem', 'min-width': '5rem' })}`,
-  dragging: style`border(brand-primary) rounded-md text-brand-primary`,
-  disabled: style`cursor-not-allowed hover:(border(& dashed brand-active) text-content-primary)`,
-  clickText: style`text-brand-primary group-hover:(text-brand-active)`,
-  fileIcon: style`block text-content-secondary group-hover:(text-content-accent) ${css`
-    width: 1.5rem !important;
-  `}`,
-})
-
-const styles = getStyles()
+const styles = getUploadStyles()
 const formDisabled = inject('FormDisabled', ref(false))
 const containerRef = ref<HTMLDivElement | null>(null)
 const inputRef = ref<HTMLInputElement | null>(null)
@@ -317,4 +304,3 @@ const handleUrlInput = async (value: string | number) => {
   }
 }
 </script>
-./types
