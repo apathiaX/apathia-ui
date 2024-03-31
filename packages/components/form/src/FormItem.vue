@@ -22,36 +22,14 @@ import {
   FORM_LABEL_ALIGN_KEY,
 } from './constants'
 import { useInjectProp } from '@apathia/shared'
-import { apply, css, style, tw } from '@apathia/theme'
 import type { FormItemProps } from './types'
+import { getFormItemStyle } from './form'
 
 defineOptions({
   name: 'ApFormItem',
 })
 
 const props = defineProps<FormItemProps>()
-
-const getFormItemStyle = () => {
-  const label = apply`text-sm text-content-primary`
-  const mark = css`
-    &:before {
-      content: '*';
-      ${apply`text-error-primary align-top`}
-    }
-  `
-  return {
-    container: style`mb-2 ml-2`,
-    flex: style`flex`,
-    inlineFlex: style`inline-flex mr-2 last:mr-0`,
-    labelBlock: style`w-full ${label}`,
-    labelInline: style`mr-2 flex-shrink-0 ${label}`,
-    labelAlignTop: style`self-start`,
-    labelAlignCenter: style`self-center`,
-    labelAlignBottom: style`self-end`,
-    labelRequired: tw`${mark}`,
-    content: style`flex-auto`,
-  }
-}
 
 const styles = getFormItemStyle()
 

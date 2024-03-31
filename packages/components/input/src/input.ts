@@ -42,9 +42,9 @@ export const getInputStyles = ({
   }
 
   const sizeStyle = {
-    sm: style`h-6 text-xs px-2`,
-    md: style`h-8 text-sm px-2.5`,
-    lg: style`h-10 text-sm px-3`,
+    sm: style`h-6 text-xs`,
+    md: style`h-8 text-sm`,
+    lg: style`h-10 text-sm`,
   }
 
   const color = {

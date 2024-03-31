@@ -7,8 +7,8 @@
 <script lang="ts" setup>
 import { computed, provide } from 'vue'
 import * as constants from './constants'
-import { style } from '@apathia/theme'
 import type { FormProps } from './types'
+import { getFromStyle } from './form'
 
 defineOptions({
   name: 'ApForm',
@@ -44,8 +44,5 @@ provide(
   computed(() => props.labelAlign),
 )
 
-const getFromStyle = () => ({
-  form: style`mb-2`,
-})
 const styles = getFromStyle()
 </script>

@@ -20,7 +20,7 @@
       </ap-radio-group>
     </ap-form-item>
     <ap-form-item label="其他信息">
-      <textarea v-model="form.other" rows="1"></textarea>
+      <ap-input v-model="form.other" :rows="1" type="textarea"></ap-input>
     </ap-form-item>
     <ap-form-item label="最喜欢的水果">
       <ap-select v-model="form.fav_fruit">

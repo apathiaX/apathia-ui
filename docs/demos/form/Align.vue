@@ -24,7 +24,7 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
-import type { FormPosition } from 'apathia-ui'
+import { FormPosition } from 'apathia-ui'
 
 const form = reactive({
   name: '',
