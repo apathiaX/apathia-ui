@@ -44,4 +44,5 @@ export interface NodeProps {
   placeholder: string
   clearable: boolean
   search: boolean
+  disabled: boolean
 }

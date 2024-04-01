@@ -1,12 +1,5 @@
 <template>
-  <div
-    ref="tagContainerRef"
-    :class="{
-      [styles.container]: true,
-      [styles.active]: focus,
-    }"
-    @click="handleClick"
-  >
+  <div ref="tagContainerRef" :class="styles.container" @click="handleClick">
     <div :class="styles.wrap">
       <div ref="contentRef" :class="styles.nodes">
         <template v-if="nodes.length">
@@ -16,11 +9,9 @@
                 ? node.fullName.join(separator)
                 : node.fullName[node.fullName.length - 1]
             }}</span>
-            <span :class="styles.iconWrap">
+            <span>
               <ApIcon
-                :stroke-width="2"
                 size="xs"
-                fill="red"
                 :class="styles.nodeRemove"
                 @click.stop="removeOne(node)"
               >
@@ -58,30 +49,14 @@
 import { withDefaults, ref } from 'vue'
 import { ApIcon } from '@apathia/components/icon'
 import { useScrollX, onClickOutside } from '@apathia/shared'
-import { style, css } from '@apathia/theme'
+import { getComputedStyle } from '@apathia/theme'
 import type { CascaderNode, NodeProps } from './types'
-import { Close } from '@apathia/icons-vue'
+import Close from '../icon/Close.vue'
+import { getNodeStyles } from './cascader'
 
 defineOptions({
   name: 'ApNode',
 })
-
-const getNodeStyles = () => {
-  return {
-    container: style`w-full relative flex shadow h-8 border rounded border-line-accent bg-content-white text-sm items-center`,
-    wrap: style`h-full w-full overflow-hidden`,
-    active: style`border-brand-primary`,
-    nodes: style`w-full flex-1 flex-nowrap whitespace-nowrap py-btn-md-y px-1.5 overflow-x-hidden ${css`
-      height: calc(100% + 17px);
-    `}`,
-    search: style`flex-1 outline-none`,
-    tag: style`rounded inline-flex text-xs text-content-accent items-center py-1 pl-1.5 bg-fill-light h-5 mr-1 flex-shrink-0`,
-    iconWrap: style`h-4 w-4 inline-flex items-center justify-center rounded-full ml-1`,
-    nodeRemove: style`p-1.5 text-content-accent hover:(text-content-primary) cursor-pointer`,
-    clearIcon: style`absolute right-2 top-1/2 -translate-y-2/4 cursor-pointer ml-2 text-content-neutral hover:(text-content-primary)`,
-    placeholder: style`text-content-secondary`,
-  }
-}
 
 const props = withDefaults(defineProps<NodeProps>(), {
   nodes: () => [],
@@ -96,7 +71,10 @@ const props = withDefaults(defineProps<NodeProps>(), {
 
 const emit = defineEmits(['clear', 'remove', 'update:focus', 'search-change'])
 
-const styles = getNodeStyles()
+const styles = getComputedStyle(
+  { focus: props.focus, disabled: props.disabled },
+  getNodeStyles,
+)
 
 const searchInput = ref<string>('')
 const onSearchInput = (e: Event) => {
@@ -114,6 +92,7 @@ const removeOne = (node: CascaderNode) => {
 }
 
 const handleClick = () => {
+  if (props.disabled) return
   showSearch.value = true
   emit('update:focus', !props.focus)
 }

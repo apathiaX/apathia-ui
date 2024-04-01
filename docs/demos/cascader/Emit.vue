@@ -1,5 +1,7 @@
 <template>
-  选中的值为： {{ path2.length > 0 ? path2 : '' }}
+  <div style="margin-bottom: 5px">
+    选中的值为： {{ path2.length > 0 ? path2 : '' }}
+  </div>
   <ap-cascader
     v-model="path2"
     :data="options"

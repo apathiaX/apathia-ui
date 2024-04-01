@@ -18,7 +18,7 @@ export const sidebarMap = {
     Upload: '上传',
     Radio: '单选框',
     Select: '下拉选择器',
-    DatePicker: '时间选择器',
+    // DatePicker: '时间选择器',
   },
   feedBack: {
     Modal: '模态窗',
@@ -31,7 +31,7 @@ export const sidebarMap = {
     Pagination: '分页',
     Slider: '滑块',
     Sidenav: '侧边栏导航',
-    Steps: '步骤条',
+    // Steps: '步骤条',
     Table: '表格',
     Tabs: '标签页',
     Tag: '标签',

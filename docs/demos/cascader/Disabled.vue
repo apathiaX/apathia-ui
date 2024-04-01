@@ -6,6 +6,7 @@
         :data="options"
         trigger="click"
         clearable
+        disabled
         :change-on-select="false"
       />
     </div>

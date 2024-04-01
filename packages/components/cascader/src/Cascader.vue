@@ -8,6 +8,7 @@
       :placeholder="placeholder"
       :clearable="clearable"
       :search="search"
+      :disabled="disabled"
       @search-change="handleSearchChange"
       @update:focus="handleFocus"
       @remove="removeNode"
@@ -76,7 +77,7 @@ import { ApIcon } from '@apathia/components/icon'
 import Nodes from './Nodes.vue'
 import { getCascaderStyles } from './cascader'
 import type { CascaderNode, ValueType, CascaderProps } from './types'
-import { ArrowRight } from '@apathia/icons-vue'
+import ArrowRight from '../icon/ArrowRight.vue'
 
 defineOptions({
   name: 'ApCascader',
@@ -95,6 +96,7 @@ const props = withDefaults(defineProps<CascaderProps>(), {
   fieldNames: () => ({} as Record<'label' | 'value' | 'children', string>),
   multiple: false,
   search: false,
+  disabled: false,
 })
 
 const emit = defineEmits([

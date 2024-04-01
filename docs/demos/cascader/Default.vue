@@ -1,5 +1,4 @@
 <template>
-  {{ value }}
   <ap-cascader
     v-model="value"
     :data="options"

@@ -2,10 +2,10 @@
   <ap-cascader v-model="path5" :data="options" :change-on-select="true">
     <template #default="{ leaf, node }">
       <div class="node">
-        <span class="label"
-          >{{ node.label }}{{ leaf ? '' : `(${node.children?.length})` }}</span
-        >
-        <span>{{ leaf ? '' : '>' }}</span>
+        <span class="label">
+          {{ node.label }}{{ leaf ? '' : `(${node.children?.length})` }}
+        </span>
+        <ap-icon v-if="!leaf"><ArrowRight /></ap-icon>
       </div>
     </template>
   </ap-cascader>
