@@ -1,5 +1,3 @@
-import type { Ref } from 'vue'
-
 export type PaginationConfig = {
   currentPage: number
   totalItems: number
@@ -7,10 +5,10 @@ export type PaginationConfig = {
   totalPages: number
   maxLength: number
   keepMiddle: boolean
-  directionBtns: boolean
+  directionBtn: boolean
   previousText: string
   nextText: string
-  boundaryBtns: boolean
+  boundaryBtn: boolean
   firstText: string
   lastText: string
   totalCount: boolean
@@ -20,7 +18,7 @@ export type PaginationConfig = {
 }
 
 export interface PaginationProps {
-  options: Ref<Partial<PaginationConfig>>
+  options: Partial<PaginationConfig>
 }
 
 export type PageItem = {

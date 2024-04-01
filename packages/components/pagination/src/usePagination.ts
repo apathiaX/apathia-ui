@@ -22,10 +22,10 @@ const DEFAULT_OPTIONS: PaginationConfig = {
   totalPages: 0,
   maxLength: 7,
   keepMiddle: true,
-  directionBtns: true,
+  directionBtn: true,
   previousText: '上一页',
   nextText: '下一页',
-  boundaryBtns: true,
+  boundaryBtn: true,
   firstText: '首页',
   lastText: '末页',
   totalCount: true,
@@ -36,8 +36,9 @@ export function usePagination(
   props: PaginationProps,
   emit: SetupContext<PaginationEvent[]>['emit'],
 ) {
+  const options = computed(() => props.options.value)
   const realOptions = shallowReactive(
-    mergeWithDefault(DEFAULT_OPTIONS, props.options.value) as PaginationConfig,
+    mergeWithDefault(DEFAULT_OPTIONS, options.value) as PaginationConfig,
   )
 
   const jumpTo = ref('1')
@@ -45,15 +46,15 @@ export function usePagination(
   const init = ref(false)
   // const pages = [] as PageItem[] // Available pages array for v-for
   const pages = ref<PageItem[]>([])
-  const btnsRef = ref<HTMLElement[]>([])
+  const btnRefList = ref<HTMLElement[]>([])
 
   const setPageBtnRef = (el?: HTMLElement) => {
     if (!el) return
-    btnsRef.value.push(el)
+    btnRefList.value.push(el)
   }
 
   onBeforeUpdate(() => {
-    btnsRef.value = []
+    btnRefList.value = []
   })
 
   onUpdated(() => {
@@ -143,9 +144,9 @@ export function usePagination(
 
   const updateButtonFocus = (pageNumber = 1) => {
     const pageIndex = pages.value.findIndex(page => page.number === pageNumber)
-    const btns = btnsRef.value as HTMLElement[]
-    if (btns && btns[pageIndex]) {
-      btns[pageIndex].focus()
+    const btnList = btnRefList.value as HTMLElement[]
+    if (btnList && btnList[pageIndex]) {
+      btnList[pageIndex].focus()
     }
   }
 
@@ -154,7 +155,7 @@ export function usePagination(
   prevPage.value = realOptions.currentPage
 
   watch(
-    () => props.options.value,
+    () => props.options,
     optionsVal => {
       ;(Object.keys(optionsVal) as Array<keyof typeof optionsVal>).forEach(
         key => {
