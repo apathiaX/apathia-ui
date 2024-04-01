@@ -97,4 +97,3 @@ const clickRow = (e: MouseEvent, rowIndex: number, row: DataItem) => {
   normalIndex.value = rowIndex
 }
 </script>
-./types

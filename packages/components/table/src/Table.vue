@@ -62,13 +62,13 @@
 
 <script lang="ts" setup>
 import { watch, computed, provide, toRefs } from 'vue'
-import { style, css } from '@apathia/theme'
 import { ApLoading } from '@apathia/components/loading'
 import TableHeader from './TableHeader.vue'
 import TableBody from './TableBody.vue'
 import { useTableColumns } from './columns'
 import { useTableSelected } from './useTableSelected'
 import type { DataItem, TableProps, TableEmits } from './types'
+import { getTableStyles } from './table'
 
 defineOptions({
   name: 'ApTable',
@@ -92,14 +92,7 @@ const props = withDefaults(defineProps<TableProps>(), {
 
 const emit = defineEmits<TableEmits>()
 
-const getStyles = () => ({
-  container: style`shadow relative overflow-auto border(b line-accent)`,
-  table: style`min-w-full w-full table-fixed divide-y divide-line-accent text(sm left) leading-normal rounded box-border m-0 p-0 ${css(
-    { 'border-collapse': 'separate', 'border-spacing': 0 },
-  )}`,
-})
-
-const styles = getStyles()
+const styles = getTableStyles()
 
 const currentId = computed(() =>
   props.currentSelected ? props.currentSelected[props.rowKey] : props.current,
@@ -117,8 +110,9 @@ const tableMultiSelected = useTableSelected(
 )
 
 const tableStyle = computed(() => ({
-  minWidth: props.scroll.width ? `${props.scroll.width}px` : '',
-  minHeight: props.scroll.height ? `${props.scroll.height}px` : '',
+  minWidth: props.scroll && props.scroll.width ? `${props.scroll.width}px` : '',
+  minHeight:
+    props.scroll && props.scroll.height ? `${props.scroll.height}px` : '',
 }))
 
 provide('TableMultiSelected', tableMultiSelected)
@@ -138,4 +132,3 @@ function onCurrentChange(item: DataItem) {
   emit('update:currentSelected', item)
 }
 </script>
-./types

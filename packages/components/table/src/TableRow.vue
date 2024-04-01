@@ -92,7 +92,6 @@
 <script lang="ts" setup>
 import { inject, ref, computed } from 'vue'
 import { get } from 'lodash-es'
-import { css, style } from '@apathia/theme'
 import { CustomRender } from '@apathia/shared'
 import { ApIcon } from '@apathia/components/icon'
 import { ApButton } from '@apathia/components/button'
@@ -104,6 +103,7 @@ import type {
   TableRowProps,
   TableMultiSelectedHelper,
 } from './types'
+import { getTableRowStyles } from './table'
 
 defineOptions({
   name: 'ApTableRow',
@@ -123,38 +123,7 @@ const props = withDefaults(defineProps<TableRowProps>(), {
 
 const emit = defineEmits<TableRowEmits>()
 
-const getStyles = () => {
-  const borderRight = css`
-    border-right: 1px solid rgb(0 0 0 / 12%);
-  `
-  const borderLeft = css`
-    border-left: 1px solid rgb(0 0 0 / 12%);
-  `
-
-  return {
-    row: style`hover:(bg-fill-light) transition`,
-    cell: style`px-2 py-3 border(b solid line-accent) break-words text-sm`,
-    fixedColumnLeft: style`sticky z-20 left-0 ${borderRight}`,
-    fixedColumnRight: style`sticky z-20 right-0 ${borderLeft}`,
-    bordered: style`border(r solid line-accent)`,
-    stripedRow: style`bg-fill-light`,
-    activeRow: style`bg-brand-hover`,
-    whiteRow: style`bg-fill-white`,
-    cellBtnsWrap: style`inline-flex flex-wrap ${css`
-      --gap: 0.25rem;
-      --column-gap: var(--gap);
-      --row-gap: var(--gap);
-      margin: calc(var(--row-gap) / -2) calc(var(--column-gap) / -2);
-      & > * {
-        margin: calc(var(--row-gap) / 2) calc(var(--column-gap) / 2);
-      }
-    `}`,
-
-    fadeEnd: style`opacity-0`,
-    fadeActive: style`transition-all duration-100`,
-  }
-}
-const styles = getStyles()
+const styles = getTableRowStyles()
 
 const rowClasses =
   props.rowClassName?.({ row: props.row, rowIndex: props.rowIndex }) || ''
@@ -284,4 +253,3 @@ const classNames2props = (str?: string) => {
     }, {})
 }
 </script>
-./types

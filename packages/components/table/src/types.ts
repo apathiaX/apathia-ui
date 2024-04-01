@@ -127,14 +127,14 @@ export interface PaginationItem {
   // 居中显示
   keepMiddle: boolean
   // todo ?
-  directionBtns: boolean
+  directionBtn: boolean
   // 设置文字
   previousText: string
   nextText: string
   firstText: string
   lastText: string
   totalCount: boolean
-  boundaryBtns: boolean
+  boundaryBtn: boolean
   // 自定义总量的渲染
   totalTemplate: (total: number) => string
   jumpPage: boolean

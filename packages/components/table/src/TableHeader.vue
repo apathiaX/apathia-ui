@@ -44,7 +44,6 @@
 
 <script lang="ts" setup>
 import { computed, inject } from 'vue'
-import { style, css, apply } from '@apathia/theme'
 import { CustomRender } from '@apathia/shared'
 import { ApCheckbox } from '@apathia/components/checkbox'
 import ApTableSorter from './TableSorter.vue'
@@ -55,6 +54,7 @@ import type {
   TableHeaderEmits,
 } from './types'
 import { toStyleObject, toRealWidth } from './utils'
+import { getTableHeaderStyles } from './table'
 
 const props = withDefaults(defineProps<TableHeaderProps>(), {
   border: false,
@@ -64,34 +64,7 @@ const props = withDefaults(defineProps<TableHeaderProps>(), {
 
 const emit = defineEmits<TableHeaderEmits>()
 
-const getStyles = () => {
-  const borderRight = css`
-    border-right: 1px solid rgb(0 0 0 / 12%);
-  `
-  const borderLeft = css`
-    border-left: 1px solid rgb(0 0 0 / 12%);
-  `
-
-  return {
-    headerWrap: style`overflow-hidden`,
-    thead: style`bg-fill-light`,
-    th: style`text(left content-accent) text-sm font-normal px-2 py-3 border-dashed border bg-fill-gray tracking-wider break-words box-border leading-normal ${css`
-      ${apply('border-fill-gray')};
-      border-width: 1px 1px 1px 0;
-      border-style: solid;
-      &:first-child {
-        border-left-width: 1px;
-      }
-    `}`,
-    thBordered: style`border-line-accent`,
-    fixed: style`sticky`,
-    fixedHeader: style`top-0`,
-    fixedColumnLeft: style`left-0 ${borderRight}`,
-    fixedColumnRight: style`right-0 ${borderLeft}`,
-  }
-}
-
-const styles = getStyles()
+const styles = getTableHeaderStyles()
 
 const { allSelected, toggleAllSelected, indeterminate } = inject(
   'TableMultiSelected',
@@ -146,4 +119,3 @@ const headerCols = computed(() =>
     .filter(v => v !== null),
 )
 </script>
-./types

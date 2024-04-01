@@ -269,6 +269,7 @@ export const defaultTheme = {
     },
     minWidth: {
       transfer: '14rem',
+      full: '100%',
     },
 
     padding: {

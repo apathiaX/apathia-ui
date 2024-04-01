@@ -22,7 +22,6 @@ export function createTable<T>(cols: TableColumn[], shallowData = false) {
           data.value = value
         })
         .catch(err => {
-          // eslint-disable-next-line no-console
           console.error(err)
         })
         .finally(() => {
@@ -40,10 +39,10 @@ export function createTable<T>(cols: TableColumn[], shallowData = false) {
     totalPages: 0,
     maxLength: 7,
     keepMiddle: true,
-    directionBtns: true,
+    directionBtn: true,
     previousText: '上一页',
     nextText: '下一页',
-    boundaryBtns: true,
+    boundaryBtn: true,
     firstText: '首页',
     lastText: '末页',
     totalCount: true,

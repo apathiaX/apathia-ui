@@ -114,7 +114,7 @@
 
 columns 中可以定义 一个 type: 'selection' 的多选列，在 Table 上可以通过 `v-model:selected` 拿到选中的对象数组，可以通过 `v-model:selectedKeys` 拿到 唯一 id 数组，唯一 id 需要使用 `rowKey` 来指定，大部分场景都只需要单独使用其中一个 v-model<br/>
 
-> 还可以通过在 `coulmn`中设置为 selection 的列上添加 `disabledWhen` 来制定某一行禁止选择，使用方法类似于 `when` 的使用，根据返回值指定是否禁用
+> 还可以通过在 `column`中设置为 selection 的列上添加 `disabledWhen` 来制定某一行禁止选择，使用方法类似于 `when` 的使用，根据返回值指定是否禁用
 
 :::demo
 
@@ -212,16 +212,16 @@ columns 中可以定义 一个 type: 'selection' 的多选列，在 Table 上可
 ## Column 属性
 
 | 属性         |                             说明                             |                                                                     类型 |  默认值 |
-| ------------ | :----------------------------------------------------------: | -----------------------------------------------------------------------: | ------: | -------- | ------- |
+| ------------ | :----------------------------------------------------------: | -----------------------------------------------------------------------: | ------: |
 | title        |                          表格的标题                          |                                                             CustomRender |       - |
-| width        |                            列宽度                            |                                                                   Number |  String | -        |
+| width        |                            列宽度                            |                                                         Number \| String |       - |
 | align        |                           对其方式                           |                                                'left'、'center'、'right' |       - |
 | className    |                         单元格 class                         |                                                                   string |       - |
 | colSpan      |         theader > th 的 colSpan,用来自定义合并单元格         |                                                                   Number |       1 |
 | sortable     |                             排序                             |                                                                  Boolean |   false |
 | prop         |                  排序的 prop，指定排序的列                   |                                                                   String |    'id' |
-| type         | 特殊类型，selection 是多选，index 是索引， expand 是展开按钮 |                                                              'selection' | 'index' | 'expand' | 'index' |
-| fixed        |                  固定列，固定到左边或者右边                  |                                                                   'left' | 'right' | -        |
+| type         | 特殊类型，selection 是多选，index 是索引， expand 是展开按钮 |                                       'selection' \| 'index' \| 'expand' | 'index' |
+| fixed        |                  固定列，固定到左边或者右边                  |                                                        'left' \| 'right' |       - |
 | when         |                            显示列                            |                                                            () => boolean |       - |
 | field        |                        指定显示的内容                        |                                                                   String |       - |
 | render       |      自定义单元格的渲染，入参是 row, rowIndex, colIndex      |       RenderFn<{ row?: DataItem; colIndex?: number; rowIndex?: number }> |       - |
@@ -232,7 +232,7 @@ columns 中可以定义 一个 type: 'selection' 的多选列，在 Table 上可
 
 ### 返回值
 
-```js
+```ts
 const [tableOptions, tableUtils] = createTable(column, (shallowRef = false))
 ```
 
