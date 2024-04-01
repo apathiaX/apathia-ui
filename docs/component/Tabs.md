@@ -2,8 +2,8 @@
 
 标签页
 
-::: tip
-tabs 仅仅处理一层标签的情况。若有二级标签可使用 navbar 组件。
+::: tip 提示
+`Tabs` 仅仅处理一层标签的情况。若有二级标签可使用 `Navbar` 组件。
 :::
 
 ## 基础用法
@@ -13,6 +13,16 @@ tabs 仅仅处理一层标签的情况。若有二级标签可使用 navbar 组�
 :::demo
 
 <<< @/demos/tabs/Basic.vue
+
+:::
+
+## 下划线样式
+
+通过指定 `type` 属性为 `underline` 定义导航的样式有下划线
+
+:::demo
+
+<<< @/demos/tabs/Underline.vue
 
 :::
 

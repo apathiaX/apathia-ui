@@ -1,5 +1,5 @@
 <template>
-  <ap-tabs v-model="tab" :list="list" :show-label="showLabel" />
+  <ap-tabs v-model="tab" :list="list" underline />
 </template>
 
 <script lang="ts" setup>
@@ -8,8 +8,4 @@ import { TabItem } from 'apathia-ui'
 
 const tab = ref(1)
 const list = reactive<TabItem[]>([1, 2, 3, 4])
-
-const showLabel = (tab: TabItem) => {
-  return `tab-${tab}`
-}
 </script>
