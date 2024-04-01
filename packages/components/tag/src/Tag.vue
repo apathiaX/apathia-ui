@@ -1,5 +1,5 @@
 <template>
-  <li
+  <div
     :class="{
       ...themeClasses,
       [styles.size]: true,
@@ -23,42 +23,17 @@
     >
       ✕
     </span>
-  </li>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { style } from '@apathia/theme'
 import { computed, inject, withDefaults } from 'vue'
 import type { TagProps } from './types'
+import { getTagStyle } from './tag'
 
 defineOptions({
   name: 'ApTag',
 })
-
-const getTagStyle = () => {
-  const size = style`text-xs`
-  const theme = {
-    default: style`bg-fill-gray text-content-accent`,
-    primary: style`bg-brand-light text-brand-primary`,
-    success: style`bg-success-light text-success-primary`,
-    danger: style`bg-error-light text-error-primary`,
-    warning: style`bg-warning-light text-warning-primary`,
-  }
-
-  const hollow = style`border bg-opacity-40`
-  const icon = style`inline-block`
-  const layout = style`inline-flex items-center mr-1 px-1.5 py-1 rounded cursor-default font-medium`
-  const delIcon = style`inline-block cursor-pointer ml-1.5 hover:(text-error-primary)`
-
-  return {
-    theme,
-    layout,
-    delIcon,
-    icon,
-    size,
-    hollow,
-  }
-}
 
 const props = withDefaults(defineProps<TagProps>(), {
   text: '',
@@ -90,4 +65,3 @@ const themeClasses = computed(() => ({
   [styles.hollow]: props.hollow,
 }))
 </script>
-./types

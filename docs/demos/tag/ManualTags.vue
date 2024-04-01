@@ -1,9 +1,10 @@
 <template>
-  <ap-button primary @click="add">添加</ap-button>
+  <ap-button primary @click="add" small>添加</ap-button>
   <ap-button
     :pink="!tagsDisabled"
     :danger="tagsDisabled"
     @click="tagsDisabled = !tagsDisabled"
+    small
   >
     {{ tagsDisabled ? '启用' : '禁用' }}
   </ap-button>

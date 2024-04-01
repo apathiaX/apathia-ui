@@ -1,36 +1,37 @@
 <template>
   <div>
-    <TransitionGroup tag="ul" name="transition-primary" :class="styles.list">
-      <Tag
-        v-for="(tag, index) in tagList"
-        v-bind="tag.theme"
-        :key="tag.text"
-        :class="tag.className"
-        :icon-class="tag.iconClass"
-        :closable="tag.closable"
-        :text="tag.text"
-        :hollow="hollow"
-        @close="handleClose(tag, index)"
+    <!-- <TransitionGroup tag="ul" name="transition-primary" :class="styles.list"> -->
+    <Tag
+      v-for="(tag, index) in tagList"
+      v-bind="tag.theme"
+      :key="tag.text"
+      :class="tag.className"
+      :icon-class="tag.iconClass"
+      :closable="tag.closable"
+      :text="tag.text"
+      :hollow="hollow"
+      @close="handleClose(tag, index)"
+    />
+    <div v-if="isAdding" key="tag-inGroupWrap" :class="styles.inputWrap">
+      <ApInput
+        v-model="tagText"
+        size="sm"
+        @keyup.enter="handleAppend"
+        @blur="toggleAdding(false)"
       />
-      <div v-if="isAdding" key="tag-inGroupWrap" :class="styles.inputWrap">
-        <ApInput
-          v-model="tagText"
-          @keyup.enter="handleAppend"
-          @blur="toggleAdding(false)"
-        />
-      </div>
-      <ApButton
-        v-else
-        key="tag-btn"
-        primary
-        small
-        :disabled="disabledTags"
-        :class="styles.addBtn"
-        @click="handleStartAdd()"
-      >
-        <slot name="create">+</slot>
-      </ApButton>
-    </TransitionGroup>
+    </div>
+    <ApButton
+      v-else
+      key="tag-btn"
+      primary
+      small
+      :disabled="disabledTags"
+      :class="styles.addBtn"
+      @click="handleStartAdd()"
+    >
+      <slot name="create">+</slot>
+    </ApButton>
+    <!-- </TransitionGroup> -->
   </div>
 </template>
 
@@ -42,25 +43,11 @@ import { ApInput } from '@apathia/components/input'
 import { useToggle, useInjectProp } from '@apathia/shared'
 import Tag from './Tag.vue'
 import type { TagItem, TagsEmits, TagsProps } from './types'
-import { style } from '@apathia/theme'
+import { getTagsStyle } from './tag'
 
 defineOptions({
   name: 'ApTags',
 })
-
-const getTagsStyle = () => {
-  const tagClass = style`duration-300 my-1`
-  const inputWrap = style`inline-block w-20 m-1`
-  const addBtn = style`w-20 text-xs`
-  const list = style`inline-block`
-
-  return {
-    list,
-    addBtn,
-    tagClass,
-    inputWrap,
-  }
-}
 
 provide('WithinTags', true)
 
@@ -137,4 +124,3 @@ const tagList = computed(() =>
   })),
 )
 </script>
-./types
