@@ -3,7 +3,7 @@ export type Key = string | number
 export type TransferDataItem = {
   value: Key
   label: string
-  disabled: boolean
+  disabled?: boolean
 }
 
 export type TargetOrder = 'original' | 'push' | 'unshift'

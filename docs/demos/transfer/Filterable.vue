@@ -9,10 +9,10 @@
 </template>
 <script lang="ts" setup>
 import { ref, shallowReactive } from 'vue'
-import type { PropsItem } from 'apathia-ui'
+import { TransferDataItem } from 'apathia-ui'
 
 const base = ref([])
-const transData = shallowReactive<PropsItem[]>([
+const transData = shallowReactive<TransferDataItem[]>([
   { value: 'beijing', label: '北京' },
   { value: 'shanghai', label: '上海' },
   { value: 'nanjing', label: '南京' },
@@ -32,7 +32,7 @@ const transData = shallowReactive<PropsItem[]>([
   { value: 'dongguan', label: '东莞' },
 ])
 
-const searchCity = (word: string, option: PropsItem) => {
+const searchCity = (word: string, option: TransferDataItem) => {
   return option.label.indexOf(word) > -1
 }
 </script>

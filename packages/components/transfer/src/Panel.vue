@@ -56,22 +56,10 @@ import { ApScrollContainer } from '@apathia/components/scroll-container'
 import { ApInput } from '@apathia/components/input'
 import { ApCheckbox } from '@apathia/components/checkbox'
 import type { Key, TransferDataItem, CheckedMap, PanelProps } from './types'
-import { apply, tw } from '@apathia/theme'
+import { getPanelStyles } from './transfer'
 
 defineOptions({
   name: 'ApPanel',
-})
-
-const getPanelStyles = () => ({
-  panel: tw`${apply`border-line-accent border rounded`}`,
-  titleBar: tw`${apply`flex justify-between items-center bg-fill-light py-4 px-2 text-xs`}`,
-  title: tw`${apply`font-medium`}`,
-  counter: tw`${apply`w-14 text-right`}`,
-  filter: tw`${apply`m-2`}`,
-  list: tw`${apply`h-80`}`, // 2.5 * 8
-  item: tw`${apply`text-base p-2 hover:(bg-fill-light) transition-all duration-300 ease-in text-left`}`,
-  checkbox: tw`${apply`mr-2`}`,
-  disabledCheckbox: tw`${apply`cursor-not-allowed`}`,
 })
 
 const props = withDefaults(defineProps<PanelProps>(), {
@@ -186,4 +174,3 @@ watch(
 
 const styles = getPanelStyles()
 </script>
-./types

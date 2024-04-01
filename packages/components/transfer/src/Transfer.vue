@@ -85,26 +85,17 @@
 import { computed, withDefaults } from 'vue'
 import { ApIcon } from '@apathia/components/icon'
 import { ApButton } from '@apathia/components/button'
-import { apply, tw } from '@apathia/theme'
-import {
-  ArrowLeft,
-  ArrowRight,
-  DArrowLeft,
-  DArrowRight,
-} from '@apathia/icons-vue'
 import useTransfer from './useTransfer'
 import Panel from './Panel.vue'
+import { getTransferStyles } from './transfer'
+import ArrowRight from '../icon/ArrowRight.vue'
+import ArrowLeft from '../icon/ArrowLeft.vue'
+import DArrowRight from '../icon/DArrowRight.vue'
+import DArrowLeft from '../icon/DArrowLeft.vue'
 import type { TransferDataItem, TransferEmits, TransferProps } from './types'
 
 defineOptions({
   name: 'ApTransfer',
-})
-
-const getTransferStyles = () => ({
-  transfer: tw`${apply`flex`}`,
-  panel: tw`${apply`w-48`}`,
-  buttonWrapper: tw`${apply`self-center text-center mx-4`}`,
-  button: tw`${apply`w-12 my-0.5`}`,
 })
 
 const props = withDefaults(defineProps<TransferProps>(), {
@@ -152,4 +143,3 @@ const {
 
 const styles = getTransferStyles()
 </script>
-./types

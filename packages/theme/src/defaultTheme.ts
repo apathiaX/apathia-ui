@@ -267,6 +267,9 @@ export const defaultTheme = {
       lg: '0px 0px 6px rgba(0, 0, 0, 0.08), 0px 20px 30px rgba(0, 0, 0, 0.12)',
       none: 'none',
     },
+    minWidth: {
+      transfer: '14rem',
+    },
 
     padding: {
       // default

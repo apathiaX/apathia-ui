@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 import { ref, shallowReactive } from 'vue'
-import type { PropsItem } from 'apathia-ui'
+import { PropsItem } from 'apathia-ui'
 
 const base = ref([])
 const transData = shallowReactive<PropsItem[]>([
