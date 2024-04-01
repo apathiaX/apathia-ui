@@ -1,6 +1,4 @@
 <template>
-  <p>nav: {{ nav }}</p>
-
   <ap-navbar v-model="nav" :list="list" :trigger="'click'" />
 </template>
 

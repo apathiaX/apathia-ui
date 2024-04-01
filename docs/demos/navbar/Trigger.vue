@@ -1,12 +1,10 @@
 <template>
-  <p>current nav: {{ nav }}</p>
-
   <ap-navbar v-model="nav" :list="list" trigger="click" />
 </template>
 
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
-import type { NavNode } from 'apathia-ui'
+import { NavNode } from 'apathia-ui'
 
 const nav = ref<number>(1)
 const list = reactive<Array<NavNode>>([

@@ -2,10 +2,10 @@
 
 层级选项卡 | 多级标签页
 
-::: tip
-Navbar 是为了处理有层级的 tab。若是简单的一级 tab 建议用 Tabs 组件。
+::: tip 提示
+`Navbar` 是为了处理有层级的 `tab`。若是简单的一级 `tab` 建议用 `Tabs` 组件。
 
-Navbar 暂仅支持两层，不支持三层。
+`Navbar` 暂仅支持两层，不支持三层。
 :::
 
 ## 基础用法
@@ -50,7 +50,7 @@ Navbar 暂仅支持两层，不支持三层。
 
 | prop           |              说明              |          类型 |    默认值 |
 | -------------- | :----------------------------: | ------------: | --------: |
-| type           |     样式 default,undeline      |        string | 'default' |
+| type           |     样式 default,underline     |        string | 'default' |
 | modelValue     |             绑定值             | string,number |        无 |
 | list           | navbar 的列表{label,value}数组 |         array |        无 |
 | trigger        |      子级 navbar 触发方式      |        string |   'hover' |
