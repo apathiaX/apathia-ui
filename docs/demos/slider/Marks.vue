@@ -14,7 +14,7 @@
 
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
-import type { Marker } from 'apathia-ui'
+import { Marker } from 'apathia-ui'
 
 const verticalSteps = ref<number>(0)
 const marks = reactive<Marker>({

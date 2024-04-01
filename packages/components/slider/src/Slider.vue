@@ -1,32 +1,8 @@
 <template>
   <div :class="styles.sliderWrap">
-    <div
-      :class="{
-        [styles.slider]: true,
-        [styles.sliderX]: !vertical,
-        [styles.sliderY]: vertical,
-      }"
-      :style="sliderStyle"
-      @click="handleTrackClick"
-    >
-      <div
-        ref="trackRef"
-        :class="{
-          [styles.track]: true,
-          [styles.trackX]: !vertical,
-          [styles.trackY]: vertical,
-          [styles.trackHover]: dragging,
-        }"
-      ></div>
-      <div
-        :class="{
-          [styles.steps]: true,
-          [styles.stepsX]: !vertical,
-          [styles.stepsY]: vertical,
-          [styles.stepsHover]: dragging,
-        }"
-        :style="stepsStyle"
-      ></div>
+    <div :class="styles.slider" :style="sliderStyle" @click="handleTrackClick">
+      <div ref="trackRef" :class="styles.track"></div>
+      <div :class="styles.steps" :style="stepsStyle"></div>
 
       <!-- 放在选中的div后面，实现了 step 点的显示，层叠顺序 -->
       <Stops
@@ -44,12 +20,12 @@
         dark
         :placement="vertical ? 'right' : 'bottom'"
         trigger="hover"
-        :class="[styles.popperWrap, vertical ? styles.buttonY : styles.buttonX]"
+        :class="styles.popper"
         :style="btnEndStyle"
       >
         <div
           ref="buttonRef"
-          :class="[styles.button, dragging ? styles.buttonHover : '']"
+          :class="styles.button"
           @mousedown="startDrag"
         ></div>
         <template #content>
@@ -69,38 +45,13 @@ import {
   useInjectProp,
   type VueInstance,
 } from '@apathia/shared'
-import { style, css } from '@apathia/theme'
+import { getComputedStyle } from '@apathia/theme'
 import Stops from './Stop.vue'
 import type { SliderProps } from './types'
+import { getSliderStyles } from './slider'
 
 defineOptions({
   name: 'ApSlider',
-})
-
-const getSliderStyles = () => ({
-  sliderWrap: style`text-2xl`,
-  slider: style`group relative h-2 box-border inline-block`,
-  sliderX: style`py-2 w-full`,
-  sliderY: style`px-2`,
-  track: style`absolute bg-fill-gray rounded transition group-hover:bg-fill-secondary`,
-  trackX: style`h-1 w-full`,
-  trackY: style`w-1 h-full`,
-  trackHover: style`bg-fill-secondary`,
-  steps: style`relative rounded bg-brand-primary group-hover:bg-brand-active`,
-  stepsX: style`h-1`,
-  stepsY: style`w-1 absolute bottom-0`,
-  stepsHover: style`bg-brand-active`,
-  button: style`group-hover:border-brand-active border(2 solid brand-primary) h-4 w-4 bg-fill-white rounded-lg cursor-pointer ${css`
-    z-index: 1;
-  `}`,
-  popperWrap: style`absolute`,
-  buttonHover: style`border-brand-active`,
-  buttonX: style`-translate-x-1/2${css`
-    top: 2px;
-  `}`,
-  buttonY: style`translate-y-1/2${css`
-    left: 2px;
-  `}`,
 })
 
 const props = withDefaults(defineProps<SliderProps>(), {
@@ -115,8 +66,6 @@ const props = withDefaults(defineProps<SliderProps>(), {
 const emit = defineEmits(['update:modelValue'])
 
 const isTouchEvent = (e: Event): e is TouchEvent => e.type.startsWith('touch')
-
-const styles = getSliderStyles()
 
 const trackRef = ref<HTMLElement | null>(null)
 const moveRange = reactive<Record<'clientX' | 'clientY', [number, number]>>({
@@ -279,4 +228,9 @@ const getClientPosition = (e: MouseEvent | TouchEvent) => {
     clientY,
   }
 }
+
+const styles = getComputedStyle(
+  { vertical: props.vertical, dragging },
+  getSliderStyles,
+)
 </script>
