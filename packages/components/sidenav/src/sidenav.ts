@@ -1,9 +1,4 @@
-import {
-  css,
-  generateColor,
-  generateInteractionColor,
-  style,
-} from '@apathia/theme'
+import { generateColor, generateInteractionColor, style } from '@apathia/theme'
 
 export const getSideNavStyles = () => {
   const baseSidenav = `block duration-100 ${generateColor(

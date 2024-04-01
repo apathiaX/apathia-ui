@@ -44,8 +44,8 @@ export const getTabStyles = ({ underline }: { underline: boolean }) => {
   }
 
   const tab = [baseStyle.baseTab]
-  const tabColor = []
-  const activeTab = []
+  const tabColor: string[] = []
+  const activeTab: string[] = []
   if (underline) {
     tab.push(baseStyle.underlineTab)
     tabColor.push(colorStyle.underlineTab)

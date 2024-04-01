@@ -1,12 +1,5 @@
 <template>
-  <component
-    :is="as"
-    :class="{
-      [styles.wrapper]: true,
-      [styles.wrapperLoading]: loading,
-    }"
-    @click="handleChange"
-  >
+  <component :is="as" :class="styles.wrapper" @click="handleChange">
     <div :class="styles.switchWrap">
       <div :class="styles.outer"></div>
       <span :class="styles.inner">

@@ -1,5 +1,4 @@
 import {
-  apply,
   css,
   generateColor,
   generateInteractionColor,
