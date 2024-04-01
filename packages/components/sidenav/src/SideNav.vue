@@ -1,5 +1,5 @@
 <template>
-  <ul
+  <div
     :class="showMini ? styles.sidenavMiniClass : styles.sidenavClass"
     v-bind="{ ...getContainerProps() }"
   >
@@ -43,29 +43,19 @@
     </SideNode>
 
     <slot name="menuBottom"></slot>
-  </ul>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { InputHTMLAttributes, withDefaults } from 'vue'
-import { style } from '@apathia/theme'
 import SideNode from './SideNode.vue'
 import type { SideNavNode, SideNavEmits, SideNavProps } from './types'
 import useSideNav from './useSideNav'
+import { getSideNavStyles } from './sidenav'
 
 defineOptions({
   name: 'ApSideNav',
 })
-
-function initStyle() {
-  const baseSidenav = 'block duration-100 text-content-secondary py-4 relative'
-  return {
-    sidenavClass: style`${baseSidenav} min-h-full`,
-    sidenavMiniClass: style`${baseSidenav} w-12 min-h-full`,
-    sidenavInputWrap: style`px-4`,
-    sidenavInput: style`bg-fill-accent px-2 my-2 bg-opacity-30 h-9 outline-none text-content-accent rounded placeholder-content-neutral w-full focus:(bg-fill-gray text-content-primary)`,
-  }
-}
 
 const props = withDefaults(defineProps<SideNavProps>(), {
   menuList: () => [],
@@ -84,7 +74,7 @@ const {
   showMini,
   // getScrollContainerProps,
 } = useSideNav(props, emit)
-const styles = initStyle()
+const styles = getSideNavStyles()
 
 const selectNode = (node: SideNavNode) => emit('select', node)
 </script>

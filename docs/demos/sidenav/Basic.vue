@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { SideNavNode } from 'apathia-ui'
+import { SideNavNode } from 'apathia-ui'
 
 const menu = ref<SideNavNode[]>([
   {

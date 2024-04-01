@@ -1,5 +1,5 @@
 <template>
-  <li>
+  <div>
     <slot
       :mini="mini"
       :activeParent="isActiveParent"
@@ -34,7 +34,7 @@
     </slot>
 
     <div v-if="node.children && !mini">
-      <ul v-show="expand" :class="styles.sidenodeChildren">
+      <div v-show="expand" :class="styles.sidenodeChildren">
         <SideNode
           v-for="(item, index) in node.children"
           :key="index"
@@ -63,9 +63,9 @@
             ></slot>
           </template>
         </SideNode>
-      </ul>
+      </div>
     </div>
-  </li>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -73,29 +73,13 @@
 import { computed, watch, withDefaults } from 'vue'
 import { useToggle } from '@apathia/shared'
 import { ApIcon } from '@apathia/components/icon'
-import { style } from '@apathia/theme'
 import type { SideNavNode, SideNavNodeProps } from './types'
 import { ArrowDown } from '@apathia/icons-vue'
+import { getSideNodeStyles } from './sidenav'
 
 defineOptions({
   name: 'ApSideNavNode',
 })
-
-function initStyle() {
-  return {
-    sidenodeIconClass: style`w-4 h-4`,
-    sidenodeRowClass: style`flex items-center cursor-pointer duration-300 px-3 py-6 h-8 overflow-hidden border-r-4 border-transparent hover:bg-brand-fill`,
-    // sidenodeRowActive: style`bg-fill-primary text-content-white rounded-l-md border-brand-primary`,
-    sidenodeRowActive: style`bg-brand-fill text-brand-primary border-brand-primary`,
-    sidenodeRowParentActive: style`text-brand-primary`,
-    sidenodeTurn: style`rotate-180 duration-300`,
-    sidenodeExpand: style`text-xs duration-300`,
-    sidenodeText: style`flex-grow text-sm font-medium text-left truncate`,
-    sidenodeIcon: style`w-8 h-4 px-2`,
-    sidenodeIconMini: style`px-0`,
-    sidenodeChildren: style`text-xs bg-brand-light transition-all duration-500 list-none`,
-  }
-}
 
 const props = withDefaults(defineProps<SideNavNodeProps>(), {
   node: () => ({}),
@@ -121,7 +105,7 @@ function platMenu(nodes: SideNavNode[]): SideNavNode[] {
   )
 }
 
-const styles = initStyle()
+const styles = getSideNodeStyles()
 
 const isActiveParent = computed(() =>
   props.node.children
@@ -166,4 +150,3 @@ const clickHandler = () => {
   }
 }
 </script>
-./types
