@@ -6,7 +6,7 @@
       </Popper>
     </Card>
 
-    <Card title="solt用法+focus+show-arrow">
+    <Card title="slot用法+focus+show-arrow">
       <Popper placement="left" trigger="focus" :show-arrow="false">
         <button>多用法一</button>
         <template #content>
@@ -17,7 +17,7 @@
         </template>
       </Popper>
     </Card>
-    <Card title="solt用法+focus+show-arrow">
+    <Card title="slot用法+focus+show-arrow">
       <Popper placement="left" :show-arrow="true">
         <button>多用法一</button>
         <template #content>
@@ -120,7 +120,7 @@
 import { ref, h } from 'vue'
 import { tw, apply } from 'twind'
 import { css } from 'twind/css'
-import { ApPopper as Popper, usePoppertip } from 'apathia-ui'
+import { ApPopper as Popper, usePopperTip } from 'apathia-ui'
 
 export default {
   components: {
@@ -149,7 +149,7 @@ export default {
     const renderRef = ref(null)
     const render2Ref = ref(null)
 
-    const { popper } = usePoppertip()
+    const { popper } = usePopperTip()
     const test = () => {
       popper({
         target: renderRef.value,

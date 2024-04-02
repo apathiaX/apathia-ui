@@ -1,6 +1,6 @@
 import path from 'path'
 import fs from 'fs'
-import { sidebarMap, sidebarNameMap, componentList } from './nameMap'
+import { sidebarMap, sidebarNameMap } from './nameMap'
 import { demoBlock as demoBlockPlugin } from './plugin'
 import { UserConfig, defineConfig } from 'vitepress'
 
@@ -75,7 +75,7 @@ const generateHooks = (dirPath: string, prefix: string) => {
 }
 
 const config: UserConfig = {
-  title: 'ApathiaUI',
+  title: 'Apathia UI',
   description: '基于vue3 + typescript + twind 的vue组件库',
   lang: 'zh-CN',
   head: [['link', { rel: 'icon', type: 'image/svg+xml', href: 'logo.png' }]],
@@ -88,7 +88,7 @@ const config: UserConfig = {
   },
 
   themeConfig: {
-    siteTitle: 'Apathia Component',
+    siteTitle: 'Apathia',
     outlineTitle: '本页目录',
     lastUpdatedText: '最近更新时间',
     logo: '/logo.png',
@@ -98,7 +98,7 @@ const config: UserConfig = {
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/apathia1220/apathia-vue',
+        link: 'https://github.com/apathiaX/apathia-ui',
       },
     ],
 

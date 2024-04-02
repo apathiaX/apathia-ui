@@ -8,24 +8,22 @@ yarn add apathia-ui
 
 # npm
 npm install apathia-ui
+
+# pnpm
+pnpm install apathia-ui
+
 ```
 
 ::: tip
-本文档之后均以 yarn 为例
+本文档之后均以 pnpm 为例
 :::
 
 ## 部分安装
 
-Apathia 采用 monorepo 的形式，每个组件都是独立的 package，独立发布，如果只想使用一个，可以只安装一个。如
+Apathia UI 里包含了一些列常用的 hooks，这些 hooks 在一个包中，也可以独立安装
 
 ```bash
-yarn add @apathia/apathia.button
-```
-
-Apathia 里包含了一些列常用的 hooks，这些 hooks 在一个包中，也可以独立安装
-
-```bash
-yarn add @apathia/apathia.hook
+pnpm i @apathia/apathia.hook
 ```
 
 ## 设置全局样式

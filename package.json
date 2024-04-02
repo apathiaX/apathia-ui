@@ -73,7 +73,6 @@
     "sass": "^1.57.1",
     "tslib": "^2.5.0",
     "typescript": "5.3.3",
-    "unplugin-vue-define-options": "^0.12.8",
     "vite": "^2.9.15",
     "vue": "^3.4.15"
   },
@@ -85,7 +84,6 @@
     "@jridgewell/sourcemap-codec": "^1.4.14",
     "@popperjs/core": "^2.11.6",
     "element-resize-detector": "^1.2.4",
-    "flatpickr": "^4.6.13",
     "lodash-es": "^4.17.21",
     "string-width": "4.2.3",
     "twind": "^0.16.19",

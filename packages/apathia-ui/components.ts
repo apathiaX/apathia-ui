@@ -6,7 +6,6 @@ import { ApCascader } from '@apathia/components/cascader'
 import { ApCollapse } from '@apathia/components/collapse'
 import { ApCheckbox } from '@apathia/components/checkbox'
 import { ApConfirm } from '@apathia/components/confirm'
-import { ApDatepicker, ApDatepickerGroup } from '@apathia/components/datepicker'
 import {
   ApDropdown,
   ApDropdownItem,
@@ -27,7 +26,6 @@ import { ApPopper } from '@apathia/components/popper'
 import { ApSideNav } from '@apathia/components/sidenav'
 import { ApTable } from '@apathia/components/table'
 import { ApTabs } from '@apathia/components/tabs'
-import { ApTextarea } from '@apathia/components/textarea'
 import { ApTag, ApTags } from '@apathia/components/tag'
 import { ApSlider } from '@apathia/components/slider'
 import { ApSwitch } from '@apathia/components/switch'
@@ -42,8 +40,6 @@ export default [
   ApCollapse,
   ApCheckbox,
   ApConfirm,
-  ApDatepicker,
-  ApDatepickerGroup,
   ApDropdown,
   ApDropdownItem,
   ApDropdownGroup,
@@ -65,7 +61,6 @@ export default [
   ApSideNav,
   ApTable,
   ApTabs,
-  ApTextarea,
   ApTag,
   ApTags,
   ApSlider,

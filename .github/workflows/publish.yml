@@ -1,0 +1,31 @@
+name: Publish Package
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    strategy:
+      matrix:
+        node-version: [18]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 8
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install dependencies
+        run: pnpm run release
+        env:
+          # npm_token 就是刚刚填写 token 时取的名字
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

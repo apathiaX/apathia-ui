@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: Apathia UI Component
+  name: Apathia UI
   text: 使用文档
   tagline: 基于vue3 + typescript + twind 的vue组件库
   image:
@@ -14,7 +14,7 @@ hero:
       link: /introduction/
     - theme: alt
       text: GitHub
-      link: https://github.com/apathia1220/apathia-vue
+      link: https://github.com/apathiaX/apathia-ui
 features:
   - title: UI
     icon: 🎉

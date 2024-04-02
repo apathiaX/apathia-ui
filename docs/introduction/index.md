@@ -1,6 +1,6 @@
 # Introduction
 
-# Apathia
+# Apathia UI
 
 基于 vue3 + typescript + css-in-js 的组件库
 
@@ -15,7 +15,7 @@
 
 ## 特点
 
-- :fire: 使用typescript编写，类型完整
+- :fire: 使用 typescript 编写，类型完整
 - :rainbow: 可自定义的全局样式
-- :rocket:  css-in-js 方便快捷
-- :hammer_and_wrench:  包含常用的composition api
+- :rocket: css-in-js 方便快捷
+- :hammer_and_wrench: 包含常用的 composition api

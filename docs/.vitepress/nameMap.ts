@@ -13,7 +13,6 @@ export const sidebarMap = {
     Dropdown: '下拉菜单',
     Form: '表单',
     Input: '输入框',
-    Textarea: '文本框',
     Switch: '选择',
     Upload: '上传',
     Radio: '单选框',
