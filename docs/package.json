@@ -4,8 +4,7 @@
   "scripts": {
     "dev": "vitepress dev --port 8080",
     "build": "vitepress build",
-    "serve": "vitepress serve",
-    "register:components": "vitepress-rc"
+    "serve": "vitepress serve"
   },
   "license": "MIT",
   "devDependencies": {

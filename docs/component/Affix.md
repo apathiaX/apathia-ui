@@ -27,7 +27,7 @@ Affix 组件 用于将内容固定页面的位置，不随着页面滚动而改�
 
 ::: demo
 
-<<< @/demos/affix/Events.vue
+<<< @/demos/affix/events.vue
 
 :::
 

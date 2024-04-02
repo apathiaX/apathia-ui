@@ -1,5 +1,3 @@
-# Introduction
-
 # Apathia UI
 
 基于 vue3 + typescript + css-in-js 的组件库

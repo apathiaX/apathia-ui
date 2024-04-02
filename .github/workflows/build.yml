@@ -43,13 +43,13 @@ jobs:
       - run: pnpm install
 
       # 打包
-      - run: pnpm run build:docs
+      - run: pnpm run docs:build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: './docs/.vitepress/dist'
+          path: 'docs/.vitepress/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment

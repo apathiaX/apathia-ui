@@ -79,12 +79,15 @@ const config: UserConfig = {
   description: '基于vue3 + typescript + twind 的vue组件库',
   lang: 'zh-CN',
   head: [['link', { rel: 'icon', type: 'image/svg+xml', href: 'logo.png' }]],
-  base: '/apathia-vue/',
+  base: '/apathia-ui/',
 
   markdown: {
     config: md => {
       md.use(demoBlockPlugin, { customClass: 'apathia-docs' })
     },
+  },
+  async buildEnd() {
+    process.exit(0)
   },
 
   themeConfig: {
@@ -92,6 +95,10 @@ const config: UserConfig = {
     outlineTitle: '本页目录',
     lastUpdatedText: '最近更新时间',
     logo: '/logo.png',
+
+    search: {
+      provider: 'local',
+    },
 
     lastUpdated: { text: '最后更新' },
 
