@@ -1,0 +1,36 @@
+.vp-table .ap-table {
+  width: 100%;
+  display: table;
+}
+.ap-table th {
+  font-weight: 600;
+  color: #303133;
+}
+.ap-table th, .ap-table td {
+  border: none;
+  border-top: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid var(--vp-c-divider);
+  background-color: transparent;
+  white-space: pre-wrap;
+  line-height: 2.5em;
+  text-align: left !important;
+  max-width: 250px;
+  min-width: 90px;
+}
+
+.ap-table tr {
+  background-color: transparent;
+}
+
+.ap-table thead tr:first-child th,  .ap-table thead tr:first-child{
+  border-top: none;
+}
+
+.ap-table tr:nth-child(2n) {
+  background-color: transparent;
+}
+
+.vp-doc h2 {
+  border-top: none;
+  margin: 0;
+}

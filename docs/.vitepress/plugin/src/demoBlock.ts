@@ -120,10 +120,17 @@ export const renderPlugin = (
   }
 }
 
+export const tablePlugin = (md: MarkdownIt) => {
+  md.renderer.rules.table_open = () =>
+    '<div class="vp-table"><table class="ap-table">'
+  md.renderer.rules.table_close = () => '</table></div>'
+}
+
 export const demoBlock = (
   md: MarkdownIt,
   options: DemoBlockPluginOptions = {},
 ) => {
+  md.use(tablePlugin)
   md.use(blockPlugin, options)
   md.use(codePlugin, options)
 }
