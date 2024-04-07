@@ -1,10 +1,19 @@
+:root {
+  --docs-table-header-color: #303133;
+}
+html.dark {
+  --docs-table-header-color: #E5EAF3;
+}
+
 .vp-table .ap-table {
   width: 100%;
   display: table;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
 .ap-table th {
   font-weight: 600;
-  color: #303133;
+  color: var(--docs-table-header-color);
 }
 .ap-table th, .ap-table td {
   border: none;
