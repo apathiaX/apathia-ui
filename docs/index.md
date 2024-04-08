@@ -19,12 +19,12 @@ features:
   - title: UI
     icon: 🎉
     details: UI 和 代码展示统一
-  - title: Code
+  - title: 文档
     icon: 📖
-    details: 组件名称汉化同时展示代码语法高亮更清晰
+    details: 使用文档可在线编辑并同步更改效果
   - title: Type
     icon: 🔎
-    details: 使用Typescript编写且包含常用的 Composition api
+    details: 使用Typescript编写、类型标注完整
   - title: Style
     icon: ⚡️
     details: 可自定义的全局样式
