@@ -79,7 +79,7 @@ const config: UserConfig = {
   description: '基于vue3 + typescript + twind 的vue组件库',
   lang: 'zh-CN',
   head: [['link', { rel: 'icon', type: 'image/svg+xml', href: 'logo.png' }]],
-  base: '/apathia-ui/',
+  // base: '/apathia-ui/',
 
   markdown: {
     config: md => {
