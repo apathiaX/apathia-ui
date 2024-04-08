@@ -12,7 +12,7 @@ if (!fs.existsSync(dirPath)) {
 }
 
 // CNAME 文件内容
-const cnameContent = 'ui.apathia.cn' // 这里是你想要写入 CNAME 文件的内容
+const cnameContent = 'demo.apathia.cn' // 这里是你想要写入 CNAME 文件的内容
 
 // 写入 CNAME 文件
 fs.writeFileSync(filePath, cnameContent, { encoding: 'utf-8' })
