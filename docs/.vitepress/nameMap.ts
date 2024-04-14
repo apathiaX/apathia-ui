@@ -51,3 +51,25 @@ export const sidebarNameMap = {
   feedBack: '反馈',
   Data: '数据',
 }
+
+export const virtualListMap = {
+  basic: {
+    fixed: '固定高度',
+    dynamic: '不定高度',
+    horizontal: '横向滚动',
+    slot: '插槽',
+    operate: '操作',
+  },
+  advance: {
+    infinite: '无限滚动',
+    chat: '聊天室',
+    pagination: '分页',
+    'huge-date': '百万数据',
+    advance: '自定义用法',
+  },
+}
+
+export const virtualListNameMap = {
+  basic: '基础用法',
+  advance: '进阶用法',
+}

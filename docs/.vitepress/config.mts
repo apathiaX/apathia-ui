@@ -1,6 +1,11 @@
 import path from 'path'
 import fs from 'fs'
-import { sidebarMap, sidebarNameMap } from './nameMap'
+import {
+  sidebarMap,
+  sidebarNameMap,
+  virtualListMap,
+  virtualListNameMap,
+} from './nameMap'
 import { demoBlock as demoBlockPlugin } from './plugin'
 import { UserConfig, defineConfig } from 'vitepress'
 
@@ -36,13 +41,18 @@ const getIntroductionSidebar = () => {
   ]
 }
 
-const generatePathsFromDir = (prefix: string) => {
+const generatePathsFromDir = (
+  prefix: string,
+  sidebarMap,
+  sidebarNameMap: Record<string, string>,
+  showName = true,
+) => {
   return Object.keys(sidebarMap).reduce<Sidebar[]>((prev, currKey) => {
     const currMap = sidebarMap[currKey]
     if (!currMap) return prev
     const currName = sidebarNameMap[currKey]
     const currComp = Object.keys(currMap).map<SidebarItem>(name => ({
-      text: name + '' + currMap[name],
+      text: showName ? name + '' + currMap[name] : currMap[name],
       link: `${prefix}/${name}`,
     }))
     return prev.concat([
@@ -125,12 +135,27 @@ const config: UserConfig = {
         link: '/hook/index',
         activeMatch: '^/hook',
       },
+      {
+        text: '虚拟列表',
+        link: '/virtual-list/index',
+        activeMatch: '^/virtual-list',
+      },
     ],
 
     sidebar: {
       '/introduction': getIntroductionSidebar(),
-      '/component': generatePathsFromDir('/component'),
+      '/component': generatePathsFromDir(
+        '/component',
+        sidebarMap,
+        sidebarNameMap,
+      ),
       '/hook': generateHooks(path.resolve(__dirname, '../hook'), '/hook'),
+      '/virtual-list': generatePathsFromDir(
+        '/virtual-list',
+        virtualListMap,
+        virtualListNameMap,
+        false,
+      ),
       '/': getIntroductionSidebar(),
     },
   },

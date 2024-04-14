@@ -1,0 +1,11 @@
+{
+    "name": "@apathia/virtual-list",
+    "version": "0.0.1",
+    "description": "high performance virtual list",
+    "main": "index.ts",
+    "module": "index.ts",
+    "scripts": {},
+    "author": "",
+    "license": "ISC"
+  }
+  

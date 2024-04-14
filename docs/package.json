@@ -8,6 +8,8 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@apathia/virtual-list": "workspace:^",
+    "@faker-js/faker": "^8.4.1",
     "@types/markdown-it": "^13.0.7",
     "@types/markdown-it-container": "^2.0.9",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
@@ -20,8 +22,11 @@
   "dependencies": {
     "@mdit-vue/plugin-sfc": "^2.0.0",
     "@vueuse/core": "^10.7.2",
+    "archiver": "^7.0.1",
+    "chokidar": "^3.6.0",
     "clipboard-copy": "^4.0.1",
     "hash-sum": "^2.0.0",
+    "jszip": "^3.10.1",
     "markdown-it": "^14.0.0",
     "markdown-it-container": "^4.0.0",
     "vue-live": "^2.5.4"

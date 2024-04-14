@@ -6,6 +6,11 @@
     :requires="{
       'apathia-ui': ApathiaUI,
       '@apathia/icons-vue': ApathiaIcon,
+      '@apathia/virtual-list': ApVirtualList,
+      '@faker-js/faker': Faker,
+      './Item.vue': Item,
+      './100w.zip': data,
+      jszip: JSZip,
     }"
     :layout-props="{
       ...demoProps,
@@ -18,9 +23,15 @@
 <script setup lang="ts">
 import * as ApathiaUI from 'apathia-ui'
 import * as ApathiaIcon from '@apathia/icons-vue'
+import * as ApVirtualList from '@apathia/virtual-list'
+import * as Faker from '@faker-js/faker'
 import { VueLive } from 'vue-live'
+import JSZip from 'jszip'
 import Layout from './Layout.vue'
 import { ref } from 'vue'
+import Item from '../../../demos/virtualList/Item.vue'
+// @ts-ignore
+import data from '../../../demos/virtualList/100w.zip?url'
 
 const demoProps = defineProps<{
   customClass: string
