@@ -1,9 +1,20 @@
 # Apathia Virtual List
 
-## 基础使用
+## 安装
 
-::: demo
+```bash
+# yarn
+yarn add @apathia/virtual-list
 
-<<< @/demos/virtualList/Base.vue
+# npm
+npm install @apathia/virtual-list
 
-:::
+# pnpm
+pnpm install @apathia/virtual-list
+```
+
+## 使用
+
+```ts
+import { VirtualList } from '@apathia/virtual-list'
+```
