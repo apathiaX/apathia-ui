@@ -462,6 +462,7 @@ export const useVirtualList = <T extends Record<string, any>>(
     reactiveData.renderBegin = 0
     reactiveData.renderEnd = 0
     sizesMap.clear()
+    forceUpdate()
   }
   // expose only
   function deletedList2Top(deletedList: T[]) {
