@@ -39,6 +39,7 @@ declare module 'vue' {
     'ap-switch': typeof import('@apathia/components')['ApSwitch']
     'ap-transfer': typeof import('@apathia/components')['ApTransfer']
     'ap-upload': typeof import('@apathia/components')['ApUpload']
+    'ap-virtual-tree': typeof import('apathia-ui')['ApVirtualTree']
   }
   interface ComponentCustomProperties {
     $toast: typeof import('@apathia/components')['toast']

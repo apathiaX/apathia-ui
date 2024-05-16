@@ -35,6 +35,7 @@ export const sidebarMap = {
     Tabs: '标签页',
     Tag: '标签',
     Transfer: '穿梭框',
+    VirtualTree: '虚拟树形控件',
   },
 }
 

@@ -115,19 +115,24 @@ defineExpose({
           :class="listClass"
           :style="horizontal ? `display: flex; ${listStyle}` : `${listStyle}`"
         >
-          <ObserverItem
-            v-for="(item, index) in renderList"
-            :key="item[itemKey]"
-            :class="itemClass"
-            :style="itemStyle"
-            :id="item[itemKey]"
-            :resizeObserver="resizeObserver"
-          >
-            <slot
-              :itemData="item"
-              :index="index + reactiveData.renderBegin"
-            ></slot>
-          </ObserverItem>
+          <template v-if="renderList.length === 0">
+            <slot name="empty"></slot>
+          </template>
+          <template v-else>
+            <ObserverItem
+              v-for="(item, index) in renderList"
+              :key="item[itemKey]"
+              :class="itemClass"
+              :style="itemStyle"
+              :id="item[itemKey]"
+              :resizeObserver="resizeObserver"
+            >
+              <slot
+                :itemData="item"
+                :index="index + reactiveData.renderBegin"
+              ></slot>
+            </ObserverItem>
+          </template>
         </div>
         <div
           v-if="$slots.footer"

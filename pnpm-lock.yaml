@@ -20,12 +20,18 @@ importers:
       '@apathia/theme':
         specifier: workspace:^1.0.0
         version: link:packages/theme
+      '@apathia/virtual-list':
+        specifier: workspace:^
+        version: link:packages/virtual-list
       '@jridgewell/sourcemap-codec':
         specifier: ^1.4.14
         version: 1.4.14
       '@popperjs/core':
         specifier: ^2.11.6
         version: 2.11.6
+      apathia-ui:
+        specifier: workspace:^
+        version: link:packages/apathia-ui
       element-resize-detector:
         specifier: ^1.2.4
         version: 1.2.4

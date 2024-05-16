@@ -31,6 +31,7 @@ import { ApSlider } from '@apathia/components/slider'
 import { ApSwitch } from '@apathia/components/switch'
 import { ApTransfer } from '@apathia/components/transfer'
 import { ApUpload } from '@apathia/components/upload'
+import { ApVirtualTree } from '@apathia/components/tree-virtual'
 
 export default [
   ApAffix,
@@ -67,4 +68,5 @@ export default [
   ApSwitch,
   ApTransfer,
   ApUpload,
+  ApVirtualTree,
 ]
